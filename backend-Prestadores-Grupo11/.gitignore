@@ -1,0 +1,22 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Env files
+.env
+
+# Logs
+logs
+*.log
+
+# Docker
+*.pid
+docker-data/
+db-data/
+
+# IDE/editor
+.vscode/
+.idea/
+.DS_Store
+EOF
