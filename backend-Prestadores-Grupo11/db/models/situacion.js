@@ -14,12 +14,20 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'integranteId',
         as: 'integrante'
       });
+      Situacion.belongsTo(models.Prestador, {
+        foreignKey: 'prestadorId',
+        as: 'prestador'
+      });
     }
   }
   Situacion.init({
-    titulo: {type: DataTypes.STRING, allowNull: false},
-    estado: {type: DataTypes.STRING, allowNull: false},
-    integranteId: {type: DataTypes.INTEGER}
+    fecha_inicio: {type: DataTypes.DATE, allowNull:false},
+    especialidad: {type: DataTypes.STRING, allowNull: false},
+    observaciones: {type: DataTypes.STRING, allowNull: false},
+    estado: {type: DataTypes.ENUM('en proceso', 'finalizada', 'baja',), defaultValue: 'en proceso' },
+    fecha_final : {type: DataTypes.DATE, allowNull: false},
+    integranteId: {type: DataTypes.INTEGER, allowNull: false},
+    prestadorId: {type: DataTypes.INTEGER}
   }, {
     sequelize,
     modelName: 'Situacion',

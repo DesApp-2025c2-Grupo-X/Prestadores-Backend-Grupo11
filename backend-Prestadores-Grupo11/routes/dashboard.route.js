@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const {genericController} = require('../controllers');
+const {Prestador} = require('../db/models');
 
-router.get('/:id', (req, res) => {
-  res.send(`Dashboard para id ${req.params.id}`);
-});
+router.get('/:id',
+  genericController.getModelById(Prestador)
+);
 
 module.exports = router;

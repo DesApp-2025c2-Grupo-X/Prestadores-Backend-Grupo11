@@ -1,5 +1,7 @@
 const express = require('express');
-const cors = require('cors'); //Necesario para habilitar conexion frontend/backend
+const cors = require('cors');
+const db = require('./db/models');
+const {crearAfiliados, crearPrestadores} = require('./test');
 const app = express();
 const PORT = process.env.PORT ?? 3001;
 const {authRoute, dashboardRoute, historiasRoute, situacionesRoute, solicitudesRoute, turnosRoute} = require('./routes');
@@ -15,6 +17,8 @@ app.use('/solicitudes', solicitudesRoute);
 app.use('/turnos', turnosRoute);
 
 app.listen(PORT, async () => {
-    //await db.sequelize.sync({ force: true });
+    await db.sequelize.sync({ force: true });
+    await crearAfiliados();
+    await crearPrestadores();
     console.log(`La app arranco en el puerto ${PORT}.`);
 });

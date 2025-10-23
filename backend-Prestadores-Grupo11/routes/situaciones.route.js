@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
-//const controller = require('../db/controllers/situacionController');
+const {situacionesController} = require('../controllers');
 
-//router.get('/afiliado/:id', controller.getByAfiliado);
-//router.post('/situaciones', controller.create);
-//router.put('/situaciones/:id', controller.update);
-//router.delete('/situaciones/:id', controller.delete);
+router.get('/:id',
+    situacionesController.getAllSituacionesByPrestadorId
+);
 
 module.exports = router;

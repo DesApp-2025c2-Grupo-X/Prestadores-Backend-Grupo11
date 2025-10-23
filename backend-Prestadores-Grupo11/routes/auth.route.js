@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const prestadorController = require('../db/controllers/prestadorController');
+const {loginController} = require('../controllers');
+const {loginMiddleware} = require('../middlewares');
 
-router.get('/', prestadorController.getPrestadores)
-//router.post('/', controller.login);
+router.post('/', 
+    loginMiddleware.validateLogin,
+    loginController.accessLogin
+);
 
 module.exports = router;
