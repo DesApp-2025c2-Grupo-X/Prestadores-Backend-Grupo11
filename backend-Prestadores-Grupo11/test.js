@@ -27,7 +27,7 @@ async function crearAfiliados () {
 
 async function crearPrestadores() {
     await Prestador.bulkCreate([
-        {username: "Dr Alejandro Ruiz", password: 12345, role: "Medico",
+        {username: "dr alejandro ruiz", password: "12345", role: "Medico",
             situaciones: [
                 {fecha_inicio: "2024-03-05", especialidad: "Cardiologia",
                     observaciones: "Infarto agudo de miocardio. Se realizó angioplastia con colocación de stent en arteria coronaria izquierda. Evolución favorable con control posterior.",
@@ -43,7 +43,7 @@ async function crearPrestadores() {
                 },
             ]
         },
-        {username: "Dr Cecilia Lopez", password: 6789, role: "Medico",
+        {username: "dr cecilia lopez", password: "6789", role: "Medico",
             situaciones: [
                 {fecha_inicio: "2023-09-10", especialidad: "Clínica Médica",
                     observaciones: "Pico de hipertensión arterial con mareos y cefalea intensa. Se ajustó medicación antihipertensiva y se indicó dieta baja en sodio.",
