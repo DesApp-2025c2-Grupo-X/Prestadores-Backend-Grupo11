@@ -10,14 +10,19 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-          Prestador.hasMany(models.Situacion, {
-          foreignKey: 'prestadorId',
-          as: 'situaciones'
-        });
+      Prestador.hasMany(models.Situacion, {
+        foreignKey: 'prestadorId',
+        as: 'situaciones'
+      });
+
+      Prestador.hasMany(models.Turno, {
+        foreignKey: 'prestadorId',
+        as: 'turnos'
+      })
     }
   }
   Prestador.init({
-    username: {type: DataTypes.STRING, allowNull: false},
+    username: {type: DataTypes.STRING, allowNull: false, unique: true},
     password: {type: DataTypes.STRING, allowNull: false},
     role: {type: DataTypes.STRING, allowNull: false}
   }, {

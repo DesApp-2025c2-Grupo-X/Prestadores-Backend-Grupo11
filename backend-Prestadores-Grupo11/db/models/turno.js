@@ -27,12 +27,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Turno.init({
-    fechaHora: {type: DataTypes.DATE, allowNull: false},
-    estado: {type: DataTypes.ENUM('solicitado', 'confirmado', 'realizado', 'cancelado'), defaultValue: 'solicitado' },
-    notas: {type: DataTypes.TEXT},
+    date: {type: DataTypes.DATE, allowNull: false},
+    start: {type: DataTypes.DATE, allowNull: false},
+    duration: {type: DataTypes.INTEGER, allowNull: false},
+    notes: {type: DataTypes.STRING},
     afiliadoId: {type: DataTypes.INTEGER, allowNull: false},
-    integranteId: {type: DataTypes.INTEGER},
-    prestadorId: {type: DataTypes.INTEGER, allowNull: false}
+    prestadorId: {type: DataTypes.INTEGER, allowNull: false},
+    integranteId: {type: DataTypes.INTEGER}
   }, {
     sequelize,
     modelName: 'Turno',

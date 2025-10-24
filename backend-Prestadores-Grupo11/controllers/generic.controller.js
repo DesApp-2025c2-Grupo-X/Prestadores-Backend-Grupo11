@@ -6,4 +6,12 @@ const getModelById = (Model) => {
     }
 }
 
-module.exports = {getModelById};
+const createNewModel = (Model) => {
+    return async (req, res) => {
+        const newModel = await Model.create(req.body);
+        res.status(201).json(newModel);
+    }
+}
+
+
+module.exports = {getModelById, createNewModel};
