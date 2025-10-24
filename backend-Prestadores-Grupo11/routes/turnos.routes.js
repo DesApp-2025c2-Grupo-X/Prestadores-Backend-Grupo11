@@ -1,12 +1,22 @@
 const express = require("express");
 const router = express.Router();
+const {Turno} = require('../db/models')
+const {turnosController, genericController} = require('../controllers')
 
-router.get('/afiliado/:id', (req, res) => {
-  res.send(`Listar turnos para id ${req.params.id}`);
-});
+router.get('/:id',
+  turnosController.getAllTurnosById
+);
 
-router.post('/:id', (req, res) => {
-  res.send(`Agregar nota al turno para id ${req.params.id}`);
-});
+router.get('/:id/Afiliado/:afiliadoId',
+  turnosController.getTurnoByAfiliadoId
+);
+
+router.get('/:id/Integrante/:integranteId',
+  turnosController.getTurnoByIntegranteId
+)
+
+router.post('/',
+  genericController.createNewModel(Turno)
+);
 
 module.exports = router;

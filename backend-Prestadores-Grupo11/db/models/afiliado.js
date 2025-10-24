@@ -10,10 +10,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Afiliado.hasMany(models.Integrante, {  // Un afiliado tiene muchos integrantes
+      Afiliado.hasMany(models.Integrante, {
         foreignKey: 'afiliadoId',
-        as: 'integrantes'                   // Alias para incluirlos en queries
+        as: 'integrantes'                  
       });
+
+      Afiliado.hasMany(models.Turno, {
+        foreignKey: 'afiliadoId',
+        as: 'turnos'
+      })
     }
   }
   Afiliado.init({

@@ -10,24 +10,27 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // Cada integrante pertenece a un afiliado
       Integrante.belongsTo(models.Afiliado, { 
         foreignKey: 'afiliadoId',
         as: 'afiliado'
       });
 
-      // Cada integrante tiene muchas situaciones
-        Integrante.hasMany(models.Situacion, {
-          foreignKey: 'integranteId',
-          as: 'situaciones'
-        });
-      }
+      Integrante.hasMany(models.Situacion, {
+        foreignKey: 'integranteId',
+        as: 'situaciones'
+      });
+
+      Integrante.hasMany(models.Turno, {
+        foreignKey: 'integranteId',
+        as: 'turnos'
+      })
+    }
   }
   Integrante.init({
     nombre: {type: DataTypes.STRING, allowNull: false},
     edad: {type: DataTypes.INTEGER, allowNull: false},
     dni: {type: DataTypes.STRING, allowNull: false},
-    afiliadoId: {type: DataTypes.INTEGER}
+    afiliadoId: {type: DataTypes.INTEGER, allowNull: false}
   }, {
     sequelize,
     modelName: 'Integrante',

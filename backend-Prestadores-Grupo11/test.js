@@ -1,4 +1,4 @@
-const {Afiliado, Prestador, Integrante, Situacion} = require('./db/models');
+const {Afiliado, Prestador, Integrante, Situacion, Turno} = require('./db/models');
 
 async function crearAfiliados () {
     await Afiliado.bulkCreate([
@@ -27,7 +27,7 @@ async function crearAfiliados () {
 
 async function crearPrestadores() {
     await Prestador.bulkCreate([
-        {username: "dr alejandro ruiz", password: "12345", role: "Medico",
+        {username: "dr alejandro ruiz", password: "12345", role: "medico",
             situaciones: [
                 {fecha_inicio: "2024-03-05", especialidad: "Cardiologia",
                     observaciones: "Infarto agudo de miocardio. Se realizó angioplastia con colocación de stent en arteria coronaria izquierda. Evolución favorable con control posterior.",
@@ -41,9 +41,34 @@ async function crearPrestadores() {
                     fecha_final: "2025-11-05",
                     integranteId: 2
                 },
-            ]
+            ],
+            turnos: [
+                {
+                    date: new Date(),
+                    start: (() => {
+                        const d = new Date();
+                        d.setHours(9,0,0,0);
+                        return d;
+                    })(),
+                    duration: 30,
+                    afiliadoId: 1,
+                    integranteId: 1
+                },
+                {
+                    date: new Date(),
+                    start: (() => {
+                        const d = new Date();
+                        d.setHours(9,30,0,0);
+                        return d;
+                    })(),
+                    duration: 60,
+                    notes: "Traer estudios previos",
+                    afiliadoId: 1,
+                    integranteId: 2
+                }
+            ],
         },
-        {username: "dr cecilia lopez", password: "6789", role: "Medico",
+        {username: "dr cecilia lopez", password: "6789", role: "medico",
             situaciones: [
                 {fecha_inicio: "2023-09-10", especialidad: "Clínica Médica",
                     observaciones: "Pico de hipertensión arterial con mareos y cefalea intensa. Se ajustó medicación antihipertensiva y se indicó dieta baja en sodio.",
@@ -52,8 +77,18 @@ async function crearPrestadores() {
                     integranteId: 3
                 }
             ]
+        },
+        {username: "clinica santa maria", password: "5555", role: "centro_medico",
+            situaciones: [
+                {fecha_inicio: "2024-03-06", especialidad: "Clínica Médica",
+                    observaciones: "Evaluación inicial realizada por el equipo de Clínica Santa María. Plan de ejercicios asignado.",
+                    estado: "en proceso",
+                    fecha_final: "2024-04-20",
+                    integranteId: 4
+                }
+            ]
         }
-    ],{ include: [{ model: Situacion, as: 'situaciones' }]})
+    ],{ include: [{ model: Situacion, as: 'situaciones' }, {model: Turno, as: 'turnos'}]})
 }
 
 module.exports = {crearAfiliados, crearPrestadores};
