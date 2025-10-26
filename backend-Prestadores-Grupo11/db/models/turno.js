@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     start: {type: DataTypes.DATE, allowNull: false},
     duration: {type: DataTypes.INTEGER, allowNull: false},
     notes: {type: DataTypes.STRING},
-    afiliadoId: {type: DataTypes.INTEGER, allowNull: false},
+    afiliadoId: {type: DataTypes.INTEGER},
     prestadorId: {type: DataTypes.INTEGER, allowNull: false},
     integranteId: {type: DataTypes.INTEGER}
   }, {

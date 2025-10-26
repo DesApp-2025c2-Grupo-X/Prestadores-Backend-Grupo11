@@ -18,8 +18,8 @@ app.use('/turnos', turnosRoute);
 
 app.listen(PORT, async () => {
     await db.sequelize.sync({ force: true });
-    await crearAfiliados();
     await crearPrestadores();
+    await crearAfiliados();
     await crearSolicitudes();
     console.log(`La app arranco en el puerto ${PORT}.`);
 });

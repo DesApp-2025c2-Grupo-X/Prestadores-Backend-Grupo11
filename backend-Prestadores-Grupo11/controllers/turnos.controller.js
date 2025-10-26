@@ -26,4 +26,12 @@ const getTurnoByIntegranteId = async (req,res) => {
     res.status(200).json(turnoIntegrante);
 }
 
-module.exports = {getAllTurnosById, getTurnoByAfiliadoId, getTurnoByIntegranteId}
+const updateNotesById = async (req,res) => {
+    const id = req.params.id;
+    const notes = req.body;
+    const turno = await Turno.findByPk(id);
+    await turno.update(notes);
+    res.status(200).json(turno);
+}
+
+module.exports = {getAllTurnosById, getTurnoByAfiliadoId, getTurnoByIntegranteId, updateNotesById}
