@@ -1,16 +1,12 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
+const {getAllSolicitudes, getAllSolicitudesByPrestadorId, getSolicitudById,getAllSolicitudesPendientesEnAnalisis, getSolicitudesPendientesOAnalisisByPrestadorId,getCantidadPorDescripcion} = require('../controllers/solicitudes.controller')
+router.get('/', getAllSolicitudes);
+router.get('/prestador/:id', getAllSolicitudesByPrestadorId);
+router.get('/detalle/:id', getSolicitudById);
+router.get('/pendientes-en-analisis', getAllSolicitudesPendientesEnAnalisis);
+router.get('/:id/pendientes-en-analisis', getSolicitudesPendientesOAnalisisByPrestadorId);
+router.get('/dashboard/por-descripcion', getCantidadPorDescripcion);
 
-router.get("/", (req, res) => {
-    res.send("Listar todas las solicitudes")
-});
-
-router.get("/:id",(req, res) => {
-    res.send(`detalle de solicitud para id ${req.params.id}`)
-});
-
-router.put("/:id/estado", (req,res) => {
-    res.send(`cambiar estado de solicitud para id ${req.params.id}`)
-});
 
 module.exports = router;

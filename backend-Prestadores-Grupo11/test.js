@@ -1,4 +1,4 @@
-const {Afiliado, Prestador, Integrante, Situacion, Turno} = require('./db/models');
+const {Afiliado, Prestador, Integrante, Situacion, Turno, Solicitud} = require('./db/models');
 
 async function crearAfiliados () {
     await Afiliado.bulkCreate([
@@ -91,4 +91,41 @@ async function crearPrestadores() {
     ],{ include: [{ model: Situacion, as: 'situaciones' }, {model: Turno, as: 'turnos'}]})
 }
 
-module.exports = {crearAfiliados, crearPrestadores};
+async function crearSolicitudes() {
+    await Solicitud.bulkCreate([
+{
+      descripcion: 'reintegro',
+      estado: 'pendiente',
+      fechaSolicitud: '2025-10-25',
+      prestadorId: 1
+    },
+    {
+      descripcion: 'autorización',
+      estado: 'observada',
+      fechaSolicitud: '2025-10-24',
+      prestadorId: 1
+    },
+    {
+      descripcion: 'receta',
+      estado: 'en análisis',
+      fechaSolicitud: '2025-10-23',
+      prestadorId: 2
+    },
+    {
+      descripcion: 'reintegro',
+      estado: 'aprobada',
+      fechaSolicitud: '2025-10-22',
+      fechaProcesada: '2025-10-24',
+      prestadorId: 2
+    },
+    {
+      descripcion: 'autorización',
+      estado: 'rechazada',
+      fechaSolicitud: '2025-10-21',
+      fechaProcesada: '2025-10-23',
+      prestadorId: 1
+    }
+  ]);
+}
+
+module.exports = {crearAfiliados, crearPrestadores, crearSolicitudes};
