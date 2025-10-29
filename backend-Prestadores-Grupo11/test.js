@@ -7,7 +7,7 @@ async function crearAfiliados () {
             situaciones: [
                 {fecha_inicio: "2024-03-05", especialidad: "Cardiologia",
                     observaciones: "Infarto agudo de miocardio. Se realizó angioplastia con colocación de stent en arteria coronaria izquierda. Evolución favorable con control posterior.",
-                    estado: "finalizada",
+                    estado: "alta",
                     fecha_final: "2024-03-18",
                     prestadorId: 1
                 },
@@ -21,6 +21,7 @@ async function crearAfiliados () {
                         return d;
                     })(),
                     duration: 30,
+                    especialidad: "cardiologia",
                     prestadorId: 1
                 }
             ],
@@ -44,6 +45,7 @@ async function crearAfiliados () {
                             })(),
                             duration: 60,
                             notes: "traer estudios previos",
+                            especialidad: "dermatologia",
                             prestadorId: 1
                         }
                     ],
@@ -59,7 +61,7 @@ async function crearAfiliados () {
             situaciones: [
                 {fecha_inicio: "2023-09-10", especialidad: "Clínica Médica",
                     observaciones: "Pico de hipertensión arterial con mareos y cefalea intensa. Se ajustó medicación antihipertensiva y se indicó dieta baja en sodio.",
-                    estado: "finalizada",
+                    estado: "alta",
                     fecha_final: "2023-09-20",
                     prestadorId: 2
                 }
@@ -77,6 +79,7 @@ async function crearAfiliados () {
                         return d;
                     })(),
                     duration: 30,
+                    especialidad: "neurologia",
                     prestadorId: 2
                 }
             ],

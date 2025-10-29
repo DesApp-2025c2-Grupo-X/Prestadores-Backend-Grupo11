@@ -1,11 +1,40 @@
-const {Turno, Afiliado, Integrante} = require('../db/models');
+const {Turno, Afiliado, Integrante, Prestador} = require('../db/models');
 
-const getAllTurnosById = async (req,res) => {
+const getAllTurnosByPrestadorId = async (req,res) => {
     const id = req.params.id;
-    const turnos = await Turno.findAll({where: {prestadorId: id},
+    const turnos = await Turno.findAll({where: {prestadorId: id}, 
+    attributes: { exclude: ['especialidad'] },
     include: [
-        {model: Afiliado, attributes: ['apellido'], as: 'afiliado'},
-        {model: Integrante, attributes: ['nombre'], as: 'integrante'}
+        {model: Afiliado, attributes: ['apellido'], as: 'afiliado', include: [{model: Integrante, attributes: ['nombre'], as: 'integrantes'}]}
+    ]});
+    res.status(200).json(turnos);
+}
+
+const getAllTurnos = async (req,res) => {
+    const turnos = await Turno.findAll({
+    include: [
+        {model: Prestador, attributes: ['username'], as: 'prestador'},
+        {model: Afiliado, attributes: ['apellido'], as: 'afiliado', include: [{model: Integrante, attributes: ['nombre'], as: 'integrantes'}]},
+    ]});
+    res.status(200).json(turnos);
+}
+
+const getAllTurnosByEspecialidad = async (req,res) => {
+    const e = req.params.especialidad;
+    const turnos = await Turno.findAll({where: {especialidad: e},
+    include: [
+        {model: Prestador, attributes: ['username'], as: 'prestador'},
+        {model: Afiliado, attributes: ['apellido'], as: 'afiliado', include: [{model: Integrante, attributes: ['nombre'], as: 'integrantes'}]}
+    ]});
+    res.status(200).json(turnos);
+}
+
+const getAllTurnosByMedico = async (req,res) => {
+    const m = req.params.medico;
+    const turnos = await Turno.findAll({
+    include: [
+        {model: Prestador, attributes: ['username'], as: 'prestador', where: {username: m, role: "medico"}},
+        {model: Afiliado, attributes: ['apellido'], as: 'afiliado', include: [{model: Integrante, attributes: ['nombre'], as: 'integrantes'}]}
     ]});
     res.status(200).json(turnos);
 }
@@ -28,10 +57,11 @@ const getTurnoByIntegranteId = async (req,res) => {
 
 const updateNotesById = async (req,res) => {
     const id = req.params.id;
-    const notes = req.body;
+    const {notes} = req.body;
     const turno = await Turno.findByPk(id);
-    await turno.update(notes);
+    turno.notes = notes;
+    await turno.save()
     res.status(200).json(turno);
 }
 
-module.exports = {getAllTurnosById, getTurnoByAfiliadoId, getTurnoByIntegranteId, updateNotesById}
+module.exports = {getAllTurnosByPrestadorId, getTurnoByAfiliadoId, getTurnoByIntegranteId, updateNotesById, getAllTurnos, getAllTurnosByEspecialidad, getAllTurnos, getAllTurnosByMedico};

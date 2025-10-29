@@ -1,13 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const validarSituacion = require('../middlewares/validarSituacion');
-const {buscarAfiliado, getSituacionesPorAfiliado, modificarFechaFinal, darDeBajaSituacion, crearSituacion,getAllSituacionesByPrestadorId} = require('../controllers/situaciones.controller');
+const {Situacion} = require('../db/models');
+const {genericMiddleware, situacionMiddleware} = require('../middlewares');
+const {situacionesController} = require('../controllers');
 
-router.get('/prestador/:id', getAllSituacionesByPrestadorId);
-router.get('/buscar-afiliado', buscarAfiliado);
-router.get('/grupo-familiar/:id', getSituacionesPorAfiliado);
-router.put('/modificar-fecha/:id', validarSituacion, modificarFechaFinal);
-router.put('/baja/:id', validarSituacion, darDeBajaSituacion);
-router.post('/', crearSituacion);
+router.get(':id/Afiliado/:afiliadoId', 
+    situacionesController.getAllSituacionesByAfliliadoId
+);
+
+router.get('/',
+    genericMiddleware.validateRolById("centro_medico"),
+    situacionesController.getAllSituaciones
+)
+
+router.patch('/:id',
+    genericMiddleware.validateModelById(Situacion),
+    situacionMiddleware.validarEstadoBaja, 
+    situacionesController.darDeBajaSituacionById
+);
+
+router.post('/:id', 
+    situacionMiddleware.validarEstadoAlta,
+    situacionesController.darDeAltaSituacionById
+);
 
 module.exports = router;

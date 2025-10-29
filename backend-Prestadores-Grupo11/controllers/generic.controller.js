@@ -13,5 +13,4 @@ const createNewModel = (Model) => {
     }
 }
 
-
 module.exports = {getModelById, createNewModel};
