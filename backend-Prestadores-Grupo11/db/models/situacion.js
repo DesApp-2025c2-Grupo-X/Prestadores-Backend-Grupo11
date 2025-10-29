@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     fecha_inicio: {type: DataTypes.DATE, allowNull:false},
     especialidad: {type: DataTypes.STRING, allowNull: false},
     observaciones: {type: DataTypes.STRING, allowNull: false},
-    estado: {type: DataTypes.ENUM('en proceso', 'finalizada', 'baja',), defaultValue: 'en proceso' },
+    estado: {type: DataTypes.ENUM('en proceso', 'alta', 'baja',), defaultValue: 'en proceso' },
     fecha_final : {type: DataTypes.DATE, allowNull: false},
     afiliadoId: {type: DataTypes.INTEGER},
     integranteId: {type: DataTypes.INTEGER},

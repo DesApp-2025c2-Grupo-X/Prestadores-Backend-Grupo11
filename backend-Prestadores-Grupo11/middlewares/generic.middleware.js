@@ -1,3 +1,5 @@
+const {Prestador} = require('../db/models');
+
 const validateModelById = (Model) => {
     return async (req,res,next) => {
         const id = req.params.id;
@@ -9,4 +11,16 @@ const validateModelById = (Model) => {
     }
 }
 
-module.exports = {validateModelById};
+const validateRolById = (rol) => {
+    return async (req,res,next) => {
+        const id = req.params.id;
+        const prestador = await Prestador.findByPk(id);
+        if (prestador.role != rol) {
+            return res.status(401).json({error: `El prestador debe ser rol ${rol} para esta consulta`});
+        }
+        next();
+    }
+}
+
+
+module.exports = {validateModelById, validateRolById};

@@ -5,19 +5,35 @@ const {turnosController} = require('../controllers');
 const {genericMiddleware} = require('../middlewares');
 
 router.get('/:id',
-  turnosController.getAllTurnosById
+  turnosController.getAllTurnosByPrestadorId
 );
 
-router.get('/:id/Afiliado/:afiliadoId',
+router.get('/centro/:id',
+  genericMiddleware.validateRolById("centro_medico"),
+  turnosController.getAllTurnos
+);
+
+router.get('/centro/:id/especialidad/:especialidad',
+  genericMiddleware.validateRolById("centro_medico"),
+  turnosController.getAllTurnosByEspecialidad
+)
+
+router.get('/centro/:id/medico/:medico',
+  genericMiddleware.validateRolById("centro_medico"),
+  turnosController.getAllTurnosByMedico
+)
+
+router.get('/:id/afiliado/:afiliadoId',
   turnosController.getTurnoByAfiliadoId
 );
 
-router.get('/:id/Integrante/:integranteId',
+router.get('/:id/integrante/:integranteId',
   turnosController.getTurnoByIntegranteId
 );
 
 router.patch('/:id',
   genericMiddleware.validateModelById(Turno),
+  genericMiddleware.validateRolById("medico"),
   turnosController.updateNotesById
 );
 
