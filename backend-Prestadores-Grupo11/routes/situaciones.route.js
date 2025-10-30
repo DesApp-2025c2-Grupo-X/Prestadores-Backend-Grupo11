@@ -4,11 +4,11 @@ const {Situacion} = require('../db/models');
 const {genericMiddleware, situacionMiddleware} = require('../middlewares');
 const {situacionesController} = require('../controllers');
 
-router.get(':id/Afiliado/:afiliadoId', 
+router.get('/:id/Afiliado/:afiliadoId', 
     situacionesController.getAllSituacionesByAfliliadoId
 );
 
-router.get('/',
+router.get('/:id',
     genericMiddleware.validateRolById("centro_medico"),
     situacionesController.getAllSituaciones
 )
