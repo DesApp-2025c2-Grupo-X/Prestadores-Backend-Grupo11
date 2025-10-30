@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
   Prestador.init({
     username: {type: DataTypes.STRING, allowNull: false, unique: true},
     password: {type: DataTypes.STRING, allowNull: false},
+    especialidad: {type: DataTypes.STRING},
     role: {type: DataTypes.STRING, allowNull: false}
   }, {
     sequelize,
