@@ -21,7 +21,6 @@ async function crearAfiliados () {
                         return d;
                     })(),
                     duration: 30,
-                    especialidad: "cardiologia",
                     prestadorId: 1
                 }
             ],
@@ -45,7 +44,6 @@ async function crearAfiliados () {
                             })(),
                             duration: 60,
                             notes: "traer estudios previos",
-                            especialidad: "dermatologia",
                             prestadorId: 1
                         }
                     ],
@@ -79,7 +77,6 @@ async function crearAfiliados () {
                         return d;
                     })(),
                     duration: 30,
-                    especialidad: "neurologia",
                     prestadorId: 2
                 }
             ],
@@ -112,8 +109,8 @@ async function crearAfiliados () {
 
 async function crearPrestadores() {
     await Prestador.bulkCreate([
-        {username: "dr alejandro ruiz", password: "12345", role: "medico",},
-        {username: "dr cecilia lopez", password: "6789", role: "medico"},
+        {username: "dr alejandro ruiz", password: "12345", role: "medico", especialidad: "cardiologia"},
+        {username: "dr cecilia lopez", password: "6789", role: "medico", especialidad: "dermatologia"},
         {username: "clinica santa maria", password: "5555", role: "centro_medico"}
     ])
 }
