@@ -17,6 +17,7 @@ app.use('/turnos', turnosRoute);
 app.use('/autorizaciones', autorizacionRoute);
 app.use('/integrantes', integranteRoute);
 
+
 app.listen(PORT, async () => {
     await db.sequelize.sync({ force: true });
     await crearPrestadores();
