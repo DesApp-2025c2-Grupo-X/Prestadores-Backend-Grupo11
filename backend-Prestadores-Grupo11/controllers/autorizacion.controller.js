@@ -1,5 +1,11 @@
-const { Autorizacion, Integrante } = require('../db/models');
-const { Op, sequelize } = require('sequelize');
+const db = require('../db/models');
+const { Autorizacion, Integrante } = db;
+const Sequelize = db.Sequelize;
+const sequelize = db.sequelize;
+const { Op } = Sequelize;
+
+
+
 
 const crear = async (req, res) => {
   const nueva = await Autorizacion.create(req.body);
@@ -52,4 +58,9 @@ const dashboard = async (req, res) => {
   res.status(200).json(resumen);
 };
 
-module.exports = { crear, listar, cambiarEstado, listarPorEstado, dashboard };
+const obtenerPorId = async (req, res) => {
+  const autorizacion = req.autorizacion;
+  res.status(200).json({ estado: autorizacion.estado, autorizacion });
+};
+
+module.exports = { crear, listar, cambiarEstado, listarPorEstado, dashboard, obtenerPorId };
