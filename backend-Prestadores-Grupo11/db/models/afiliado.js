@@ -27,7 +27,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Afiliado.init({
-    apellido: {type: DataTypes.STRING, allowNull: false}
+    nombre: {type: DataTypes.STRING , allowNull: false},
+    apellido: {type: DataTypes.STRING, allowNull: false},
+    edad: {type: DataTypes.INTEGER, allowNull: false},
+    dni: {type: DataTypes.STRING, allowNull: false},
+    numero_afiliado: {type: DataTypes.STRING, allowNull: false, unique: true},
+    telefono: {type: DataTypes.STRING, allowNull: false}
   }, {
     sequelize,
     modelName: 'Afiliado',
