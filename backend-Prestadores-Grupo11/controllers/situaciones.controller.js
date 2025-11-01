@@ -1,10 +1,10 @@
 const {Situacion,Afiliado, Integrante} = require('../db/models');
 
 const getAllSituacionesByAfliliadoId = async (req,res) => {
-    const idPrestador = req.params.id
-    const idAfiliado = req.params.afiliadoId;
+    const idPrestador = req.params.prestadorId;
+    const idAfiliado = req.params.id;
     const situaciones = await Situacion.findAll({where: {prestadorId: idPrestador}, include: [
-        {model: Afiliado, attributes: ['apellido'], as: 'afiliado', where: {id: idAfiliado}, include: [
+        {model: Afiliado, attributes: ['nombre', 'apellido', 'edad', 'dni', 'numero_afiliado', 'telefono'], as: 'afiliado', where: {id: idAfiliado}, include: [
             {model: Integrante, attributes: ['nombre', 'edad', 'dni'], as: 'integrantes'}
         ]}
     ]});
@@ -13,7 +13,7 @@ const getAllSituacionesByAfliliadoId = async (req,res) => {
 
 const getAllSituaciones = async (req,res) => {
     const situaciones = await Situacion.findAll({ include: [
-        {model: Afiliado, attributes: ['apellido'], as: 'afiliado', include: [
+        {model: Afiliado, attributes: ['nombre', 'apellido', 'edad', 'dni', 'numero_afiliado', 'telefono'], as: 'afiliado', include: [
             {model: Integrante, attributes: ['nombre', 'edad', 'dni'], as: 'integrantes' }
         ]}
     ]
@@ -30,11 +30,15 @@ const darDeBajaSituacionById = async (req, res) => {
   res.status(200).json(situacion);
 };
 
-const darDeAltaSituacionById = async (req, res) => {
+const darDeAltaSituacion = async (req, res) => {
   const data = req.body;
-  await Situacion.create(data);
+  const id = req.params.id;
+  await Situacion.create({
+    ...data,
+    prestadorId: id
+  })
   res.status(201).json({message: "Modelo creado correctamente"});
 }
 
 
-module.exports = {getAllSituacionesByAfliliadoId, darDeAltaSituacionById, darDeBajaSituacionById, getAllSituaciones}
+module.exports = {getAllSituacionesByAfliliadoId, darDeAltaSituacion, darDeBajaSituacionById, getAllSituaciones}

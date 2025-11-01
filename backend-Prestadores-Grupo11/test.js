@@ -3,7 +3,12 @@ const {Afiliado, Prestador, Integrante, Situacion, Turno, Autorizacion} = requir
 async function crearAfiliados () {
     await Afiliado.bulkCreate([
         {
+            nombre: "Roberto",
             apellido: "Perez",
+            numero_afiliado: "IOMA-00111222",
+            dni: "30456789",
+            edad: 50,
+            telefono: "+54 9 11 2345-6789",
             situaciones: [
                 {fecha_inicio: "2024-03-05", especialidad: "Cardiologia",
                     observaciones: "Infarto agudo de miocardio. Se realizó angioplastia con colocación de stent en arteria coronaria izquierda. Evolución favorable con control posterior.",
@@ -55,7 +60,12 @@ async function crearAfiliados () {
             ]
         },
         {
+            nombre: "María",
             apellido: "Lopez",
+            numero_afiliado: 'OSDE-00012345',
+            dni: '30456789',
+            telefono: '+54 9 11 2345-6789',
+            edad: 35,
             situaciones: [
                 {fecha_inicio: "2023-09-10", especialidad: "Clínica Médica",
                     observaciones: "Pico de hipertensión arterial con mareos y cefalea intensa. Se ajustó medicación antihipertensiva y se indicó dieta baja en sodio.",

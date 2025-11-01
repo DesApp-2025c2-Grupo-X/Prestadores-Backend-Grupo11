@@ -1,6 +1,6 @@
 const {Prestador} = require('../db/models');
 
-const validateModelById = (Model) => {
+const existModelById = (Model) => {
     return async (req,res,next) => {
         const id = req.params.id;
         const model = await Model.findByPk(id);
@@ -23,4 +23,4 @@ const validateRolById = (rol) => {
 }
 
 
-module.exports = {validateModelById, validateRolById};
+module.exports = {existModelById, validateRolById};

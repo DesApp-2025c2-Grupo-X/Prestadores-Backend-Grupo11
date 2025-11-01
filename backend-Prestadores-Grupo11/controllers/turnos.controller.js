@@ -5,7 +5,7 @@ const getAllTurnosByPrestadorId = async (req,res) => {
     const turnos = await Turno.findAll({where: {prestadorId: id},
     include: [
         {model: Prestador, attributes: ['username'], as: 'prestador'},
-        {model: Afiliado, attributes: ['apellido'], as: 'afiliado', include: [{model: Integrante, attributes: ['nombre'], as: 'integrantes'}]}
+        {model: Afiliado, attributes: ['nombre', 'apellido', 'edad', 'dni', 'numero_afiliado', 'telefono'], as: 'afiliado', include: [{model: Integrante, attributes: ['nombre', 'edad', 'dni'], as: 'integrantes'}]}
     ]});
     res.status(200).json(turnos);
 }
@@ -14,7 +14,7 @@ const getAllTurnos = async (req,res) => {
     const turnos = await Turno.findAll({
     include: [
         {model: Prestador, attributes: ['username', 'especialidad'], as: 'prestador'},
-        {model: Afiliado, attributes: ['apellido'], as: 'afiliado', include: [{model: Integrante, attributes: ['nombre'], as: 'integrantes'}]},
+        {model: Afiliado, attributes: ['nombre', 'apellido', 'edad', 'dni', 'numero_afiliado', 'telefono'], as: 'afiliado', include: [{model: Integrante, attributes: ['nombre', 'edad', 'dni'], as: 'integrantes'}]},
     ]});
     res.status(200).json(turnos);
 }
@@ -24,7 +24,7 @@ const getAllTurnosByEspecialidad = async (req,res) => {
     const turnos = await Turno.findAll({
     include: [
         {model: Prestador, attributes: ['username', 'especialidad'], as: 'prestador', where: {especialidad: e}},
-        {model: Afiliado, attributes: ['apellido'], as: 'afiliado', include: [{model: Integrante, attributes: ['nombre'], as: 'integrantes'}]}
+        {model: Afiliado, attributes: ['nombre', 'apellido', 'edad', 'dni', 'numero_afiliado', 'telefono'], as: 'afiliado', include: [{model: Integrante, attributes: ['nombre', 'edad', 'dni'], as: 'integrantes'}]}
     ]});
     res.status(200).json(turnos);
 }
@@ -34,24 +34,24 @@ const getAllTurnosByMedico = async (req,res) => {
     const turnos = await Turno.findAll({
     include: [
         {model: Prestador, attributes: ['username', 'especialidad'], as: 'prestador', where: {username: m, role: "medico"}},
-        {model: Afiliado, attributes: ['apellido'], as: 'afiliado', include: [{model: Integrante, attributes: ['nombre'], as: 'integrantes'}]}
+        {model: Afiliado, attributes: ['nombre', 'apellido', 'edad', 'dni', 'numero_afiliado', 'telefono'], as: 'afiliado', include: [{model: Integrante, attributes: ['nombre', 'edad', 'dni'], as: 'integrantes'}]}
     ]});
     res.status(200).json(turnos);
 }
 
 const getTurnoByAfiliadoId = async (req,res) => {
-    const id = req.params.id;
-    const idAfiliado = req.params.afiliadoId
-    const turnoAfiliado = await Turno.findOne({where: {prestadorId: id, afiliadoId: idAfiliado}, 
-        include: [{model: Afiliado, attributes: ['apellido'], as: 'afiliado'}]})
+    const prestadorId = req.params.idPrestador;
+    const afiliadoId = req.params.id
+    const turnoAfiliado = await Turno.findOne({where: {prestadorId, afiliadoId}, 
+        include: [{model: Afiliado, attributes: ['nombre', 'apellido', 'edad', 'dni', 'numero_afiliado', 'telefono'], as: 'afiliado'}]})
     res.status(200).json(turnoAfiliado);
 }
 
 const getTurnoByIntegranteId = async (req,res) => {
-    const id = req.params.id;
-    const idIntegrante = req.params.integranteId
-    const turnoIntegrante = await Turno.findOne({where: {prestadorId: id, integranteId: idIntegrante}, 
-        include: [{model: Integrante, attributes: ['nombre'], as: 'integrante'}]})
+    const prestadorId = req.params.idPrestador;
+    const integranteId = req.params.id
+    const turnoIntegrante = await Turno.findOne({where: {prestadorId, integranteId}, 
+        include: [{model: Integrante, attributes: ['nombre', 'edad', 'dni'], as: 'integrante'}]})
     res.status(200).json(turnoIntegrante);
 }
 
