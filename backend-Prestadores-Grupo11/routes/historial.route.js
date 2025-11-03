@@ -2,15 +2,29 @@ const express = require('express');
 const router = express.Router();
 const {situacionesController, historialController} = require('../controllers');
 const {genericMiddleware} = require('../middlewares');
-const {Afiliado} = require('../db/models');
+const {Afiliado, Integrante} = require('../db/models');
 
+//Se trae todas las situaciones
 router.get('/', 
     situacionesController.getAllSituaciones
 );
 
-router.get('/:id', 
+//
+router.get('/:nroOApellido', 
     genericMiddleware.existModelById(Afiliado),
-    historialController.getAllSituacionesByAfliliadoId
+    historialController.getAllSituacionesByApellidoONro
+);
+
+//Se trae un afiliado con sus situaciones
+router.get('/Afiliado/:id',
+    genericMiddleware.existModelById(Afiliado),
+    situacionesController.getSituacionesByAfiliadoId
+);
+
+//Se trae un integrante con sus situaciones
+router.get('/Integrante/:id',
+    genericMiddleware.existModelById(Integrante),
+    situacionesController.getSituacionesByIntegranteId
 );
 
 module.exports = router;

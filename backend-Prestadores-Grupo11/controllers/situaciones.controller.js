@@ -1,24 +1,46 @@
 const {Situacion,Afiliado, Integrante} = require('../db/models');
+const {Op} = require('sequelize');
 
-const getAllSituacionesByAfliliadoId = async (req,res) => {
-    const idPrestador = req.params.prestadorId;
-    const idAfiliado = req.params.id;
-    const situaciones = await Situacion.findAll({where: {prestadorId: idPrestador}, include: [
-        {model: Afiliado, attributes: ['nombre', 'apellido', 'edad', 'dni', 'numero_afiliado', 'telefono'], as: 'afiliado', where: {id: idAfiliado}, include: [
-            {model: Integrante, attributes: ['nombre', 'edad', 'dni'], as: 'integrantes'}
-        ]}
+const getAllSituacionesByNroOApellidoAfliliado = async (req,res) => {
+  const idPrestador = req.params.prestadorId;
+  const nroOApellido = req.params.nroOApellido;
+  const situaciones = await Afiliado.findOne({where: {[Op.or]:[
+      {numero_afiliado: nroOApellido},
+      {apellido: nroOApellido}
+    ]}, include: [
+      {model: Situacion, attributes: ['fecha_inicio', 'observaciones', 'estado', 'fecha_final'], as: 'situaciones', where: {prestadorId: idPrestador}},
+      {model: Integrante, as: 'integrantes', include: [
+        {model: Situacion, attributes: ['fecha_inicio', 'observaciones', 'estado', 'fecha_final'], as: 'situaciones'}
+      ]}
     ]});
-    res.status(200).json(situaciones);
+  res.status(200).json(situaciones);
 }
 
 const getAllSituaciones = async (req,res) => {
-    const situaciones = await Situacion.findAll({ include: [
-        {model: Afiliado, attributes: ['nombre', 'apellido', 'edad', 'dni', 'numero_afiliado', 'telefono'], as: 'afiliado', include: [
-            {model: Integrante, attributes: ['nombre', 'edad', 'dni'], as: 'integrantes' }
-        ]}
-    ]
-    })
-    res.status(200).json(situaciones);
+  const situaciones = await Afiliado.findAll({include: [
+    {model: Situacion, as: 'situaciones'}
+  ],include: [
+      {model: Integrante, as: 'integrantes', include: [
+        {model: Situacion, as: 'situaciones'}
+      ]}
+    ]})
+  res.status(200).json(situaciones);
+}
+
+const getSituacionesByAfiliadoId = async (req,res) => {
+  const id = req.params.id;
+  const situacion = await Afiliado.findByPk(id, {include: [
+    {model: Situacion, as: 'situaciones'}
+  ]});
+  res.status(200).json(situacion);
+}
+
+const getSituacionesByIntegranteId = async (req,res) => {
+  const id = req.params.id;
+  const situacion = await Integrante.findByPk(id, {include: [
+    {model: Situacion, as: 'situaciones'}
+  ]});
+  res.status(200).json(situacion);
 }
 
 const darDeBajaSituacionById = async (req, res) => {
@@ -41,4 +63,4 @@ const darDeAltaSituacion = async (req, res) => {
 }
 
 
-module.exports = {getAllSituacionesByAfliliadoId, darDeAltaSituacion, darDeBajaSituacionById, getAllSituaciones}
+module.exports = {getAllSituacionesByNroOApellidoAfliliado, darDeAltaSituacion, darDeBajaSituacionById, getAllSituaciones, getSituacionesByAfiliadoId, getSituacionesByIntegranteId}
