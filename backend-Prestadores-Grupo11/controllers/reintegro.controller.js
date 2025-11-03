@@ -1,14 +1,15 @@
 const db = require('../db/models');
-const { Autorizacion, Integrante } = db;
+const { Reintegro, Integrante } = db;
 const Sequelize = db.Sequelize;
 const sequelize = db.sequelize;
 const { Op } = Sequelize;
 
+
 const listar = async (req, res) => {
-  const autorizaciones = await Autorizacion.findAll({
+  const reintegros = await Reintegro.findAll({
     include: [{ model: Integrante, as: 'integrante' }]
   });
-  res.status(200).json(autorizaciones);
+  res.status(200).json(reintegros);
 };
 
 const cambiarEstado = async (req, res) => {
@@ -33,15 +34,15 @@ const cambiarEstado = async (req, res) => {
 
 const listarPorEstado = async (req, res) => {
   const { estado } = req.query;
-  const autorizaciones = await Autorizacion.findAll({
+  const reintegros = await Reintegro.findAll({
     where: { estado },
     include: [{ model: Integrante, as: 'integrante' }]
   });
-  res.status(200).json(autorizaciones);
+  res.status(200).json(reintegros);
 };
 
 const dashboard = async (req, res) => {
-  const resumen = await Autorizacion.findAll({
+  const resumen = await Reintegro.findAll({
     attributes: [
       [sequelize.fn('DATE', sequelize.col('updatedAt')), 'fecha'],
       [sequelize.fn('COUNT', sequelize.col('id')), 'cantidad']
@@ -56,8 +57,14 @@ const dashboard = async (req, res) => {
 };
 
 const obtenerPorId = async (req, res) => {
-  const autorizacion = req.autorizacion;
-  res.status(200).json({ estado: autorizacion.estado, autorizacion });
+  const reintegro = req.reintegro;
+  res.status(200).json({ estado: reintegro.estado, reintegro });
 };
 
-module.exports = {listar, cambiarEstado, listarPorEstado, dashboard, obtenerPorId };
+module.exports = {
+  listar,
+  cambiarEstado,
+  listarPorEstado,
+  dashboard,
+  obtenerPorId
+};
