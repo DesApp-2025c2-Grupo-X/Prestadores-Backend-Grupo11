@@ -1,10 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const db = require('./db/models');
-const {crearAfiliados, crearPrestadores, crearAutorizaciones, crearReintegros} = require('./test');
+const {crearAfiliados, crearPrestadores, crearAutorizaciones, crearReintegros, crearRecetas} = require('./test');
 const app = express();
 const PORT = process.env.PORT ?? 3001;
-const {authRoute, dashboardRoute, historialRoute, situacionesRoute, turnosRoute, autorizacionRoute, integranteRoute, reintegroRoutes} = require('./routes');
+const {authRoute, dashboardRoute, historialRoute, situacionesRoute, turnosRoute, autorizacionRoute, integranteRoute, reintegroRoutes,recetaRoutes } = require('./routes');
 
 app.use(cors());
 app.use(express.json());
@@ -17,6 +17,7 @@ app.use('/turnos', turnosRoute);
 app.use('/autorizaciones', autorizacionRoute);
 app.use('/integrantes', integranteRoute);
 app.use('/reintegros', reintegroRoutes)
+app.use('/recetas', recetaRoutes)
 
 
 app.listen(PORT, async () => {
@@ -25,6 +26,7 @@ app.listen(PORT, async () => {
     await crearAfiliados();
     await crearAutorizaciones();
     await crearReintegros();
+    await crearRecetas();
 
     console.log(`La app arranco en el puerto ${PORT}.`);
 });

@@ -1,4 +1,4 @@
-const {Afiliado, Prestador, Integrante, Situacion, Turno, Autorizacion, Reintegro} = require('./db/models');
+const {Afiliado, Prestador, Integrante, Situacion, Turno, Autorizacion, Reintegro, Receta} = require('./db/models');
 
 async function crearAfiliados () {
     await Afiliado.bulkCreate([
@@ -272,4 +272,40 @@ const crearReintegros = async () => {
   ]);
 }
 
-module.exports = {crearAfiliados, crearPrestadores, crearAutorizaciones, crearReintegros};
+const crearRecetas = async () => {
+  await Receta.bulkCreate([
+    {
+      integranteId: 1,
+      medicamento: 'Ibuprofeno',
+      cantidad: 20,
+      presentacion: 'capsulas',
+      observaciones: 'Tomar cada 8 horas después de las comidas',
+      estado: 'recibido'
+    },
+    {
+      integranteId: 2,
+      medicamento: 'Amoxicilina',
+      cantidad: 10,
+      presentacion: 'blister',
+      observaciones: 'Completar tratamiento por 7 días',
+      estado: 'en analisis',
+      usuarioUltimoCambio: 2,
+      prestadorAnalisisId: 2
+    },
+    {
+      integranteId: 3,
+      medicamento: 'Paracetamol',
+      cantidad: 15,
+      presentacion: 'pastillas',
+      observaciones: 'Solo en caso de fiebre mayor a 38°C',
+      estado: 'rechazado',
+      motivo: 'Dosis no justificada por diagnóstico',
+      fecha_finalizacion: new Date(),
+      usuarioUltimoCambio: 1,
+      prestadorAnalisisId: 1
+    }
+  ]);
+};
+
+
+module.exports = {crearAfiliados, crearPrestadores, crearAutorizaciones, crearReintegros, crearRecetas};

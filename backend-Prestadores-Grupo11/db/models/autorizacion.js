@@ -45,6 +45,10 @@ module.exports = (sequelize, DataTypes) => {
     motivo: {
       type: DataTypes.STRING
     },
+    fecha_finalizacion: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
     usuarioUltimoCambio: {
       type: DataTypes.INTEGER
     }

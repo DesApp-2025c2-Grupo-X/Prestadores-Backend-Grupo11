@@ -36,10 +36,10 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true
   });
 
-  Receta.associate = models => {
+    Receta.associate = models => {
     Receta.belongsTo(models.Integrante, {
-      foreignKey: 'integranteId',
-      allowNull: false
+        foreignKey: 'integranteId',
+        as: 'integrante'
     });
 
     Receta.hasMany(models.HistorialSolicitud, {

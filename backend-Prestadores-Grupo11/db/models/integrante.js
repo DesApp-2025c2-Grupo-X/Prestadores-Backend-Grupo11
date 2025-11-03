@@ -24,6 +24,12 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'integranteId',
         as: 'turnos'
       })
+
+      Integrante.hasMany(models.Receta, {
+        foreignKey: 'integranteId',
+        as: 'recetas'
+      });
+      
     }
   }
   Integrante.init({
