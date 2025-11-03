@@ -29,35 +29,6 @@ async function crearAfiliados () {
                     prestadorId: 1
                 }
             ],
-            integrantes: [
-                {nombre: "Juan Perez", edad: 62, dni: "20114587",
-                    situaciones: [
-                        {fecha_inicio: "2025-10-21", especialidad: "Cardiologia",
-                            observaciones: "Control postoperatorio tras angioplastia. Corazón compensado, sin signos de insuficiencia cardíaca.",
-                            estado: "en proceso",
-                            fecha_final: "2025-11-05",
-                            prestadorId: 1
-                        },
-                    ],
-                    turnos: [
-                        {
-                            date: new Date(),
-                            start: (() => {
-                                const d = new Date();
-                                d.setHours(9,30,0,0);
-                                return d;
-                            })(),
-                            duration: 60,
-                            notes: "traer estudios previos",
-                            prestadorId: 1
-                        }
-                    ],
-                },
-                {nombre: "Maria Perez", edad: 48, dni: "25500991"},
-                {nombre: "Luciano Perez", edad: 34, dni: "33012455"},
-                {nombre: "Sofia Perez", edad: 28, dni: "40221543"},
-                {nombre: "Carlos Perez", edad: 53, dni: "26099123"}
-            ]
         },
         {
             nombre: "María",
@@ -90,31 +61,143 @@ async function crearAfiliados () {
                     prestadorId: 2
                 }
             ],
-            integrantes: [
-                {nombre: "Ana Lopez", edad: 40, dni: "29544100"},
-                {nombre: "Matias Lopez", edad: 18, dni: "46001122"},
-                {nombre: "Pedro Lopez", edad: 67, dni: "19007458",
-                    situaciones: [
-                        {fecha_inicio: "2024-03-06", especialidad: "Clínica Médica",
-                            observaciones: "Evaluación inicial realizada por el equipo de Clínica Santa María. Plan de ejercicios asignado.",
-                            estado: "en proceso",
-                            fecha_final: "2024-04-20",
-                            prestadorId: 2
-                        }
-                    ]
-                },
-                {nombre: "Lucía Lopez", edad: 23, dni: "44112090"},
-                {nombre: "Tomas Lopez", edad: 9, dni: "52344912"}
-            ]
         }
     ],{
         include: [
             { model: Situacion, as: 'situaciones' },
-            { model: Integrante, as: 'integrantes', include: [{ model: Situacion, as: 'situaciones' }], 
-            include: [{model: Turno, as: 'turnos'}] },
             { model: Turno, as: 'turnos'}
         ]
 })
+}
+
+async function crearIntegrantes() {
+    await Integrante.bulkCreate([
+        {nombre: 'Juan Perez', edad: 62, dni: '20114587', afiliadoId: 1,
+            situaciones: [
+                {
+                    fecha_inicio: "2024-06-12",
+                    especialidad: "Neurología",
+                    observaciones: "Accidente cerebrovascular isquémico. Se inició tratamiento anticoagulante y rehabilitación motora. Paciente estable.",
+                    estado: "en proceso",
+                    fecha_final: "2024-07-01",
+                    prestadorId: 1
+                }
+            ],
+            turnos: [
+                {
+                    date: (() => {
+                        const d = new Date();
+                        d.setDate(d.getDate() + 2); // pasado mañana
+                        d.setHours(24, 0, 0, 0);
+                        return d;
+                    })(),
+                    start: (() => {
+                        const d = new Date();
+                        d.setHours(9, 30, 0, 0);
+                        return d;
+                    })(),
+                    duration: 45,
+                    prestadorId: 1
+  }
+            ]
+        },
+        {nombre: 'Maria Perez', edad: 48, dni: '25500991', afiliadoId: 1},
+        {nombre: 'Luciano Perez', edad: 34, dni: '33012455', afiliadoId: 1,
+            turnos: [
+                {
+                    date: (() => {
+                        const d = new Date();
+                        d.setDate(d.getDate() + 3);
+                        d.setHours(24, 0, 0, 0);
+                        return d;
+                    })(),
+                    start: (() => {
+                        const d = new Date();
+                        d.setHours(14, 0, 0, 0);
+                        return d;
+                    })(),
+                    duration: 60,
+                    prestadorId: 1
+                }
+            ]
+        },
+        {nombre: 'Sofia Perez', edad: 28, dni: '40221543', afiliadoId: 1, 
+            situaciones: [
+                {
+                    fecha_inicio: "2024-08-20",
+                    especialidad: "Ortopedia",
+                    observaciones: "Fractura de fémur derecho. Se realizó reducción quirúrgica con colocación de clavo intramedular. Evolución favorable.",
+                    estado: "alta",
+                    fecha_final: "2024-09-05",
+                    prestadorId: 1
+                }
+            ]
+        },
+        {nombre: 'Carlos Perez', edad: 53, dni: '26099123', afiliadoId: 1},
+        {nombre: 'Ana Lopez', edad: 40, dni: '29544100', afiliadoId: 2, 
+            situaciones: [
+                {
+                    fecha_inicio: "2024-11-10",
+                    especialidad: "Pediatría",
+                    observaciones: "Infección respiratoria aguda. Se indicó antibiótico y seguimiento ambulatorio. Paciente presenta buena recuperación.",
+                    estado: "en proceso",
+                    fecha_final: "2024-11-20",
+                    prestadorId: 2
+                }
+            ],
+            turnos: [
+                {
+                    date: (() => {
+                        const d = new Date();
+                        d.setDate(d.getDate() + 5);
+                        d.setHours(24, 0, 0, 0);
+                        return d;
+                    })(),
+                    start: (() => {
+                        const d = new Date();
+                        d.setHours(16, 30, 0, 0);
+                        return d;
+                    })(),
+                    duration: 30,
+                    prestadorId: 2
+                }
+            ]
+        },
+        {nombre: 'Matias Lopez', edad: 18, dni: '46001122', afiliadoId: 2, 
+            turnos: [
+                {
+                    date: (() => {
+                        const d = new Date();
+                        d.setDate(d.getDate() + 3);
+                        d.setHours(24, 0, 0, 0);
+                        return d;
+                    })(),
+                    start: (() => {
+                        const d = new Date();
+                        d.setDate(d.getDate() + 3);
+                        d.setHours(16, 30, 0, 0);
+                        return d;
+                    })(),
+                    duration: 45,
+                    prestadorId: 2
+                }
+            ]
+        },
+        {nombre: 'Pedro Lopez', edad: 67, dni: '19007458', afiliadoId: 2,
+            situaciones: [
+                {
+                    fecha_inicio: "2025-01-15",
+                    especialidad: "Gastroenterología",
+                    observaciones: "Úlcera gástrica tratada con medicación y seguimiento endoscópico. Evolución favorable, sin complicaciones.",
+                    estado: "en proceso",
+                    fecha_final: "2025-02-01",
+                    prestadorId: 2
+                }
+            ]
+        },
+        {nombre: 'Lucía Lopez', edad: 23, dni: '44112090', afiliadoId: 2},
+        {nombre: 'Tomas Lopez', edad: 9, dni: '52344912', afiliadoId: 2},
+    ], {include: [{ model: Situacion, as: 'situaciones' }, {model: Turno, as: 'turnos'}]})
 }
 
 async function crearPrestadores() {
@@ -220,4 +303,4 @@ const crearAutorizaciones = async () => {
   ]);
 };
 
-module.exports = {crearAfiliados, crearPrestadores, crearAutorizaciones};
+module.exports = {crearAfiliados, crearPrestadores, crearIntegrantes ,crearAutorizaciones};

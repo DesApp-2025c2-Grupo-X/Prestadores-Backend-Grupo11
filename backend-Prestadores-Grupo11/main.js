@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const db = require('./db/models');
-const {crearAfiliados, crearPrestadores, crearAutorizaciones} = require('./test');
+const {crearAfiliados, crearPrestadores, crearAutorizaciones, crearIntegrantes} = require('./test');
 const app = express();
 const PORT = process.env.PORT ?? 3001;
 const {authRoute, dashboardRoute, historialRoute, situacionesRoute, turnosRoute, autorizacionRoute, integranteRoute} = require('./routes');
@@ -22,7 +22,7 @@ app.listen(PORT, async () => {
     await db.sequelize.sync({ force: true });
     await crearPrestadores();
     await crearAfiliados();
+    await crearIntegrantes();
     await crearAutorizaciones();
-
     console.log(`La app arranco en el puerto ${PORT}.`);
 });
