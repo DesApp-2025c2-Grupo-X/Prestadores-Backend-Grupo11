@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {situacionesController, historialController} = require('../controllers');
-const {genericMiddleware} = require('../middlewares');
+const {genericMiddleware, afiliadoMiddleware} = require('../middlewares');
 const {Afiliado, Integrante} = require('../db/models');
 
 //Se trae todas las situaciones
@@ -9,9 +9,9 @@ router.get('/',
     situacionesController.getAllSituaciones
 );
 
-//
+//Se trae los afiliados y los integrantes con sus situaciones
 router.get('/:nroOApellido', 
-    genericMiddleware.existModelById(Afiliado),
+    afiliadoMiddleware.validateAfiliadoByApellidoONumero,
     historialController.getAllSituacionesByApellidoONro
 );
 

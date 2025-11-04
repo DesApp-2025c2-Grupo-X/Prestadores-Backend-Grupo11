@@ -6,13 +6,14 @@ const {situacionesController, genericController} = require('../controllers');
 
 //Se trae a todos a un afiliado por nro afiliado o apellido, sus situaciones y sus integrantes con sus situaciones, solo si el prestadorId esta en la situacion junto con el afiliado
 router.get('/:prestadorId/Afiliado/:nroOApellido',
+    genericMiddleware.existPrestadorByPrestadorId,
     afiliadoMiddleware.validateAfiliadoByApellidoONumero,
     situacionesController.getAllSituacionesByNroOApellidoAfliliado
 );
 
 //Se trae todos los afiliados con todos sus integrantes y sus situaciones (solo apto para centro medico)
-router.get('/:id',
-    genericMiddleware.existModelById(Prestador),
+router.get('/:prestadorId',
+    genericMiddleware.existPrestadorByPrestadorId,
     genericMiddleware.validateRolById("centro_medico"),
     situacionesController.getAllSituaciones
 );
@@ -44,7 +45,7 @@ router.patch('/:id',
 
 //da de alta una situacion
 router.post('/:id',
-    genericMiddleware.existModelById(Prestador),
+    genericMiddleware.existModelById(Situacion),
     situacionMiddleware.validarEstadoAlta,
     situacionesController.darDeAltaSituacion
 );

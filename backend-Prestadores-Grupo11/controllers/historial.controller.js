@@ -1,4 +1,4 @@
-const {Situacion,Afiliado,Integrante} = require('../db/models')
+const {Situacion,Afiliado,Integrante, Prestador} = require('../db/models')
 
 const getAllSituacionesByApellidoONro = async (req,res) => {
     const nroOApellido = req.params.nroOApellido;
@@ -6,9 +6,13 @@ const getAllSituacionesByApellidoONro = async (req,res) => {
         {numero_afiliado: nroOApellido},
         {apellido: nroOApellido}
     ]}, include: [
-        {model: Situacion, as: 'situaciones'},
+        {model: Situacion, as: 'situaciones', include: [
+            {model: Prestador, attributes: ['username'], as: 'prestador'}
+        ]},
         {model: Integrante, as: 'integrantes', include: [
-            {model: Situacion, as: 'situaciones'}
+            {model: Situacion, as: 'situaciones', include: [
+                {model: Prestador, attributes: ['username'], as: 'prestador'}
+            ]}
         ]}
     ]})
     res.status(200).json(situaciones);
