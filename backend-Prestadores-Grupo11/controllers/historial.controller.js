@@ -1,13 +1,17 @@
 const {Situacion,Afiliado,Integrante} = require('../db/models')
 
-const getAllSituacionesByAfliliadoId = async (req,res) => {
-    const id = req.params.id;
-    const situaciones = await Situacion.findAll({include: [
-        {model: Afiliado, attributes: ['nombre', 'apellido', 'edad', 'dni', 'numero_afiliado', 'telefono'], as: 'afiliado', where: {id}, include: [
-            {model: Integrante, attributes: ['nombre', 'edad', 'dni'], as: 'integrantes'}
+const getAllSituacionesByApellidoONro = async (req,res) => {
+    const nroOApellido = req.params.nroOApellido;
+    const situaciones = await Afiliado.findOne({where: {[Op.or]: [
+        {numero_afiliado: nroOApellido},
+        {apellido: nroOApellido}
+    ]}, include: [
+        {model: Situacion, as: 'situaciones'},
+        {model: Integrante, as: 'integrantes', include: [
+            {model: Situacion, as: 'situaciones'}
         ]}
-    ]});
+    ]})
     res.status(200).json(situaciones);
 }
 
-module.exports = {getAllSituacionesByAfliliadoId}
+module.exports = {getAllSituacionesByApellidoONro}
