@@ -5,8 +5,6 @@ const validarCambioEstado = require('../middlewares/validarCambioEstado');
 const existeAutorizacion = require('../middlewares/existeAutorizacion.middleware');
 const { Autorizacion } = require('../db/models');
 
-router.post('/', controller.crear);
-
 router.get('/', controller.listar);
 
 router.put('/estado/:id', validarCambioEstado(Autorizacion, 'autorizacion'), controller.cambiarEstado);

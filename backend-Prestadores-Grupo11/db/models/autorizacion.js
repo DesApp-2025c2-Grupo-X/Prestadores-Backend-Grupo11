@@ -39,11 +39,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     estado: {
-      type: DataTypes.ENUM('recibido', 'en análisis', 'observado', 'aprobado', 'rechazado'),
+      type: DataTypes.ENUM('recibido', 'en analisis', 'observado', 'aprobado', 'rechazado'),
       defaultValue: 'recibido'
     },
     motivo: {
       type: DataTypes.STRING
+    },
+    fecha_finalizacion: {
+      type: DataTypes.DATE,
+      allowNull: true
     },
     usuarioUltimoCambio: {
       type: DataTypes.INTEGER

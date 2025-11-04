@@ -1,14 +1,14 @@
 const db = require('../db/models');
-const { Autorizacion, Integrante } = db;
+const { Receta, Integrante } = db;
 const Sequelize = db.Sequelize;
 const sequelize = db.sequelize;
 const { Op } = Sequelize;
 
 const listar = async (req, res) => {
-  const autorizaciones = await Autorizacion.findAll({
+  const recetas = await Receta.findAll({
     include: [{ model: Integrante, as: 'integrante' }]
   });
-  res.status(200).json(autorizaciones);
+  res.status(200).json(recetas);
 };
 
 const cambiarEstado = async (req, res) => {
@@ -33,15 +33,15 @@ const cambiarEstado = async (req, res) => {
 
 const listarPorEstado = async (req, res) => {
   const { estado } = req.query;
-  const autorizaciones = await Autorizacion.findAll({
+  const recetas = await Receta.findAll({
     where: { estado },
     include: [{ model: Integrante, as: 'integrante' }]
   });
-  res.status(200).json(autorizaciones);
+  res.status(200).json(recetas);
 };
 
 const dashboard = async (req, res) => {
-  const resumen = await Autorizacion.findAll({
+  const resumen = await Receta.findAll({
     attributes: [
       [sequelize.fn('DATE', sequelize.col('updatedAt')), 'fecha'],
       [sequelize.fn('COUNT', sequelize.col('id')), 'cantidad']
@@ -56,8 +56,14 @@ const dashboard = async (req, res) => {
 };
 
 const obtenerPorId = async (req, res) => {
-  const autorizacion = req.autorizacion;
-  res.status(200).json({ estado: autorizacion.estado, autorizacion });
+  const receta = req.receta;
+  res.status(200).json({ estado: receta.estado, receta });
 };
 
-module.exports = {listar, cambiarEstado, listarPorEstado, dashboard, obtenerPorId };
+module.exports = {
+  listar,
+  cambiarEstado,
+  listarPorEstado,
+  dashboard,
+  obtenerPorId
+};

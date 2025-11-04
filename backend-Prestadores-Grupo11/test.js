@@ -1,4 +1,4 @@
-const {Afiliado, Prestador, Integrante, Situacion, Turno, Autorizacion} = require('./db/models');
+const {Afiliado, Prestador, Integrante, Situacion, Turno, Autorizacion, Reintegro, Receta} = require('./db/models');
 
 async function crearAfiliados () {
     await Afiliado.bulkCreate([
@@ -303,4 +303,92 @@ const crearAutorizaciones = async () => {
   ]);
 };
 
-module.exports = {crearAfiliados, crearPrestadores, crearIntegrantes ,crearAutorizaciones};
+const crearReintegros = async () => {
+  await Reintegro.bulkCreate([
+    {
+      fecha_prestacion: '2025-10-15',
+      integranteId: 1,
+      medico: 'Dr. Alejandro Ruiz',
+      especialidad: 'Cardiología',
+      lugar: 'Hospital Central',
+      factura_fecha: '2025-10-16',
+      factura_cuit: '20-12345678-9',
+      factura_valor: 85000.00,
+      factura_persona: 'Juan Pérez',
+      forma_pago: 'transferencia',
+      cbu: '0000003100012345678901',
+      observaciones: 'Angioplastia con stent coronario',
+      estado: 'recibido',
+    },
+    {
+      fecha_prestacion: '2025-10-20',
+      integranteId: 2,
+      medico: 'Dra. Cecilia López',
+      especialidad: 'Dermatología',
+      lugar: 'Clínica Santa María',
+      factura_fecha: '2025-10-21',
+      factura_cuit: '27-98765432-1',
+      factura_valor: 45000.00,
+      factura_persona: 'María Gómez',
+      forma_pago: 'efectivo',
+      observaciones: 'Control post hipertensión',
+      estado: 'en analisis',
+      usuarioUltimoCambio: 2
+    },
+    {
+      fecha_prestacion: '2025-10-25',
+      integranteId: 3,
+      medico: 'Dr. Alejandro Ruiz',
+      especialidad: 'Cardiología',
+      lugar: 'Hospital Central',
+      factura_fecha: '2025-10-26',
+      factura_cuit: '23-11223344-5',
+      factura_valor: 60000.00,
+      factura_persona: 'Carlos Díaz',
+      forma_pago: 'cheque',
+      observaciones: 'Evaluación postoperatoria',
+      estado: 'rechazado',
+      motivo: 'Factura incompleta',
+      fecha_finalizacion: new Date(),
+      usuarioUltimoCambio: 1
+    }
+  ]);
+}
+
+const crearRecetas = async () => {
+  await Receta.bulkCreate([
+    {
+      integranteId: 1,
+      medicamento: 'Ibuprofeno',
+      cantidad: 20,
+      presentacion: 'capsulas',
+      observaciones: 'Tomar cada 8 horas después de las comidas',
+      estado: 'recibido'
+    },
+    {
+      integranteId: 2,
+      medicamento: 'Amoxicilina',
+      cantidad: 10,
+      presentacion: 'blister',
+      observaciones: 'Completar tratamiento por 7 días',
+      estado: 'en analisis',
+      usuarioUltimoCambio: 2,
+      prestadorAnalisisId: 2
+    },
+    {
+      integranteId: 3,
+      medicamento: 'Paracetamol',
+      cantidad: 15,
+      presentacion: 'pastillas',
+      observaciones: 'Solo en caso de fiebre mayor a 38°C',
+      estado: 'rechazado',
+      motivo: 'Dosis no justificada por diagnóstico',
+      fecha_finalizacion: new Date(),
+      usuarioUltimoCambio: 1,
+      prestadorAnalisisId: 1
+    }
+  ]);
+};
+
+
+module.exports = {crearAfiliados, crearPrestadores, crearAutorizaciones, crearReintegros, crearRecetas, crearIntegrantes};
