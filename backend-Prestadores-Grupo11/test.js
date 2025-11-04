@@ -14,7 +14,6 @@ async function crearAfiliados () {
                     observaciones: "Infarto agudo de miocardio. Se realizó angioplastia con colocación de stent en arteria coronaria izquierda. Evolución favorable con control posterior.",
                     estado: "alta",
                     fecha_final: "2024-03-18",
-                    descripcion: "prueba de descripcion",
                     prestadorId: 1
                 },
             ],
@@ -88,7 +87,7 @@ async function crearIntegrantes() {
                 {
                     date: (() => {
                         const d = new Date();
-                        d.setDate(d.getDate() + 2); // pasado mañana
+                        d.setDate(d.getDate() - 2); // dos dias antes
                         d.setHours(24, 0, 0, 0);
                         return d;
                     })(),
@@ -98,6 +97,7 @@ async function crearIntegrantes() {
                         return d;
                     })(),
                     duration: 45,
+                    descripción: "El paciente viene a hacerse un control luego de su cirujia de corazon",
                     prestadorId: 1
   }
             ]
