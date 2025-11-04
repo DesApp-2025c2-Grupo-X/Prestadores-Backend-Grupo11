@@ -1,4 +1,4 @@
-const {Situacion,Afiliado, Integrante} = require('../db/models');
+const {Situacion,Afiliado, Integrante, Prestador} = require('../db/models');
 const {Op} = require('sequelize');
 
 const getAllSituacionesByNroOApellidoAfliliado = async (req,res) => {
@@ -8,20 +8,28 @@ const getAllSituacionesByNroOApellidoAfliliado = async (req,res) => {
       {numero_afiliado: nroOApellido},
       {apellido: nroOApellido}
     ]}, include: [
-      {model: Situacion, attributes: ['fecha_inicio', 'observaciones', 'estado', 'fecha_final'], as: 'situaciones', where: {prestadorId: idPrestador}},
+      {model: Situacion, attributes: {exclude: ['especialidad']}, as: 'situaciones', where: {prestadorId: idPrestador}, include: [
+        {model: Prestador, attributes: ['username'], as: 'prestador'}
+      ]},
       {model: Integrante, as: 'integrantes', include: [
-        {model: Situacion, attributes: ['fecha_inicio', 'observaciones', 'estado', 'fecha_final'], as: 'situaciones'}
-      ]}
+        {model: Situacion, attributes: {exclude: ['especialidad']}, as: 'situaciones', include: [
+          {model: Prestador, attributes: ['username'], as: 'prestador'}
+        ]}
+      ]},
     ]});
   res.status(200).json(situaciones);
 }
 
 const getAllSituaciones = async (req,res) => {
   const situaciones = await Afiliado.findAll({include: [
-    {model: Situacion, as: 'situaciones'}
+    {model: Situacion, as: 'situaciones', include: [
+      {model: Prestador, attributes: ['username'], as: 'prestador'}
+    ]}
   ],include: [
       {model: Integrante, as: 'integrantes', include: [
-        {model: Situacion, as: 'situaciones'}
+        {model: Situacion, as: 'situaciones', include: [
+          {model: Prestador, attributes: ['username'], as: 'prestador'}
+        ]}
       ]}
     ]})
   res.status(200).json(situaciones);
@@ -30,7 +38,9 @@ const getAllSituaciones = async (req,res) => {
 const getSituacionesByAfiliadoId = async (req,res) => {
   const id = req.params.id;
   const situacion = await Afiliado.findByPk(id, {include: [
-    {model: Situacion, as: 'situaciones'}
+    {model: Situacion, as: 'situaciones', include: [
+      {model: Prestador, attributes: ['username'], as: 'prestador'}
+    ]}
   ]});
   res.status(200).json(situacion);
 }
@@ -38,7 +48,9 @@ const getSituacionesByAfiliadoId = async (req,res) => {
 const getSituacionesByIntegranteId = async (req,res) => {
   const id = req.params.id;
   const situacion = await Integrante.findByPk(id, {include: [
-    {model: Situacion, as: 'situaciones'}
+    {model: Situacion, as: 'situaciones', include: [
+      {model: Prestador, attributes: ['username'], as: 'prestador'}
+    ]}
   ]});
   res.status(200).json(situacion);
 }

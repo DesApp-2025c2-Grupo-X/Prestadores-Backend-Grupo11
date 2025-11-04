@@ -11,9 +11,18 @@ const existModelById = (Model) => {
     }
 }
 
+const existPrestadorByPrestadorId = async (req,res, next) => {
+    const id = req.params.prestadorId;
+    const prestador = Prestador.findByPk(id);
+    if (!prestador) {
+        return res.status(401).json({error: `El prestador con id ${id} no existe`});
+    }
+    next();
+}
+
 const validateRolById = (rol) => {
     return async (req,res,next) => {
-        const id = req.params.id;
+        const id = req.params.prestadorId;
         const prestador = await Prestador.findByPk(id);
         if (prestador.role != rol) {
             return res.status(401).json({error: `El prestador debe ser rol ${rol} para esta consulta`});
@@ -23,4 +32,4 @@ const validateRolById = (rol) => {
 }
 
 
-module.exports = {existModelById, validateRolById};
+module.exports = {existModelById, validateRolById, existPrestadorByPrestadorId};

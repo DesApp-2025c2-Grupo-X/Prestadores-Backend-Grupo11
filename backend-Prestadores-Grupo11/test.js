@@ -14,6 +14,7 @@ async function crearAfiliados () {
                     observaciones: "Infarto agudo de miocardio. Se realizó angioplastia con colocación de stent en arteria coronaria izquierda. Evolución favorable con control posterior.",
                     estado: "alta",
                     fecha_final: "2024-03-18",
+                    descripcion: "prueba de descripcion",
                     prestadorId: 1
                 },
             ],

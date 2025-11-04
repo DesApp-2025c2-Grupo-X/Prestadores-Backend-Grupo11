@@ -30,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     observaciones: {type: DataTypes.STRING, allowNull: false},
     estado: {type: DataTypes.ENUM('en proceso', 'alta', 'baja',), defaultValue: 'en proceso' },
     fecha_final : {type: DataTypes.DATE, allowNull: false},
+    descripción: {type: DataTypes.STRING},
     afiliadoId: {type: DataTypes.INTEGER},
     integranteId: {type: DataTypes.INTEGER},
     prestadorId: {type: DataTypes.INTEGER, allowNull: false}
