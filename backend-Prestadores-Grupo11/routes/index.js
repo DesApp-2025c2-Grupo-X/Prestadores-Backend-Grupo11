@@ -5,6 +5,7 @@ const situacionesRoute = require('./situaciones.route');
 const turnosRoute = require('./turnos.routes');
 const autorizacionRoute = require('./autorizacion.routes');
 const integranteRoute = require('./integrante.routes');
+const afiliadoRoute = require('./afiliado.route');
 const reintegroRoutes = require('./reintegro.routes');
 const recetaRoutes = require('./receta.routes');
 const pendientesRoute = require('./pendientes.routes');
@@ -19,4 +20,5 @@ module.exports = {
     integranteRoute, 
     reintegroRoutes, 
     recetaRoutes, 
+    afiliadoRoute
     pendientesRoute};

@@ -14,7 +14,8 @@ const {
     integranteRoute, 
     reintegroRoutes,
     recetaRoutes, 
-    pendientesRoute} = require('./routes');
+    pendientesRoute,
+    afiliadoRoute} = require('./routes');
 
 app.use(cors());
 app.use(express.json());
@@ -26,6 +27,7 @@ app.use('/situaciones', situacionesRoute);
 app.use('/turnos', turnosRoute);
 app.use('/autorizaciones', autorizacionRoute);
 app.use('/integrantes', integranteRoute);
+app.use('/afiliados', afiliadoRoute)
 app.use('/reintegros', reintegroRoutes)
 app.use('/recetas', recetaRoutes)
 app.use('/pendientes', pendientesRoute)
