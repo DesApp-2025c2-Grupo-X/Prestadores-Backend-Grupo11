@@ -20,5 +20,5 @@ module.exports = {
     integranteRoute, 
     reintegroRoutes, 
     recetaRoutes, 
-    afiliadoRoute
+    afiliadoRoute,
     pendientesRoute};
