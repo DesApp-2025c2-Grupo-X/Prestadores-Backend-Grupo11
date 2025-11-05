@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/autorizacion.controller');
+const validarId = require('../middlewares/validarId.middleware');
 const validarCambioEstado = require('../middlewares/validarCambioEstado');
 const existeAutorizacion = require('../middlewares/existeAutorizacion.middleware');
 const { Autorizacion } = require('../db/models');
 
 router.get('/', controller.listar);
 
-router.put('/estado/:id', validarCambioEstado(Autorizacion, 'autorizacion'), controller.cambiarEstado);
+router.put('/estado/:id', validarId, validarCambioEstado(Autorizacion, 'autorizacion'), controller.cambiarEstado);
 
 router.get('/bandeja', controller.listarPorEstado);
 
