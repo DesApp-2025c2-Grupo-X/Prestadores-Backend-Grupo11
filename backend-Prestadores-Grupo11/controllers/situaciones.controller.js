@@ -66,7 +66,7 @@ const darDeBajaSituacionById = async (req, res) => {
 
 const darDeAltaSituacion = async (req, res) => {
   const data = req.body;
-  const id = req.params.id;
+  const id = req.params.prestadorId;
   await Situacion.create({
     ...data,
     prestadorId: id

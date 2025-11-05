@@ -44,8 +44,7 @@ router.patch('/:id',
 );
 
 //da de alta una situacion
-router.post('/:id',
-    genericMiddleware.existModelById(Situacion),
+router.post('/:prestadorId',
     situacionMiddleware.validarEstadoAlta,
     situacionesController.darDeAltaSituacion
 );
