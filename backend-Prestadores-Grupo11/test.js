@@ -34,7 +34,7 @@ async function crearAfiliados () {
             nombre: "María",
             apellido: "Lopez",
             numero_afiliado: 'OSDE-00012345',
-            dni: '30456789',
+            dni: '30456790',
             telefono: '+54 9 11 2345-6789',
             edad: 35,
             situaciones: [
