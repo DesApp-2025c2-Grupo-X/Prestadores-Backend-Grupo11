@@ -4,7 +4,18 @@ const db = require('./db/models');
 const {crearAfiliados, crearPrestadores, crearAutorizaciones, crearReintegros, crearRecetas, crearIntegrantes} = require('./test');
 const app = express();
 const PORT = process.env.PORT ?? 3001;
-const {authRoute, dashboardRoute, historialRoute, situacionesRoute, turnosRoute, autorizacionRoute, integranteRoute, reintegroRoutes,recetaRoutes, afiliadoRoute } = require('./routes');
+const {
+    authRoute, 
+    dashboardRoute, 
+    historialRoute, 
+    situacionesRoute, 
+    turnosRoute, 
+    autorizacionRoute, 
+    integranteRoute, 
+    reintegroRoutes,
+    recetaRoutes, 
+    pendientesRoute,
+    afiliadoRoute} = require('./routes');
 
 app.use(cors());
 app.use(express.json());
@@ -19,6 +30,7 @@ app.use('/integrantes', integranteRoute);
 app.use('/afiliados', afiliadoRoute)
 app.use('/reintegros', reintegroRoutes)
 app.use('/recetas', recetaRoutes)
+app.use('/pendientes', pendientesRoute)
 
 
 app.listen(PORT, async () => {

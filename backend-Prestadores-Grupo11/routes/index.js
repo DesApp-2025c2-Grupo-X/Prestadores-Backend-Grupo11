@@ -8,5 +8,17 @@ const integranteRoute = require('./integrante.routes');
 const afiliadoRoute = require('./afiliado.route');
 const reintegroRoutes = require('./reintegro.routes');
 const recetaRoutes = require('./receta.routes');
+const pendientesRoute = require('./pendientes.routes');
 
-module.exports = {authRoute, dashboardRoute, historialRoute, situacionesRoute, turnosRoute, autorizacionRoute,integranteRoute, reintegroRoutes, recetaRoutes, afiliadoRoute};
+module.exports = {
+    authRoute, 
+    dashboardRoute, 
+    historialRoute, 
+    situacionesRoute, 
+    turnosRoute, 
+    autorizacionRoute,
+    integranteRoute, 
+    reintegroRoutes, 
+    recetaRoutes, 
+    afiliadoRoute
+    pendientesRoute};

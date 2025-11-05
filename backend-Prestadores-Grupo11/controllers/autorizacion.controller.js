@@ -40,19 +40,33 @@ const listarPorEstado = async (req, res) => {
   res.status(200).json(autorizaciones);
 };
 
+
 const dashboard = async (req, res) => {
-  const resumen = await Autorizacion.findAll({
+  const resumenDiario = await Autorizacion.findAll({
     attributes: [
       [sequelize.fn('DATE', sequelize.col('updatedAt')), 'fecha'],
       [sequelize.fn('COUNT', sequelize.col('id')), 'cantidad']
     ],
     where: {
-      estado: { [Op.in]: ['aprobado', 'rechazado'] }
+      estado: { [Op.in]: ['aprobado', 'rechazado', 'observado'] }
     },
     group: ['fecha'],
     order: [['fecha', 'ASC']]
   });
-  res.status(200).json(resumen);
+
+  const resumenSemanal = await Autorizacion.findAll({
+    attributes: [
+      [sequelize.fn('DATE_TRUNC', 'week', sequelize.col('updatedAt')), 'semana'],
+      [sequelize.fn('COUNT', sequelize.col('id')), 'cantidad']
+    ],
+    where: {
+      estado: { [Op.in]: ['aprobado', 'rechazado', 'observado'] }
+    },
+    group: ['semana'],
+    order: [['semana', 'ASC']]
+  });
+
+  res.status(200).json({ diario: resumenDiario, semanal: resumenSemanal });
 };
 
 const obtenerPorId = async (req, res) => {
