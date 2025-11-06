@@ -172,26 +172,17 @@ async function crearIntegrantes() {
                     estado: "en proceso",
                     fecha_final: "2024-07-01",
                     prestadorId: 1
+                },
+                {
+                    fecha_inicio: "2023-08-10",
+                    especialidad: "Cirugia plastica",
+                    observaciones: "Transplante de piel.",
+                    estado: "baja",
+                    fecha_final: "2024-07-11",
+                    prestadorId: 1
                 }
             ],
             turnos: [
-                {
-                    date: (() => {
-                        const d = new Date();
-                        d.setDate(d.getDate() - 2); // dos dias antes
-                        d.setHours(24, 0, 0, 0);
-                        return d;
-                    })(),
-                    start: (() => {
-                        const d = new Date();
-                        d.setDate(d.getDate() - 20)
-                        d.setHours(9, 30, 0, 0);
-                        return d;
-                    })(),
-                    duration: 45,
-                    descripción: "El paciente viene a hacerse un control luego de su cirujia de corazon",
-                    prestadorId: 1
-                },
                 {
                     date: (() => {
                         const d = new Date();
@@ -205,9 +196,28 @@ async function crearIntegrantes() {
                         d.setHours(9, 30, 0, 0);
                         return d;
                     })(),
+                    duration: 45,
+                    descripción: "El paciente viene a hacerse un control luego de su cirugia",
+                    prestadorId: 2,
+                    notes: "El paciente esta teniendo una buena recuperacion."
+                },
+                {
+                    date: (() => {
+                        const d = new Date();
+                        d.setDate(d.getDate() - 2); // dos dias antes
+                        d.setHours(24, 0, 0, 0);
+                        return d;
+                    })(),
+                    start: (() => {
+                        const d = new Date();
+                        d.setDate(d.getDate() - 20)
+                        d.setHours(9, 30, 0, 0);
+                        return d;
+                    })(),
                     duration: 60,
                     descripción: "El paciente viene a hacerse una revisacion medica",
-                    prestadorId: 2
+                    prestadorId: 2,
+                    notes: "Me ha indicado que le esta empezando a doler donde tuvo la cirugia."
                 }
             ]
         },
