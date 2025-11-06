@@ -1,7 +1,7 @@
 const {Turno, Afiliado, Integrante, Prestador} = require('../db/models');
 
 const getAllTurnosByPrestadorId = async (req,res) => {
-    const id = req.params.id;
+    const id = req.params.prestadorId;
     const turnos = await Turno.findAll({where: {prestadorId: id},
     include: [
         {model: Prestador, attributes: {exclude: ['especialidad', 'password']}, as: 'prestador'},
