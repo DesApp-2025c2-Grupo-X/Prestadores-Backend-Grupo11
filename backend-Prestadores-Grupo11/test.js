@@ -72,6 +72,94 @@ async function crearAfiliados() {
     })
 }
 
+async function crearAfiliadosExtra() {
+  await Afiliado.bulkCreate([
+    {
+      nombre: "Carlos",
+      apellido: "Gonzalez",
+      numero_afiliado: "OSDE-00055678",
+      dni: "28999888",
+      edad: 45,
+      telefono: "+54 9 11 3311-4455",
+      situaciones: [
+        {
+          fecha_inicio: "2025-03-15",
+          especialidad: "Traumatología",
+          fecha_final: "2025-04-15",
+          observaciones: "Luxación de hombro derecho. Se realizó reducción y fisioterapia.",
+          estado: "en proceso",
+          prestadorId: 3
+        },
+      ],
+      turnos: [
+        {
+          date: new Date("2025-11-10"),
+          start: (() => {
+            const d = new Date("2025-11-10T10:30:00");
+            return d;
+          })(),
+          duration: 45,
+          prestadorId: 3,
+        }
+      ],
+    },
+    {
+      nombre: "Luciana",
+      apellido: "Martinez",
+      numero_afiliado: "IOMA-00222555",
+      dni: "33222444",
+      edad: 39,
+      telefono: "+54 9 11 5566-7788",
+      situaciones: [
+        {
+          fecha_inicio: "2025-07-02",
+          fecha_final: "2025-08-10",
+          especialidad: "Ginecología",
+          observaciones: "Chequeo anual con papanicolau y ecografía transvaginal.",
+          estado: "alta",
+          fecha_final: "2025-07-03",
+          prestadorId: 2,
+        },
+      ],
+    },
+    {
+      nombre: "Javier",
+      apellido: "Sosa",
+      numero_afiliado: "OSDE-00077799",
+      dni: "27444555",
+      edad: 58,
+      telefono: "+54 9 11 4444-9911",
+      situaciones: [
+        {
+          fecha_inicio: "2025-04-20",
+          fecha_final: "2025-08-16",
+          especialidad: "Endocrinología",
+          observaciones: "Control de diabetes tipo II. Ajuste de dosis de insulina.",
+          estado: "en proceso",
+          prestadorId: 1,
+        },
+      ],
+      turnos: [
+        {
+          date: new Date("2025-11-15"),
+          start: (() => {
+            const d = new Date("2025-11-15T09:00:00");
+            return d;
+          })(),
+          duration: 30,
+          prestadorId: 1,
+        }
+      ]
+    },
+  ], {
+    include: [
+      { model: Situacion, as: 'situaciones' },
+      { model: Turno, as: 'turnos' }
+    ]
+  });
+}
+
+
 async function crearIntegrantes() {
     await Integrante.bulkCreate([
         {
@@ -227,6 +315,58 @@ async function crearIntegrantes() {
     ], { include: [{ model: Situacion, as: 'situaciones' }, { model: Turno, as: 'turnos' }] })
 }
 
+async function crearIntegrantesExtra() {
+  await Integrante.bulkCreate([
+    {
+      nombre: "Paula Gonzalez",
+      edad: 19,
+      dni: "45322199",
+      afiliadoId: 3,
+      situaciones: [
+        {
+          fecha_inicio: "2025-02-11",
+          especialidad: "Otorrinolaringología",
+          observaciones: "Amigdalitis bacteriana. Tratamiento antibiótico.",
+          estado: "alta",
+          fecha_final: "2025-02-20",
+          prestadorId: 3
+        }
+      ]
+    },
+    {
+      nombre: "Martín Sosa",
+      edad: 30,
+      dni: "39221133",
+      afiliadoId: 5,
+      turnos: [
+        {
+          date: new Date("2025-11-18"),
+          start: new Date("2025-11-18T15:00:00"),
+          duration: 30,
+          prestadorId: 1
+        }
+      ]
+    },
+    {
+      nombre: "Laura Martinez",
+      edad: 41,
+      dni: "31555599",
+      afiliadoId: 4,
+      situaciones: [
+        {
+          fecha_inicio: "2025-06-10",
+          especialidad: "Clínica Médica",
+          observaciones: "Resfrío común tratado con reposo e hidratación.",
+          estado: "alta",
+          fecha_final: "2025-06-15",
+          prestadorId: 2
+        }
+      ]
+    },
+  ], { include: [{ model: Situacion, as: 'situaciones' }, { model: Turno, as: 'turnos' }] });
+}
+
+
 async function crearPrestadores() {
     await Prestador.bulkCreate([
         { username: "dr alejandro ruiz", password: "12345", role: "medico", especialidad: "cardiologia" },
@@ -234,6 +374,14 @@ async function crearPrestadores() {
         { username: "clinica santa maria", password: "5555", role: "centro_medico" }
     ])
 }
+
+async function crearPrestadoresExtra() {
+  await Prestador.bulkCreate([
+    { username: "dr lucas fernandez", password: "9999", role: "medico", especialidad: "traumatología" },
+    { username: "centro diagnostico belgrano", password: "2222", role: "centro_medico" },
+  ]);
+}
+
 
 const crearAutorizaciones = async () => {
     await Autorizacion.bulkCreate([
@@ -330,6 +478,30 @@ const crearAutorizaciones = async () => {
     ]);
 };
 
+async function crearAutorizacionesExtra() {
+  await Autorizacion.bulkCreate([
+    {
+      fecha_prevista: new Date("2025-11-13"),
+      integranteId: 2,
+      medico: "dr lucas fernandez",
+      especialidad: "traumatología",
+      lugar: "Centro Diagnóstico Belgrano",
+      dias_internacion: 1,
+      observaciones: "Radiografía y control post operatorio",
+    },
+    {
+      fecha_prevista: new Date("2025-11-14"),
+      integranteId: 3,
+      medico: "dr alejandro ruiz",
+      especialidad: "cardiología",
+      lugar: "Hospital Central",
+      dias_internacion: 0,
+      observaciones: "Electrocardiograma de rutina",
+    },
+  ]);
+}
+
+
 const crearReintegros = async () => {
     await Reintegro.bulkCreate([
         {
@@ -382,6 +554,43 @@ const crearReintegros = async () => {
     ]);
 }
 
+async function crearReintegrosExtra() {
+  await Reintegro.bulkCreate([
+    {
+      fecha_prestacion: "2025-10-28",
+      integranteId: 6,
+      medico: "dr lucas fernandez",
+      especialidad: "traumatología",
+      lugar: "Hospital Central",
+      factura_fecha: "2025-10-29",
+      factura_cuit: "20-11223344-8",
+      factura_valor: 72000.00,
+      factura_persona: "Carlos Gonzalez",
+      forma_pago: "transferencia",
+      observaciones: "Tratamiento de fisioterapia",
+      estado: "en analisis",
+      usuarioUltimoCambio: 4
+    },
+    {
+      fecha_prestacion: "2025-10-30",
+      integranteId: 7,
+      medico: "dr cecilia lopez",
+      especialidad: "dermatología",
+      lugar: "Consultorio Norte",
+      factura_fecha: "2025-10-30",
+      factura_cuit: "27-55443322-9",
+      factura_valor: 32000.00,
+      factura_persona: "Luciana Martinez",
+      forma_pago: "efectivo",
+      observaciones: "Tratamiento de acné",
+      estado: "aprobado",
+      fecha_finalizacion: new Date(),
+      usuarioUltimoCambio: 2
+    }
+  ]);
+}
+
+
 const crearRecetas = async () => {
     await Receta.bulkCreate([
         {
@@ -417,5 +626,41 @@ const crearRecetas = async () => {
     ]);
 };
 
+async function crearRecetasExtra() {
+  await Receta.bulkCreate([
+    {
+      integranteId: 8,
+      medicamento: "Metformina",
+      cantidad: 30,
+      presentacion: "tabletas",
+      observaciones: "Una cada 12 horas",
+      estado: "recibido"
+    },
+    {
+      integranteId: 9,
+      medicamento: "Loratadina",
+      cantidad: 10,
+      presentacion: "blister",
+      observaciones: "1 por día durante 10 días",
+      estado: "en analisis",
+      usuarioUltimoCambio: 2,
+      prestadorAnalisisId: 1
+    },
+    {
+      integranteId: 10,
+      medicamento: "Omeprazol",
+      cantidad: 14,
+      presentacion: "cápsulas",
+      observaciones: "Tomar en ayunas",
+      estado: "rechazado",
+      motivo: "Prescripción duplicada",
+      fecha_finalizacion: new Date(),
+      usuarioUltimoCambio: 3
+    }
+  ]);
+}
 
-module.exports = { crearAfiliados, crearPrestadores, crearAutorizaciones, crearReintegros, crearRecetas, crearIntegrantes };
+
+module.exports = { crearAfiliados, crearAfiliadosExtra, crearPrestadores, crearPrestadoresExtra, crearAutorizaciones,
+    crearAutorizacionesExtra, crearReintegros, crearReintegrosExtra, crearRecetas, crearRecetasExtra, crearIntegrantesExtra,
+     crearIntegrantes };
