@@ -143,7 +143,7 @@ const crearTurnos = async () => {
             descripción: "No trajo el estudio médico pedido en la anterior consulta",
             integranteId:7,
             prestadorId: 2
-        },//
+        },
         {
             date: (() => {
             const d = new Date();
@@ -872,3 +872,4 @@ const crearReintegros = async () => {
 
 
 module.exports = { crearAfiliados, crearPrestadores, crearAutorizaciones, crearReintegros, crearRecetas, crearIntegrantes, crearSituaciones, crearTurnos };
+
