@@ -2,229 +2,24 @@ const { Afiliado, Prestador, Integrante, Situacion, Turno, Autorizacion, Reinteg
 
 async function crearAfiliados() {
     await Afiliado.bulkCreate([
-        {
-            nombre: "Roberto",
-            apellido: "Perez",
-            numero_afiliado: "IOMA-00111222",
-            dni: "30456789",
-            edad: 50,
-            telefono: "+54 9 11 2345-6789",
-            situaciones: [
-                {
-                    fecha_inicio: "2024-03-05", especialidad: "Cardiologia",
-                    observaciones: "Infarto agudo de miocardio. Se realizó angioplastia con colocación de stent en arteria coronaria izquierda. Evolución favorable con control posterior.",
-                    estado: "alta",
-                    fecha_final: "2024-03-18",
-                    prestadorId: 1
-                },
-            ],
-            turnos: [
-                {
-                    date: new Date(),
-                    start: (() => {
-                        const d = new Date();
-                        d.setHours(9, 0, 0, 0);
-                        return d;
-                    })(),
-                    duration: 30,
-                    prestadorId: 1
-                }
-            ],
-        },
-        {
-            nombre: "María",
-            apellido: "Lopez",
-            numero_afiliado: 'OSDE-00012345',
-            dni: '30456790',
-            telefono: '+54 9 11 2345-6789',
-            edad: 35,
-            situaciones: [
-                {
-                    fecha_inicio: "2023-09-10", especialidad: "Clínica Médica",
-                    observaciones: "Pico de hipertensión arterial con mareos y cefalea intensa. Se ajustó medicación antihipertensiva y se indicó dieta baja en sodio.",
-                    estado: "alta",
-                    fecha_final: "2023-09-20",
-                    prestadorId: 2
-                }
-            ],
-            turnos: [
-                {
-                    date: (() => {
-                        const d = new Date();
-                        d.setHours(24, 0, 0, 0);
-                        return d;
-                    })(),
-                    start: (() => {
-                        const d = new Date();
-                        d.setHours(11, 0, 0, 0);
-                        return d;
-                    })(),
-                    duration: 30,
-                    prestadorId: 2
-                }
-            ],
-        }
-    ], {
-        include: [
-            { model: Situacion, as: 'situaciones' },
-            { model: Turno, as: 'turnos' }
-        ]
-    })
+        {nombre: "Roberto", apellido: "Perez", numero_afiliado: "IOMA-00111222", dni: "30456789", telefono: "+54 9 11 2345-6789", edad: 50},
+        {nombre: "María", apellido: "Lopez", numero_afiliado: 'OSDE-00012345',dni: '30456790',telefono: '+54 9 11 2345-6789', edad: 35}
+    ])
 }
 
 async function crearIntegrantes() {
     await Integrante.bulkCreate([
-        {
-            nombre: 'Juan Perez', edad: 62, dni: '20114587', afiliadoId: 1,
-            situaciones: [
-                {
-                    fecha_inicio: "2024-06-12",
-                    especialidad: "Neurología",
-                    observaciones: "Accidente cerebrovascular isquémico. Se inició tratamiento anticoagulante y rehabilitación motora. Paciente estable.",
-                    estado: "en proceso",
-                    fecha_final: "2024-07-01",
-                    prestadorId: 1
-                }
-            ],
-            turnos: [
-                {
-                    date: (() => {
-                        const d = new Date();
-                        d.setDate(d.getDate() - 2); // dos dias antes
-                        d.setHours(24, 0, 0, 0);
-                        return d;
-                    })(),
-                    start: (() => {
-                        const d = new Date();
-                        d.setDate(d.getDate() - 20)
-                        d.setHours(9, 30, 0, 0);
-                        return d;
-                    })(),
-                    duration: 45,
-                    descripción: "El paciente viene a hacerse un control luego de su cirujia de corazon",
-                    prestadorId: 1
-                },
-                {
-                    date: (() => {
-                        const d = new Date();
-                        d.setDate(d.getDate() - 10); // diez dias antes
-                        d.setHours(24, 0, 0, 0);
-                        return d;
-                    })(),
-                    start: (() => {
-                        const d = new Date();
-                        d.setDate(d.getDate() - 20)
-                        d.setHours(9, 30, 0, 0);
-                        return d;
-                    })(),
-                    duration: 60,
-                    descripción: "El paciente viene a hacerse una revisacion medica",
-                    prestadorId: 2
-                }
-            ]
-        },
-        { nombre: 'Maria Perez', edad: 48, dni: '25500991', afiliadoId: 1 },
-        {
-            nombre: 'Luciano Perez', edad: 34, dni: '33012455', afiliadoId: 1,
-            turnos: [
-                {
-                    date: (() => {
-                        const d = new Date();
-                        d.setDate(d.getDate() + 3);
-                        d.setHours(24, 0, 0, 0);
-                        return d;
-                    })(),
-                    start: (() => {
-                        const d = new Date();
-                        d.setHours(14, 0, 0, 0);
-                        return d;
-                    })(),
-                    duration: 60,
-                    prestadorId: 1
-                }
-            ]
-        },
-        {
-            nombre: 'Sofia Perez', edad: 28, dni: '40221543', afiliadoId: 1,
-            situaciones: [
-                {
-                    fecha_inicio: "2024-08-20",
-                    especialidad: "Ortopedia",
-                    observaciones: "Fractura de fémur derecho. Se realizó reducción quirúrgica con colocación de clavo intramedular. Evolución favorable.",
-                    estado: "alta",
-                    fecha_final: "2024-09-05",
-                    prestadorId: 1
-                }
-            ]
-        },
-        { nombre: 'Carlos Perez', edad: 53, dni: '26099123', afiliadoId: 1 },
-        {
-            nombre: 'Ana Lopez', edad: 40, dni: '29544100', afiliadoId: 2,
-            situaciones: [
-                {
-                    fecha_inicio: "2024-11-10",
-                    especialidad: "Pediatría",
-                    observaciones: "Infección respiratoria aguda. Se indicó antibiótico y seguimiento ambulatorio. Paciente presenta buena recuperación.",
-                    estado: "en proceso",
-                    fecha_final: "2024-11-20",
-                    prestadorId: 2
-                }
-            ],
-            turnos: [
-                {
-                    date: (() => {
-                        const d = new Date();
-                        d.setDate(d.getDate() + 5);
-                        d.setHours(24, 0, 0, 0);
-                        return d;
-                    })(),
-                    start: (() => {
-                        const d = new Date();
-                        d.setHours(16, 30, 0, 0);
-                        return d;
-                    })(),
-                    duration: 30,
-                    prestadorId: 2
-                }
-            ]
-        },
-        {
-            nombre: 'Matias Lopez', edad: 18, dni: '46001122', afiliadoId: 2,
-            turnos: [
-                {
-                    date: (() => {
-                        const d = new Date();
-                        d.setDate(d.getDate() + 3);
-                        d.setHours(24, 0, 0, 0);
-                        return d;
-                    })(),
-                    start: (() => {
-                        const d = new Date();
-                        d.setDate(d.getDate() + 3);
-                        d.setHours(16, 30, 0, 0);
-                        return d;
-                    })(),
-                    duration: 45,
-                    prestadorId: 2
-                }
-            ]
-        },
-        {
-            nombre: 'Pedro Lopez', edad: 67, dni: '19007458', afiliadoId: 2,
-            situaciones: [
-                {
-                    fecha_inicio: "2025-01-15",
-                    especialidad: "Gastroenterología",
-                    observaciones: "Úlcera gástrica tratada con medicación y seguimiento endoscópico. Evolución favorable, sin complicaciones.",
-                    estado: "en proceso",
-                    fecha_final: "2025-02-01",
-                    prestadorId: 2
-                }
-            ]
-        },
-        { nombre: 'Lucía Lopez', edad: 23, dni: '44112090', afiliadoId: 2 },
-        { nombre: 'Tomas Lopez', edad: 9, dni: '52344912', afiliadoId: 2 },
-    ], { include: [{ model: Situacion, as: 'situaciones' }, { model: Turno, as: 'turnos' }] })
+        {nombre: 'Juan Perez', edad: 62, dni: '20114587', afiliadoId: 1},
+        {nombre: 'Maria Perez', edad: 48, dni: '25500991', afiliadoId: 1},
+        {nombre: 'Luciano Perez', edad: 34, dni: '33012455', afiliadoId: 1},
+        {nombre: 'Sofia Perez', edad: 28, dni: '40221543', afiliadoId: 1},
+        {nombre: 'Carlos Perez', edad: 53, dni: '26099123', afiliadoId: 1},
+        {nombre: 'Ana Lopez', edad: 40, dni: '29544100', afiliadoId: 2},
+        {nombre: 'Matias Lopez', edad: 18, dni: '46001122', afiliadoId: 2},
+        {nombre: 'Pedro Lopez', edad: 67, dni: '19007458', afiliadoId: 2},
+        {nombre: 'Lucía Lopez', edad: 23, dni: '44112090', afiliadoId: 2},
+        {nombre: 'Tomas Lopez', edad: 9, dni: '52344912', afiliadoId: 2},
+    ])
 }
 
 async function crearPrestadores() {
@@ -235,6 +30,283 @@ async function crearPrestadores() {
     ])
 }
 
+const crearTurnos = async () => {
+    await Turno.bulkCreate([
+
+        {
+            date: new Date(),
+            start: (() => {
+            const d = new Date();
+            d.setHours(9, 0, 0, 0);
+            return d;
+            })(),
+            duration: 30,
+            afiliadoId:1,
+            prestadorId: 1
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setHours(24, 0, 0, 0);
+            return d;})(),
+            start: (() => {
+            const d = new Date();
+            d.setHours(11, 0, 0, 0);
+            return d;})(),
+            duration: 30,
+            afiliadoId:2,
+            prestadorId: 2
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 2); // dos dias antes
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 20)
+            d.setHours(9, 30, 0, 0);
+            return d;
+            })(),
+            duration: 45,
+            descripción: "El paciente viene a hacerse un control luego de su cirujia de corazon",
+            integranteId:1,
+            prestadorId: 1
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 10); // diez dias antes
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 20)
+            d.setHours(9, 30, 0, 0);
+            return d;
+            })(),
+            duration: 60,
+            descripción: "El paciente viene a hacerse una control medico",
+            integranteId:1,
+            prestadorId: 2
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + 3);
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setHours(14, 0, 0, 0);
+            return d;
+            })(),
+           duration: 20,
+           integranteId:3,
+           prestadorId: 1
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + 5);
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setHours(16, 30, 0, 0);
+            return d;
+            })(),
+            duration: 30,
+            descripción: "Mandé a hacer analisís de sangre y orina",
+            integranteId:6,
+            prestadorId: 2
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + 3);
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + 3);
+            d.setHours(16, 30, 0, 0);
+            return d;
+            })(),
+            duration: 45,
+            descripción: "No trajo el estudio médico pedido en la anterior consulta",
+            integranteId:7,
+            prestadorId: 2
+        },//
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + 4);
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setHours(9, 0, 0, 0);
+            return d;
+            })(),
+            duration: 30,
+            integranteId: 3,
+            prestadorId: 1
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + 5);
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setHours(10, 30, 0, 0);
+            return d;
+            })(),
+            duration: 60,
+            integranteId: 4,
+            prestadorId: 2
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + 6);
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setHours(13, 0, 0, 0);
+            return d;
+            })(),
+            duration: 15,
+            integranteId: 5,
+            prestadorId: 3
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + 7);
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setHours(15, 0, 0, 0);
+            return d;
+            })(),
+            duration: 60,
+            integranteId: 8,
+            prestadorId: 1
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + 8);
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setHours(16, 30, 0, 0);
+            return d;
+            })(),
+            duration: 20,
+            descripción: "Hacer estudio de Holter",
+            integranteId: 9,
+            prestadorId: 1
+        }
+   
+    ])
+}
+const crearSituaciones = async () => {
+    await Situacion.bulkCreate([
+        { 
+            fecha_inicio: "2024-03-05", 
+            especialidad: "Cardiologia",
+            observaciones: "Infarto agudo de miocardio. Se realizó angioplastia con colocación de stent en arteria coronaria izquierda. Evolución favorable con control posterior.",
+            estado: "alta",
+            fecha_final: "2024-03-18",
+            integranteId:1, 
+            prestadorId: 1
+        },
+        {
+            fecha_inicio: "2023-09-10", 
+            especialidad: "Cardiologia",
+            observaciones: "Pico de hipertensión arterial con mareos y cefalea intensa. Se ajustó medicación antihipertensiva y se indicó dieta baja en sodio.",
+            estado: "alta",
+            fecha_final: "2023-09-20",
+            integranteId: 2,
+            prestadorId: 1
+        },
+        {
+            fecha_inicio: "2024-06-12",
+            especialidad: "Neurología",
+            observaciones: "Accidente cerebrovascular isquémico. Se inició tratamiento anticoagulante y rehabilitación motora. Paciente estable.",
+            estado: "en proceso",
+            fecha_final: "2024-07-01",
+            integranteId: 2,
+            prestadorId: 1
+        },
+
+        {
+            fecha_inicio: "2024-08-20",
+            especialidad: "Ortopedia",
+            observaciones: "Fractura de fémur derecho. Se realizó reducción quirúrgica con colocación de clavo intramedular. Evolución favorable.",
+            estado: "alta",
+            fecha_final: "2024-09-05",
+            integranteId: 3,
+            prestadorId: 3
+        },
+        {
+            fecha_inicio: "2024-11-10",
+            especialidad: "Neumonólogo",
+            observaciones: "Infección respiratoria aguda. Se indicó antibiótico y seguimiento ambulatorio. Paciente presenta buena recuperación.",
+            estado: "en proceso",
+            fecha_final: "2024-11-20",
+            afiliadoId: 1,
+            prestadorId: 3
+        },
+        {
+            fecha_inicio: "2025-01-15",
+            especialidad: "Gastroenterología",
+            observaciones: "Úlcera gástrica tratada con medicación y seguimiento endoscópico. Evolución favorable, sin complicaciones.",
+            estado: "en proceso",
+            fecha_final: "2025-02-01",
+            integranteId: 8,
+            prestadorId: 3
+        },
+        {
+            fecha_inicio: "2025-01-15",
+            especialidad: "Dermatología",
+            observaciones: "Infección aguda en brazo derecho, por quemadura de 4to grado. Se pide injerto de piel",
+            estado: "en proceso",
+            fecha_final: "2025-02-01",
+            integranteId:5,
+            prestadorId: 2
+        },
+        {
+            fecha_inicio: "2025-01-15",
+            especialidad: "Dermatología",
+            observaciones: "Quemadura por exploción en laboratorio, se necesitan curaciones todos los días",
+            estado: "en proceso",
+            fecha_final: "2025-02-01",
+            integranteId:5,
+            prestadorId: 2
+        },
+
+
+    ])
+}
 const crearAutorizaciones = async () => {
     await Autorizacion.bulkCreate([
         {
@@ -799,4 +871,4 @@ const crearReintegros = async () => {
 };
 
 
-module.exports = { crearAfiliados, crearPrestadores, crearAutorizaciones, crearReintegros, crearRecetas, crearIntegrantes };
+module.exports = { crearAfiliados, crearPrestadores, crearAutorizaciones, crearReintegros, crearRecetas, crearIntegrantes, crearSituaciones, crearTurnos };

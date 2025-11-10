@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const db = require('./db/models');
-const {crearAfiliados, crearPrestadores, crearAutorizaciones, crearReintegros, crearRecetas, crearIntegrantes} = require('./test');
+const {crearAfiliados, crearPrestadores, crearAutorizaciones, crearReintegros, crearRecetas, crearIntegrantes, crearSituaciones, crearTurnos} = require('./test');
 const app = express();
 const PORT = process.env.PORT ?? 3001;
 const {
@@ -41,6 +41,8 @@ app.listen(PORT, async () => {
     await crearAutorizaciones();
     await crearReintegros();
     await crearRecetas();
+    await crearSituaciones();
+    await crearTurnos();
     console.log(`La app arranco en el puerto ${PORT}.`);
    
 });
