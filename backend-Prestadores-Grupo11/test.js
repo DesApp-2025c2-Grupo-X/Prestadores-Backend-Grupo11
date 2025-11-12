@@ -338,7 +338,7 @@ const crearSituaciones = async () => {
             fecha_inicio: "2024-03-05", 
             especialidad: "Cardiologia",
             observaciones: "Infarto agudo de miocardio. Se realizó angioplastia con colocación de stent en arteria coronaria izquierda. Evolución favorable con control posterior.",
-            estado: "alta",
+            estado: "en proceso",
             fecha_final: "2024-03-18",
             integranteId:1, 
             prestadorId: 1

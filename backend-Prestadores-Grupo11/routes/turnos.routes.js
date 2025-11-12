@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {Turno} = require('../db/models');
-const {turnosController} = require('../controllers');
+const {turnosController, historialController} = require('../controllers');
 const {genericMiddleware} = require('../middlewares');
 
 //Se trae todos los turnos filtrados por especialidad (solo para centro)
@@ -39,5 +39,9 @@ router.patch('/:prestadorId/turno/:id',
   genericMiddleware.validateRolById("medico"),
   turnosController.updateNotesById
 );
+
+router.get('/historial/:tipoPaciente/:id',
+  historialController.getHistoriaClinica
+)
 
 module.exports = router;
