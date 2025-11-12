@@ -1,4 +1,5 @@
-const {Situacion,Afiliado,Integrante, Prestador} = require('../db/models')
+const {Situacion,Afiliado,Integrante, Prestador, Turno} = require('../db/models');
+const {Op} = require('sequelize');
 
 const getAllSituacionesByApellidoONro = async (req,res) => {
     const nroOApellido = req.params.nroOApellido;
@@ -30,7 +31,14 @@ const getHistoriaClinica = async (req, res) => {
         {
           model: Situacion,
           as: 'situaciones',
-          include: [{ model: Prestador, attributes: ['username'], as: 'prestador' }]
+          where: {estado: 'baja'},
+          separate: true,
+          include: [{ model: Prestador, attributes: ['username'], as: 'prestador' }],
+        },
+        {
+          model: Turno,
+          as: 'turnos',
+          required: false
         }
       ]
     });
@@ -39,7 +47,7 @@ const getHistoriaClinica = async (req, res) => {
       return res.status(404).json({ error: 'Paciente no encontrado' });
     }
 
-    res.status(200).json(paciente.situaciones);
+    res.status(200).json(paciente);
   } catch (error) {
     console.error('Error al obtener historia clínica:', error);
     res.status(500).json({ error: 'Error al obtener historia clínica' });

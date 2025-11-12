@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const {situacionesController, historialController} = require('../controllers');
+const {situacionesController, historialController, turnosController} = require('../controllers');
 const {genericMiddleware, afiliadoMiddleware} = require('../middlewares');
 const {Afiliado, Integrante} = require('../db/models');
 
 //Se trae todas las situaciones
 router.get('/', 
-    situacionesController.getAllSituaciones
+    situacionesController.getAllSituaciones,
+    turnosController.getAllTurnos
 );
 
 //Se trae los afiliados y los integrantes con sus situaciones
