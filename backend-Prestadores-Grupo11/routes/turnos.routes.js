@@ -4,19 +4,6 @@ const {Turno} = require('../db/models');
 const {turnosController} = require('../controllers');
 const {genericMiddleware} = require('../middlewares');
 
-//Se trae todos los turnos en los que el prestadorId este asociado junto con los afiliados y los integrantes
-router.get('/:prestadorId',
-  genericMiddleware.existPrestadorByPrestadorId,
-  turnosController.getAllTurnosByPrestadorId
-);
-
-//Se trae todos los turnos con los prestadores afiliados e integrantes asociados a estos (solo para centro)
-router.get('/centro/:prestadorId',
-  genericMiddleware.existPrestadorByPrestadorId,
-  genericMiddleware.validateRolById("centro_medico"),
-  turnosController.getAllTurnos
-);
-
 //Se trae todos los turnos filtrados por especialidad (solo para centro)
 router.get('/centro/:prestadorId/especialidad/:especialidad',
   genericMiddleware.existPrestadorByPrestadorId,
@@ -30,6 +17,21 @@ router.get('/centro/:prestadorId/medico/:medico',
   genericMiddleware.validateRolById("centro_medico"),
   turnosController.getAllTurnosByMedico
 );
+
+
+//Se trae todos los turnos con los prestadores afiliados e integrantes asociados a estos (solo para centro)
+router.get('/centro/:prestadorId',
+  genericMiddleware.existPrestadorByPrestadorId,
+  genericMiddleware.validateRolById("centro_medico"),
+  turnosController.getAllTurnos
+);
+
+//Se trae todos los turnos en los que el prestadorId este asociado junto con los afiliados y los integrantes
+router.get('/:prestadorId',
+  genericMiddleware.existPrestadorByPrestadorId,
+  turnosController.getAllTurnosByPrestadorId
+);
+
 
 //Actualiza el campo notas
 router.patch('/:prestadorId/turno/:id',

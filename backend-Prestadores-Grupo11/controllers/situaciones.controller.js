@@ -1,4 +1,10 @@
-const { Situacion, Afiliado, Integrante, Prestador, Sequelize } = require("../db/models");
+const {
+  Situacion,
+  Afiliado,
+  Integrante,
+  Prestador,
+  Sequelize,
+} = require("../db/models");
 const { Op } = require("sequelize");
 
 /**
@@ -26,19 +32,25 @@ const getAllSituacionesByNroOApellidoAfliliado = async (req, res) => {
     // Situaciones del afiliado para ese prestador
     const situacionesAfiliado = await Situacion.findAll({
       where: { afiliadoId: afiliadoData.id, prestadorId },
-      include: [{ model: Prestador, as: "prestador", attributes: ["username"] }],
+      include: [
+        { model: Prestador, as: "prestador", attributes: ["username"] },
+      ],
     });
 
     // Integrantes del afiliado con sus situaciones para ese prestador
     const integrantes = await Integrante.findAll({
       where: { afiliadoId: afiliadoData.id },
-      include: [{
-        model: Situacion,
-        as: "situaciones",
-        where: { prestadorId },
-        required: false,
-        include: [{ model: Prestador, as: "prestador", attributes: ["username"] }],
-      }],
+      include: [
+        {
+          model: Situacion,
+          as: "situaciones",
+          where: { prestadorId },
+          required: false,
+          include: [
+            { model: Prestador, as: "prestador", attributes: ["username"] },
+          ],
+        },
+      ],
     });
 
     return res.status(200).json({
@@ -49,7 +61,7 @@ const getAllSituacionesByNroOApellidoAfliliado = async (req, res) => {
       edad: afiliadoData.edad,
       numero_afiliado: afiliadoData.numero_afiliado,
       situaciones: situacionesAfiliado,
-      integrantes: integrantes.map(i => ({
+      integrantes: integrantes.map((i) => ({
         id: i.id,
         nombre: i.nombre,
         edad: i.edad,
@@ -76,7 +88,9 @@ const getAllSituaciones = async (req, res) => {
         {
           model: Situacion,
           as: "situaciones",
-          include: [{ model: Prestador, attributes: ["username"], as: "prestador" }],
+          include: [
+            { model: Prestador, attributes: ["username"], as: "prestador" },
+          ],
         },
         {
           model: Integrante,
@@ -85,7 +99,9 @@ const getAllSituaciones = async (req, res) => {
             {
               model: Situacion,
               as: "situaciones",
-              include: [{ model: Prestador, attributes: ["username"], as: "prestador" }],
+              include: [
+                { model: Prestador, attributes: ["username"], as: "prestador" },
+              ],
             },
           ],
         },
@@ -114,7 +130,9 @@ const getSituacionesByAfiliadoId = async (req, res) => {
         {
           model: Situacion,
           as: "situaciones",
-          include: [{ model: Prestador, attributes: ["username"], as: "prestador" }],
+          include: [
+            { model: Prestador, attributes: ["username"], as: "prestador" },
+          ],
         },
         {
           model: Integrante,
@@ -123,7 +141,9 @@ const getSituacionesByAfiliadoId = async (req, res) => {
             {
               model: Situacion,
               as: "situaciones",
-              include: [{ model: Prestador, attributes: ["username"], as: "prestador" }],
+              include: [
+                { model: Prestador, attributes: ["username"], as: "prestador" },
+              ],
             },
           ],
         },
@@ -136,7 +156,10 @@ const getSituacionesByAfiliadoId = async (req, res) => {
 
     res.status(200).json(afiliado);
   } catch (error) {
-    console.error(`Error en getSituacionesByAfiliadoId ${req.params.id}:`, error);
+    console.error(
+      `Error en getSituacionesByAfiliadoId ${req.params.id}:`,
+      error
+    );
     res.status(500).json({
       error: "Error al obtener situaciones del afiliado",
       detalle: error.message,
@@ -156,7 +179,9 @@ const getSituacionesByIntegranteId = async (req, res) => {
         {
           model: Situacion,
           as: "situaciones",
-          include: [{ model: Prestador, attributes: ["username"], as: "prestador" }],
+          include: [
+            { model: Prestador, attributes: ["username"], as: "prestador" },
+          ],
         },
       ],
     });
@@ -167,7 +192,10 @@ const getSituacionesByIntegranteId = async (req, res) => {
 
     res.status(200).json(integrante);
   } catch (error) {
-    console.error(`Error en getSituacionesByIntegranteId ${req.params.id}:`, error);
+    console.error(
+      `Error en getSituacionesByIntegranteId ${req.params.id}:`,
+      error
+    );
     res.status(500).json({
       error: "Error al obtener situaciones del integrante",
       detalle: error.message,
@@ -207,19 +235,80 @@ const darDeBajaSituacionById = async (req, res) => {
  */
 const darDeAltaSituacion = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params; // prestadorId
     const data = req.body;
 
-    const situacion = await Situacion.create({
-      ...data,
+    if (!data.afiliadoId) {
+      return res
+        .status(400)
+        .json({ error: "Falta el afiliadoId en la solicitud" });
+    }
+
+    if (!data.fecha_inicio && !data.fecha) {
+      return res.status(400).json({ error: "Falta la fecha de inicio" });
+    }
+
+    const nuevaSituacion = await Situacion.create({
+      afiliadoId: data.afiliadoId,
+      integranteId: data.integranteId || null,
       prestadorId: id,
+      especialidad: data.especialidad,
+      situacion: data.situacion,
+      observaciones: data.observaciones || "",
+      fecha_inicio: data.fecha_inicio || data.fecha,
+      fecha_final: data.fecha_final || data.fecha_inicio || data.fecha, 
+      estado: data.estado || "alta",
     });
 
-    res.status(201).json({ message: "Situación creada correctamente", situacion });
+    return res.status(201).json({
+      message: "Situación creada correctamente",
+      situacion: nuevaSituacion,
+    });
   } catch (error) {
     console.error("Error en darDeAltaSituacion:", error);
     res.status(500).json({
       error: "Error al dar de alta la situación",
+      detalle: error.message,
+    });
+  }
+};
+
+/**
+ * Actualiza una situación (estado u otros campos)
+ */
+const actualizarSituacion = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = req.body;
+
+    const situacion = await Situacion.findByPk(id);
+    if (!situacion) {
+      return res.status(404).json({ error: "Situación no encontrada" });
+    }
+
+    // Validar estado permitido
+    const estadosValidos = [
+      "en proceso",
+      "alta",
+      "baja",
+      "pendiente",
+      "finalizado",
+    ];
+    if (data.estado && !estadosValidos.includes(data.estado.toLowerCase())) {
+      return res.status(400).json({ error: "Estado inválido" });
+    }
+
+    // Actualizar los campos recibidos (solo los que vienen en data)
+    await situacion.update(data);
+
+    res.status(200).json({
+      message: "Situación actualizada correctamente",
+      situacion,
+    });
+  } catch (error) {
+    console.error("Error en actualizarSituacion:", error);
+    res.status(500).json({
+      error: "Error al actualizar situación",
       detalle: error.message,
     });
   }
@@ -232,5 +321,6 @@ module.exports = {
   getSituacionesByIntegranteId,
   darDeBajaSituacionById,
   darDeAltaSituacion,
-  normalizeString
+  actualizarSituacion,
+  normalizeString,
 };

@@ -49,4 +49,12 @@ router.post('/:prestadorId',
     situacionesController.darDeAltaSituacion
 );
 
+
+// Actualiza una situación (estado u otros campos)
+router.put('/:id',
+  genericMiddleware.existModelById(Situacion),
+  situacionesController.actualizarSituacion
+);
+
+
 module.exports = router;
