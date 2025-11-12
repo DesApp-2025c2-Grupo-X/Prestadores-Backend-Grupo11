@@ -1,4 +1,5 @@
 const { Afiliado, Prestador, Integrante, Situacion, Turno, Autorizacion, Reintegro, Receta } = require('./db/models');
+const { notify } = require('./routes/auth.route');
 
 async function crearAfiliados() {
     await Afiliado.bulkCreate([
@@ -25,7 +26,7 @@ async function crearIntegrantes() {
 async function crearPrestadores() {
     await Prestador.bulkCreate([
         { username: "dr alejandro ruiz", password: "12345", role: "medico", especialidad: "cardiologia" },
-        { username: "dr cecilia lopez", password: "6789", role: "medico", especialidad: "dermatologia" },
+        { username: "dr cecilia lopez", password: "6789", role: "medico", especialidad: "clinica" },
         { username: "clinica santa maria", password: "5555", role: "centro_medico" }
     ])
 }
@@ -34,184 +35,284 @@ const crearTurnos = async () => {
     await Turno.bulkCreate([
 
         {
-            date: new Date(),
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 1); 
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
             start: (() => {
             const d = new Date();
+            d.setDate(d.getDate() - 1); 
             d.setHours(9, 0, 0, 0);
             return d;
             })(),
-            duration: 30,
-            afiliadoId:1,
-            prestadorId: 1
-        },
-        {
-            date: (() => {
-            const d = new Date();
-            d.setHours(24, 0, 0, 0);
-            return d;})(),
-            start: (() => {
-            const d = new Date();
-            d.setHours(11, 0, 0, 0);
-            return d;})(),
-            duration: 30,
-            afiliadoId:2,
-            prestadorId: 2
-        },
-        {
-            date: (() => {
-            const d = new Date();
-            d.setDate(d.getDate() - 2); // dos dias antes
-            d.setHours(24, 0, 0, 0);
-            return d;
-            })(),
-            start: (() => {
-            const d = new Date();
-            d.setDate(d.getDate() - 20)
-            d.setHours(9, 30, 0, 0);
-            return d;
-            })(),
             duration: 45,
-            descripción: "El paciente viene a hacerse un control luego de su cirujia de corazon",
+            notes: 
+            `Paciente concurre a consulta de control postoperatorio luego de cirugía cardíaca. 
+            Refiere evolución clínica favorable, sin síntomas relevantes al momento. 
+            Se realiza evaluación física completa, sin hallazgos patológicos
+            Se indica chequeo general con estudios complementarios para seguimiento postquirúrgico y control del estado general.
+            Se solicita laboratorio completo, ecocardiograma de control y electrocardiograma."
+            Se coordina próxima consulta según resultados`,
             integranteId:1,
             prestadorId: 1
         },
         {
             date: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 10); // diez dias antes
+            d.setDate(d.getDate() - 1); 
             d.setHours(24, 0, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 20)
+            d.setDate(d.getDate() - 1); 
+            d.setHours(9, 45, 0, 0);
+            return d;
+            })(),
+            duration: 45,
+            notes: 
+            `Paciente acude a control por hipertensión arterial. Se constata buena adherencia al tratamiento farmacológico. 
+            TA en consulta: 128/82 mmHg. Sin síntomas asociados.
+            Se indica continuar con medicación actual, mantener dieta hiposódica y realizar control en 30 días. 
+            Se solicita laboratorio de rutina y perfil lipídico`,
+            integranteId:2,
+            prestadorId: 1
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 1); 
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 1);
+            d.setHours(10, 30, 0, 0);
+            return d;
+            })(),
+            duration: 45,
+            notes: 
+            `Consulta de seguimiento post infección por SARS-CoV-2. Paciente sin síntomas respiratorios ni secuelas aparentes.
+             Saturación 98%, auscultación pulmonar normal.
+             Se indica espirometría de control y radiografía de tórax. Se sugiere actividad física progresiva y reevaluación en 15 días.`,
+            integranteId:3,
+            prestadorId: 1
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 3); 
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 3); 
             d.setHours(9, 30, 0, 0);
             return d;
             })(),
             duration: 60,
-            descripción: "El paciente viene a hacerse una control medico",
+            notes:`Paciente refiere dolor abdominal difuso de 48 hs de evolución, sin fiebre ni vómitos. 
+            Abdomen blando, no doloroso a la palpación profunda.
+            Se solicita ecografía abdominal y laboratorio con hepatograma, amilasas y PCR. 
+            Se indica dieta liviana y analgesia. Control según resultados.`,
             integranteId:1,
-            prestadorId: 2
+            prestadorId: 1
         },
         {
             date: (() => {
             const d = new Date();
-            d.setDate(d.getDate() + 3);
+            d.setDate(d.getDate() + 2);
             d.setHours(24, 0, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
+            d.setDate(d.getDate() + 2);
             d.setHours(14, 0, 0, 0);
             return d;
             })(),
            duration: 20,
-           integranteId:3,
+           integranteId:4,
            prestadorId: 1
         },
         {
             date: (() => {
             const d = new Date();
-            d.setDate(d.getDate() + 5);
+            d.setDate(d.getDate() + 2);
             d.setHours(24, 0, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
+            d.setDate(d.getDate() + 2);
+            d.setHours(14, 20, 0, 0);
+            return d;
+            })(),
+           duration: 20,
+           integranteId:10,
+           prestadorId: 1
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + 2);
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + 2);
+            d.setHours(15, 0, 0, 0);
+            return d;
+            })(),
+           duration: 20,
+           integranteId:1,
+           prestadorId: 1
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + 1);
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + 1);
+            d.setHours(8, 0, 0, 0);
+            return d;
+            })(),
+           duration: 20,
+           integranteId:10,
+           prestadorId: 1
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + 1);
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() + 1);
             d.setHours(16, 30, 0, 0);
             return d;
             })(),
             duration: 30,
-            descripción: "Mandé a hacer analisís de sangre y orina",
-            integranteId:6,
+            integranteId:8,
             prestadorId: 2
         },
         {
             date: (() => {
             const d = new Date();
-            d.setDate(d.getDate() + 3);
+            d.setDate(d.getDate() + 1);
             d.setHours(24, 0, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() + 3);
+            d.setDate(d.getDate() + 1);
             d.setHours(16, 30, 0, 0);
             return d;
             })(),
             duration: 45,
-            descripción: "No trajo el estudio médico pedido en la anterior consulta",
             integranteId:7,
             prestadorId: 2
         },
         {
             date: (() => {
             const d = new Date();
-            d.setDate(d.getDate() + 4);
+            d.setDate(d.getDate() - 3);
             d.setHours(24, 0, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
+            d.setDate(d.getDate() - 3);
             d.setHours(9, 0, 0, 0);
             return d;
             })(),
             duration: 30,
-            integranteId: 3,
-            prestadorId: 1
-        },
-        {
-            date: (() => {
-            const d = new Date();
-            d.setDate(d.getDate() + 5);
-            d.setHours(24, 0, 0, 0);
-            return d;
-            })(),
-            start: (() => {
-            const d = new Date();
-            d.setHours(10, 30, 0, 0);
-            return d;
-            })(),
-            duration: 60,
-            integranteId: 4,
-            prestadorId: 2
-        },
-        {
-            date: (() => {
-            const d = new Date();
-            d.setDate(d.getDate() + 6);
-            d.setHours(24, 0, 0, 0);
-            return d;
-            })(),
-            start: (() => {
-            const d = new Date();
-            d.setHours(13, 0, 0, 0);
-            return d;
-            })(),
-            duration: 15,
-            integranteId: 5,
-            prestadorId: 3
-        },
-        {
-            date: (() => {
-            const d = new Date();
-            d.setDate(d.getDate() + 7);
-            d.setHours(24, 0, 0, 0);
-            return d;
-            })(),
-            start: (() => {
-            const d = new Date();
-            d.setHours(15, 0, 0, 0);
-            return d;
-            })(),
-            duration: 60,
+            notes: `Paciente concurre para evaluación prequirúrgica por intervención programada. 
+            Se revisa historia clínica, comorbilidades y medicación actual.
+            Se solicita laboratorio preoperatorio, ECG y evaluación cardiológica. 
+            Se entrega indicaciones prequirúrgicas y se coordina fecha de cirugía.`,
             integranteId: 8,
             prestadorId: 1
         },
         {
             date: (() => {
             const d = new Date();
-            d.setDate(d.getDate() + 8);
+            d.setDate(d.getDate() - 4);
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 4);
+            d.setHours(10, 30, 0, 0);
+            return d;
+            })(),
+            duration: 60,
+            notes: `Paciente consulta por cefaleas tensionales recurrentes. No signos de alarma. Neurológico normal.
+             Se indica control con neurología, iniciar registro de episodios y evitar factores desencadenantes. 
+             Se prescribe analgesia de rescate y técnicas de relajación.`,
+            integranteId: 7,
+            prestadorId: 1
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 3);
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 3);
+            d.setHours(13, 0, 0, 0);
+            return d;
+            })(),
+            duration: 15,
+            notes: `Paciente concurre a control post traumatismo de muñeca izquierda. Radiografía previa sin signos de fractura. 
+            Refiere dolor leve y movilidad conservada.
+            Se indica continuar con inmovilización parcial y aplicación de frío local. Se prescribe antiinflamatorio por 5 días.
+            Control clínico en 7 días para evaluar evolución funcional.`,
+            integranteId: 3,
+            prestadorId: 3
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 4);
+            d.setHours(24, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 4);
+            d.setHours(15, 0, 0, 0);
+            return d;
+            })(),
+            duration: 60,
+            notes: `Paciente concurre a control por diabetes tipo 2. 
+            Refiere buena adherencia a dieta y medicación. Glucemia capilar en consulta: 112 mg/dL.
+            Se revisa tratamiento actual y se indica continuar con metformina. 
+            Se solicita laboratorio con HbA1c, perfil lipídico y función renal.
+            Se coordina próxima consulta en 30 días para seguimiento metabólico.`,
+            integranteId: 2,
+            prestadorId: 3
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 1);
+            d.setDate(d.getDate() - 1);
             d.setHours(24, 0, 0, 0);
             return d;
             })(),
@@ -221,9 +322,12 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 20,
-            descripción: "Hacer estudio de Holter",
-            integranteId: 9,
-            prestadorId: 1
+            notes: `Paciente consulta por disnea leve al realizar actividades cotidianas. 
+            No refiere dolor torácico ni palpitaciones. Saturación 96%, auscultación pulmonar sin rales.
+            Se solicita radiografía de tórax, ECG y laboratorio con hemograma y función tiroidea.
+            Se indica evitar esfuerzos intensos hasta completar estudios. Reevaluación según resultados.`,
+            integranteId: 7,
+            prestadorId: 3
         }
    
     ])
@@ -254,8 +358,8 @@ const crearSituaciones = async () => {
             observaciones: "Accidente cerebrovascular isquémico. Se inició tratamiento anticoagulante y rehabilitación motora. Paciente estable.",
             estado: "en proceso",
             fecha_final: "2024-07-01",
-            integranteId: 2,
-            prestadorId: 1
+            integranteId: 3,
+            prestadorId: 3
         },
 
         {
@@ -264,17 +368,17 @@ const crearSituaciones = async () => {
             observaciones: "Fractura de fémur derecho. Se realizó reducción quirúrgica con colocación de clavo intramedular. Evolución favorable.",
             estado: "alta",
             fecha_final: "2024-09-05",
-            integranteId: 3,
+            integranteId: 4,
             prestadorId: 3
         },
         {
             fecha_inicio: "2024-11-10",
-            especialidad: "Neumonólogo",
+            especialidad: "Clinico",
             observaciones: "Infección respiratoria aguda. Se indicó antibiótico y seguimiento ambulatorio. Paciente presenta buena recuperación.",
             estado: "en proceso",
             fecha_final: "2024-11-20",
             afiliadoId: 1,
-            prestadorId: 3
+            prestadorId: 2
         },
         {
             fecha_inicio: "2025-01-15",
@@ -282,16 +386,16 @@ const crearSituaciones = async () => {
             observaciones: "Úlcera gástrica tratada con medicación y seguimiento endoscópico. Evolución favorable, sin complicaciones.",
             estado: "en proceso",
             fecha_final: "2025-02-01",
-            integranteId: 8,
+            integranteId: 5,
             prestadorId: 3
         },
         {
             fecha_inicio: "2025-01-15",
-            especialidad: "Dermatología",
+            especialidad: "Clinico",
             observaciones: "Infección aguda en brazo derecho, por quemadura de 4to grado. Se pide injerto de piel",
             estado: "en proceso",
             fecha_final: "2025-02-01",
-            integranteId:5,
+            integranteId:6,
             prestadorId: 2
         },
         {
@@ -300,10 +404,55 @@ const crearSituaciones = async () => {
             observaciones: "Quemadura por exploción en laboratorio, se necesitan curaciones todos los días",
             estado: "en proceso",
             fecha_final: "2025-02-01",
-            integranteId:5,
+            integranteId:7,
+            prestadorId: 3
+        },
+        
+        {
+            fecha_inicio: "2025-03-10",
+            especialidad: "Cardiología",
+            observaciones: "Paciente con diagnóstico reciente de epilepsia. Se inicia tratamiento con anticonvulsivantes y seguimiento clínico semanal.",
+            estado: "en proceso",
+            fecha_final: "2025-04-15",
+            integranteId: 8,
+            prestadorId: 1
+        },
+        {
+            fecha_inicio: "2025-04-01",
+            especialidad: "Clinico",
+            observaciones: "Control y ajuste de tratamiento por hipertensión arterial. Se solicita monitoreo domiciliario de TA y laboratorio de control.",
+            estado: "en proceso",
+            fecha_final: "2025-04-30",
+            integranteId: 9,
             prestadorId: 2
         },
-
+        {
+            fecha_inicio: "2025-02-20",
+            especialidad: "Psiquiatría",
+            observaciones: "Seguimiento por trastorno de ansiedad generalizada. Se ajusta medicación y se indica psicoterapia semanal.",
+            estado: "en proceso",
+            fecha_final: "2025-03-25",
+            integranteId: 10,
+            prestadorId: 3
+        },
+        {
+            fecha_inicio: "2025-05-05",
+            especialidad: "Traumatología",
+            observaciones: "Rehabilitación post fractura de fémur derecho. Se indica fisioterapia tres veces por semana y control funcional.",
+            estado: "en proceso",
+            fecha_final: "2025-06-10",
+            integranteId: 1,
+            prestadorId: 2
+        },
+        {
+            fecha_inicio: "2025-01-22",
+            especialidad: "Dermatología",
+            observaciones: "Tratamiento de psoriasis en placas. Se inicia terapia tópica con seguimiento quincenal para evaluar respuesta.",
+            estado: "en proceso",
+            fecha_final: "2025-02-28",
+            integranteId: 2,
+            prestadorId: 2
+        }
 
     ])
 }

@@ -30,8 +30,8 @@ module.exports = (sequelize, DataTypes) => {
     date: {type: DataTypes.DATE, allowNull: false},
     start: {type: DataTypes.DATE, allowNull: false},
     duration: {type: DataTypes.INTEGER, allowNull: false},
-    notes: {type: DataTypes.STRING},
-    descripción: {type: DataTypes.STRING},
+    notes: {type: DataTypes.TEXT},
+    descripción: {type: DataTypes.TEXT},
     afiliadoId: {type: DataTypes.INTEGER},
     prestadorId: {type: DataTypes.INTEGER, allowNull: false},
     integranteId: {type: DataTypes.INTEGER}
