@@ -38,12 +38,12 @@ const crearTurnos = async () => {
             date: (() => {
             const d = new Date();
             d.setDate(d.getDate() - 1); 
-            d.setHours(24, 0, 0, 0);
+            d.setHours(16, 15, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 1); 
+            d.setDate(d.getDate() - 4); 
             d.setHours(9, 0, 0, 0);
             return d;
             })(),
@@ -62,13 +62,13 @@ const crearTurnos = async () => {
             date: (() => {
             const d = new Date();
             d.setDate(d.getDate() - 1); 
-            d.setHours(24, 0, 0, 0);
+            d.setHours(9, 45, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 1); 
-            d.setHours(9, 45, 0, 0);
+            d.setDate(d.getDate() - 5); 
+            d.setHours(18, 57, 0, 0);
             return d;
             })(),
             duration: 45,
@@ -83,13 +83,13 @@ const crearTurnos = async () => {
         {
             date: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 1); 
-            d.setHours(24, 0, 0, 0);
+            d.setDate(d.getDate() - 3); 
+            d.setHours(10, 30, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 1);
+            d.setDate(d.getDate()- 5);
             d.setHours(10, 30, 0, 0);
             return d;
             })(),
@@ -105,13 +105,13 @@ const crearTurnos = async () => {
             date: (() => {
             const d = new Date();
             d.setDate(d.getDate() - 3); 
-            d.setHours(24, 0, 0, 0);
+            d.setHours(9, 30, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 3); 
-            d.setHours(9, 30, 0, 0);
+            d.setDate(d.getDate() - 5); 
+            d.setHours(10, 30, 0, 0);
             return d;
             })(),
             duration: 60,
@@ -126,13 +126,13 @@ const crearTurnos = async () => {
             date: (() => {
             const d = new Date();
             d.setDate(d.getDate() + 2);
-            d.setHours(24, 0, 0, 0);
+            d.setHours(14, 0, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() + 2);
-            d.setHours(14, 0, 0, 0);
+            d.setDate(d.getDate());
+            d.setHours(10, 0, 0, 0);
             return d;
             })(),
            duration: 20,
@@ -143,13 +143,13 @@ const crearTurnos = async () => {
             date: (() => {
             const d = new Date();
             d.setDate(d.getDate() + 2);
-            d.setHours(24, 0, 0, 0);
+            d.setHours(15, 20, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() + 2);
-            d.setHours(14, 20, 0, 0);
+            d.setDate(d.getDate());
+            d.setHours(9, 20, 0, 0);
             return d;
             })(),
            duration: 20,
@@ -160,13 +160,13 @@ const crearTurnos = async () => {
             date: (() => {
             const d = new Date();
             d.setDate(d.getDate() + 2);
-            d.setHours(24, 0, 0, 0);
+            d.setHours(15, 0, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() + 2);
-            d.setHours(15, 0, 0, 0);
+            d.setDate(d.getDate());
+            d.setHours(11, 51, 0, 0);
             return d;
             })(),
            duration: 20,
@@ -177,13 +177,13 @@ const crearTurnos = async () => {
             date: (() => {
             const d = new Date();
             d.setDate(d.getDate() + 1);
-            d.setHours(24, 0, 0, 0);
+            d.setHours(8, 0, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() + 1);
-            d.setHours(8, 0, 0, 0);
+            d.setDate(d.getDate() - 2);
+            d.setHours(10, 31, 0, 0);
             return d;
             })(),
            duration: 20,
@@ -194,13 +194,13 @@ const crearTurnos = async () => {
             date: (() => {
             const d = new Date();
             d.setDate(d.getDate() + 1);
-            d.setHours(24, 0, 0, 0);
+            d.setHours(16, 55, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() + 1);
-            d.setHours(16, 30, 0, 0);
+            d.setDate(d.getDate() - 3);
+            d.setHours(16, 22, 0, 0);
             return d;
             })(),
             duration: 30,
@@ -211,13 +211,13 @@ const crearTurnos = async () => {
             date: (() => {
             const d = new Date();
             d.setDate(d.getDate() + 1);
-            d.setHours(24, 0, 0, 0);
+            d.setHours(7, 45, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() + 1);
-            d.setHours(16, 30, 0, 0);
+            d.setDate(d.getDate() - 1);
+            d.setHours(7, 30, 0, 0);
             return d;
             })(),
             duration: 45,
@@ -227,14 +227,14 @@ const crearTurnos = async () => {
         {
             date: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 3);
-            d.setHours(24, 0, 0, 0);
+            d.setDate(d.getDate() - 1);
+            d.setHours(17, 45, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 3);
-            d.setHours(9, 0, 0, 0);
+            d.setDate(d.getDate() - 4);
+            d.setHours(9, 29, 0, 0);
             return d;
             })(),
             duration: 30,
@@ -248,14 +248,14 @@ const crearTurnos = async () => {
         {
             date: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 4);
-            d.setHours(24, 0, 0, 0);
+            d.setDate(d.getDate() - 2);
+            d.setHours(10, 30, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 4);
-            d.setHours(10, 30, 0, 0);
+            d.setDate(d.getDate() - 8);
+            d.setHours(10, 36, 0, 0);
             return d;
             })(),
             duration: 60,
@@ -268,14 +268,14 @@ const crearTurnos = async () => {
         {
             date: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 3);
-            d.setHours(24, 0, 0, 0);
+            d.setDate(d.getDate() - 1);
+            d.setHours(15, 35, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 3);
-            d.setHours(13, 0, 0, 0);
+            d.setDate(d.getDate() - 6);
+            d.setHours(13, 58, 0, 0);
             return d;
             })(),
             duration: 15,
@@ -289,14 +289,14 @@ const crearTurnos = async () => {
         {
             date: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 4);
-            d.setHours(24, 0, 0, 0);
+            d.setDate(d.getDate() - 2);
+            d.setHours(19, 20, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 4);
-            d.setHours(15, 0, 0, 0);
+            d.setDate(d.getDate() - 6);
+            d.setHours(15, 55, 0, 0);
             return d;
             })(),
             duration: 60,
@@ -312,13 +312,13 @@ const crearTurnos = async () => {
             date: (() => {
             const d = new Date();
             d.setDate(d.getDate() - 1);
-            d.setDate(d.getDate() - 1);
-            d.setHours(24, 0, 0, 0);
+            d.setHours(14, 30, 0, 0);
             return d;
             })(),
             start: (() => {
             const d = new Date();
-            d.setHours(16, 30, 0, 0);
+            d.setDate(d.getDate() - 4);
+            d.setHours(16, 37, 0, 0);
             return d;
             })(),
             duration: 20,
@@ -338,7 +338,7 @@ const crearSituaciones = async () => {
             fecha_inicio: "2024-03-05", 
             especialidad: "Cardiologia",
             observaciones: "Infarto agudo de miocardio. Se realizó angioplastia con colocación de stent en arteria coronaria izquierda. Evolución favorable con control posterior.",
-            estado: "alta",
+            estado: "en proceso",
             fecha_final: "2024-03-18",
             integranteId:1, 
             prestadorId: 1
@@ -1019,6 +1019,4 @@ const crearReintegros = async () => {
     ]);
 };
 
-
 module.exports = { crearAfiliados, crearPrestadores, crearAutorizaciones, crearReintegros, crearRecetas, crearIntegrantes, crearSituaciones, crearTurnos };
-
