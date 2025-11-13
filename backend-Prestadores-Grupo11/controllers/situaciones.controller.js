@@ -238,16 +238,25 @@ const darDeAltaSituacion = async (req, res) => {
     const { id } = req.params; // prestadorId
     const data = req.body;
 
-    if (!data.afiliadoId) {
-      return res
-        .status(400)
-        .json({ error: "Falta el afiliadoId en la solicitud" });
+    // 🔍 Si no viene afiliadoId, intentar obtenerlo desde el integrante
+    if (!data.afiliadoId && data.integranteId) {
+      const integrante = await Integrante.findByPk(data.integranteId);
+      if (integrante) {
+        data.afiliadoId = integrante.afiliadoId;
+      }
     }
 
+    // 🔐 Validar afiliadoId (por si no se encontró)
+    if (!data.afiliadoId) {
+      return res.status(400).json({ error: "Falta el afiliadoId en la solicitud" });
+    }
+
+    // 📅 Validar fecha
     if (!data.fecha_inicio && !data.fecha) {
       return res.status(400).json({ error: "Falta la fecha de inicio" });
     }
 
+    // 🆕 Crear la situación
     const nuevaSituacion = await Situacion.create({
       afiliadoId: data.afiliadoId,
       integranteId: data.integranteId || null,
@@ -256,7 +265,7 @@ const darDeAltaSituacion = async (req, res) => {
       situacion: data.situacion,
       observaciones: data.observaciones || "",
       fecha_inicio: data.fecha_inicio || data.fecha,
-      fecha_final: data.fecha_final || data.fecha_inicio || data.fecha, 
+      fecha_final: data.fecha_final || data.fecha_inicio || data.fecha,
       estado: data.estado || "alta",
     });
 
