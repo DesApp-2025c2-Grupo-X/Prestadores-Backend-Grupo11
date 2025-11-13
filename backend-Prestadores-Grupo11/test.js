@@ -362,6 +362,25 @@ const crearTurnos = async () => {
             integranteId: 1,
             prestadorId: 2
         },
+        //Repetido, pero para centro medico
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate());
+            d.setHours(12, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 8);
+            d.setHours(10, 36, 0, 0);
+            return d;
+            })(),
+            duration: 15,
+            descripción: "Control anual con la medica clinica",
+            integranteId: 1,
+            prestadorId: 3
+        },
         {
             date: (() => {
             const d = new Date();
@@ -379,6 +398,25 @@ const crearTurnos = async () => {
             descripción: "Control postoperatorio del corazon",
             afiliadoId: 1,
             prestadorId: 1
+        },
+        //Repetido, pero para centro medico
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate());
+            d.setHours(23, 40, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 12);
+            d.setHours(10, 36, 0, 0);
+            return d;
+            })(),
+            duration: 30,
+            descripción: "Control postoperatorio del corazon",
+            afiliadoId: 1,
+            prestadorId: 3
         },
         {
             date: (() => {
@@ -398,6 +436,25 @@ const crearTurnos = async () => {
             afiliadoId: 2,
             prestadorId: 1
         },
+        //Repetido, pero para centro medico
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate());
+            d.setHours(15, 30, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 20);
+            d.setHours(10, 36, 0, 0);
+            return d;
+            })(),
+            duration: 20,
+            descripción: "Consulta por dolor de corazon",
+            afiliadoId: 2,
+            prestadorId: 3
+        }
    
     ])
 }
@@ -764,6 +821,7 @@ const crearReintegros = async () => {
             lugar: 'Hospital Central',
             factura_fecha: '2025-10-23',
             factura_cuit: '20-12345678-9',
+            fecha_finalizacion: '2025-10-24',
             factura_valor: 68000.00,
             factura_persona: 'Sofia Perez',
             forma_pago: 'transferencia',
@@ -784,6 +842,7 @@ const crearReintegros = async () => {
             factura_valor: 54000.00,
             factura_persona: 'Carlos Perez',
             forma_pago: 'efectivo',
+            fecha_finalizacion: '2025-9-16',
             cbu: null,
             observaciones: 'Resonancia magnética de rodilla derecha',
             estado: 'observado',
@@ -798,6 +857,7 @@ const crearReintegros = async () => {
             lugar: 'Hospital Central',
             factura_fecha: '2025-10-27',
             factura_cuit: '20-12345678-9',
+            fecha_finalizacion: '2025-10-31',
             factura_valor: 61000.00,
             factura_persona: 'Ana Perez',
             forma_pago: 'transferencia',
