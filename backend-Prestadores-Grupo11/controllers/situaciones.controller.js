@@ -235,7 +235,7 @@ const darDeBajaSituacionById = async (req, res) => {
  */
 const darDeAltaSituacion = async (req, res) => {
   try {
-    const { id } = req.params; // prestadorId
+    const { prestadorId } = req.params; // prestadorId
     const data = req.body;
 
     // 🔍 Si no viene afiliadoId, intentar obtenerlo desde el integrante
@@ -260,7 +260,7 @@ const darDeAltaSituacion = async (req, res) => {
     const nuevaSituacion = await Situacion.create({
       afiliadoId: data.afiliadoId,
       integranteId: data.integranteId || null,
-      prestadorId: id,
+      prestadorId,
       especialidad: data.especialidad,
       situacion: data.situacion,
       observaciones: data.observaciones || "",
