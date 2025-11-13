@@ -624,6 +624,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 1,
             observaciones: 'Fiebre persistente',
             estado:'observado',
+            fecha_finalizacion: '2025-1-26',
             motivo:'Falta resultado de análisis de sangre',
             usuarioUltimoCambio:2
         },
@@ -636,7 +637,8 @@ const crearAutorizaciones = async () => {
             lugar: 'Hospital Central',
             dias_internacion: 3,
             observaciones: 'Infarto agudo de miocardio con necesidad de colocación de stent coronario izquierdo',
-            estado: 'aprobado',    
+            estado: 'aprobado',
+            fecha_finalizacion: '2025-7-30',
             usuarioUltimoCambio: 3           
         },
         {
@@ -648,6 +650,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 0,
             observaciones: 'Controles anuales',
             estado: 'rechazado',
+            fecha_finalizacion: '2025-09-01',
             motivo: 'No paso un año desde el último control',
             usuarioUltimoCambio: 1
         },
@@ -660,6 +663,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 0,
             observaciones: 'Estudio de agudeza visual',
             estado:'observado',
+            fecha_finalizacion: '2025-04-03',
             motivo: 'Se aplicó corticoide y luego 2hs de reposo ya se puede dar el alta',
             usuarioUltimoCambio: 1,    
         },
@@ -672,6 +676,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 2,
             observaciones: 'Insuficencia cardiaca',
             estado:'aprobado',
+            fecha_finalizacion: '2025-06-26',
             usuarioUltimoCambio:1
         },
         {
@@ -683,6 +688,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 1,
             observaciones: 'Reacción a alimentos',
             estado: 'rechazado',
+            fecha_finalizacion: '2025-11-10',
             motivo: 'Se aplicó corticoide y luego 2hs de reposo ya se puede dar el alta',
             usuarioUltimoCambio: 1
         },
@@ -695,6 +701,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 1,
             observaciones: 'Asma leve',
             estado: 'rechazado',
+            fecha_finalizacion: '2025-02-10',
             motivo: 'Se aplicó inyección y luego de 2hs de control en guardia, ya se puede dar el alta',
             usuarioUltimoCambio: 2
         },
@@ -727,6 +734,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 1,
             observaciones: 'Nuevo melanocítico con bordes irregulares en espalda',
             estado: 'observado',
+            fecha_finalizacion: '2025-03-10',
             motivo: 'Falta biopsia',
             usuarioUltimoCambio: 2
         },
@@ -1036,6 +1044,7 @@ const crearReintegros = async () => {
                 presentacion: 'aerosol',
                 observaciones: 'Usar en caso de crisis asmática',
                 estado: 'observado',
+                fecha_finalizacion: '2024-09-21',
                 motivo: 'Falta de estudios complementarios',
                 usuarioUltimoCambio: 3,
                 prestadorAnalisisId: 3
@@ -1067,6 +1076,7 @@ const crearReintegros = async () => {
                 presentacion: 'blister',
                 observaciones: 'Prevención secundaria post infarto',
                 estado: 'observado',
+                fecha_finalizacion: '2025-02-15',
                 motivo: 'Falta de informe de laboratorio',
                 usuarioUltimoCambio: 2,
                 prestadorAnalisisId: 2
@@ -1078,6 +1088,7 @@ const crearReintegros = async () => {
                 presentacion: 'pastillas',
                 observaciones: 'Control de dislipemia',
                 estado: 'observado',
+                fecha_finalizacion: '2025-06-06',
                 motivo: 'Estudios complementarios no adjuntos',
                 usuarioUltimoCambio: 3,
                 prestadorAnalisisId: 3
