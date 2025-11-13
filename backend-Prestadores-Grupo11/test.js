@@ -48,7 +48,6 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 45,
-            descripción: "Consulta de control postoperatorio luego de cirugía cardíaca",
             notes: 
             `Paciente concurre a consulta de control postoperatorio luego de cirugía cardíaca. 
             Refiere evolución clínica favorable, sin síntomas relevantes al momento. 
@@ -73,7 +72,6 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 45,
-            descripción: "Control por hipertensión arterial.",
             notes: 
             `Paciente acude a control por hipertensión arterial. Se constata buena adherencia al tratamiento farmacológico. 
             TA en consulta: 128/82 mmHg. Sin síntomas asociados.
@@ -85,7 +83,7 @@ const crearTurnos = async () => {
         {
             date: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 3); 
+            d.setDate(d.getDate() - 2); 
             d.setHours(10, 30, 0, 0);
             return d;
             })(),
@@ -96,7 +94,6 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 45,
-            descripción: "Consulta de seguimiento post infección por SARS-CoV-2",
             notes: 
             `Consulta de seguimiento post infección por SARS-CoV-2. Paciente sin síntomas respiratorios ni secuelas aparentes.
              Saturación 98%, auscultación pulmonar normal.
@@ -107,7 +104,7 @@ const crearTurnos = async () => {
         {
             date: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 3); 
+            d.setDate(d.getDate() - 2); 
             d.setHours(9, 30, 0, 0);
             return d;
             })(),
@@ -118,7 +115,6 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 60,
-            descripción: "Consulta por dolor abdominal",
             notes:`Paciente refiere dolor abdominal difuso de 48 hs de evolución, sin fiebre ni vómitos. 
             Abdomen blando, no doloroso a la palpación profunda.
             Se solicita ecografía abdominal y laboratorio con hepatograma, amilasas y PCR. 
@@ -140,8 +136,7 @@ const crearTurnos = async () => {
             return d;
             })(),
            duration: 20,
-           descripción: "Control con el cardiologo",
-           integranteId:4,
+           integranteId:3,
            prestadorId: 1
         },
         {
@@ -158,8 +153,7 @@ const crearTurnos = async () => {
             return d;
             })(),
            duration: 20,
-           descripción: "Control postoperatorio con el cardiologo",
-           integranteId:10,
+           integranteId:1,
            prestadorId: 1
         },
         {
@@ -176,8 +170,7 @@ const crearTurnos = async () => {
             return d;
             })(),
            duration: 20,
-           descripción: "Consulta por dolor de corazon",
-           integranteId:1,
+           integranteId:2,
            prestadorId: 1
         },
         {
@@ -194,8 +187,7 @@ const crearTurnos = async () => {
             return d;
             })(),
            duration: 20,
-           integranteId:10,
-           descripción: "Control tras hipertension",
+           integranteId:2,
            prestadorId: 1
         },
         {
@@ -213,7 +205,6 @@ const crearTurnos = async () => {
             })(),
             duration: 30,
             integranteId:8,
-            descripción: "Consulta con la medica clinica",
             prestadorId: 2
         },
         {
@@ -230,9 +221,8 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 45,
-            integranteId:7,
-            descripción: "Consulta por dolor de cabeza",
-            prestadorId: 2
+            integranteId:8,
+            prestadorId: 1
         },
         {
             date: (() => {
@@ -248,7 +238,6 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 30,
-            descripción: "Evaluacion prequirúrgica",
             notes: `Paciente concurre para evaluación prequirúrgica por intervención programada. 
             Se revisa historia clínica, comorbilidades y medicación actual.
             Se solicita laboratorio preoperatorio, ECG y evaluación cardiológica. 
@@ -259,7 +248,7 @@ const crearTurnos = async () => {
         {
             date: (() => {
             const d = new Date();
-            d.setDate(d.getDate() - 2);
+            d.setDate(d.getDate() - 1);
             d.setHours(10, 30, 0, 0);
             return d;
             })(),
@@ -270,11 +259,10 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 60,
-            descripción: "Consulta por cefaleas tensionales recurrentes",
             notes: `Paciente consulta por cefaleas tensionales recurrentes. No signos de alarma. Neurológico normal.
              Se indica control con neurología, iniciar registro de episodios y evitar factores desencadenantes. 
              Se prescribe analgesia de rescate y técnicas de relajación.`,
-            integranteId: 7,
+            integranteId: 1,
             prestadorId: 1
         },
         {
@@ -291,7 +279,6 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 15,
-            descripción: "Control post traumatico de muñeca izquierda",
             notes: `Paciente concurre a control post traumatismo de muñeca izquierda. Radiografía previa sin signos de fractura. 
             Refiere dolor leve y movilidad conservada.
             Se indica continuar con inmovilización parcial y aplicación de frío local. Se prescribe antiinflamatorio por 5 días.
@@ -313,7 +300,6 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 60,
-            descripción: "Control por diabetes tipo 2",
             notes: `Paciente concurre a control por diabetes tipo 2. 
             Refiere buena adherencia a dieta y medicación. Glucemia capilar en consulta: 112 mg/dL.
             Se revisa tratamiento actual y se indica continuar con metformina. 
@@ -336,123 +322,11 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 20,
-            descripción: "Consulta por disnea leve en actividades cotidianas",
             notes: `Paciente consulta por disnea leve al realizar actividades cotidianas. 
             No refiere dolor torácico ni palpitaciones. Saturación 96%, auscultación pulmonar sin rales.
             Se solicita radiografía de tórax, ECG y laboratorio con hemograma y función tiroidea.
             Se indica evitar esfuerzos intensos hasta completar estudios. Reevaluación según resultados.`,
             integranteId: 7,
-            prestadorId: 3
-        },
-        {
-            date: (() => {
-            const d = new Date();
-            d.setDate(d.getDate());
-            d.setHours(12, 0, 0, 0);
-            return d;
-            })(),
-            start: (() => {
-            const d = new Date();
-            d.setDate(d.getDate() - 8);
-            d.setHours(10, 36, 0, 0);
-            return d;
-            })(),
-            duration: 15,
-            descripción: "Control anual con la medica clinica",
-            integranteId: 1,
-            prestadorId: 2
-        },
-        //Repetido, pero para centro medico
-        {
-            date: (() => {
-            const d = new Date();
-            d.setDate(d.getDate());
-            d.setHours(12, 0, 0, 0);
-            return d;
-            })(),
-            start: (() => {
-            const d = new Date();
-            d.setDate(d.getDate() - 8);
-            d.setHours(10, 36, 0, 0);
-            return d;
-            })(),
-            duration: 15,
-            descripción: "Control anual con la medica clinica",
-            integranteId: 1,
-            prestadorId: 3
-        },
-        {
-            date: (() => {
-            const d = new Date();
-            d.setDate(d.getDate());
-            d.setHours(23, 40, 0, 0);
-            return d;
-            })(),
-            start: (() => {
-            const d = new Date();
-            d.setDate(d.getDate() - 12);
-            d.setHours(10, 36, 0, 0);
-            return d;
-            })(),
-            duration: 30,
-            descripción: "Control postoperatorio del corazon",
-            afiliadoId: 1,
-            prestadorId: 1
-        },
-        //Repetido, pero para centro medico
-        {
-            date: (() => {
-            const d = new Date();
-            d.setDate(d.getDate());
-            d.setHours(23, 40, 0, 0);
-            return d;
-            })(),
-            start: (() => {
-            const d = new Date();
-            d.setDate(d.getDate() - 12);
-            d.setHours(10, 36, 0, 0);
-            return d;
-            })(),
-            duration: 30,
-            descripción: "Control postoperatorio del corazon",
-            afiliadoId: 1,
-            prestadorId: 3
-        },
-        {
-            date: (() => {
-            const d = new Date();
-            d.setDate(d.getDate());
-            d.setHours(15, 30, 0, 0);
-            return d;
-            })(),
-            start: (() => {
-            const d = new Date();
-            d.setDate(d.getDate() - 20);
-            d.setHours(10, 36, 0, 0);
-            return d;
-            })(),
-            duration: 20,
-            descripción: "Consulta por dolor de corazon",
-            afiliadoId: 2,
-            prestadorId: 1
-        },
-        //Repetido, pero para centro medico
-        {
-            date: (() => {
-            const d = new Date();
-            d.setDate(d.getDate());
-            d.setHours(15, 30, 0, 0);
-            return d;
-            })(),
-            start: (() => {
-            const d = new Date();
-            d.setDate(d.getDate() - 20);
-            d.setHours(10, 36, 0, 0);
-            return d;
-            })(),
-            duration: 20,
-            descripción: "Consulta por dolor de corazon",
-            afiliadoId: 2,
             prestadorId: 3
         }
    
@@ -461,94 +335,94 @@ const crearTurnos = async () => {
 const crearSituaciones = async () => {
     await Situacion.bulkCreate([
         { 
-            fecha_inicio: "2024-03-05", 
+            fecha_inicio: "2025-11-05", 
             especialidad: "Cardiologia",
             observaciones: "Infarto agudo de miocardio. Se realizó angioplastia con colocación de stent en arteria coronaria izquierda. Evolución favorable con control posterior.",
-            estado: "en proceso",
-            fecha_final: "2024-03-18",
+            estado: "baja",
+            fecha_final: "2025-11-10",
             integranteId:1, 
             prestadorId: 1
         },
         {
-            fecha_inicio: "2023-09-10", 
+            fecha_inicio: "2025-7-10", 
             especialidad: "Cardiologia",
             observaciones: "Pico de hipertensión arterial con mareos y cefalea intensa. Se ajustó medicación antihipertensiva y se indicó dieta baja en sodio.",
-            estado: "alta",
-            fecha_final: "2023-09-20",
-            integranteId: 2,
+            estado: "baja",
+            fecha_final: "2025-7-20",
+            integranteId: 1,
             prestadorId: 1
         },
         {
-            fecha_inicio: "2024-06-12",
+            fecha_inicio: "2025-11-12",
             especialidad: "Neurología",
             observaciones: "Accidente cerebrovascular isquémico. Se inició tratamiento anticoagulante y rehabilitación motora. Paciente estable.",
             estado: "en proceso",
-            fecha_final: "2024-07-01",
+            fecha_final: "2025-11-18",
             integranteId: 3,
             prestadorId: 3
         },
 
         {
-            fecha_inicio: "2024-08-20",
-            especialidad: "Ortopedia",
+            fecha_inicio: "2025-08-20",
+            especialidad: "Traumatología",
             observaciones: "Fractura de fémur derecho. Se realizó reducción quirúrgica con colocación de clavo intramedular. Evolución favorable.",
-            estado: "alta",
+            estado: "baja",
             fecha_final: "2024-09-05",
-            integranteId: 4,
+            integranteId: 2,
             prestadorId: 3
         },
         {
-            fecha_inicio: "2024-11-10",
-            especialidad: "Clinico",
+            fecha_inicio: "2025-11-10",
+            especialidad: "Medica Clinica",
             observaciones: "Infección respiratoria aguda. Se indicó antibiótico y seguimiento ambulatorio. Paciente presenta buena recuperación.",
             estado: "en proceso",
-            fecha_final: "2024-11-20",
+            fecha_final: "2024-11-25",
             afiliadoId: 1,
             prestadorId: 2
         },
         {
-            fecha_inicio: "2025-01-15",
+            fecha_inicio: "2025-10-15",
             especialidad: "Gastroenterología",
             observaciones: "Úlcera gástrica tratada con medicación y seguimiento endoscópico. Evolución favorable, sin complicaciones.",
             estado: "en proceso",
-            fecha_final: "2025-02-01",
-            integranteId: 5,
+            fecha_final: "2025-11-29",
+            integranteId: 2,
             prestadorId: 3
         },
         {
-            fecha_inicio: "2025-01-15",
-            especialidad: "Clinico",
+            fecha_inicio: "2025-10-15",
+            especialidad: "Medica Clinica",
             observaciones: "Infección aguda en brazo derecho, por quemadura de 4to grado. Se pide injerto de piel",
             estado: "en proceso",
-            fecha_final: "2025-02-01",
+            fecha_final: "2025-12-01",
             integranteId:6,
             prestadorId: 2
         },
         {
-            fecha_inicio: "2025-01-15",
-            especialidad: "Dermatología",
+            fecha_inicio: "2025-11-11",
+            especialidad: "Medica Clinica",
             observaciones: "Quemadura por exploción en laboratorio, se necesitan curaciones todos los días",
             estado: "en proceso",
-            fecha_final: "2025-02-01",
-            integranteId:7,
-            prestadorId: 3
+            fecha_final: "2025-12-11",
+            integranteId:1,
+            prestadorId: 2
         },
         
         {
-            fecha_inicio: "2025-03-10",
+            fecha_inicio: "2025-11-12",
             especialidad: "Cardiología",
             observaciones: "Paciente con diagnóstico reciente de epilepsia. Se inicia tratamiento con anticonvulsivantes y seguimiento clínico semanal.",
             estado: "en proceso",
-            fecha_final: "2025-04-15",
+            fecha_final: "2026-01-15",
             integranteId: 8,
             prestadorId: 1
         },
         {
-            fecha_inicio: "2025-04-01",
-            especialidad: "Clinico",
+            fecha_inicio: "2025-11-01",
+            especialidad: "Medica Clinico",
             observaciones: "Control y ajuste de tratamiento por hipertensión arterial. Se solicita monitoreo domiciliario de TA y laboratorio de control.",
             estado: "en proceso",
-            fecha_final: "2025-04-30",
+            fecha_final: "2025-11-30",
             integranteId: 9,
             prestadorId: 2
         },
@@ -557,7 +431,7 @@ const crearSituaciones = async () => {
             especialidad: "Psiquiatría",
             observaciones: "Seguimiento por trastorno de ansiedad generalizada. Se ajusta medicación y se indica psicoterapia semanal.",
             estado: "en proceso",
-            fecha_final: "2025-03-25",
+            fecha_final: "2026-03-25",
             integranteId: 10,
             prestadorId: 3
         },
@@ -565,17 +439,17 @@ const crearSituaciones = async () => {
             fecha_inicio: "2025-05-05",
             especialidad: "Traumatología",
             observaciones: "Rehabilitación post fractura de fémur derecho. Se indica fisioterapia tres veces por semana y control funcional.",
-            estado: "en proceso",
-            fecha_final: "2025-06-10",
+            estado: "baja",
+            fecha_final: "2025-09-25",
             integranteId: 1,
-            prestadorId: 2
+            prestadorId: 3
         },
         {
-            fecha_inicio: "2025-01-22",
-            especialidad: "Dermatología",
-            observaciones: "Tratamiento de psoriasis en placas. Se inicia terapia tópica con seguimiento quincenal para evaluar respuesta.",
+            fecha_inicio: "2025-11-03",
+            especialidad: "Medica Clinica",
+            observaciones: "Tratamiento de psoriasis en placas. Se inicia terapia tópica con seguimiento quincenal para evaluar respuesta. Si la evaluacion no es favorable, consultar con un dermatólogo.",
             estado: "en proceso",
-            fecha_final: "2025-02-28",
+            fecha_final: "2026-02-28",
             integranteId: 2,
             prestadorId: 2
         }
@@ -588,9 +462,9 @@ const crearAutorizaciones = async () => {
             fecha_prevista: new Date('2025-11-01'),
             integranteId: 1,
             medico: 'dr alejandro ruiz',
-            especialidad: 'cardiología',
+            especialidad: 'Cardiología',
             lugar: 'Hospital Central',
-            dias_internacion: 2,
+            dias_internacion: 1,
             observaciones: 'Chequeo prequirúrgico',
             estado:'en analisis',
             usuarioUltimoCambio: 3
@@ -599,7 +473,7 @@ const crearAutorizaciones = async () => {
             fecha_prevista: new Date('2025-11-03'),
             integranteId: 2,
             medico: 'dr cecilia lopez',
-            especialidad: 'dermatología',
+            especialidad: 'Medica Clinica',
             lugar: 'Consultorio Norte',
             dias_internacion: 0,
             observaciones: 'Control de lunares'
@@ -609,7 +483,7 @@ const crearAutorizaciones = async () => {
             fecha_prevista: new Date('2025-01-03'),
             integranteId: 2,
             medico: 'dr cecilia lopez',
-            especialidad: 'dermatología',
+            especialidad: 'Medica Clinica',
             lugar: 'Consultorio Norte',
             dias_internacion: 0,
             observaciones:'Biopsia de lesión cutánea sospechosa en antebrazo izquierdo'
@@ -619,12 +493,11 @@ const crearAutorizaciones = async () => {
             fecha_prevista: new Date('2025-11-05'),
             integranteId: 3,
             medico: 'clinica santa maria',
-            especialidad: 'Medico Clinico',
+            especialidad: 'Neurología',
             lugar: 'Clínica Santa María',
             dias_internacion: 1,
-            observaciones: 'Fiebre persistente',
+            observaciones: 'Fiebre persistente, acompañado de una cefalea intensa',
             estado:'observado',
-            fecha_finalizacion: '2025-1-26',
             motivo:'Falta resultado de análisis de sangre',
             usuarioUltimoCambio:2
         },
@@ -633,24 +506,22 @@ const crearAutorizaciones = async () => {
             fecha_prevista: new Date('2025-11-06'),
             integranteId: 4,
             medico: 'dr alejandro ruiz',
-            especialidad: 'cardiología',
+            especialidad: 'Cardiología',
             lugar: 'Hospital Central',
             dias_internacion: 3,
             observaciones: 'Infarto agudo de miocardio con necesidad de colocación de stent coronario izquierdo',
-            estado: 'aprobado',
-            fecha_finalizacion: '2025-7-30',
+            estado: 'aprobado',    
             usuarioUltimoCambio: 3           
         },
         {
             fecha_prevista: new Date('2025-11-07'),
             integranteId: 5,
             medico: 'dr cecilia lopez',
-            especialidad: 'dermatología',
+            especialidad: 'Medica Clinica',
             lugar: 'Consultorio Norte',
             dias_internacion: 0,
             observaciones: 'Controles anuales',
             estado: 'rechazado',
-            fecha_finalizacion: '2025-09-01',
             motivo: 'No paso un año desde el último control',
             usuarioUltimoCambio: 1
         },
@@ -658,13 +529,12 @@ const crearAutorizaciones = async () => {
             fecha_prevista: new Date('2025-11-08'),
             integranteId: 6,
             medico: 'clinica santa maria',
-            especialidad: 'oftalmología',
+            especialidad: 'Psiquiatría',
             lugar: 'Clínica Santa María',
             dias_internacion: 0,
-            observaciones: 'Estudio de agudeza visual',
+            observaciones: 'Evaluación pre asignación del profesional adecuado para el caso',
             estado:'observado',
-            fecha_finalizacion: '2025-04-03',
-            motivo: 'Se aplicó corticoide y luego 2hs de reposo ya se puede dar el alta',
+            motivo: 'No abonó el copago obligatorio',
             usuarioUltimoCambio: 1,    
         },
         {
@@ -676,19 +546,17 @@ const crearAutorizaciones = async () => {
             dias_internacion: 2,
             observaciones: 'Insuficencia cardiaca',
             estado:'aprobado',
-            fecha_finalizacion: '2025-06-26',
             usuarioUltimoCambio:1
         },
         {
             fecha_prevista: new Date('2025-11-10'),
             integranteId: 8,
             medico: 'dr cecilia lopez',
-            especialidad: 'dermatología',
+            especialidad: 'Medica Clinica',
             lugar: 'Consultorio Norte',
             dias_internacion: 1,
             observaciones: 'Reacción a alimentos',
             estado: 'rechazado',
-            fecha_finalizacion: '2025-11-10',
             motivo: 'Se aplicó corticoide y luego 2hs de reposo ya se puede dar el alta',
             usuarioUltimoCambio: 1
         },
@@ -696,20 +564,19 @@ const crearAutorizaciones = async () => {
             fecha_prevista: new Date('2025-11-11'),
             integranteId: 9,
             medico: 'clinica santa maria',
-            especialidad: 'neumonología',
+            especialidad: 'Psiquiatría',
             lugar: 'Clínica Santa María',
             dias_internacion: 1,
-            observaciones: 'Asma leve',
+            observaciones: 'Ataque de panico severo',
             estado: 'rechazado',
-            fecha_finalizacion: '2025-02-10',
-            motivo: 'Se aplicó inyección y luego de 2hs de control en guardia, ya se puede dar el alta',
-            usuarioUltimoCambio: 2
+            motivo: 'Se aplicó calmante y luego de 2hs de control en guardia, ya se puede dar el alta',
+            usuarioUltimoCambio: 3
         },
         {
             fecha_prevista: new Date('2025-11-12'),
             integranteId: 10,
             medico: 'dr alejandro ruiz',
-            especialidad: 'cardiología',
+            especialidad: 'Cardiología',
             lugar: 'Hospital Central',
             dias_internacion: 1,
             observaciones: 'Hipertensión arterial severa'
@@ -718,7 +585,7 @@ const crearAutorizaciones = async () => {
             fecha_prevista: new Date('2025-12-28'),
             integranteId: 10,
             medico: 'dr alejandro ruiz',
-            especialidad: 'cardiología',
+            especialidad: 'Cardiología',
             lugar: 'Hospital Central',
             dias_internacion: 1,
             observaciones: 'Arritmia ventricular con necesidad de Holter',
@@ -729,12 +596,11 @@ const crearAutorizaciones = async () => {
             fecha_prevista: new Date('2025-11-10'),
             integranteId: 9,
             medico: 'dr cecilia lopez',
-            especialidad: 'dermatología',
+            especialidad: 'Medica Clinica',
             lugar: 'Consultorio Norte',
             dias_internacion: 1,
             observaciones: 'Nuevo melanocítico con bordes irregulares en espalda',
             estado: 'observado',
-            fecha_finalizacion: '2025-03-10',
             motivo: 'Falta biopsia',
             usuarioUltimoCambio: 2
         },
@@ -762,7 +628,7 @@ const crearReintegros = async () => {
             fecha_prestacion: '2025-10-20',
             integranteId: 2,
             medico: 'Dra. Cecilia López',
-            especialidad: 'Dermatología',
+            especialidad: 'Medica Clinica',
             lugar: 'Clínica Santa María',
             factura_fecha: '2025-10-21',
             factura_cuit: '27-98765432-1',
@@ -793,7 +659,7 @@ const crearReintegros = async () => {
         {   fecha_prestacion: '2025-10-18',
             integranteId: 2,
             medico: 'Dra. Cecilia López',
-            especialidad: 'Dermatología',
+            especialidad: 'Medica Clinica',
             lugar: 'Hospital Central',
             factura_fecha: '2025-10-19',
             factura_cuit: '20-12345678-9',
@@ -829,7 +695,6 @@ const crearReintegros = async () => {
             lugar: 'Hospital Central',
             factura_fecha: '2025-10-23',
             factura_cuit: '20-12345678-9',
-            fecha_finalizacion: '2025-10-24',
             factura_valor: 68000.00,
             factura_persona: 'Sofia Perez',
             forma_pago: 'transferencia',
@@ -850,7 +715,6 @@ const crearReintegros = async () => {
             factura_valor: 54000.00,
             factura_persona: 'Carlos Perez',
             forma_pago: 'efectivo',
-            fecha_finalizacion: '2025-9-16',
             cbu: null,
             observaciones: 'Resonancia magnética de rodilla derecha',
             estado: 'observado',
@@ -861,11 +725,10 @@ const crearReintegros = async () => {
             fecha_prestacion: '2025-10-26',
             integranteId: 6,
             medico: 'Dra. Cecilia López ',
-            especialidad: 'Dermatología',
+            especialidad: 'Medica Clinica',
             lugar: 'Hospital Central',
             factura_fecha: '2025-10-27',
             factura_cuit: '20-12345678-9',
-            fecha_finalizacion: '2025-10-31',
             factura_valor: 61000.00,
             factura_persona: 'Ana Perez',
             forma_pago: 'transferencia',
@@ -897,7 +760,7 @@ const crearReintegros = async () => {
             fecha_prestacion: '2025-10-30',
             integranteId: 8,
             medico: 'Dra. Cecilia López',
-            especialidad: 'Dermatología',
+            especialidad: 'Medica Clinica',
             lugar: 'Hospital Central',
             factura_fecha: '2025-10-31',
             factura_cuit: '20-12345678-9',
@@ -905,7 +768,7 @@ const crearReintegros = async () => {
             factura_persona: 'Pedro Lopez',
             forma_pago: 'transferencia',
             cbu: '0000003100099999888877',
-            observaciones: 'Consulta dermatológica por acné inflamatorio',
+            observaciones: 'Consulta medica por asma leve',
             estado: 'rechazado',
             motivo: 'Falta autorización previa',
             fecha_finalizacion: new Date(),
@@ -916,7 +779,7 @@ const crearReintegros = async () => {
             fecha_prestacion: '2025-11-01',
             integranteId: 9,
             medico: 'Clinica Santa Maria',
-            especialidad: 'Neumonólogo',
+            especialidad: 'Neurología',
             lugar: 'Clínica Santa María',
             factura_fecha: '2025-11-02',
             factura_cuit: '27-98765432-1',
@@ -924,13 +787,13 @@ const crearReintegros = async () => {
             factura_persona: 'Lucía Lopez',
             forma_pago: 'efectivo',
             cbu: null,
-            observaciones: 'Espirometría basal y post broncodilatador por sospecha de asma',
+            observaciones: 'Estudio de tomografía computada con contraste ',
         },
         {
             fecha_prestacion: '2025-11-03',
             integranteId: 10,
             medico: 'Clinica Santa Maria',
-            especialidad: 'Diabetóloga',
+            especialidad: 'Gastroenterología',
             lugar: 'Clinica Santa Maria',
             factura_fecha: '2025-11-04',
             factura_cuit: '20-12345678-9',
@@ -1044,7 +907,6 @@ const crearReintegros = async () => {
                 presentacion: 'aerosol',
                 observaciones: 'Usar en caso de crisis asmática',
                 estado: 'observado',
-                fecha_finalizacion: '2024-09-21',
                 motivo: 'Falta de estudios complementarios',
                 usuarioUltimoCambio: 3,
                 prestadorAnalisisId: 3
@@ -1076,7 +938,6 @@ const crearReintegros = async () => {
                 presentacion: 'blister',
                 observaciones: 'Prevención secundaria post infarto',
                 estado: 'observado',
-                fecha_finalizacion: '2025-02-15',
                 motivo: 'Falta de informe de laboratorio',
                 usuarioUltimoCambio: 2,
                 prestadorAnalisisId: 2
@@ -1088,7 +949,6 @@ const crearReintegros = async () => {
                 presentacion: 'pastillas',
                 observaciones: 'Control de dislipemia',
                 estado: 'observado',
-                fecha_finalizacion: '2025-06-06',
                 motivo: 'Estudios complementarios no adjuntos',
                 usuarioUltimoCambio: 3,
                 prestadorAnalisisId: 3
