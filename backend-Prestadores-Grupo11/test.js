@@ -48,6 +48,7 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 45,
+            descripción: "Consulta de control postoperatorio luego de cirugía cardíaca",
             notes: 
             `Paciente concurre a consulta de control postoperatorio luego de cirugía cardíaca. 
             Refiere evolución clínica favorable, sin síntomas relevantes al momento. 
@@ -72,6 +73,7 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 45,
+            descripción: "Control por hipertensión arterial.",
             notes: 
             `Paciente acude a control por hipertensión arterial. Se constata buena adherencia al tratamiento farmacológico. 
             TA en consulta: 128/82 mmHg. Sin síntomas asociados.
@@ -94,6 +96,7 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 45,
+            descripción: "Consulta de seguimiento post infección por SARS-CoV-2",
             notes: 
             `Consulta de seguimiento post infección por SARS-CoV-2. Paciente sin síntomas respiratorios ni secuelas aparentes.
              Saturación 98%, auscultación pulmonar normal.
@@ -115,6 +118,7 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 60,
+            descripción: "Consulta por dolor abdominal",
             notes:`Paciente refiere dolor abdominal difuso de 48 hs de evolución, sin fiebre ni vómitos. 
             Abdomen blando, no doloroso a la palpación profunda.
             Se solicita ecografía abdominal y laboratorio con hepatograma, amilasas y PCR. 
@@ -136,6 +140,7 @@ const crearTurnos = async () => {
             return d;
             })(),
            duration: 20,
+           descripción: "Control con el cardiologo",
            integranteId:4,
            prestadorId: 1
         },
@@ -153,6 +158,7 @@ const crearTurnos = async () => {
             return d;
             })(),
            duration: 20,
+           descripción: "Control postoperatorio con el cardiologo",
            integranteId:10,
            prestadorId: 1
         },
@@ -170,6 +176,7 @@ const crearTurnos = async () => {
             return d;
             })(),
            duration: 20,
+           descripción: "Consulta por dolor de corazon",
            integranteId:1,
            prestadorId: 1
         },
@@ -188,6 +195,7 @@ const crearTurnos = async () => {
             })(),
            duration: 20,
            integranteId:10,
+           descripción: "Control tras hipertension",
            prestadorId: 1
         },
         {
@@ -205,6 +213,7 @@ const crearTurnos = async () => {
             })(),
             duration: 30,
             integranteId:8,
+            descripción: "Consulta con la medica clinica",
             prestadorId: 2
         },
         {
@@ -222,6 +231,7 @@ const crearTurnos = async () => {
             })(),
             duration: 45,
             integranteId:7,
+            descripción: "Consulta por dolor de cabeza",
             prestadorId: 2
         },
         {
@@ -238,6 +248,7 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 30,
+            descripción: "Evaluacion prequirúrgica",
             notes: `Paciente concurre para evaluación prequirúrgica por intervención programada. 
             Se revisa historia clínica, comorbilidades y medicación actual.
             Se solicita laboratorio preoperatorio, ECG y evaluación cardiológica. 
@@ -259,6 +270,7 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 60,
+            descripción: "Consulta por cefaleas tensionales recurrentes",
             notes: `Paciente consulta por cefaleas tensionales recurrentes. No signos de alarma. Neurológico normal.
              Se indica control con neurología, iniciar registro de episodios y evitar factores desencadenantes. 
              Se prescribe analgesia de rescate y técnicas de relajación.`,
@@ -279,6 +291,7 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 15,
+            descripción: "Control post traumatico de muñeca izquierda",
             notes: `Paciente concurre a control post traumatismo de muñeca izquierda. Radiografía previa sin signos de fractura. 
             Refiere dolor leve y movilidad conservada.
             Se indica continuar con inmovilización parcial y aplicación de frío local. Se prescribe antiinflamatorio por 5 días.
@@ -300,6 +313,7 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 60,
+            descripción: "Control por diabetes tipo 2",
             notes: `Paciente concurre a control por diabetes tipo 2. 
             Refiere buena adherencia a dieta y medicación. Glucemia capilar en consulta: 112 mg/dL.
             Se revisa tratamiento actual y se indica continuar con metformina. 
@@ -322,13 +336,68 @@ const crearTurnos = async () => {
             return d;
             })(),
             duration: 20,
+            descripción: "Consulta por disnea leve en actividades cotidianas",
             notes: `Paciente consulta por disnea leve al realizar actividades cotidianas. 
             No refiere dolor torácico ni palpitaciones. Saturación 96%, auscultación pulmonar sin rales.
             Se solicita radiografía de tórax, ECG y laboratorio con hemograma y función tiroidea.
             Se indica evitar esfuerzos intensos hasta completar estudios. Reevaluación según resultados.`,
             integranteId: 7,
             prestadorId: 3
-        }
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate());
+            d.setHours(12, 0, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 8);
+            d.setHours(10, 36, 0, 0);
+            return d;
+            })(),
+            duration: 15,
+            descripción: "Control anual con la medica clinica",
+            integranteId: 1,
+            prestadorId: 2
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate());
+            d.setHours(23, 40, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 12);
+            d.setHours(10, 36, 0, 0);
+            return d;
+            })(),
+            duration: 30,
+            descripción: "Control postoperatorio del corazon",
+            afiliadoId: 1,
+            prestadorId: 1
+        },
+        {
+            date: (() => {
+            const d = new Date();
+            d.setDate(d.getDate());
+            d.setHours(15, 30, 0, 0);
+            return d;
+            })(),
+            start: (() => {
+            const d = new Date();
+            d.setDate(d.getDate() - 20);
+            d.setHours(10, 36, 0, 0);
+            return d;
+            })(),
+            duration: 20,
+            descripción: "Consulta por dolor de corazon",
+            afiliadoId: 2,
+            prestadorId: 1
+        },
    
     ])
 }
