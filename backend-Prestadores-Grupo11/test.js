@@ -498,6 +498,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 1,
             observaciones: 'Fiebre persistente, acompañado de una cefalea intensa',
             estado:'observado',
+            fecha_finalizacion: '2025-11-09', //Fecha de cuando se cambio el estado
             motivo:'Falta resultado de análisis de sangre',
             usuarioUltimoCambio:2
         },
@@ -511,6 +512,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 3,
             observaciones: 'Infarto agudo de miocardio con necesidad de colocación de stent coronario izquierdo',
             estado: 'aprobado',    
+            fecha_finalizacion: '2025-11-10', //Fecha de cuando se cambio el estado
             usuarioUltimoCambio: 3           
         },
         {
@@ -522,6 +524,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 0,
             observaciones: 'Controles anuales',
             estado: 'rechazado',
+            fecha_finalizacion: '2025-11-11', //Fecha de cuando se cambio el estado
             motivo: 'No paso un año desde el último control',
             usuarioUltimoCambio: 1
         },
@@ -534,6 +537,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 0,
             observaciones: 'Evaluación pre asignación del profesional adecuado para el caso',
             estado:'observado',
+            fecha_finalizacion: '2025-11-13', //Fecha de cuando se cambio el estado
             motivo: 'No abonó el copago obligatorio',
             usuarioUltimoCambio: 1,    
         },
@@ -546,6 +550,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 2,
             observaciones: 'Insuficencia cardiaca',
             estado:'aprobado',
+            fecha_finalizacion: '2025-11-16', //Fecha de cuando se cambio el estado
             usuarioUltimoCambio:1
         },
         {
@@ -557,6 +562,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 1,
             observaciones: 'Reacción a alimentos',
             estado: 'rechazado',
+            fecha_finalizacion: '2025-11-20', //Fecha de cuando se cambio el estado
             motivo: 'Se aplicó corticoide y luego 2hs de reposo ya se puede dar el alta',
             usuarioUltimoCambio: 1
         },
@@ -569,6 +575,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 1,
             observaciones: 'Ataque de panico severo',
             estado: 'rechazado',
+            fecha_finalizacion: '2025-11-12', //Fecha de cuando se cambio el estado
             motivo: 'Se aplicó calmante y luego de 2hs de control en guardia, ya se puede dar el alta',
             usuarioUltimoCambio: 3
         },
@@ -601,6 +608,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 1,
             observaciones: 'Nuevo melanocítico con bordes irregulares en espalda',
             estado: 'observado',
+            fecha_finalizacion: '2025-11-15', //Fecha de cuando se cambio el estado
             motivo: 'Falta biopsia',
             usuarioUltimoCambio: 2
         },
@@ -701,6 +709,7 @@ const crearReintegros = async () => {
             cbu: '0000003100098765432101',
             observaciones: 'Colocación de yeso en muñeca izquierda por fractura ',
             estado: 'observado',
+            fecha_finalizacion: '2025-11-05', //Fecha de cuando se cambio el estado
             motivo: 'Falta radiografía',
             usuarioUltimoCambio: 2
         },
@@ -718,6 +727,7 @@ const crearReintegros = async () => {
             cbu: null,
             observaciones: 'Resonancia magnética de rodilla derecha',
             estado: 'observado',
+            fecha_finalizacion: '2025-10-26', //Fecha de cuando se cambio el estado
             motivo: 'Falta firma del profesional',
             usuarioUltimoCambio: 3
         },
@@ -735,6 +745,7 @@ const crearReintegros = async () => {
             cbu: '0000003100011122233344',
             observaciones: 'Prueba de alergia por sospecha de urticaria grave',
             estado: 'observado',
+            fecha_finalizacion: '2025-10-31', //Fecha de cuando se cambio el estado
             motivo: 'Estudios adjuntos ilegibles',
             usuarioUltimoCambio: 1
         },
@@ -907,6 +918,7 @@ const crearReintegros = async () => {
                 presentacion: 'aerosol',
                 observaciones: 'Usar en caso de crisis asmática',
                 estado: 'observado',
+                fecha_finalizacion: '2025-09-11', //Fecha de cuando se cambio el estado
                 motivo: 'Falta de estudios complementarios',
                 usuarioUltimoCambio: 3,
                 prestadorAnalisisId: 3
@@ -938,6 +950,7 @@ const crearReintegros = async () => {
                 presentacion: 'blister',
                 observaciones: 'Prevención secundaria post infarto',
                 estado: 'observado',
+                fecha_finalizacion: '2025-02-21', //Fecha de cuando se cambio el estado
                 motivo: 'Falta de informe de laboratorio',
                 usuarioUltimoCambio: 2,
                 prestadorAnalisisId: 2
@@ -949,6 +962,7 @@ const crearReintegros = async () => {
                 presentacion: 'pastillas',
                 observaciones: 'Control de dislipemia',
                 estado: 'observado',
+                fecha_finalizacion: '2025-08-05', //Fecha de cuando se cambio el estado
                 motivo: 'Estudios complementarios no adjuntos',
                 usuarioUltimoCambio: 3,
                 prestadorAnalisisId: 3
