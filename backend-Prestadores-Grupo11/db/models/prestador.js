@@ -18,13 +18,24 @@ module.exports = (sequelize, DataTypes) => {
       Prestador.hasMany(models.Turno, {
         foreignKey: 'prestadorId',
         as: 'turnos'
+      });
+
+      Prestador.hasMany(models.Prestador, {
+        foreignKey: 'centroId',
+        as: 'medicos'
+      });
+
+      Prestador.belongsTo(models.Prestador, {
+        foreignKey: 'centroId', 
+        as: 'centro'
       })
     }
   }
   Prestador.init({
     username: {type: DataTypes.STRING, allowNull: false, unique: true},
+    centroId: {type: DataTypes.INTEGER},
     password: {type: DataTypes.STRING, allowNull: false},
-    especialidad: {type: DataTypes.STRING},
+    especialidades: {type: DataTypes.ARRAY(DataTypes.STRING)},
     role: {type: DataTypes.STRING, allowNull: false}
   }, {
     sequelize,

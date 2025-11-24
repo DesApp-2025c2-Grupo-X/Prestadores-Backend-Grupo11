@@ -30,8 +30,8 @@ module.exports = (sequelize, DataTypes) => {
     observaciones: {type: DataTypes.STRING, allowNull: false},
     estado: {
   type: DataTypes.ENUM('pendiente', 'en proceso', 'finalizado', 'alta', 'baja'),
-  allowNull: false,
   defaultValue: 'pendiente',
+  allowNull: false,
 },
 
     fecha_final : {type: DataTypes.DATE, allowNull: false},
