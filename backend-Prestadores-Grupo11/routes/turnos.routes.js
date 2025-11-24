@@ -40,6 +40,7 @@ router.patch('/:prestadorId/turno/:id',
   turnosController.updateNotesById
 );
 
+//Se trae la historia clinica del paciente
 router.get('/historial/:tipoPaciente/:id',
   historialController.getHistoriaClinica
 )
