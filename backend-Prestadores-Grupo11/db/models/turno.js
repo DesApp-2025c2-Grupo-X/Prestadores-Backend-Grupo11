@@ -24,6 +24,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'prestadorId',
         as: 'prestador'
       });
+
+      Turno.belongsTo(models.Prestador, {
+        foreignKey: 'centroId',
+        as: 'centro'
+      });
     }
   }
   Turno.init({

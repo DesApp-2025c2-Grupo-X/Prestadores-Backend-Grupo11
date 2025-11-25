@@ -8,6 +8,7 @@ const {genericMiddleware} = require('../middlewares');
 router.get('/centro/:prestadorId/especialidad/:especialidad',
   genericMiddleware.existPrestadorByPrestadorId,
   genericMiddleware.validateRolById("centro_medico"),
+  genericMiddleware.existeEspecialidadByPrestadorId,
   turnosController.getAllTurnosByEspecialidad
 )
 
