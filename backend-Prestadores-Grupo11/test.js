@@ -589,7 +589,7 @@ const crearAutorizaciones = async () => {
             observaciones: 'Hipertensión arterial severa'
         },
         {
-            fecha_prevista: new Date('2025-12-28'),
+            fecha_prevista: new Date('2025-11-26'),
             integranteId: 10,
             medico: 'dr alejandro ruiz',
             especialidad: 'Cardiología',
@@ -621,7 +621,7 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-10-15',
             integranteId: 1,
-            medico: 'Dr. Alejandro Ruiz',
+            medico: 'dr alejandro ruiz',
             especialidad: 'Cardiología',
             lugar: 'Hospital Central',
             factura_fecha: '2025-10-16',
@@ -635,7 +635,7 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-10-20',
             integranteId: 2,
-            medico: 'Dra. Cecilia López',
+            medico: 'dr cecilia lopez',
             especialidad: 'Medica Clinica',
             lugar: 'Clínica Santa María',
             factura_fecha: '2025-10-21',
@@ -650,7 +650,7 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-10-25',
             integranteId: 3,
-            medico: 'Clinica Santa Maria',
+            medico: 'clinica santa maria',
             especialidad: 'Gastroenterología',
             lugar: 'Hospital Central',
             factura_fecha: '2025-10-26',
@@ -666,7 +666,7 @@ const crearReintegros = async () => {
         },
         {   fecha_prestacion: '2025-10-18',
             integranteId: 2,
-            medico: 'Dra. Cecilia López',
+            medico: 'dr cecilia lopez',
             especialidad: 'Medica Clinica',
             lugar: 'Hospital Central',
             factura_fecha: '2025-10-19',
@@ -682,7 +682,7 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-10-20',
             integranteId: 3,
-            medico: 'Dr. Alejandro Ruiz',
+            medico: 'dr alejandro ruiz',
             especialidad: 'Cardiología',
             lugar: 'Clínica del Corazón',
             factura_fecha: '2025-10-21',
@@ -716,7 +716,7 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-10-24',
             integranteId: 5,
-            medico: 'Clinica Santa Maria',
+            medico: 'clinica santa maria',
             especialidad: 'Traumatología',
             lugar: 'Clínica Santa María',
             factura_fecha: '2025-10-25',
@@ -734,7 +734,7 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-10-26',
             integranteId: 6,
-            medico: 'Dra. Cecilia López ',
+            medico: 'dr cecilia lopez ',
             especialidad: 'Medica Clinica',
             lugar: 'Hospital Central',
             factura_fecha: '2025-10-27',
@@ -752,7 +752,7 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-10-28',
             integranteId: 7,
-            medico: 'Dr. Alejandro Ruiz',
+            medico: 'dr alejandro ruiz',
             especialidad: 'Cardiología',
             lugar: 'Clínica del Corazón',
             factura_fecha: '2025-10-29',
@@ -770,7 +770,7 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-10-30',
             integranteId: 8,
-            medico: 'Dra. Cecilia López',
+            medico: 'dr cecilia lopez',
             especialidad: 'Medica Clinica',
             lugar: 'Hospital Central',
             factura_fecha: '2025-10-31',
@@ -789,7 +789,7 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-11-01',
             integranteId: 9,
-            medico: 'Clinica Santa Maria',
+            medico: 'clinica santa maria',
             especialidad: 'Neurología',
             lugar: 'Clínica Santa María',
             factura_fecha: '2025-11-02',
@@ -803,9 +803,9 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-11-03',
             integranteId: 10,
-            medico: 'Clinica Santa Maria',
+            medico: 'clinica santa maria',
             especialidad: 'Gastroenterología',
-            lugar: 'Clinica Santa Maria',
+            lugar: 'clinica santa maria',
             factura_fecha: '2025-11-04',
             factura_cuit: '20-12345678-9',
             factura_valor: 60000.00,
@@ -817,7 +817,7 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-11-04',
             integranteId: 3,
-            medico: 'Dr. Alejandro Ruiz',
+            medico: 'dr alejandro ruiz',
             especialidad: 'Cardiología',
             lugar: 'Clínica del Corazón',
             factura_fecha: '2025-11-05',
@@ -834,9 +834,9 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-11-06',
             integranteId: 4,
-            medico: 'Clinica Santa Maria',
+            medico: 'clinica santa maria',
             especialidad: 'Neurología',
-            lugar: 'Clinica Santa Maria',
+            lugar: 'clinica santa maria',
             factura_fecha: '2025-11-07',
             factura_cuit: '20-12345678-9',
             factura_valor: 81000.00,
@@ -851,7 +851,7 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-11-08',
             integranteId: 6,
-            medico: 'Dr. Alejandro Ruiz',
+            medico: 'dr alejandro ruiz',
             especialidad: 'Cardiología',
             lugar: 'Hospital Central',
             factura_fecha: '2025-11-09',

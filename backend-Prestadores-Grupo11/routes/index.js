@@ -9,6 +9,7 @@ const afiliadoRoute = require('./afiliado.route');
 const reintegroRoutes = require('./reintegro.routes');
 const recetaRoutes = require('./receta.routes');
 const pendientesRoute = require('./pendientes.routes');
+const prestadorRoute = require('./prestador.routes');
 
 module.exports = {
     authRoute, 
@@ -21,4 +22,5 @@ module.exports = {
     reintegroRoutes, 
     recetaRoutes, 
     afiliadoRoute,
-    pendientesRoute};
+    pendientesRoute,
+    prestadorRoute};

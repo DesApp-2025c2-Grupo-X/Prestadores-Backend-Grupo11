@@ -1,5 +1,5 @@
 const db = require('../db/models');
-const { Reintegro, Integrante } = db;
+const { Reintegro, Integrante, Prestador } = db;
 const Sequelize = db.Sequelize;
 const sequelize = db.sequelize;
 const { Op } = Sequelize;
@@ -14,7 +14,7 @@ const listar = async (req, res) => {
 
 const cambiarEstado = async (req, res) => {
   const solicitud = req.solicitud;
-  const { nuevoEstado, motivo, prestadorAnalisisId  } = req.body;
+  const { nuevoEstado, motivo, prestadorAnalisisId } = req.body;
   const usuarioId = req.usuarioId;
 
   solicitud.estado = nuevoEstado;
@@ -26,8 +26,8 @@ const cambiarEstado = async (req, res) => {
   }
 
   if (['aprobado', 'rechazado'].includes(nuevoEstado)) {
-  solicitud.fecha_finalizacion = new Date();
-}
+    solicitud.fecha_finalizacion = new Date();
+  }
   await solicitud.save();
   res.status(200).json(solicitud);
 };
@@ -74,10 +74,88 @@ const obtenerPorId = async (req, res) => {
   res.status(200).json({ estado: reintegro.estado, reintegro });
 };
 
+const getPendientesPrestador = async (req, res) => {
+  try {
+
+    const prestadorId = req.params.prestadorId;
+    const prestador = await Prestador.findByPk(prestadorId);
+
+    if (!prestador) {
+      return res.status(404).json({ message: "Prestador no encontrado" });
+    }
+
+    const reintegros = await Reintegro.findAll({
+      where: {
+        medico: prestador.username,
+        estado: ["recibido", "en analisis"]
+      }
+    });
+
+    reintegros.sort((a, b) => {
+      return new Date(b.fecha_prestacion) - new Date(a.fecha_prestacion);
+    });
+    return res.status(200).json(reintegros);
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Error obteniendo reintegros del prestador" });
+  }
+}
+
+const getPendientesCentro = async (req, res) => {
+  try {
+
+    const centroId = req.params.prestadorId;
+    const prestador = await Prestador.findByPk(centroId);
+
+    if (!prestador) {
+      return res.status(404).json({ message: "Centro no encontrado" });
+    }
+
+    const medicos = await Prestador.findAll({
+      where: {
+        centroId: centroId,
+        role: 'medico'
+      },
+      order: [['username', 'ASC']]
+    });
+
+    if (!medicos) {
+      res.status(404).json({ message: "No se encontraron medicos" })
+    }
+
+    let reintegros = []
+
+    //Recorro por cada medico guardando las autorizaciones
+    //Uso for, y no map, para poder usar el await dentro
+    for (const medico of medicos) {
+      const reint = await Reintegro.findAll({
+        where: {
+          medico: medico.username,
+          estado: ["recibido", "en analisis"]
+        }
+      });
+
+      reintegros = [...reintegros, ...reint];
+    }
+
+    reintegros.sort((a, b) => {
+      return new Date(b.fecha_prestacion) - new Date(a.fecha_prestacion);
+    });
+    return res.status(200).json(reintegros);
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Error obteniendo reintegros del centro" });
+  }
+}
+
 module.exports = {
   listar,
   cambiarEstado,
   listarPorEstado,
   dashboard,
-  obtenerPorId
+  obtenerPorId,
+  getPendientesPrestador,
+  getPendientesCentro
 };

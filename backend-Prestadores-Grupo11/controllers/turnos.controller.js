@@ -1,28 +1,31 @@
+const db = require('../db/models');
+const Sequelize = db.Sequelize;
+const { Op } = Sequelize;
 const { Turno, Afiliado, Integrante, Prestador } = require("../db/models");
 
 const getAllTurnosByPrestadorId = async (req, res) => {
   const id = req.params.prestadorId;
   const turnos = await Turno.findAll({
     where: { prestadorId: id },
-   include: [
-  {
-    model: Prestador,
-    attributes: { exclude: ["especialidad", "password"] },
-    as: "prestador",
-  },
-  {
-    model: Afiliado,
-    as: "afiliado",
     include: [
-      { model: Integrante, attributes: ["id", "nombre", "edad", "dni"], as: "integrantes" }
-    ],
-  },
-  {
-    model: Integrante,
-    as: "integrante",  
-    attributes: ["id", "nombre", "edad", "dni"]
-  }
-]
+      {
+        model: Prestador,
+        attributes: { exclude: ["especialidad", "password"] },
+        as: "prestador",
+      },
+      {
+        model: Afiliado,
+        as: "afiliado",
+        include: [
+          { model: Integrante, attributes: ["id", "nombre", "edad", "dni"], as: "integrantes" }
+        ],
+      },
+      {
+        model: Integrante,
+        as: "integrante",
+        attributes: ["id", "nombre", "edad", "dni"]
+      }
+    ]
   });
   res.status(200).json(turnos);
 };
@@ -48,13 +51,19 @@ const getAllTurnos = async (req, res) => {
 
 const getAllTurnosByEspecialidad = async (req, res) => {
   const e = req.params.especialidad;
+  const centroId = req.params.prestadorId
   const turnos = await Turno.findAll({
     include: [
       {
         model: Prestador,
         attributes: { exclude: ["password"] },
         as: "prestador",
-        where: { especialidad: e },
+        where: {
+          role: "medico",
+          centroId: centroId,
+          especialidades: { [Op.contains]: [e] }
+        },
+        require: true
       },
       {
         model: Afiliado,

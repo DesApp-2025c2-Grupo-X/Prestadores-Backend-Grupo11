@@ -15,7 +15,8 @@ const {
     reintegroRoutes,
     recetaRoutes, 
     pendientesRoute,
-    afiliadoRoute} = require('./routes');
+    afiliadoRoute,
+    prestadorRoute} = require('./routes');
 
 app.use(cors());
 app.use(express.json());
@@ -31,6 +32,7 @@ app.use('/afiliados', afiliadoRoute)
 app.use('/reintegros', reintegroRoutes)
 app.use('/recetas', recetaRoutes)
 app.use('/pendientes', pendientesRoute)
+app.use('/prestador', prestadorRoute)
 
 
 app.listen(PORT, async () => {
