@@ -87,8 +87,14 @@ const getPendientesPrestador = async (req, res) => {
     const reintegros = await Reintegro.findAll({
       where: {
         medico: prestador.username,
-        estado: ["recibido", "en analisis"]
-      }
+        estado: {
+          [Op.in]: ['recibido', 'en analisis']
+        },
+        [Op.or]: [
+          { usuarioUltimoCambio: null },
+          { usuarioUltimoCambio: prestadorId }
+        ]
+      },
     });
 
     reintegros.sort((a, b) => {
@@ -124,7 +130,13 @@ const getPendientesCentro = async (req, res) => {
       res.status(404).json({ message: "No se encontraron medicos" })
     }
 
-    let reintegros = []
+    //Reintegros en analisis del centro
+    let reintegros = await Reintegro.findAll({
+      where: {
+        usuarioUltimoCambio: centroId,
+        estado: "en analisis"
+      }
+    });
 
     //Recorro por cada medico guardando las autorizaciones
     //Uso for, y no map, para poder usar el await dentro
@@ -132,7 +144,7 @@ const getPendientesCentro = async (req, res) => {
       const reint = await Reintegro.findAll({
         where: {
           medico: medico.username,
-          estado: ["recibido", "en analisis"]
+          estado: "recibido"
         }
       });
 
