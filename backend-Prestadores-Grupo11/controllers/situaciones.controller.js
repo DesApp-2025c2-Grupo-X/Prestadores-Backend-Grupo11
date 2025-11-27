@@ -230,57 +230,86 @@ const darDeBajaSituacionById = async (req, res) => {
   }
 };
 
+
 /**
  * Da de alta una situación
  */
 const darDeAltaSituacion = async (req, res) => {
   try {
-    const { prestadorId } = req.params; // prestadorId
+    const { prestadorId } = req.params;
     const data = req.body;
 
-    // 🔍 Si no viene afiliadoId, intentar obtenerlo desde el integrante
+    console.log(" Datos recibidos en backend:", data);
+
+    
+    // 1) VALIDAR PRESTADOR
+    if (!prestadorId) {
+      return res.status(400).json({ error: "Falta el prestadorId en la URL" });
+    }
+
+    // 2) MANEJO DE AFILIADO / INTEGRANTE
+    // Si viene integranteId → tratar de obtener afiliadoId automáticamente
     if (!data.afiliadoId && data.integranteId) {
       const integrante = await Integrante.findByPk(data.integranteId);
       if (integrante) {
         data.afiliadoId = integrante.afiliadoId;
+        console.log("afiliadoId derivado desde integrante:", data.afiliadoId);
       }
     }
 
-    // 🔐 Validar afiliadoId (por si no se encontró)
-    if (!data.afiliadoId) {
-      return res.status(400).json({ error: "Falta el afiliadoId en la solicitud" });
+    // Si no hay ni afiliadoId ni integranteId → NO se puede crear
+    if (!data.afiliadoId && !data.integranteId) {
+      return res.status(400).json({
+        error: "Debes enviar afiliadoId o integranteId para crear la situación",
+      });
+    }
+    // 3) VALIDAR CAMPOS OBLIGATORIOS
+  
+    if (!data.especialidad || !data.especialidad.trim()) {
+      return res.status(400).json({ error: "Falta la especialidad" });
     }
 
-    // 📅 Validar fecha
-    if (!data.fecha_inicio && !data.fecha) {
+    if (!data.situacion || !data.situacion.trim()) {
+      return res.status(400).json({ error: "Falta la situación terapéutica" });
+    }
+
+    // Fecha válida
+    const fecha = data.fecha_inicio || data.fecha;
+    if (!fecha) {
       return res.status(400).json({ error: "Falta la fecha de inicio" });
     }
 
-    // 🆕 Crear la situación
+  
+    // 4) CREAR SITUACIÓN
+  
     const nuevaSituacion = await Situacion.create({
-      afiliadoId: data.afiliadoId,
+      afiliadoId: data.afiliadoId || null,
       integranteId: data.integranteId || null,
       prestadorId,
-      especialidad: data.especialidad,
-      situacion: data.situacion,
+      especialidad: data.especialidad.trim(),
+      situacion: data.situacion.trim(),
       observaciones: data.observaciones || "",
-      fecha_inicio: data.fecha_inicio || data.fecha,
-      fecha_final: data.fecha_final || data.fecha_inicio || data.fecha,
+      fecha_inicio: fecha,
+      fecha_final: data.fecha_final || fecha, // si no la mandan → igual que inicio
       estado: data.estado || "alta",
     });
+
+    console.log(" Situación creada:", nuevaSituacion.id);
 
     return res.status(201).json({
       message: "Situación creada correctamente",
       situacion: nuevaSituacion,
     });
+
   } catch (error) {
-    console.error("Error en darDeAltaSituacion:", error);
+    console.error(" Error en darDeAltaSituacion:", error);
     res.status(500).json({
       error: "Error al dar de alta la situación",
       detalle: error.message,
     });
   }
 };
+
 
 /**
  * Actualiza una situación (estado u otros campos)
@@ -300,7 +329,6 @@ const actualizarSituacion = async (req, res) => {
       "en proceso",
       "alta",
       "baja",
-      "pendiente",
       "finalizado",
     ];
     if (data.estado && !estadosValidos.includes(data.estado.toLowerCase())) {
