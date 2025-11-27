@@ -1,22 +1,32 @@
-const {Situacion,Afiliado,Integrante, Prestador, Turno} = require('../db/models');
-const {Op} = require('sequelize');
+const { Situacion, Afiliado, Integrante, Prestador, Turno } = require('../db/models');
+const { Op } = require('sequelize');
 
-const getAllSituacionesByApellidoONro = async (req,res) => {
-    const nroOApellido = req.params.nroOApellido;
-    const situaciones = await Afiliado.findOne({where: {[Op.or]: [
-        {numero_afiliado: nroOApellido},
-        {apellido: nroOApellido}
-    ]}, include: [
-        {model: Situacion, as: 'situaciones', include: [
-            {model: Prestador, attributes: ['username'], as: 'prestador'}
-        ]},
-        {model: Integrante, as: 'integrantes', include: [
-            {model: Situacion, as: 'situaciones', include: [
-                {model: Prestador, attributes: ['username'], as: 'prestador'}
-            ]}
-        ]}
-    ]})
-    res.status(200).json(situaciones);
+const getAllSituacionesByApellidoONro = async (req, res) => {
+  const nroOApellido = req.params.nroOApellido;
+  const situaciones = await Afiliado.findOne({
+    where: {
+      [Op.or]: [
+        { numero_afiliado: nroOApellido },
+        { apellido: nroOApellido }
+      ]
+    }, include: [
+      {
+        model: Situacion, as: 'situaciones', include: [
+          { model: Prestador, attributes: ['username'], as: 'prestador' }
+        ]
+      },
+      {
+        model: Integrante, as: 'integrantes', include: [
+          {
+            model: Situacion, as: 'situaciones', include: [
+              { model: Prestador, attributes: ['username'], as: 'prestador' }
+            ]
+          }
+        ]
+      }
+    ]
+  })
+  res.status(200).json(situaciones);
 }
 
 // Obtener historia clínica completa (por tipoPaciente e id)
@@ -24,21 +34,39 @@ const getHistoriaClinica = async (req, res) => {
   const { tipoPaciente, id } = req.params;
 
   try {
-    const modelo = tipoPaciente === 'integrante' ? Integrante : Afiliado;
+    const tipo = (tipoPaciente || "").toLowerCase();
+    const modelo = tipo === 'integrante' ? Integrante : Afiliado;
 
     const paciente = await modelo.findByPk(id, {
       include: [
         {
           model: Situacion,
           as: 'situaciones',
-          where: {estado: 'baja'},
+          where: {
+            estado: {
+              [Op.or]: ['baja', 'en proceso']
+            }
+          },
           separate: true,
           include: [{ model: Prestador, attributes: ['username'], as: 'prestador' }],
         },
         {
           model: Turno,
           as: 'turnos',
-          required: false
+          required: false,
+          where: {
+            [Op.or]: [
+              { date: { [Op.lt]: new Date() } },
+              { notes: { [Op.ne]: null } }
+            ]
+          },
+          include: [
+            {
+              model: Prestador,
+              as: 'prestador',
+              attributes: ['username', 'especialidades']
+            }
+          ]
         }
       ]
     });
