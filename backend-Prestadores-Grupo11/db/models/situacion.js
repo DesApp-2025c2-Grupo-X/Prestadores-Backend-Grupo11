@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
   allowNull: false,
 },
 
-    fecha_final : {type: DataTypes.DATE, allowNull: false},
+    fecha_final : {type: DataTypes.DATE, allowNull: true},
     afiliadoId: {type: DataTypes.INTEGER},
     integranteId: {type: DataTypes.INTEGER},
     prestadorId: {type: DataTypes.INTEGER, allowNull: false}
