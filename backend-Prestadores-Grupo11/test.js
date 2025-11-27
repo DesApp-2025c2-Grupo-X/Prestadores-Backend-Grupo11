@@ -492,7 +492,7 @@ const crearAutorizaciones = async () => {
         {
             fecha_prevista: new Date('2025-11-05'),
             integranteId: 3,
-            medico: 'clinica santa maria',
+            medico: 'dr cecilia lopez',
             especialidad: 'Neurología',
             lugar: 'Clínica Santa María',
             dias_internacion: 1,
@@ -526,12 +526,12 @@ const crearAutorizaciones = async () => {
             estado: 'rechazado',
             fecha_finalizacion: '2025-11-11', //Fecha de cuando se cambio el estado
             motivo: 'No paso un año desde el último control',
-            usuarioUltimoCambio: 1
+            usuarioUltimoCambio: 2
         },
         {
             fecha_prevista: new Date('2025-11-08'),
             integranteId: 6,
-            medico: 'clinica santa maria',
+            medico: 'dr alejandro ruiz',
             especialidad: 'Psiquiatría',
             lugar: 'Clínica Santa María',
             dias_internacion: 0,
@@ -564,12 +564,12 @@ const crearAutorizaciones = async () => {
             estado: 'rechazado',
             fecha_finalizacion: '2025-11-20', //Fecha de cuando se cambio el estado
             motivo: 'Se aplicó corticoide y luego 2hs de reposo ya se puede dar el alta',
-            usuarioUltimoCambio: 1
+            usuarioUltimoCambio: 2
         },
         {
             fecha_prevista: new Date('2025-11-11'),
             integranteId: 9,
-            medico: 'clinica santa maria',
+            medico: 'dr alejandro ruiz',
             especialidad: 'Psiquiatría',
             lugar: 'Clínica Santa María',
             dias_internacion: 1,
@@ -577,7 +577,7 @@ const crearAutorizaciones = async () => {
             estado: 'rechazado',
             fecha_finalizacion: '2025-11-12', //Fecha de cuando se cambio el estado
             motivo: 'Se aplicó calmante y luego de 2hs de control en guardia, ya se puede dar el alta',
-            usuarioUltimoCambio: 3
+            usuarioUltimoCambio: 1
         },
         {
             fecha_prevista: new Date('2025-11-12'),

@@ -95,6 +95,13 @@ const getPendientesPrestador = async (req, res) => {
           { usuarioUltimoCambio: prestadorId }
         ]
       },
+      include: [
+        {
+          model: Integrante,
+          as: "integrante",
+          attributes: ["nombre"]
+        }
+      ]
     });
 
     autorizaciones.sort((a, b) => {
@@ -123,7 +130,7 @@ const getPendientesCentro = async (req, res) => {
         centroId: centroId,
         role: 'medico'
       },
-      order: [['username', 'ASC']]
+      order: [['username', 'ASC']],
     });
 
     if (!medicos) {
@@ -135,7 +142,14 @@ const getPendientesCentro = async (req, res) => {
       where: {
         usuarioUltimoCambio: centroId,
         estado: "en analisis"
-      }
+      },
+      include: [
+        {
+          model: Integrante,
+          as: "integrante",
+          attributes: ["nombre"]
+        }
+      ]
     });
 
     //Recorro por cada medico guardando las autorizaciones
@@ -145,7 +159,14 @@ const getPendientesCentro = async (req, res) => {
         where: {
           medico: medico.username,
           estado: "recibido"
-        }
+        },
+        include: [
+          {
+            model: Integrante,
+            as: "integrante",
+            attributes: ["nombre"]
+          }
+        ]
       });
 
       autorizaciones = [...autorizaciones, ...auths];
@@ -162,4 +183,41 @@ const getPendientesCentro = async (req, res) => {
   }
 }
 
-module.exports = { listar, cambiarEstado, listarPorEstado, dashboard, obtenerPorId, getPendientesPrestador, getPendientesCentro };
+const getCompletadosById = async (req, res) => {
+  try {
+    const prestadorId = req.params.prestadorId
+    const prestador = await Prestador.findByPk(prestadorId)
+
+    if (!prestador) {
+      return res.status(404).json({ message: "Prestador no encontrado" });
+    }
+
+    const autorizaciones = await Autorizacion.findAll({
+      where: {
+        usuarioUltimoCambio: prestadorId,
+        estado: {
+          [Op.in]: ['aprobado', 'rechazado', 'observado']
+        }
+      },
+      include: [
+        {
+          model: Integrante,
+          as: "integrante",
+          attributes: ["nombre"]
+        }
+      ]
+    });
+
+    autorizaciones.sort((a, b) => {
+      return new Date(b.fecha_prevista) - new Date(a.fecha_prevista);
+    });
+    return res.status(200).json(autorizaciones);
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Error obteniendo autorizaciones completadas del prestador" });
+  }
+}
+
+module.exports = { listar, cambiarEstado, listarPorEstado, dashboard, obtenerPorId,
+ getPendientesPrestador, getPendientesCentro, getCompletadosById };

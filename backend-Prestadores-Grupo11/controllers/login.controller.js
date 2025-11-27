@@ -1,9 +1,18 @@
 const { Prestador } = require('../db/models')
 
 const accessLogin = async (req, res) => {
-  const {username, password} = req.body;
-  const prestador = await Prestador.findOne({where:{username, password}});
-  res.status(200).json({message: "Acceso exitoso", prestador: prestador});
+  const { username, password } = req.body;
+  const prestador = await Prestador.findOne({
+    where: { username, password },
+    include: [
+      {
+        model: Prestador,
+        as: "centro",
+        attributes: ["id", "username", "role"]
+      }
+    ]
+  });
+  res.status(200).json({ message: "Acceso exitoso", prestador: prestador });
 };
 
-module.exports = {accessLogin }
+module.exports = { accessLogin }

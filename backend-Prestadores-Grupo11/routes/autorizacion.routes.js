@@ -21,6 +21,7 @@ router.get('/pendientes/prestadorId/:prestadorId', genericMiddleware.validateRol
 
 router.get('/pendientes/centroId/:prestadorId', genericMiddleware.validateRolById("centro_medico"), controller.getPendientesCentro)
 
+router.get('/completados/prestadorId/:prestadorId', controller.getCompletadosById)
 
 module.exports = router;
 

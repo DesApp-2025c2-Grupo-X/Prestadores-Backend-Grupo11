@@ -95,6 +95,13 @@ const getPendientesPrestador = async (req, res) => {
           { usuarioUltimoCambio: prestadorId }
         ]
       },
+      include: [
+        {
+          model: Integrante,
+          as: "integrante",
+          attributes: ["nombre"]
+        }
+      ]
     });
 
     reintegros.sort((a, b) => {
@@ -135,7 +142,14 @@ const getPendientesCentro = async (req, res) => {
       where: {
         usuarioUltimoCambio: centroId,
         estado: "en analisis"
-      }
+      },
+      include: [
+        {
+          model: Integrante,
+          as: "integrante",
+          attributes: ["nombre"]
+        }
+      ]
     });
 
     //Recorro por cada medico guardando las autorizaciones
@@ -145,7 +159,14 @@ const getPendientesCentro = async (req, res) => {
         where: {
           medico: medico.username,
           estado: "recibido"
+        },
+        include: [
+        {
+          model: Integrante,
+          as: "integrante",
+          attributes: ["nombre"]
         }
+      ]
       });
 
       reintegros = [...reintegros, ...reint];
@@ -162,6 +183,42 @@ const getPendientesCentro = async (req, res) => {
   }
 }
 
+const getCompletadosById = async (req, res) => {
+  try {
+    const prestadorId = req.params.prestadorId
+    const prestador = await Prestador.findByPk(prestadorId)
+
+    if (!prestador) {
+      return res.status(404).json({ message: "Prestador no encontrado" });
+    }
+
+    const reintegros = await Reintegro.findAll({
+      where: {
+        usuarioUltimoCambio: prestadorId,
+        estado: {
+          [Op.in]: ['aprobado', 'rechazado', 'observado']
+        }
+      },
+      include: [
+        {
+          model: Integrante,
+          as: "integrante",
+          attributes: ["nombre"]
+        }
+      ]
+    });
+
+    reintegros.sort((a, b) => {
+      return new Date(b.fecha_prestacion) - new Date(a.fecha_prestacion);
+    });
+    return res.status(200).json(reintegros);
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Error obteniendo reintegros completados del prestador" });
+  }
+}
+
 module.exports = {
   listar,
   cambiarEstado,
@@ -169,5 +226,6 @@ module.exports = {
   dashboard,
   obtenerPorId,
   getPendientesPrestador,
-  getPendientesCentro
+  getPendientesCentro,
+  getCompletadosById
 };
