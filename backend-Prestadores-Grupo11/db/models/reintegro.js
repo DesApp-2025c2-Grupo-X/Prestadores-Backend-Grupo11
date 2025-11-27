@@ -9,9 +9,14 @@ module.exports = (sequelize, DataTypes) => {
         as: 'integrante'
       });
 
+      Reintegro.belongsTo(models.Afiliado, {
+        foreignKey: 'afiliadoId',
+        as: 'afiliado'
+      });
+
       Reintegro.belongsTo(models.Prestador, {
-        foreignKey: 'prestadorAnalisisId',
-        as: 'prestadorAnalisis'
+        foreignKey: 'usuarioUltimoCambio',
+        as: 'prestador'
       });
     }
   }

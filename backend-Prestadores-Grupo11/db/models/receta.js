@@ -42,6 +42,16 @@ module.exports = (sequelize, DataTypes) => {
         as: 'integrante'
     });
 
+    Receta.belongsTo(models.Afiliado, {
+        foreignKey: 'afiliadoId',
+        as: 'afiliado'
+    });
+
+    Receta.belongsTo(models.Prestador, {
+        foreignKey: 'usuarioUltimoCambio',
+        as: 'prestadorAnalisis'
+      });
+
     Receta.hasMany(models.HistorialSolicitud, {
       foreignKey: 'solicitudId',
       constraints: false,

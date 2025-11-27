@@ -8,6 +8,16 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'integranteId',
         as: 'integrante'
       });
+
+      Autorizacion.belongsTo(models.Afiliado, {
+        foreignKey: 'afiliadoId',
+        as: 'afiliado'
+      });
+
+      Autorizacion.belongsTo(models.Prestador, {
+        foreignKey: 'usuarioUltimoCambio',
+        as: 'prestadorAnalisis'
+      });
     }
   }
 
@@ -28,10 +38,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    lugar: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
+    // lugar: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false
+    // },
     dias_internacion: {
       type: DataTypes.INTEGER
     },

@@ -29,6 +29,21 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'centroId', 
         as: 'centro'
       })
+
+      Prestador.hasMany(models.Receta, {
+        foreingKey: 'usuarioUltimoCambio',
+        as: 'recetas'
+      });
+
+      Prestador.hasMany(models.Autorizacion, {
+        foreingKey: 'usuarioUltimoCambio',
+        as: 'autorizaciones'
+      });
+
+      Prestador.hasMany(models.Reintegro, {
+        foreingKey: 'usuarioUltimoCambio',
+        as: 'reintegros'
+      });
     }
   }
   Prestador.init({

@@ -29,6 +29,16 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'integranteId',
         as: 'recetas'
       });
+
+      Integrante.hasMany(models.Reintegro, {
+        foreignKey: 'integranteId',
+        as: 'reintegros'
+      });
+
+      Integrante.hasMany(models.Autorizacion, {
+        foreignKey: 'integranteId',
+        as: 'autorizaciones'
+      });
       
     }
   }
