@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   Situacion.init({
     fecha_inicio: {type: DataTypes.DATE, allowNull:false},
     especialidad: {type: DataTypes.STRING, allowNull: false},
-    observaciones: {type: DataTypes.STRING, allowNull: false},
+    observaciones: {type: DataTypes.TEXT, allowNull: false},
     estado: {
   type: DataTypes.ENUM('en proceso', 'finalizado', 'alta', 'baja'),
   defaultValue: 'en proceso',
