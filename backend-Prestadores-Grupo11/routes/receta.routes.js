@@ -17,6 +17,8 @@ router.get('/:id', validarId, existeReceta, recetaController.obtenerPorId);
 
 router.put('/:id/estado', validarId, validarCambioEstado(Receta, 'receta'), recetaController.cambiarEstado);
 
+router.get('/completados/prestadorId/:prestadorId', recetaController.getCompletadosById)
+
 module.exports = router;
 
 

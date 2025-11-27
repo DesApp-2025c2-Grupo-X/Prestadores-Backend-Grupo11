@@ -1,5 +1,5 @@
 const db = require('../db/models');
-const { Receta, Integrante } = db;
+const { Receta, Integrante, Prestador } = db;
 const Sequelize = db.Sequelize;
 const sequelize = db.sequelize;
 const { Op } = Sequelize;
@@ -73,10 +73,44 @@ const obtenerPorId = async (req, res) => {
   res.status(200).json({ estado: receta.estado, receta });
 };
 
+const getCompletadosById = async (req, res) => {
+  try {
+    const prestadorId = req.params.prestadorId
+    const prestador = await Prestador.findByPk(prestadorId)
+
+    if (!prestador) {
+      return res.status(404).json({ message: "Prestador no encontrado" });
+    }
+
+    const recetas = await Receta.findAll({
+      where: {
+        usuarioUltimoCambio: prestadorId,
+        estado: {
+          [Op.in]: ['aprobado', 'rechazado', 'observado']
+        }
+      },
+      include: [
+        {
+          model: Integrante,
+          as: "integrante",
+          attributes: ["nombre"]
+        }
+      ]
+    });
+
+    return res.status(200).json(recetas);
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Error obteniendo recetas completadas del prestador" });
+  }
+}
+
 module.exports = {
   listar,
   cambiarEstado,
   listarPorEstado,
   dashboard,
-  obtenerPorId
+  obtenerPorId,
+  getCompletadosById
 };
