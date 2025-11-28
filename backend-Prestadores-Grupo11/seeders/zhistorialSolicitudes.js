@@ -37,7 +37,7 @@ module.exports = {
         });
         
       }
-      console.log(`Recetas encontradas: ${generatedRecetas.length}`); 
+      
     }
 
     // Lógica para Autorizaciones
@@ -61,7 +61,7 @@ module.exports = {
         historialData.push({ tipoSolicitud: 'reintegro', solicitudId: reint.id, estadoAnterior: estadoAnterior, estadoNuevo: estadoActual, usuarioId: usuarioId, motivo: (estadoActual === 'rechazado' || estadoActual === 'observado') ? faker.lorem.sentence() : '' || '' });
       }
     }
-    console.log(historialData.length)
+    
     // Insertamos los datos, ignorando los timestamps para evitar el error de sintaxis de PostgreSQL
     await queryInterface.bulkInsert('HistorialSolicitudes', historialData, { timestamps: false });
     console.log(`Datos de ${historialData.length} registros de historial maestro cargados con éxito.`);
