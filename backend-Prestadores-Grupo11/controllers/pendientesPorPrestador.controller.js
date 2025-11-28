@@ -9,6 +9,11 @@ const getPendientesPorPrestador = async (req, res) => {
         where: { estado: 'en analisis', usuarioUltimoCambio: prestadorId },
         include: [
           {
+            model: Afiliado,
+            as: 'afiliado',
+            attributes:  ['id', 'nombre', 'apellido', 'edad', 'dni', 'telefono']
+          },
+          {
             model: Integrante,
             as: 'integrante',
             attributes: ['id', 'nombre', 'dni', 'edad', 'afiliadoId']
@@ -20,6 +25,11 @@ const getPendientesPorPrestador = async (req, res) => {
         where: { estado: 'en analisis', usuarioUltimoCambio: prestadorId },
         include: [
           {
+            model: Afiliado,
+            as: 'afiliado',
+            attributes:  ['id', 'nombre', 'apellido', 'edad', 'dni', 'telefono']
+          },
+          {
             model: Integrante,
             as: 'integrante',
             attributes: ['id', 'nombre', 'dni', 'edad', 'afiliadoId']
@@ -30,6 +40,11 @@ const getPendientesPorPrestador = async (req, res) => {
       Reintegro.findAll({
         where: { estado: 'en analisis', usuarioUltimoCambio: prestadorId },
         include: [
+          {
+            model: Afiliado,
+            as: 'afiliado',
+            attributes:  ['id', 'nombre', 'apellido', 'edad', 'dni', 'telefono']
+          },
           {
             model: Integrante,
             as: 'integrante',

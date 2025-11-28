@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true
     },
   }, {
-    timestamps: true
+    modelName: 'Receta'
   });
 
   Receta.associate = models => {
