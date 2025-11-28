@@ -26,17 +26,18 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       Prestador.belongsTo(models.Prestador, {
-        foreignKey: 'centroId', 
+        foreignKey: 'centroId',
         as: 'centro'
       })
     }
   }
   Prestador.init({
-    username: {type: DataTypes.STRING, allowNull: false, unique: true},
-    centroId: {type: DataTypes.INTEGER},
-    password: {type: DataTypes.STRING, allowNull: false},
-    especialidades: {type: DataTypes.ARRAY(DataTypes.STRING)},
-    role: {type: DataTypes.STRING, allowNull: false}
+    nombre: { type: DataTypes.STRING, allowNull: false },
+    username: { type: DataTypes.STRING, allowNull: false, unique: true },
+    centroId: { type: DataTypes.INTEGER },
+    password: { type: DataTypes.STRING, allowNull: false },
+    especialidades: { type: DataTypes.ARRAY(DataTypes.STRING) },
+    role: { type: DataTypes.STRING, allowNull: false }
   }, {
     sequelize,
     modelName: 'Prestador',

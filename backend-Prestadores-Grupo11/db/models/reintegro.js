@@ -4,14 +4,19 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Reintegro extends Model {
     static associate(models) {
+
+       Reintegro.belongsTo(models.Afiliado, {
+        foreignKey: 'afiliadoId',
+        as: 'afiliado'
+      });
       Reintegro.belongsTo(models.Integrante, {
         foreignKey: 'integranteId',
         as: 'integrante'
       });
 
       Reintegro.belongsTo(models.Prestador, {
-        foreignKey: 'prestadorAnalisisId',
-        as: 'prestadorAnalisis'
+        foreignKey: 'usuarioUltimoCambio',
+        as: 'prestador'
       });
     }
   }
@@ -19,10 +24,6 @@ module.exports = (sequelize, DataTypes) => {
   Reintegro.init({
     fecha_prestacion: {
       type: DataTypes.DATE,
-      allowNull: false
-    },
-    integranteId: {
-      type: DataTypes.INTEGER,
       allowNull: false
     },
     medico: {
@@ -33,11 +34,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    lugar: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-
     // Datos de factura
     factura_fecha: {
       type: DataTypes.DATE,

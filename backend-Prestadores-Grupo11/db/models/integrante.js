@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Integrante.belongsTo(models.Afiliado, { 
+      Integrante.belongsTo(models.Afiliado, {
         foreignKey: 'afiliadoId',
         as: 'afiliado'
       });
@@ -29,14 +29,15 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'integranteId',
         as: 'recetas'
       });
-      
+
     }
   }
   Integrante.init({
-    nombre: {type: DataTypes.STRING, allowNull: false},
-    edad: {type: DataTypes.INTEGER, allowNull: false},
-    dni: {type: DataTypes.STRING, allowNull: false},
-    afiliadoId: {type: DataTypes.INTEGER, allowNull: false}
+    nombre: { type: DataTypes.STRING, allowNull: false },
+    edad: { type: DataTypes.INTEGER, allowNull: false },
+    dni: { type: DataTypes.STRING, allowNull: false },
+    afiliadoId: { type: DataTypes.INTEGER, allowNull: false },
+    parentesco: { type: DataTypes.ENUM("conyugue", "hijo", "familiar_a_cargo"), allowNull: false }
   }, {
     sequelize,
     modelName: 'Integrante',

@@ -8,16 +8,17 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'integranteId',
         as: 'integrante'
       });
+
+      Autorizacion.belongsTo(models.Afiliado, {
+        foreignKey: 'afiliadoId',
+        as: 'afiliado'
+      });
     }
-  }
+  } 
 
   Autorizacion.init({
     fecha_prevista: {
       type: DataTypes.DATE,
-      allowNull: false
-    },
-    integranteId: {
-      type: DataTypes.INTEGER,
       allowNull: false
     },
     medico: {
@@ -25,10 +26,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     especialidad: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    lugar: {
       type: DataTypes.STRING,
       allowNull: false
     },

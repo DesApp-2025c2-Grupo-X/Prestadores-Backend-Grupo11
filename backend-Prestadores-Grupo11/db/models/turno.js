@@ -35,6 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     date: {type: DataTypes.DATE, allowNull: false},
     start: {type: DataTypes.DATE, allowNull: false},
     duration: {type: DataTypes.INTEGER, allowNull: false},
+    archivedAt: {type: DataTypes.DATE, allowNull: true},
     notes: {type: DataTypes.TEXT},
     descripción: {type: DataTypes.TEXT},
     afiliadoId: {type: DataTypes.INTEGER},
