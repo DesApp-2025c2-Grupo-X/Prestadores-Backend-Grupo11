@@ -27,7 +27,9 @@ async function crearPrestadores() {
     await Prestador.bulkCreate([
         { username: "dr alejandro ruiz", password: "12345", role: "medico", especialidades: ["cardiologia"], centroId: 3 },
         { username: "dr cecilia lopez", password: "6789", role: "medico", especialidades: ["clinica"], centroId: 3 },
-        { username: "clinica santa maria", password: "5555", role: "centro_medico", especialidades: ["cardiologia", "clinica"] }
+        { username: "dr pablo martinez", password: "2222", role: "medico" ,especialidades: ["pediatria"] , centroId: 3 },
+        { username: "dr julia fernandez", password: "3333", role: "medico" ,especialidades: ["traumatologia"] , centroId: 3 },
+        { username: "clinica santa maria", password: "5555", role: "centro_medico", especialidades: ["cardiologia", "clinica"], centroId: null }
     ]);
 }
 
@@ -56,7 +58,8 @@ const crearTurnos = async () => {
             Se solicita laboratorio completo, ecocardiograma de control y electrocardiograma."
             Se coordina próxima consulta según resultados`,
             integranteId:1,
-            prestadorId: 1
+            prestadorId: 1,
+            centroId: 3
         },
         {
             date: (() => {
@@ -78,7 +81,8 @@ const crearTurnos = async () => {
             Se indica continuar con medicación actual, mantener dieta hiposódica y realizar control en 30 días. 
             Se solicita laboratorio de rutina y perfil lipídico`,
             integranteId:2,
-            prestadorId: 1
+            prestadorId: 1,
+            centroId: 3
         },
         {
             date: (() => {
@@ -99,7 +103,8 @@ const crearTurnos = async () => {
              Saturación 98%, auscultación pulmonar normal.
              Se indica espirometría de control y radiografía de tórax. Se sugiere actividad física progresiva y reevaluación en 15 días.`,
             integranteId:3,
-            prestadorId: 1
+            prestadorId: 1,
+            centroId: 3
         },
         {
             date: (() => {
@@ -120,7 +125,8 @@ const crearTurnos = async () => {
             Se solicita ecografía abdominal y laboratorio con hepatograma, amilasas y PCR. 
             Se indica dieta liviana y analgesia. Control según resultados.`,
             integranteId:1,
-            prestadorId: 1
+            prestadorId: 1,
+            centroId: 3
         },
         {
             date: (() => {
@@ -137,7 +143,8 @@ const crearTurnos = async () => {
             })(),
            duration: 20,
            integranteId:3,
-           prestadorId: 1
+           prestadorId: 1,
+           centroId: 3
         },
         {
             date: (() => {
@@ -154,7 +161,8 @@ const crearTurnos = async () => {
             })(),
            duration: 20,
            integranteId:1,
-           prestadorId: 1
+           prestadorId: 1,
+           centroId: 3
         },
         {
             date: (() => {
@@ -171,7 +179,8 @@ const crearTurnos = async () => {
             })(),
            duration: 20,
            integranteId:2,
-           prestadorId: 1
+           prestadorId: 1,
+           centroId: 3
         },
         {
             date: (() => {
@@ -188,7 +197,8 @@ const crearTurnos = async () => {
             })(),
            duration: 20,
            integranteId:2,
-           prestadorId: 1
+           prestadorId: 1,
+           centroId: 3
         },
         {
             date: (() => {
@@ -205,7 +215,8 @@ const crearTurnos = async () => {
             })(),
             duration: 30,
             integranteId:8,
-            prestadorId: 2
+            prestadorId: 2,
+            centroId: 3
         },
         {
             date: (() => {
@@ -222,7 +233,8 @@ const crearTurnos = async () => {
             })(),
             duration: 45,
             integranteId:8,
-            prestadorId: 1
+            prestadorId: 1,
+            centroId: 3
         },
         {
             date: (() => {
@@ -243,7 +255,8 @@ const crearTurnos = async () => {
             Se solicita laboratorio preoperatorio, ECG y evaluación cardiológica. 
             Se entrega indicaciones prequirúrgicas y se coordina fecha de cirugía.`,
             integranteId: 8,
-            prestadorId: 1
+            prestadorId: 1,
+            centroId: 3
         },
         {
             date: (() => {
@@ -263,7 +276,8 @@ const crearTurnos = async () => {
              Se indica control con neurología, iniciar registro de episodios y evitar factores desencadenantes. 
              Se prescribe analgesia de rescate y técnicas de relajación.`,
             integranteId: 1,
-            prestadorId: 1
+            prestadorId: 1,
+            centroId: 3
         },
         {
             date: (() => {
@@ -284,7 +298,8 @@ const crearTurnos = async () => {
             Se indica continuar con inmovilización parcial y aplicación de frío local. Se prescribe antiinflamatorio por 5 días.
             Control clínico en 7 días para evaluar evolución funcional.`,
             integranteId: 3,
-            prestadorId: 3
+            prestadorId: 3,
+            centroId: 3
         },
         {
             date: (() => {
@@ -306,7 +321,8 @@ const crearTurnos = async () => {
             Se solicita laboratorio con HbA1c, perfil lipídico y función renal.
             Se coordina próxima consulta en 30 días para seguimiento metabólico.`,
             integranteId: 2,
-            prestadorId: 3
+            prestadorId: 3,
+            centroId: 3
         },
         {
             date: (() => {
@@ -327,7 +343,8 @@ const crearTurnos = async () => {
             Se solicita radiografía de tórax, ECG y laboratorio con hemograma y función tiroidea.
             Se indica evitar esfuerzos intensos hasta completar estudios. Reevaluación según resultados.`,
             integranteId: 7,
-            prestadorId: 3
+            prestadorId: 3,
+            centroId: 3
         }
    
     ])
