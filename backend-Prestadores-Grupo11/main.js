@@ -36,7 +36,7 @@ app.use('/prestador', prestadorRoute)
 
 
 app.listen(PORT, async () => {
-    await db.sequelize.sync({ force: true });
+    await db.sequelize.sync({ force: false });
     
     console.log(`La app arranco en el puerto ${PORT}.`);
    
