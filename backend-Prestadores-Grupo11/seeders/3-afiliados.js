@@ -1,6 +1,6 @@
 'use strict';
-const { Faker, es } = require('@faker-js/faker');
-const faker = new Faker({ locale: [es] });
+const { Faker, es_MX } = require('@faker-js/faker');
+const faker = new Faker({ locale: [es_MX] });
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -51,6 +51,7 @@ module.exports = {
 
         integrantesData.push({
             nombre: faker.person.firstName(),
+            apellido: parentesco === 'conyugue' ? faker.person.lastName() : afiliado.apellido,
             edad: parentesco === 'conyugue' ? afiliado.edad + faker.number.int({ min: -3, max: 3 }) : faker.number.int({ min: 0, max: 25 }),
             dni: faker.number.int({ min: 10000000, max: 60000000 }).toString(),
             afiliadoId: afiliadoId,

@@ -1,6 +1,6 @@
 'use strict';
-const { Faker, es, en } = require('@faker-js/faker');
-const faker = new Faker({ locale: [es, en] });
+const { Faker, es, es_MX } = require('@faker-js/faker');
+const faker = new Faker({ locale: [es_MX, es] });
 
 const db = require('../db/models/index');
 const Prestador = db.Prestador;

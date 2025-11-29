@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Turno',
-    timestamps: false
+    timestamps: true
   });
   return Turno;
 };

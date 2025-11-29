@@ -34,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Integrante.init({
     nombre: { type: DataTypes.STRING, allowNull: false },
+    apellido: { type: DataTypes.STRING, allowNull: false },
     edad: { type: DataTypes.INTEGER, allowNull: false },
     dni: { type: DataTypes.STRING, allowNull: false },
     afiliadoId: { type: DataTypes.INTEGER, allowNull: false },
