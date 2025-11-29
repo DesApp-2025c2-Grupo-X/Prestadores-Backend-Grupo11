@@ -38,6 +38,12 @@ router.get(
   turnosController.getAllTurnosByPrestadorId
 );
 
+//filtrar turnos por propios
+router.get(
+  '/prestador/:prestadorId/:pacienteId',
+  genericMiddleware.validateRolById('medico'),
+  turnosController.filtrarNotasPropias
+);
 
 // ACTUALIZAR NOTAS DEL TURNO
 router.patch(

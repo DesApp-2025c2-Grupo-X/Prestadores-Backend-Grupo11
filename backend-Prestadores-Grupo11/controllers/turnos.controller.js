@@ -125,11 +125,30 @@ const getAllTurnos = async (req, res, next) => {
   }
 };
 
+const filtrarNotasPropias = async (req,res) => {
+  const {prestadorId, pacienteId} = req.params;
+  const turnos = await Turno.findAll({where: 
+    {
+      prestadorId,
+      [Op.or]: [
+        {afiliadoId: pacienteId},
+        {integranteId: pacienteId}
+      ]
+    },
+    attributes: ['date', 'notes'],
+    include: [
+      {model: Prestador, as: 'prestador', attributes: ['username', 'especialidades']}
+    ]
+  })
+  res.status(200).json(turnos)
+}
+
 module.exports = {
   getAllTurnos,
   getAllTurnosByPrestadorId,
   getAllTurnosByCentro,
   getAllTurnosByEspecialidad,
   getAllTurnosByMedico,
-  updateNotesById
+  updateNotesById,
+  filtrarNotasPropias
 };
