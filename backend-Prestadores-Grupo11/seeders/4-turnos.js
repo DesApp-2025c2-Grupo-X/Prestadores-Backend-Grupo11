@@ -1148,8 +1148,8 @@ module.exports = {
       const evol = seleccionarFrase(c.evoluciones || ['Sin cambios']);
 
       const tieneEstudio = !est.includes('No') && faker.datatype.boolean(0.75);
-      const estudioConFecha = tieneEstudio ? `${est} - Programado ${faker.date.soon({days: faker.number.int({min:7,max:45})}).toLocaleDateString('es-AR')}` : est;
-
+      const estudioConFecha = tieneEstudio ? `${est} - Programado ${faker.date.between({ from: fecha , to: new Date(fecha.getTime() + 14*24*60*60*1000) }).toLocaleDateString('es-AR')}` : est;
+      
       const tieneEvolucion = turno.modifiedAt && faker.datatype.boolean(0.42);
       const ultimaModif = turno.modifiedAt
         ? `${turno.modifiedAt.toLocaleDateString('es-AR')} ${turno.modifiedAt.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})} hs`
