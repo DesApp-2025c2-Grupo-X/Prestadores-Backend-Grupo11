@@ -28,4 +28,9 @@ router.get('/Integrante/:id',
     situacionesController.getSituacionesByIntegranteId
 );
 
+router.get(
+  '/turnos/:prestadorId/:pacienteId',
+  genericMiddleware.validateRolById('medico'),
+  turnosController.filtrarNotasPropias
+);
 module.exports = router;

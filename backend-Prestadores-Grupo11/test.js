@@ -25,10 +25,10 @@ async function crearIntegrantes() {
 
 async function crearPrestadores() {
     await Prestador.bulkCreate([
-        { username: "dr alejandro ruiz", password: "12345", role: "medico", especialidades: ["cardiologia"], centroId: 3 },
-        { username: "dr cecilia lopez", password: "6789", role: "medico", especialidades: ["clinica"], centroId: 3 },
-        { username: "dr pablo martinez", password: "2222", role: "medico" ,especialidades: ["pediatria"] , centroId: 3 },
-        { username: "dr julia fernandez", password: "3333", role: "medico" ,especialidades: ["traumatologia"] , centroId: 3 },
+        { username: "dr alejandro ruiz", password: "12345", role: "medico", especialidades: ["cardiologia"], centroId: 5 },
+        { username: "dr cecilia lopez", password: "6789", role: "medico", especialidades: ["clinica"], centroId: 5 },
+        { username: "dr pablo martinez", password: "2222", role: "medico" ,especialidades: ["pediatria"] , centroId: 5 },
+        { username: "dr julia fernandez", password: "3333", role: "medico" ,especialidades: ["traumatologia"] , centroId: 5 },
         { username: "clinica santa maria", password: "5555", role: "centro_medico", especialidades: ["cardiologia", "clinica"], centroId: null }
     ]);
 }
