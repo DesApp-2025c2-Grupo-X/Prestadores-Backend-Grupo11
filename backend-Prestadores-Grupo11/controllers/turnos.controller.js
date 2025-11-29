@@ -100,7 +100,7 @@ const updateNotesById = async (req, res) => {
   const { notes } = req.body;
   const turno = await Turno.findByPk(id);
   turno.notes = notes;
-  turno.archivedAt = new DATE()
+  turno.archivedAt === null ? turno.archivedAt = new DATE() : turno.modifiedAt = new Date();
   await turno.save();
   res.status(200).json(turno);
 };
