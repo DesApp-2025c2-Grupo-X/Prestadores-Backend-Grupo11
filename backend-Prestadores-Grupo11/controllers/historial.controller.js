@@ -32,7 +32,7 @@ const getAllSituacionesByApellidoONro = async (req, res) => {
 // Obtener historia clínica completa (por tipoPaciente e id)
 const getHistoriaClinica = async (req, res) => {
   const { tipoPaciente, id } = req.params;
-  const fechaActual = new DATE()
+  const fechaActual = new Date()
   try {
     const modelo = tipoPaciente === 'integrante' ? Integrante : Afiliado;
 
@@ -41,25 +41,25 @@ const getHistoriaClinica = async (req, res) => {
         {
           model: Situacion,
           as: 'situaciones',
-          where: { estado: 'baja' },
-          separate: true,
+          //where: { estado: 'baja' },
+          //separate: true,
           include: [{ model: Prestador, attributes: ['username'], as: 'prestador' }],
-          order: [['fecha_de_fin', 'DESC']]
+          order: [['fecha_de_inicio', 'DESC']]
         },
-        {
+        /*{
           model: Situacion,
           as: 'situaciones en proceso',
           where: { estado: 'en proceso' },
           separate: true,
           include: [{ model: Prestador, attributes: ['username'], as: 'prestador' }],
           order: [['fecha_de_inicio', 'DESC']]
-        },
+        },*/
         {
           model: Turno,
           as: 'turnos',
           where: { notes: { [Op.not]: null }, archivedAt: { [Op.lte]: fechaActual } },
           required: false,
-          order: [['date', 'DESC']]
+          order: [['archivedAt', 'DESC']]
         }
       ]
     });
@@ -68,11 +68,16 @@ const getHistoriaClinica = async (req, res) => {
       return res.status(404).json({ error: 'Paciente no encontrado' });
     }
     const pacientesJSON = paciente.toJSON();
+    
+    const situacionesEnProceso = pacientesJSON.situaciones.filter( s => s.estado === "en proceso")
+    const situaciones = pacientesJSON.situaciones.filter(s=> s.estado === "baja")
+    pacientesJSON.situaciones = situaciones
+    pacientesJSON["situaciones en proceso"] = situacionesEnProceso
 
     pacientesJSON.situaciones = pacientesJSON.situaciones.map(i => ({ tipo: "situacion terapeutica finalizada", ...i }))
-    pacientesJSON['situaciones en proceso'] = pacientesJSON.situaciones.map(i => ({ tipo: "situacion terapeutica actiiva", ...i }))
-    pacientesJSON.turnos = pacientesJSON.situaciones.map(i => ({ tipo: "turno", ...i }))
-    const historial = [...pacienteJSON.situaciones, ...pacienteJSON['situaciones en proceso'], ...pacienteJSON.turnos]
+    pacientesJSON['situaciones en proceso'] = (pacientesJSON["situaciones en proceso"]).map(i => ({ tipo: "situacion terapeutica activa", ...i }))
+    pacientesJSON.turnos = pacientesJSON.turnos.map(i => ({ tipo: "turno", ...i }))
+    const historial = [...pacientesJSON.situaciones, ...pacientesJSON['situaciones en proceso'], ...pacientesJSON.turnos]
 
     historial.sort((a, b) => {
       let fechaA;
@@ -80,27 +85,27 @@ const getHistoriaClinica = async (req, res) => {
 
       if (a.archivedAt) {
         fechaA = new Date(a.archivedAt)
-      } else if (a.fecha_de_fin) {
-        fechaA = new Date(a.fecha_de_fin)
+      } else if (a.fecha_final) {
+        fechaA = new Date(a.fecha_final)
       }
       else {
-        fechaA = new Date(a.fecha_de_inicio)
+        fechaA = new Date(a.fecha_inicio)
       }
       if (b.archivedAt) {
         fechaB = new Date(b.date)
-      } else if (b.fecha_de_fin) {
-        fechaB = new Date(b.fecha_de_fin)  
+      } else if (b.fecha_final) {
+        fechaB = new Date(b.fecha_final)  
       }
       else {
-        fechaB = new Date(b.fecha_de_inicio)
+        fechaB = new Date(b.fecha_inicio)
       }
       return fechaB - fechaA
     })
     //delete pacienteJSON.situaciones;
     //delete pacienteJSON['situaciones en proceso'];
     //delete pacienteJSON.turnos;
-    pacienteJSON.historial = historial;
-    res.status(200).json(pacienteJSON);
+    pacientesJSON.historial = historial;
+    res.status(200).json(pacientesJSON);
   } catch (error) {
     console.error('Error al obtener historia clínica:', error);
     res.status(500).json({ error: 'Error al obtener historia clínica' });

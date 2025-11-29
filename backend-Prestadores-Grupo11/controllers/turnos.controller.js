@@ -10,7 +10,7 @@ const getAllTurnosByPrestadorId = async (req, res) => {
     include: [
       {
         model: Prestador,
-        attributes: { exclude: ["especialidad", "password"] },
+        attributes: { exclude: ["especialidades", "password"] },
         as: "prestador",
       },
       {
@@ -18,7 +18,7 @@ const getAllTurnosByPrestadorId = async (req, res) => {
         as: "afiliado",
         include: [
           { model: Integrante, attributes: ["id", "nombre", "edad", "dni"], as: "integrantes" }
-        ],
+        ]
       },
       {
         model: Integrante,
