@@ -31,7 +31,6 @@ module.exports = {
     const duraciones = [15, 30, 45, 60];
     const turnosData = [];
 
-    // Mapeo de Especialidades a Datos Médicos (lógica de realismo intacta)
     const dataEspecialidades = {
       'Cardiología': { motivos: ['Control de presión arterial', 'Dolor de pecho atípico'], hallazgos: ['TA 120/80. Auscultación rítmica, sin soplos.'], prescripciones: ['Atorvastatina 20mg, 1 por noche.'] },
       'Traumatología': { motivos: ['Dolor de rodilla', 'Esguince de tobillo'], hallazgos: ['Inflamación leve en tobillo. Rx sin fracturas.'], prescripciones: ['Ibuprofeno 600mg c/8hs.'] },
@@ -64,14 +63,11 @@ module.exports = {
       'Fertilidad': { motivos: ['Estudios de fertilidad', 'Tratamiento FIV'], hallazgos: ['Evaluación hormonal inicial.'], prescripciones: ['Estimulación ovárica.'] }
     };
 
-    const NUM_TURNOS_V2 = 9500; // ESCALA V2: 9.500 turnos totales
-
-    // --- Generación de Registros de Turnos (9500 turnos totales) ---
+    const NUM_TURNOS_V2 = 9500;
 
     for (let i = 0; i < NUM_TURNOS_V2; i++) {
-      const isPast = Math.random() < 0.8; // 80% turnos pasados/completados
+      const isPast = Math.random() < 0.8; 
       const duration = faker.helpers.arrayElement(duraciones);
-
       const requestedDate = faker.date.past({ years: 2 });
       const scheduledDate = isPast
         ? faker.date.past({ refDate: new Date(), days: 30 })
@@ -83,7 +79,6 @@ module.exports = {
 
       const medico = faker.helpers.arrayElement(medicos);
       const paciente = faker.helpers.arrayElement(todosLosPacientes);
-
       const especialidad = faker.helpers.arrayElement(medico.especialidades);
       const dataEsp = dataEspecialidades[especialidad];
 
@@ -91,18 +86,18 @@ module.exports = {
         if (dataEsp) {
           const motivo = faker.helpers.arrayElement(dataEsp.motivos);
           const hallazgo = faker.helpers.arrayElement(dataEsp.hallazgos);
-          const prescripcion = dataEsp.prescripciones.length > 0 ? faker.helpers.arrayElement(dataEsp.prescripciones) : 'No se requiere prescripción específica.';
+          const prescripcion = dataEsp.prescripciones.length > 0 ? faker.helpers.arrayElement(dataEsp.prescripciones) : faker.lorem.sentence(); // <- CORREGIDO
           selectedDescription = motivo;
           selectedNote = `Motivo de consulta: ${motivo}. Hallazgos: ${hallazgo} Evolución: Paciente estable. Prescripción: ${prescripcion}`;
         } else {
-          selectedNote = `Nota clínica genérica para especialidad ${especialidad}.`;
+          selectedNote = `Nota clínica genérica para especialidad ${especialidad}. ${faker.lorem.sentence()}`; // <- CORREGIDO
         }
         archiveDate = faker.date.recent({ refDate: scheduledDate, days: 1 });
       }
 
       turnosData.push({
         date: scheduledDate,
-        start: scheduledDate, // Usamos 'date' para 'start' para simplificar la hora de inicio (no tenemos ese nivel de detalle en faker)
+        start: scheduledDate,
         duration: duration,
         archivedAt: archiveDate,
         notes: selectedNote,
@@ -110,7 +105,6 @@ module.exports = {
         afiliadoId: paciente.afiliadoIdFK,
         prestadorId: medico.id,
         integranteId: paciente.tipo === 'integrante' ? paciente.id : null,
-        // No añadimos createdAt/updatedAt si el modelo no los espera.
       });
     }
 

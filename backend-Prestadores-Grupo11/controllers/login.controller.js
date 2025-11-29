@@ -3,12 +3,16 @@ const { Prestador } = require('../db/models')
 const accessLogin = async (req, res) => {
   const { username, password } = req.body;
   const prestador = await Prestador.findOne({
-    where: { username, password },
+    where: { username },
+    attributes: ["id", "username", "role", "centroId"],
+    //separated: true,
     include: [
+     
       {
         model: Prestador,
         as: "centro",
-        attributes: ["id", "username", "role"]
+        required: false,
+        attributes: ["nombre"]
       }
     ]
   });
