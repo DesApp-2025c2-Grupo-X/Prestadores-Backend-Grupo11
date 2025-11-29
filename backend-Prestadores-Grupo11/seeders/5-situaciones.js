@@ -1,6 +1,6 @@
 'use strict';
 const { Faker, es, en } = require('@faker-js/faker');
-const faker = new Faker({ locale: [es,en] });
+const faker = new Faker({ locale: [es, en] });
 
 const db = require('../db/models/index');
 const Prestador = db.Prestador;
@@ -29,12 +29,10 @@ module.exports = {
 
     const situacionesData = [];
     const todasEspecialidades = [...new Set(medicos.flatMap(m => m.especialidades))];
-    
+    const SITUACIONES_POR_ESPECIALIDAD = 45; // Aprox. 1420 situaciones totales
 
-    // Generamos situaciones para CADA especialidad para asegurar cobertura
     for (const especialidad of todasEspecialidades) {
-        // Generamos un número fijo de situaciones por especialidad (ej. 15 por especialidad)
-        for (let i = 0; i < 15; i++) { 
+        for (let i = 0; i < SITUACIONES_POR_ESPECIALIDAD; i++) { 
 
             const paciente = faker.helpers.arrayElement(todosLosPacientes);
             const medicoConEspecialidad = medicos.find(m => m.especialidades.includes(especialidad));
@@ -44,28 +42,37 @@ module.exports = {
 
             let estado;
             let fechaFinal = null;
-            let observacionesTexto;
+            let observacionesTexto = ""; // Usaremos esto para acumular notas
 
-            // 1. Siempre se genera la nota inicial al crear la situación
-            observacionesTexto = `Motivo de ingreso: ${faker.lorem.words(4)}. Hallazgos iniciales: ${faker.lorem.sentences(1)}. Plan de tratamiento: ${faker.lorem.words(5)}.`;
+            // 1. Nota de Alta (todas las situaciones tienen una)
+            observacionesTexto += `[ALTA]: ${faker.lorem.sentences({ min: 1, max: 2 })}.`;
 
             if (estaCerrada) {
                 estado = 'baja';
+                // La fecha final ocurre después de la fecha de inicio
                 fechaFinal = faker.date.future({ months: 6, refDate: fechaInicio });
                 
-                // 2. Si se da de baja, se añaden observaciones adicionales al texto existente
-                const notasCierre = `Evolución favorable: ${faker.lorem.sentences(1)}. Resultados satisfactorios. Se otorga el alta médica definitiva.`;
-                observacionesTexto = `${observacionesTexto}\n\n[NOTA DE CIERRE]: ${notasCierre}`;
+                // 2. Acumulamos un cúmulo importante de notas para enriquecer la historia clínica
+                const cantidadNotasIntermedias = faker.number.int({ min: 3, max: 8 });
+                for (let n = 0; n < cantidadNotasIntermedias; n++) {
+                    observacionesTexto += `\n\n[EVOLUCION ${n + 1}]: ${faker.lorem.sentences({ min: 1, max: 3 })}.`;
+                }
+
+                // 3. Nota de Cierre/Baja
+                observacionesTexto += `\n\n[BAJA]: ${faker.lorem.sentences({ min: 1, max: 2 })}. Evolución favorable, se otorga el alta definitiva.`;
 
             } else {
                 estado = 'en proceso';
-                // Si está en proceso, solo queda la nota inicial
+                // Las situaciones en proceso solo tienen la nota de alta y quizás 1 o 2 de evolución
+                if (Math.random() < 0.5) {
+                    observacionesTexto += `\n\n[EVOLUCION 1]: ${faker.lorem.sentences({ min: 1, max: 2 })}.`;
+                }
             }
 
             situacionesData.push({
                 fecha_inicio: fechaInicio,
                 especialidad: especialidad,
-                observaciones: observacionesTexto, // Texto completo (inicio + cierre si aplica)
+                observaciones: observacionesTexto, // Texto completo acumulado
                 estado: estado,
                 fecha_final: fechaFinal, // NULL si está 'en proceso'
                 afiliadoId: paciente.tipo === 'afiliado' ? paciente.id : null,
@@ -76,7 +83,7 @@ module.exports = {
     }
 
     await queryInterface.bulkInsert('Situacions', situacionesData, {});
-    console.log(`Datos de ${situacionesData.length} situaciones terapéuticas cargados con éxito.`);
+    console.log(`[V2 SEEDING] Cargados ${situacionesData.length} situaciones terapéuticas totales.`);
   },
 
   down: async (queryInterface, Sequelize) => {

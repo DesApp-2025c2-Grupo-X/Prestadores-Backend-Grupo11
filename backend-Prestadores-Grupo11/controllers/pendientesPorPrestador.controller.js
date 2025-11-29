@@ -1,4 +1,4 @@
-const { Autorizacion, Receta, Reintegro, Integrante } = require('../db/models');
+const { Autorizacion, Receta, Reintegro, Integrante, Afiliado } = require('../db/models');
 
 const getPendientesPorPrestador = async (req, res) => {
   const prestadorId = req.params.id; 
@@ -56,7 +56,7 @@ const getPendientesPorPrestador = async (req, res) => {
 
   res.status(200).json({ autorizaciones, recetas, reintegros });
 
-  res.status(200).json({ autorizaciones, recetas, reintegros });
+  //res.status(200).json({ autorizaciones, recetas, reintegros });
 };
 
 module.exports = { getPendientesPorPrestador };

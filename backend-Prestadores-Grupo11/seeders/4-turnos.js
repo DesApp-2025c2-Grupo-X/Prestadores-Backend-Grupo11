@@ -1,6 +1,6 @@
 'use strict';
-const { Faker, es } = require('@faker-js/faker');
-const faker = new Faker({ locale: [es] });
+const { Faker, es, en } = require('@faker-js/faker');
+const faker = new Faker({ locale: [es,en] });
 
 const db = require('../db/models/index');
 const Turno = db.Turno;
@@ -34,7 +34,6 @@ module.exports = {
     // Mapeo de Especialidades a Datos Médicos (lógica de realismo intacta)
     const dataEspecialidades = {
       'Cardiología': { motivos: ['Control de presión arterial', 'Dolor de pecho atípico'], hallazgos: ['TA 120/80. Auscultación rítmica, sin soplos.'], prescripciones: ['Atorvastatina 20mg, 1 por noche.'] },
-      'Pediatría': { motivos: ['Control niño sano', 'Fiebre y tos'], hallazgos: ['Desarrollo acorde a la edad. Vacunas al día.'], prescripciones: ['Ibuprofeno infantil, dosificar por peso.'] },
       'Traumatología': { motivos: ['Dolor de rodilla', 'Esguince de tobillo'], hallazgos: ['Inflamación leve en tobillo. Rx sin fracturas.'], prescripciones: ['Ibuprofeno 600mg c/8hs.'] },
       'Neurología': { motivos: ['Migrañas recurrentes', 'Mareos'], hallazgos: ['Examen neurológico normal. Sin déficits focales.'], prescripciones: ['Sumatriptán si crisis.'] },
       'Clínica Médica': { motivos: ['Chequeo general', 'Resultados de laboratorio'], hallazgos: ['Signos vitales estables. Laboratorio normal. Paciente sano.'], prescripciones: ['Se solicita laboratorio completo y EGG.'] },
@@ -65,25 +64,21 @@ module.exports = {
       'Fertilidad': { motivos: ['Estudios de fertilidad', 'Tratamiento FIV'], hallazgos: ['Evaluación hormonal inicial.'], prescripciones: ['Estimulación ovárica.'] }
     };
 
+    const NUM_TURNOS_V2 = 9500; // ESCALA V2: 9.500 turnos totales
 
-    // --- Generación de Registros de Turnos (1000 turnos totales) ---
+    // --- Generación de Registros de Turnos (9500 turnos totales) ---
 
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < NUM_TURNOS_V2; i++) {
       const isPast = Math.random() < 0.8; // 80% turnos pasados/completados
       const duration = faker.helpers.arrayElement(duraciones);
 
-      // 1. 'start': Cuando se solicitó el turno (siempre en el pasado)
       const requestedDate = faker.date.past({ years: 2 });
-
-      // 2. 'date': Fecha agendada del turno (obligatorio, posterior a 'start')
-      // Si es pasado, la fecha agendada fue hace poco. Si es futuro, será pronto.
       const scheduledDate = isPast
         ? faker.date.past({ refDate: new Date(), days: 30 })
         : faker.date.future({ days: 60 });
 
       let selectedNote = null;
       let selectedDescription = `Turno agendado`;
-      // 3. 'archivedAt': Momento de grabación de la nota clínica (solo para turnos completados)
       let archiveDate = null;
 
       const medico = faker.helpers.arrayElement(medicos);
@@ -93,40 +88,36 @@ module.exports = {
       const dataEsp = dataEspecialidades[especialidad];
 
       if (isPast) {
-        // Si el turno ya pasó (isPast=true), generamos notas y la fecha de archivo
         if (dataEsp) {
           const motivo = faker.helpers.arrayElement(dataEsp.motivos);
           const hallazgo = faker.helpers.arrayElement(dataEsp.hallazgos);
           const prescripcion = dataEsp.prescripciones.length > 0 ? faker.helpers.arrayElement(dataEsp.prescripciones) : 'No se requiere prescripción específica.';
           selectedDescription = motivo;
-          selectedNote = `Motivo: ${motivo}. Hallazgos clínicos: ${hallazgo} Prescripción: ${prescripcion}`;
+          selectedNote = `Motivo de consulta: ${motivo}. Hallazgos: ${hallazgo} Evolución: Paciente estable. Prescripción: ${prescripcion}`;
         } else {
-          selectedDescription = 'Consulta médica general concluida.';
-          selectedNote = 'Evolución favorable. Control en 1 mes.';
+          selectedNote = `Nota clínica genérica para especialidad ${especialidad}.`;
         }
-
-        // La nota se grabó en algún momento después de la fecha/hora del turno
-        // Asumimos que se graba "ahora" o poco después de la fecha agendada
-        archiveDate = new Date();
+        archiveDate = faker.date.recent({ refDate: scheduledDate, days: 1 });
       }
 
       turnosData.push({
-        date: scheduledDate,      // Fecha agendada (obligatorio)
-        start: requestedDate,     // Cuando se solicitó (obligatorio)
+        date: scheduledDate,
+        start: scheduledDate, // Usamos 'date' para 'start' para simplificar la hora de inicio (no tenemos ese nivel de detalle en faker)
         duration: duration,
-        notes: selectedNote,      // Notas de historia clínica (solo si está archivado)
-        descripción: selectedDescription,
-        prestadorId: medico.id,
+        archivedAt: archiveDate,
+        notes: selectedNote,
+        descripcion: selectedDescription,
         afiliadoId: paciente.afiliadoIdFK,
+        prestadorId: medico.id,
         integranteId: paciente.tipo === 'integrante' ? paciente.id : null,
-        archivedAt: archiveDate,  // Momento de grabación de la nota (solo si está archivado)
+        // No añadimos createdAt/updatedAt si el modelo no los espera.
       });
     }
 
     await queryInterface.bulkInsert('Turnos', turnosData, {});
-    console.log(`Datos de ${turnosData.length} turnos cargados con éxito.`);
-  },
+    console.log(`[V2 SEEDING] Cargados ${turnosData.length} turnos, cumpliendo ratio de ~61 turnos por médico.`);
 
+  },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete('Turnos', null, {});
   }
