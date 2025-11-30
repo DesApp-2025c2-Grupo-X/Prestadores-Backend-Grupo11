@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       afiliadoId: DataTypes.INTEGER,
       integranteId: DataTypes.INTEGER,
       prestadorId: { type: DataTypes.INTEGER, allowNull: false },
-      centroId: { type: DataTypes.INTEGER, allowNull: false }, 
+      centroId: { type: DataTypes.INTEGER, allowNull: true}, 
     },
     {
       sequelize,

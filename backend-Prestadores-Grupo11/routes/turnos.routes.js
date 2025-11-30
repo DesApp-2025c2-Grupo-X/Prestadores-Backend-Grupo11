@@ -33,7 +33,7 @@ router.get(
 
 // RUTA PARA EL MÉDICO INDIVIDUAL
 router.get(
-  "/prestador/:prestadorId",
+  "/:prestadorId",
   genericMiddleware.existPrestadorByPrestadorId,
   turnosController.getAllTurnosByPrestadorId
 );
