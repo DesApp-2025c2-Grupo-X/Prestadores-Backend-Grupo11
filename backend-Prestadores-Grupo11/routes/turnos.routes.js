@@ -7,7 +7,7 @@ const { genericMiddleware } = require("../middlewares");
 
 // RUTAS CENTRO MÉDICO
 router.get(
-  "/centro/:centroId",
+  "/centro/:prestadorId",
   genericMiddleware.existPrestadorByPrestadorId,
   genericMiddleware.validateRolById("centro_medico"),
   turnosController.getAllTurnosByCentro
@@ -15,7 +15,7 @@ router.get(
 
 // Turnos por especialidad dentro del centro
 router.get(
-  "/centro/:centroId/especialidad/:especialidadId",
+  "/centro/:prestadorId/especialidad/:especialidadId",
   genericMiddleware.existPrestadorByPrestadorId,
   genericMiddleware.validateRolById("centro_medico"),
   turnosController.getAllTurnosByEspecialidad
@@ -23,7 +23,7 @@ router.get(
 
 // Turnos por médico dentro del centro
 router.get(
-  "/centro/:centroId/medico/:medicoId",
+  "/centro/:prestadorId/medico/:medicoId",
   genericMiddleware.existPrestadorByPrestadorId,
   genericMiddleware.validateRolById("centro_medico"),
   turnosController.getAllTurnosByMedico
@@ -33,7 +33,7 @@ router.get(
 
 // RUTA PARA EL MÉDICO INDIVIDUAL
 router.get(
-  "/prestador/:prestadorId",
+  "/:prestadorId",
   genericMiddleware.existPrestadorByPrestadorId,
   turnosController.getAllTurnosByPrestadorId
 );

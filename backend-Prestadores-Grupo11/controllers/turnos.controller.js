@@ -10,7 +10,7 @@ const getAllTurnosByPrestadorId = async (req, res) => {
   const { prestadorId } = req.params;
 
   const turnos = await Turno.findAll({
-    where: { prestadorId },
+    where: { centroId: prestadorId },
     include: [
       { model: Prestador, as: "prestador", attributes: { exclude: ["password"] } },
       {
@@ -29,10 +29,10 @@ const getAllTurnosByPrestadorId = async (req, res) => {
 
 // CENTRO MÉDICO – TODOS LOS TURNOS
 const getAllTurnosByCentro = async (req, res) => {
-  const { centroId } = req.params;
+  const { prestadorId } = req.params;
 
   const turnos = await Turno.findAll({
-    where: { centroId },
+    where: { centroId: prestadorId },
     include: [
       { model: Prestador, as: "prestador" },
       {
@@ -51,10 +51,10 @@ const getAllTurnosByCentro = async (req, res) => {
 
 // CENTRO – FILTRAR POR ESPECIALIDAD
 const getAllTurnosByEspecialidad = async (req, res) => {
-  const { centroId, especialidadId } = req.params;
+  const { prestadorId, especialidadId } = req.params;
 
   const turnos = await Turno.findAll({
-    where: { centroId },
+    where: { centroId: prestadorId },
     include: [
       {
         model: Prestador,
@@ -78,10 +78,10 @@ const getAllTurnosByEspecialidad = async (req, res) => {
 
 // CENTRO – FILTRAR POR MÉDICO
 const getAllTurnosByMedico = async (req, res) => {
-  const { centroId, medicoId } = req.params;
+  const { prestadorId, medicoId } = req.params;
 
   const turnos = await Turno.findAll({
-    where: { centroId, prestadorId: medicoId },
+    where: { centroId: prestadorId, prestadorId: medicoId },
     include: [
       { model: Prestador, as: "prestador" },
       {

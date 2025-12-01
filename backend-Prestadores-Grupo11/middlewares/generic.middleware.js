@@ -13,7 +13,7 @@ const existModelById = (Model) => {
 
 const existPrestadorByPrestadorId = async (req, res, next) => {
     const id = req.params.prestadorId;
-    const prestador = Prestador.findByPk(id);
+    const prestador = await Prestador.findByPk(id);
     if (!prestador) {
         return res.status(401).json({ error: `El prestador con id ${id} no existe` });
     }

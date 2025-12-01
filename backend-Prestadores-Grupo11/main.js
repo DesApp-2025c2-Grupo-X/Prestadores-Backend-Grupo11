@@ -1,7 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const db = require('./db/models');
-const {crearAfiliados, crearPrestadores, crearAutorizaciones, crearReintegros, crearRecetas, crearIntegrantes, crearSituaciones, crearTurnos} = require('./test');
+const {crearTurnos} = require('./testTurnos.js');
+const {crearAfiliados} = require('./testAfiliados.js');
+const {crearIntegrantes} = require('./testIntegrantes.js');
+const {crearPrestadores} = require('./testPrestadores.js');
+const {crearSituaciones} = require('./testSituaciones.js');
+const {crearAutorizaciones} = require('./testAutorizaciones.js');
+const {crearReintegros} = require('./testReintegros.js');
+const {crearRecetas} = require('./testRecetas.js');
+
 const app = express();
 const PORT = process.env.PORT ?? 3001;
 const {
