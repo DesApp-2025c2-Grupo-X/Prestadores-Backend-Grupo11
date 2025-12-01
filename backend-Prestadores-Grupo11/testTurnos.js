@@ -3,1194 +3,819 @@ const { notify } = require('./routes/auth.route');
 
 const crearTurnos = async () => {
     await Turno.bulkCreate([
-        //Turnos Intregrante Id: 1
         {
-        date: new Date("2025-12-03T10:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes: `Durante la consulta cardiológica, el paciente asistió para un control integral orientado a evaluar su estado cardiovascular general, la presencia de síntomas relacionados y la evolución de factores de riesgo previamente identificados. Al iniciar la entrevista, refirió sentirse en términos generales estable, aunque mencionó episodios ocasionales de cansancio leve al realizar esfuerzos prolongados, sin que estos se acompañen de disnea significativa, dolor torácico típico, palpitaciones sostenidas o mareos incapacitantes. El paciente relató que en las últimas semanas mantuvo una rutina de actividad física moderada, aunque aclaró que sus niveles de energía han variado según el descanso y las demandas laborales.
-
-Durante el examen físico se constató un estado general bueno, con buena coloración y sin signos visibles de fatiga. La presión arterial se registró dentro de parámetros aceptables para su rango etario, aunque se observó una ligera tendencia a valores altos, motivo por el cual se recomendó continuar el monitoreo domiciliario. La auscultación cardíaca reveló tonos rítmicos, sin soplos, extratonos ni arritmias evidentes. No se identificaron edemas en miembros inferiores ni signos compatibles con falla cardíaca descompensada. La auscultación pulmonar no mostró ruidos agregados y el pulso periférico se palpó con buena intensidad y simetría.
-
-Se revisaron estudios previos, incluyendo un electrocardiograma de control que muestra un ritmo sinusal normal sin alteraciones de la conducción ni signos de isquemia recientes. También se evaluaron resultados de laboratorio anteriores, observándose perfiles lipídicos ligeramente elevados, por lo que se reforzaron las recomendaciones sobre alimentación, reducción de grasas saturadas y mantenimiento de una rutina regular de ejercicio aeróbico. En vista de los hallazgos actuales y considerando el antecedente de factores de riesgo cardiovasculares moderados, se indicó solicitar un laboratorio actualizado que incluya perfil lipídico completo, función renal, glucemia y hemoglobina glicosilada. Asimismo, se programó un ecocardiograma Doppler para evaluar estructura y función cardíaca con mayor detalle, especialmente parámetros como fracción de eyección, tamaño de cavidades y funcionamiento valvular.
-
-Se conversó con el paciente sobre la importancia del control periódico, la adherencia a las medidas terapéuticas no farmacológicas y el seguimiento continuo de síntomas. Se acordó una nueva consulta una vez obtenidos los resultados solicitados o antes en caso de presentar dolor precordial, disnea, palpitaciones persistentes o cualquier síntoma nuevo que genere preocupación.`,
-        integranteId: 1,
-        prestadorId: 1,
-        centroId: 5
-    },
-    {
-        date: new Date("2025-02-10T15:30:00"),
-        start: new Date("2025-02-10T15:30:00"),
-        duration: 30,
-        notes: `En esta consulta de clínica médica general, el paciente acudió con el objetivo de realizar un control integral del estado de salud, evaluar síntomas recientes y actualizar estudios complementarios de rutina. Durante la entrevista clínica refirió haber experimentado en las últimas semanas episodios aislados de malestar general y cansancio, aunque aclaró que estos no interfieren significativamente en su vida cotidiana. Negó presencia de fiebre, tos persistente, dificultad respiratoria, molestias digestivas relevantes o cambios bruscos en el apetito o el peso corporal. También comentó que ha intentado mantener hábitos saludables, aunque reconoció que su nivel de actividad física disminuyó en el último mes debido a mayor carga laboral.
-
-El examen físico reveló un paciente en buen estado general, colaborador y orientado en tiempo y espacio. Se constató una presión arterial dentro de rangos normales, frecuencia cardíaca regular y temperatura afebril. La auscultación cardiopulmonar no mostró alteraciones significativas: los ruidos cardíacos fueron claros y rítmicos, sin soplos evidentes, y los campos pulmonares presentaron buena ventilación, sin ruidos agregados. El abdomen se palpó blando, depresible y sin signos de dolor a la presión. No se identificaron masas ni organomegalias. Las extremidades no mostraron edemas y la movilidad general fue adecuada.
-
-A nivel metabólico, se revisaron estudios previos que indicaron valores limítrofes en glucemia y colesterol total. Por ello se recomendó reforzar cuidados dietarios, disminuir consumo de azúcares simples e incorporar más fibras vegetales. También se sugirió retomar una rutina regular de ejercicio, al menos 30 minutos cinco veces por semana. Dado que los valores anteriores fueron tomados hace varios meses, se solicitó un nuevo laboratorio que incluya hemograma completo, función hepática, función renal, glucemia en ayunas, perfil lipídico y control tiroideo, con el fin de descartar alteraciones subyacentes que pudieran relacionarse con el cansancio referido.
-
-Además, se conversó con el paciente sobre la importancia del descanso adecuado y el manejo del estrés, ya que ambos factores suelen influir notablemente en la sensación de fatiga. Se recomendó mantener correcta hidratación y vigilar aparición de cualquier síntoma persistente o progresivo. Finalmente, se coordinó un nuevo control clínico para la revisión de los estudios solicitados, dejando la puerta abierta para consulta anticipada si presentara fiebre, malestar general sostenido, dolor abdominal importante o cualquier síntoma que genere preocupación.`,
-        integranteId: 1,
-        prestadorId: 2,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-07-21T14:00:00"),
-        start: new Date("2025-07-21T14:00:00"),
-        duration: 60,
-        notes: `Durante la consulta traumatológica, el paciente acudió para una evaluación integral orientada a valorar su estado musculoesquelético, particularmente a raíz de molestias intermitentes que había mencionado en controles previos. Al iniciar la entrevista, refirió episodios aislados de rigidez matutina leve y sensación de tensión en la región lumbar después de periodos prolongados sentado, sin irradiación hacia miembros inferiores ni acompañamiento de hormigueo o pérdida de fuerza. Negó traumatismos recientes, caídas, torceduras, inflamación significativa o dolor agudo incapacitante.
-
-En el examen físico se evaluó la postura, movilidad general y presencia de puntos dolorosos. Se observó una marcha estable, sin claudicación. La columna vertebral mostró alineación adecuada, aunque con ligera contractura paravertebral lumbar bilateral a la palpación. Los rangos de movimiento fueron completos, aunque la flexión lumbar presentó leve molestia al final del recorrido. Las extremidades inferiores exhibieron fuerza conservada, reflejos osteotendinosos simétricos y sin alteraciones de sensibilidad. No se detectaron signos clínicos sugestivos de radiculopatía ni compromiso neurológico agudo.`,
-        integranteId: 1,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-11-03T11:15:00"),
-        start: new Date("2025-10-03T11:15:00"),
-        duration: 30,
-        notes: `Durante esta revisión cardiológica, el paciente indicó sensación ocasional de fatiga. Se revisaron estudios previos, incluyendo un electrocardiograma de control que muestra un ritmo sinusal normal sin alteraciones de la conducción ni signos de isquemia recientes. También se evaluaron resultados de laboratorio anteriores, observándose perfiles lipídicos ligeramente elevados, por lo que se reforzaron las recomendaciones sobre alimentación, reducción de grasas saturadas y mantenimiento de una rutina regular de ejercicio aeróbico. En vista de los hallazgos actuales y considerando el antecedente de factores de riesgo cardiovasculares moderados, se indicó solicitar un laboratorio actualizado que incluya perfil lipídico completo, función renal, glucemia y hemoglobina glicosilada. Asimismo, se programó un ecocardiograma Doppler para evaluar estructura y función cardíaca con mayor detalle, especialmente parámetros como fracción de eyección, tamaño de cavidades y funcionamiento valvular.)`,
-        integranteId: 1,
-        prestadorId: 1
-    },
-    {
-        date: new Date("2025-12-02T08:30:00"),
-        start: new Date("2025-11-03T08:30:00"),
-        duration: 45,
-        notes: `En esta consulta de clínica médica general, el paciente acudió con el objetivo de realizar un control integral del estado de salud, evaluar síntomas recientes y actualizar estudios complementarios de rutina. Durante la entrevista clínica refirió haber experimentado en las últimas semanas episodios aislados de malestar general y cansancio, aunque aclaró que estos no interfieren significativamente en su vida cotidiana. Negó presencia de fiebre, tos persistente, dificultad respiratoria, molestias digestivas relevantes o cambios bruscos en el apetito o el peso corporal. También comentó que ha intentado mantener hábitos saludables, aunque reconoció que su nivel de actividad física disminuyó en el último mes debido a mayor carga laboral.
-
-El examen físico reveló un paciente en buen estado general, colaborador y orientado en tiempo y espacio. Se constató una presión arterial dentro de rangos normales, frecuencia cardíaca regular y temperatura afebril. La auscultación cardiopulmonar no mostró alteraciones significativas: los ruidos cardíacos fueron claros y rítmicos, sin soplos evidentes, y los campos pulmonares presentaron buena ventilación, sin ruidos agregados. El abdomen se palpó blando, depresible y sin signos de dolor a la presión. No se identificaron masas ni organomegalias. Las extremidades no mostraron edemas y la movilidad general fue adecuada.
-
-A nivel metabólico, se revisaron estudios previos que indicaron valores limítrofes en glucemia y colesterol total. Por ello se recomendó reforzar cuidados dietarios, disminuir consumo de azúcares simples e incorporar más fibras vegetales. También se sugirió retomar una rutina regular de ejercicio, al menos 30 minutos cinco veces por semana. Dado que los valores anteriores fueron tomados hace varios meses, se solicitó un nuevo laboratorio que incluya hemograma completo, función hepática, función renal, glucemia en ayunas, perfil lipídico y control tiroideo, con el fin de descartar alteraciones subyacentes que pudieran relacionarse con el cansancio referido.
-
-Además, se conversó con el paciente sobre la importancia del descanso adecuado y el manejo del estrés, ya que ambos factores suelen influir notablemente en la sensación de fatiga. Se recomendó mantener correcta hidratación y vigilar aparición de cualquier síntoma persistente o progresivo. Finalmente, se coordinó un nuevo control clínico para la revisión de los estudios solicitados, dejando la puerta abierta para consulta anticipada si presentara fiebre, malestar general sostenido, dolor abdominal importante o cualquier síntoma que genere preocupación.`,
-        integranteId: 1,
-        prestadorId: 2,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-12-11T15:00:00"),
-        start: new Date("2025-12-11T13:00:00"),
-        duration: 30,
-        notes: null,
-        integranteId: 1,
-        prestadorId: 1,
-        centroId: 5
-    },
-    {
-        date: new Date("2026-01-02T09:45:00"),
-        start: new Date("2026-01-02T09:45:00"),
-        duration: 45,
-        notes: null,
-        integranteId: 1,
-        prestadorId: 1,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-11-04T18:30:00"),
-        start: new Date("2025-10-04T18:30:00"),
-        duration: 60,
-        notes: `El paciente llega a la consulta para seguimiento de su condición cardiovascular. Refiere que en las últimas semanas presentó episodios de presión en el pecho durante esfuerzos intensos, los cuales cedieron al descansar. No se acompañaron de sudoración fría ni náuseas. Tampoco manifiesta palpitaciones ni pérdida de conocimiento. Refiere que ha descuidado un poco la actividad física regular y la dieta recomendada.
-
-Durante el examen físico, los signos vitales se encuentran dentro de valores esperados. La auscultación cardíaca no revela soplos ni alteraciones de los ruidos cardíacos. La evaluación vascular periférica muestra buena perfusión, sin edemas. La exploración respiratoria es normal. Se revisa el electrocardiograma previo, que mostraba un ritmo sinusal sin cambios significativos, aunque el paciente no trae estudios recientes.
-
-Ante la descripción de molestias torácicas relacionadas con el esfuerzo, se indica realizar una ergometría y un ecocardiograma para evaluar la función ventricular y descartar isquemia. Asimismo, se solicita laboratorio completo, incluyendo perfil lipídico, función hepática y renal, y marcadores metabólicos.
-
-Se conversa con el paciente sobre la importancia de retomar hábitos saludables, mantener un plan de ejercicio progresivo y controlar adecuadamente los factores de riesgo. Se fija una nueva consulta una vez obtenidos los resultados.`,
-        integranteId: 1,
-        prestadorId: 1,
-        centroId: 5
-    },
-
-    //Turnos Intregrante Id: 2
-    {
-        date: new Date("2025-01-22T09:00:00"),
-        start: new Date("2025-01-22T09:00:00"),
-        duration: 45,
-        notes: `Durante la consulta traumatológica, el paciente acudió para una evaluación integral orientada a valorar su estado musculoesquelético, particularmente a raíz de molestias intermitentes que había mencionado en controles previos. Al iniciar la entrevista, refirió episodios aislados de rigidez matutina leve y sensación de tensión en la región lumbar después de periodos prolongados sentado, sin irradiación hacia miembros inferiores ni acompañamiento de hormigueo o pérdida de fuerza. Negó traumatismos recientes, caídas, torceduras, inflamación significativa o dolor agudo incapacitante.
-
-En el examen físico se evaluó la postura, movilidad general y presencia de puntos dolorosos. Se observó una marcha estable, sin claudicación. La columna vertebral mostró alineación adecuada, aunque con ligera contractura paravertebral lumbar bilateral a la palpación. Los rangos de movimiento fueron completos, aunque la flexión lumbar presentó leve molestia al final del recorrido. Las extremidades inferiores exhibieron fuerza conservada, reflejos osteotendinosos simétricos y sin alteraciones de sensibilidad. No se detectaron signos clínicos sugestivos de radiculopatía ni compromiso neurológico agudo.
-
-En las articulaciones de miembros superiores e inferiores no se evidenció inflamación, eritema ni aumento de temperatura local. Las maniobras específicas para evaluar rodilla, cadera y hombro resultaron negativas para lesiones ligamentarias o meniscales. El paciente manifestó que las molestias suelen mejorar con estiramientos y breves caminatas, lo que sugiere un componente mecánico asociado a postura y sobrecarga funcional más que a patología estructural severa.
-
-Se conversó sobre factores predisponentes, como sedentarismo, debilidad de la musculatura abdominal y falta de pausas activas durante la jornada laboral. Se recomendó iniciar un plan progresivo de ejercicios orientados al fortalecimiento de la musculatura central (core), estiramientos diarios y caminatas regulares. También se sugirió evitar posiciones prolongadas, realizar pausas cada 45 a 60 minutos y ajustar el puesto de trabajo para mantener ergonomía adecuada. Debido a que el paciente no presentó signos de alarma, no se consideró necesario solicitar estudios por imágenes de inmediato; sin embargo, se aclaró que en caso de persistencia o agravamiento del dolor podría indicarse una radiografía o resonancia magnética para descartar alteraciones estructurales mayores.
-
-Finalmente, se pautó un seguimiento clínico para valorar la evolución y ajustar el plan terapéutico según la respuesta. Se recomendó consultar de forma inmediata si aparecían síntomas neurológicos, pérdida de fuerza, dolor intenso o limitación funcional significativa.`,
-        integranteId: 2,
-        prestadorId: 4,
-    },
-
-    {
-        date: new Date("2025-03-10T14:15:00"),
-        start: new Date("2025-03-10T14:15:00"),
-        duration: 45,
-        notes: `El examen físico reveló un paciente en buen estado general, colaborador y orientado en tiempo y espacio. Se constató una presión arterial dentro de rangos normales, frecuencia cardíaca regular y temperatura afebril. La auscultación cardiopulmonar no mostró alteraciones significativas: los ruidos cardíacos fueron claros y rítmicos, sin soplos evidentes, y los campos pulmonares presentaron buena ventilación, sin ruidos agregados. El abdomen se palpó blando, depresible y sin signos de dolor a la presión. No se identificaron masas ni organomegalias. Las extremidades no mostraron edemas y la movilidad general fue adecuada.
-
-A nivel metabólico, se revisaron estudios previos que indicaron valores limítrofes en glucemia y colesterol total. Por ello se recomendó reforzar cuidados dietarios, disminuir consumo de azúcares simples e incorporar más fibras vegetales. También se sugirió retomar una rutina regular de ejercicio, al menos 30 minutos cinco veces por semana. Dado que los valores anteriores fueron tomados hace varios meses, se solicitó un nuevo laboratorio que incluya hemograma completo, función hepática, función renal, glucemia en ayunas, perfil lipídico y control tiroideo, con el fin de descartar alteraciones subyacentes que pudieran relacionarse con el cansancio referido.`,
-        integranteId: 2,
-        prestadorId: 2
-    },
-
-    {
-        date: new Date("2025-05-02T11:30:00"),
-        start: new Date("2025-05-02T11:30:00"),
-        duration: 30,
-        notes: `Se conversó sobre factores predisponentes, como sedentarismo, debilidad de la musculatura abdominal y falta de pausas activas durante la jornada laboral. Se recomendó iniciar un plan progresivo de ejercicios orientados al fortalecimiento de la musculatura central (core), estiramientos diarios y caminatas regulares. También se sugirió evitar posiciones prolongadas, realizar pausas cada 45 a 60 minutos y ajustar el puesto de trabajo para mantener ergonomía adecuada. Debido a que el paciente no presentó signos de alarma, no se consideró necesario solicitar estudios por imágenes de inmediato; sin embargo, se aclaró que en caso de persistencia o agravamiento del dolor podría indicarse una radiografía o resonancia magnética para descartar alteraciones estructurales mayores.
-
-Finalmente, se pautó un seguimiento clínico para valorar la evolución y ajustar el plan terapéutico según la respuesta. Se recomendó consultar de forma inmediata si aparecían síntomas neurológicos, pérdida de fuerza, dolor intenso o limitación funcional significativa.`,
-        integranteId: 2,
-        prestadorId: 4,
-    },
-
-    {
-        date: new Date("2025-07-19T08:45:00"),
-        start: new Date("2025-07-19T08:45:00"),
-        duration: 45,
-        notes: `El examen físico reveló un paciente en buen estado general, colaborador y orientado en tiempo y espacio. Se constató una presión arterial dentro de rangos normales, frecuencia cardíaca regular y temperatura afebril. La auscultación cardiopulmonar no mostró alteraciones significativas: los ruidos cardíacos fueron claros y rítmicos, sin soplos evidentes, y los campos pulmonares presentaron buena ventilación, sin ruidos agregados. El abdomen se palpó blando, depresible y sin signos de dolor a la presión. No se identificaron masas ni organomegalias. Las extremidades no mostraron edemas y la movilidad general fue adecuada.
-
-A nivel metabólico, se revisaron estudios previos que indicaron valores limítrofes en glucemia y colesterol total. Por ello se recomendó reforzar cuidados dietarios, disminuir consumo de azúcares simples e incorporar más fibras vegetales. También se sugirió retomar una rutina regular de ejercicio, al menos 30 minutos cinco veces por semana. Dado que los valores anteriores fueron tomados hace varios meses, se solicitó un nuevo laboratorio que incluya hemograma completo, función hepática, función renal, glucemia en ayunas, perfil lipídico y control tiroideo, con el fin de descartar alteraciones subyacentes que pudieran relacionarse con el cansancio referido.`,
-        integranteId: 2,
-        prestadorId: 2
-    },
-
-    {
-        date: new Date("2025-10-03T10:30:00"),
-        start: new Date("2025-10-03T10:30:00"),
-        duration: 30,
-        notes: `Se revisaron estudios previos, incluyendo un electrocardiograma de control que muestra un ritmo sinusal normal sin alteraciones de la conducción ni signos de isquemia recientes. También se evaluaron resultados de laboratorio anteriores, observándose perfiles lipídicos ligeramente elevados, por lo que se reforzaron las recomendaciones sobre alimentación, reducción de grasas saturadas y mantenimiento de una rutina regular de ejercicio aeróbico. En vista de los hallazgos actuales y considerando el antecedente de factores de riesgo cardiovasculares moderados, se indicó solicitar un laboratorio actualizado que incluya perfil lipídico completo, función renal, glucemia y hemoglobina glicosilada. Asimismo, se programó un ecocardiograma Doppler para evaluar estructura y función cardíaca con mayor detalle, especialmente parámetros como fracción de eyección, tamaño de cavidades y funcionamiento valvular.
-
-Se conversó con el paciente sobre la importancia del control periódico, la adherencia a las medidas terapéuticas no farmacológicas y el seguimiento continuo de síntomas. Se acordó una nueva consulta una vez obtenidos los resultados solicitados o antes en caso de presentar dolor precordial, disnea, palpitaciones persistentes o cualquier síntoma nuevo que genere preocupación.)`,
-        integranteId: 2,
-        prestadorId: 1,
-        centroId: 5
-    },
-
-
-    {
-        date: new Date("2025-12-03T09:00:00"),
-        start: new Date("2025-12-03T09:00:00"),
-        duration: 45,
-        notes:`Durante la consulta cardiológica, el paciente asistió para un control integral orientado a evaluar su estado cardiovascular general, la presencia de síntomas relacionados y la evolución de factores de riesgo previamente identificados. Al iniciar la entrevista, refirió sentirse en términos generales estable, aunque mencionó episodios ocasionales de cansancio leve al realizar esfuerzos prolongados, sin que estos se acompañen de disnea significativa, dolor torácico típico, palpitaciones sostenidas o mareos incapacitantes. El paciente relató que en las últimas semanas mantuvo una rutina de actividad física moderada, aunque aclaró que sus niveles de energía han variado según el descanso y las demandas laborales.
-
-Durante el examen físico se constató un estado general bueno, con buena coloración y sin signos visibles de fatiga. La presión arterial se registró dentro de parámetros aceptables para su rango etario, aunque se observó una ligera tendencia a valores altos, motivo por el cual se recomendó continuar el monitoreo domiciliario. La auscultación cardíaca reveló tonos rítmicos, sin soplos, extratonos ni arritmias evidentes. No se identificaron edemas en miembros inferiores ni signos compatibles con falla cardíaca descompensada. La auscultación pulmonar no mostró ruidos agregados y el pulso periférico se palpó con buena intensidad y simetría.
-
-Se revisaron estudios previos, incluyendo un electrocardiograma de control que muestra un ritmo sinusal normal sin alteraciones de la conducción ni signos de isquemia recientes. También se evaluaron resultados de laboratorio anteriores, observándose perfiles lipídicos ligeramente elevados, por lo que se reforzaron las recomendaciones sobre alimentación, reducción de grasas saturadas y mantenimiento de una rutina regular de ejercicio aeróbico. En vista de los hallazgos actuales y considerando el antecedente de factores de riesgo cardiovasculares moderados, se indicó solicitar un laboratorio actualizado que incluya perfil lipídico completo, función renal, glucemia y hemoglobina glicosilada. Asimismo, se programó un ecocardiograma Doppler para evaluar estructura y función cardíaca con mayor detalle, especialmente parámetros como fracción de eyección, tamaño de cavidades y funcionamiento valvular. `,
-        integranteId: 2,
-        prestadorId: 1,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-11-04T21:30:00"),
-        start: new Date("2025-10-04T21:30:00"),
-        duration: 45,
-        notes: `El paciente llega a la consulta para seguimiento de su condición cardiovascular. Refiere que en las últimas semanas presentó episodios de presión en el pecho durante esfuerzos intensos, los cuales cedieron al descansar. No se acompañaron de sudoración fría ni náuseas. Tampoco manifiesta palpitaciones ni pérdida de conocimiento. Refiere que ha descuidado un poco la actividad física regular y la dieta recomendada.
-
-Durante el examen físico, los signos vitales se encuentran dentro de valores esperados. La auscultación cardíaca no revela soplos ni alteraciones de los ruidos cardíacos. La evaluación vascular periférica muestra buena perfusión, sin edemas. La exploración respiratoria es normal. Se revisa el electrocardiograma previo, que mostraba un ritmo sinusal sin cambios significativos, aunque el paciente no trae estudios recientes.
-
-Ante la descripción de molestias torácicas relacionadas con el esfuerzo, se indica realizar una ergometría y un ecocardiograma para evaluar la función ventricular y descartar isquemia. Asimismo, se solicita laboratorio completo, incluyendo perfil lipídico, función hepática y renal, y marcadores metabólicos.
-
-Se conversa con el paciente sobre la importancia de retomar hábitos saludables, mantener un plan de ejercicio progresivo y controlar adecuadamente los factores de riesgo. Se fija una nueva consulta una vez obtenidos los resultados.`,
-        integranteId: 2,
-        prestadorId: 1
-    },
-
-    {
-        date: new Date("2025-12-11T14:00:00"),
-        start: new Date("2025-12-11T14:00:00"),
-        duration: 45,
-        notes: null,
-        integranteId: 2,
-        prestadorId: 1,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2026-01-12T16:00:00"),
-        start: new Date("2026-01-12T16:00:00"),
-        duration: 30,
-        notes: null,
-        integranteId: 2,
-        prestadorId: 1
-    },
-
-    {
-        date: new Date("2026-01-27T18:30:00"),
-        start: new Date("2026-01-27T18:30:00"),
-        duration: 60,
-        notes: null,
-        integranteId: 2,
-        prestadorId: 4
-    },
-       //Turnos Intregrante Id: 3
-          {
-        date: new Date("2025-12-03T11:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes: `El paciente concurre a la consulta programada para evaluación cardiológica de seguimiento. Refiere sentirse en buen estado general, aunque menciona episodios aislados de fatiga leve durante actividades cotidianas que antes no le generaban malestar. No refiere dolor torácico, mareos, palpitaciones ni disnea de reposo. Durante el examen físico, se constatan signos vitales estables, frecuencia cardíaca dentro de parámetros normales y ausencia de soplos o ruidos cardíacos anormales. El pulso periférico se palpa simétrico y sin alteraciones. No se observa edema en extremidades inferiores.
-
-La auscultación respiratoria es normal, con buena entrada de aire bilateral. El electrocardiograma realizado en consultorio muestra ritmo sinusal, sin signos de isquemia aguda. Se revisan estudios previos y se observa estabilidad en los parámetros de función ventricular.
-
-Se indica realizar un test ergométrico para descartar isquemia inducible, dado el antecedente de episodios de fatiga referidos por el paciente. También se solicita laboratorio completo con perfil lipídico, función renal y marcadores inflamatorios. Se recomienda mantener actividad física moderada, evitar el sedentarismo y continuar con la medicación actual. Se agenda un control en cuatro semanas o antes si aparecen síntomas nuevos.`,
-        integranteId: 3,
-        prestadorId: 1,
-        centroId: 5
-    },
-    {
-        date: new Date("2025-12-11T10:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes: null,
-        integranteId: 3,
-        prestadorId: 1,
-        centroId: 5
-    },
-     {
-    date: new Date("2025-03-14T10:30:00"),
-    start: new Date("2025-03-14T10:30:00"),
-    duration: 45,
-    notes:`El paciente llega a la consulta para seguimiento de su condición cardiovascular. Refiere que en las últimas semanas presentó episodios de presión en el pecho durante esfuerzos intensos, los cuales cedieron al descansar. No se acompañaron de sudoración fría ni náuseas. Tampoco manifiesta palpitaciones ni pérdida de conocimiento. Refiere que ha descuidado un poco la actividad física regular y la dieta recomendada.
-
-Durante el examen físico, los signos vitales se encuentran dentro de valores esperados. La auscultación cardíaca no revela soplos ni alteraciones de los ruidos cardíacos. La evaluación vascular periférica muestra buena perfusión, sin edemas. La exploración respiratoria es normal. Se revisa el electrocardiograma previo, que mostraba un ritmo sinusal sin cambios significativos, aunque el paciente no trae estudios recientes.
-
-Ante la descripción de molestias torácicas relacionadas con el esfuerzo, se indica realizar una ergometría y un ecocardiograma para evaluar la función ventricular y descartar isquemia. Asimismo, se solicita laboratorio completo, incluyendo perfil lipídico, función hepática y renal, y marcadores metabólicos.
-
-Se conversa con el paciente sobre la importancia de retomar hábitos saludables, mantener un plan de ejercicio progresivo y controlar adecuadamente los factores de riesgo. Se fija una nueva consulta una vez obtenidos los resultados.`,
-    integranteId: 3,
-    prestadorId: 1
-  },
-
-  {
-    date: new Date("2025-07-21T09:00:00"),
-    start: new Date("2025-07-21T09:00:00"),
-    duration: 40,
-    notes: `Consulta con especialista en clínica médica para seguimiento general. El paciente refiere estabilidad en su estado de salud, aunque menciona episodios ocasionales de cansancio matutino y dificultades leves para conciliar el sueño. Durante la anamnesis se revisan hábitos alimentarios, hidratación, rutina diaria y cumplimiento de medicación preventiva. El paciente reconoce cierta irregularidad en la ingesta de líquidos y una disminución progresiva en su nivel de actividad física desde hace dos meses. (…)`,
-    integranteId: 3,
-    prestadorId: 4
-  },
-
-  {
-    date: new Date("2025-05-02T14:45:00"),
-    start: new Date("2025-05-02T14:45:00"),
-    duration: 60,
-    notes:`El paciente concurre a la consulta traumatológica por molestias persistentes en la región lumbar, que se han acentuado durante las últimas semanas. Refiere dolor de características mecánicas, que aumenta con el movimiento, especialmente al inclinarse hacia adelante o al realizar esfuerzos moderados. Comenta que el malestar comenzó de forma insidiosa hace aproximadamente dos meses, sin antecedente claro de traumatismo directo, aunque reconoce haber realizado varias tareas de carga y traslado de objetos pesados durante ese período. Indica que el dolor se irradia de manera ocasional hacia la zona glútea derecha, sin irradiación franca hacia miembros inferiores.` ,
-    integranteId: 3,
-    prestadorId: 4
-  },
-
-  {
-    date: new Date("2025-12-18T11:00:00"),
-    start: new Date("2025-12-18T11:00:00"),
-    duration: 30,
-    notes: null,
-    integranteId: 3,
-    prestadorId: 2,
-    centroId: 5
-  },
-  
-  {
-    date: new Date("2025-12-05T09:30:00"),
-    start: new Date("2025-10-25T09:30:00"),
-    duration: 45,
-    notes: null,
-    integranteId: 3,
-    prestadorId: 2,
-    centroId: 5
-  },
-
-  {
-    date: new Date("2025-10-02T16:00:00"),
-    start: new Date("2025-10-02T16:00:00"),
-    duration: 45,
-    notes:`El paciente acude a la consulta de clínica médica para control integral de salud y seguimiento de varios síntomas inespecíficos que ha manifestado de forma intermitente durante los últimos meses. Refiere sensación de cansancio generalizado, particularmente al finalizar la jornada laboral, acompañado en ocasiones de cefaleas tensionales que describen un patrón predominantemente vespertino. También menciona episodios esporádicos de malestar abdominal leve, sin relación clara con los alimentos, aunque reconoce que su dieta habitual incluye comidas rápidas, bebidas azucaradas y un consumo irregular de agua. Indica que su rutina de sueño se ha vuelto más desordenada y que suele despertarse durante la noche sin causa aparente, lo que contribuye a la fatiga diurna.
-
-Durante la anamnesis se revisan antecedentes personales, hábitos, medicación actual, factores de estrés laboral y rutinas de actividad física. El paciente admite llevar un estilo de vida predominantemente sedentario, con escasa práctica de ejercicio estructurado. Señala además que ha aumentado su carga laboral en los últimos dos meses, lo que coincide temporalmente con la intensificación de los síntomas referidos. No presenta antecedentes crónicos relevantes, aunque en consultas previas se había observado una tendencia al sobrepeso y elevaciones límite en los valores de presión arterial.`, 
-    integranteId: 3,
-    prestadorId: 1,
-    centroId: 5
-  },
-
-  {
-    date: new Date("2025-12-18T15:15:00"),
-    start: new Date("2025-12-01T15:15:00"),
-    duration: 30,
-    notes: null,
-    integranteId: 3,
-    prestadorId: 1,
-    centroId: 5
-  },
-
-  // Turnos Integrante Id: 4
-
-   {
-        date: new Date("2025-03-19T10:00:00"),
-        start: new Date("2025-03-19T10:00:00"),
-        duration: 45,
-        notes:`El paciente acude a la consulta programada de clínica médica con el objetivo de realizar un control integral de salud y evaluar algunos síntomas inespecíficos que ha venido experimentando en los últimos meses. Al inicio de la entrevista, refiere que ha tenido episodios intermitentes de fatiga, especialmente durante la tarde, sensación que describe como "un cansancio raro" que no logra asociar claramente a esfuerzo físico excesivo ni a situaciones puntuales de estrés. Comenta también que ha tenido cierta dificultad para mantener la concentración en tareas prolongadas y que en algunas ocasiones experimenta leve cefalea tensional hacia el final del día, aunque estas molestias no han sido incapacitantes.
-
-Durante la revisión de antecedentes personales, señala que no ha sufrido enfermedades agudas recientes, no ha tenido fiebre ni procesos infecciosos conocidos, y ha mantenido su medicación habitual sin cambios. En cuanto a los hábitos de vida, reconoce que ha reducido la actividad física en las últimas semanas debido a una mayor carga laboral y que su alimentación ha sido irregular, con frecuentes saltos de comidas y mayor consumo de alimentos procesados por motivos de tiempo. También refiere que ha estado durmiendo menos horas de lo habitual, rondando entre cinco y seis horas por noche, lo cual podría estar contribuyendo a sus síntomas.`,
-        integranteId: 4,
-        prestadorId: 2,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-06-11T15:30:00"),
-        start: new Date("2025-06-11T15:30:00"),
-        duration: 45,
-        notes: `Consulta de traumatología debido a dolor persistente en la zona lumbar. El paciente relata que desde hace aproximadamente ocho semanas siente una molestia constante al permanecer mucho tiempo sentado o de pie, y que durante los últimos diez días la incomodidad se ha intensificado al agacharse o al levantar objetos de tamaño moderado. Durante la entrevista clínica refiere que no recuerda un episodio traumático específico, pero admite que pasa varias horas frente a la computadora, muchas veces sin realizar pausas activas ni mantener una postura adecuada.`,
-        integranteId: 4,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-01-29T09:15:00"),
-        start: new Date("2025-01-29T09:15:00"),
-        duration: 30,
-        notes: `El paciente concurre a la consulta cardiológica programada para seguimiento de factores de riesgo cardiovascular y evaluación del síntoma inespecífico de fatiga que venía refiriendo desde hace algunas semanas. Al iniciar la entrevista, describe que la sensación de cansancio aparece principalmente al realizar caminatas prolongadas o al subir pendientes moderadas, aunque aclara que no ha llegado a presentar dolor torácico típico ni disnea severa. Expresa preocupación debido a que hace aproximadamente un mes tuvo un episodio breve de palpitaciones durante la noche, el cual no se repitió pero motivó su inquietud actual. Niega mareos, síncope, edema en extremidades o antecedentes recientes de infecciones respiratorias.
-
-Se revisan sus antecedentes personales y se constata hipertensión arterial diagnosticada hace tres años, tratada en forma irregular según admite el propio paciente. También refiere antecedentes familiares de enfermedad coronaria en su padre, quien padeció un infarto agudo de miocardio en la sexta década de vida. No fuma desde hace más de una década, pero reconoce que su alimentación ha sido últimamente desordenada, con ingesta frecuente de comidas ricas en sodio y grasas. Su nivel de actividad física también ha disminuido desde el inicio del invierno, lo que puede haber colaborado a la aparición de ciertos síntomas.`,
-        integranteId: 4,
-        prestadorId: 1,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-12-04T11:45:00"),
-        start: new Date("2025-12-04T11:45:00"),
-        duration: 30,
-        notes: null,
-        integranteId: 4,
-        prestadorId: 1,
-        centroId: 5
-    },
-    {
-        date: new Date("2025-12-18T09:30:00"),
-        start: new Date("2025-12-18T08:30:00"),
-        duration: 45,
-        notes: null,
-        integranteId: 4,
-        prestadorId: 1
-    },
-    {
-        date: new Date("2025-09-08T14:00:00"),
-        start: new Date("2025-09-08T14:00:00"),
-        duration: 60,
-        notes:`En el examen físico, se observa alineación conservada de miembros inferiores, sin deformidades visibles. A la inspección, no se aprecia aumento significativo de volumen, aunque se percibe leve derrame articular en la maniobra de onda patelar. La palpación revela sensibilidad dolorosa en el borde medial de la articulación y sobre el tendón rotuliano. La movilidad activa y pasiva se encuentra completa, aunque genera molestias en el rango final de flexión. Las pruebas específicas para meniscos muestran dolor en la maniobra de McMurray medial, sin chasquidos claros. No se evidencian laxitudes en los ligamentos colateral medial, lateral ni cruzados.
-
-Se explica al paciente que los hallazgos son compatibles con un síndrome femoropatelar asociado a sobrecarga mecánica y posible irritación meniscal leve, cuadro frecuente en personas que realizan actividades repetitivas o mantienen posturas sostenidas durante mucho tiempo. Dado que el dolor ha persistido y afecta sus actividades diarias, se indica un plan terapéutico que incluye reposo relativo, aplicación de frío local, y un esquema de antiinflamatorios no esteroides por corto plazo. Se recomienda iniciar fisioterapia con enfoque en fortalecimiento del cuádriceps, estiramiento de la musculatura posterior del muslo y reentrenamiento de la mecánica de marcha. Para evaluar mejor la estructura interna de la rodilla y descartar lesiones meniscales o condropatías más avanzadas, se solicita una resonancia magnética. Se programa un nuevo control una vez obtenidos los estudios o antes si los síntomas empeoran.`,
-        integranteId: 4,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-04-23T17:00:00"),
-        start: new Date("2025-04-23T17:00:00"),
-        duration: 45,
-        notes: `El paciente se presenta a la consulta de clínica médica refiriendo episodios intermitentes de mareos leves, sensación de agotamiento general y disminución del apetito en los últimos veinte días. Explica que los síntomas aparecen con mayor recurrencia en horarios matutinos, especialmente después de noches con descanso insuficiente. Aclara que su ritmo laboral se ha visto intensificado en el último mes, con jornadas prolongadas y pocas pausas. Reconoce además que su adherencia a la hidratación ha sido inconstante y que la ingesta de alimentos ha sido irregular.`,
-        integranteId: 4,
-        prestadorId: 2,
-        centroId: 5
-    },
-
-    //Turno Integrande Id: 5
-
-   {
-        date: new Date("2025-03-19T10:00:00"),
-        start: new Date("2025-03-19T10:00:00"),
-        duration: 45,
-        notes:`El paciente acude a la consulta programada de clínica médica con el objetivo de realizar un control integral de salud y evaluar algunos síntomas inespecíficos que ha venido experimentando en los últimos meses. Al inicio de la entrevista, refiere que ha tenido episodios intermitentes de fatiga, especialmente durante la tarde, sensación que describe como "un cansancio raro" que no logra asociar claramente a esfuerzo físico excesivo ni a situaciones puntuales de estrés. Comenta también que ha tenido cierta dificultad para mantener la concentración en tareas prolongadas y que en algunas ocasiones experimenta leve cefalea tensional hacia el final del día, aunque estas molestias no han sido incapacitantes.
-
-Durante la revisión de antecedentes personales, señala que no ha sufrido enfermedades agudas recientes, no ha tenido fiebre ni procesos infecciosos conocidos, y ha mantenido su medicación habitual sin cambios. En cuanto a los hábitos de vida, reconoce que ha reducido la actividad física en las últimas semanas debido a una mayor carga laboral y que su alimentación ha sido irregular, con frecuentes saltos de comidas y mayor consumo de alimentos procesados por motivos de tiempo. También refiere que ha estado durmiendo menos horas de lo habitual, rondando entre cinco y seis horas por noche, lo cual podría estar contribuyendo a sus síntomas.`,
-        integranteId: 5,
-        prestadorId: 2,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-06-11T15:30:00"),
-        start: new Date("2025-06-11T15:30:00"),
-        duration: 45,
-        notes: `Consulta de traumatología debido a dolor persistente en la zona lumbar. El paciente relata que desde hace aproximadamente ocho semanas siente una molestia constante al permanecer mucho tiempo sentado o de pie, y que durante los últimos diez días la incomodidad se ha intensificado al agacharse o al levantar objetos de tamaño moderado. Durante la entrevista clínica refiere que no recuerda un episodio traumático específico, pero admite que pasa varias horas frente a la computadora, muchas veces sin realizar pausas activas ni mantener una postura adecuada.`,
-        integranteId: 5,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-01-29T09:15:00"),
-        start: new Date("2025-01-29T09:15:00"),
-        duration: 30,
-        notes: `El paciente concurre a la consulta cardiológica programada para seguimiento de factores de riesgo cardiovascular y evaluación del síntoma inespecífico de fatiga que venía refiriendo desde hace algunas semanas. Al iniciar la entrevista, describe que la sensación de cansancio aparece principalmente al realizar caminatas prolongadas o al subir pendientes moderadas, aunque aclara que no ha llegado a presentar dolor torácico típico ni disnea severa. Expresa preocupación debido a que hace aproximadamente un mes tuvo un episodio breve de palpitaciones durante la noche, el cual no se repitió pero motivó su inquietud actual. Niega mareos, síncope, edema en extremidades o antecedentes recientes de infecciones respiratorias.
-
-Se revisan sus antecedentes personales y se constata hipertensión arterial diagnosticada hace tres años, tratada en forma irregular según admite el propio paciente. También refiere antecedentes familiares de enfermedad coronaria en su padre, quien padeció un infarto agudo de miocardio en la sexta década de vida. No fuma desde hace más de una década, pero reconoce que su alimentación ha sido últimamente desordenada, con ingesta frecuente de comidas ricas en sodio y grasas. Su nivel de actividad física también ha disminuido desde el inicio del invierno, lo que puede haber colaborado a la aparición de ciertos síntomas.`,
-        integranteId: 5,
-        prestadorId: 1,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-12-04T12:45:00"),
-        start: new Date("2025-12-04T11:45:00"),
-        duration: 30,
-        notes: null,
-        integranteId: 5,
-        prestadorId: 1,
-        centroId: 5
-    },
-    {
-        date: new Date("2025-12-18T08:30:00"),
-        start: new Date("2025-12-18T08:30:00"),
-        duration: 45,
-        notes: null,
-        integranteId: 5,
-        prestadorId: 1
-    },
-    {
-        date: new Date("2025-09-08T14:00:00"),
-        start: new Date("2025-09-08T14:00:00"),
-        duration: 60,
-        notes:`En el examen físico, se observa alineación conservada de miembros inferiores, sin deformidades visibles. A la inspección, no se aprecia aumento significativo de volumen, aunque se percibe leve derrame articular en la maniobra de onda patelar. La palpación revela sensibilidad dolorosa en el borde medial de la articulación y sobre el tendón rotuliano. La movilidad activa y pasiva se encuentra completa, aunque genera molestias en el rango final de flexión. Las pruebas específicas para meniscos muestran dolor en la maniobra de McMurray medial, sin chasquidos claros. No se evidencian laxitudes en los ligamentos colateral medial, lateral ni cruzados.
-
-Se explica al paciente que los hallazgos son compatibles con un síndrome femoropatelar asociado a sobrecarga mecánica y posible irritación meniscal leve, cuadro frecuente en personas que realizan actividades repetitivas o mantienen posturas sostenidas durante mucho tiempo. Dado que el dolor ha persistido y afecta sus actividades diarias, se indica un plan terapéutico que incluye reposo relativo, aplicación de frío local, y un esquema de antiinflamatorios no esteroides por corto plazo. Se recomienda iniciar fisioterapia con enfoque en fortalecimiento del cuádriceps, estiramiento de la musculatura posterior del muslo y reentrenamiento de la mecánica de marcha. Para evaluar mejor la estructura interna de la rodilla y descartar lesiones meniscales o condropatías más avanzadas, se solicita una resonancia magnética. Se programa un nuevo control una vez obtenidos los estudios o antes si los síntomas empeoran.`,
-        integranteId: 5,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-04-23T17:00:00"),
-        start: new Date("2025-04-23T17:00:00"),
-        duration: 45,
-        notes: `El paciente se presenta a la consulta de clínica médica refiriendo episodios intermitentes de mareos leves, sensación de agotamiento general y disminución del apetito en los últimos veinte días. Explica que los síntomas aparecen con mayor recurrencia en horarios matutinos, especialmente después de noches con descanso insuficiente. Aclara que su ritmo laboral se ha visto intensificado en el último mes, con jornadas prolongadas y pocas pausas. Reconoce además que su adherencia a la hidratación ha sido inconstante y que la ingesta de alimentos ha sido irregular.`,
-        integranteId: 5,
-        prestadorId: 2,
-        centroId: 5
-    },
-     //Turnos Intregrante Id: 6
+            date: "2025-01-07T09:15:00",
+            start: "2025-01-07T08:30:00",
+            duration: 45,
+            notes: "Durante la consulta cardiológica, el paciente acudió para un control dirigido a evaluar síntomas recientes y revisar la evolución de factores de riesgo. Refirió sensación intermitente de cansancio tras esfuerzos prolongados, sin dolor torácico típico ni disnea significativa. En el examen físico se observaron signos vitales dentro de parámetros aceptables, aunque con tendencia a hipertensión leve. La auscultación cardíaca mostró tonos rítmicos sin soplos ni arritmias. Se revisaron estudios previos con ECG en ritmo sinusal y se solicitaron nuevos análisis de laboratorio junto con un ecocardiograma Doppler para evaluación estructural y funcional. Se reforzaron medidas de estilo de vida y se pautó seguimiento.",
+            afiliadoId: 1,
+            prestadorId: 1,
+            centroId: 3
+        },
         {
-        date: new Date("2025-12-03T12:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes: `Durante la consulta cardiológica, el paciente asistió para un control integral orientado a evaluar su estado cardiovascular general, la presencia de síntomas relacionados y la evolución de factores de riesgo previamente identificados. Al iniciar la entrevista, refirió sentirse en términos generales estable, aunque mencionó episodios ocasionales de cansancio leve al realizar esfuerzos prolongados, sin que estos se acompañen de disnea significativa, dolor torácico típico, palpitaciones sostenidas o mareos incapacitantes. El paciente relató que en las últimas semanas mantuvo una rutina de actividad física moderada, aunque aclaró que sus niveles de energía han variado según el descanso y las demandas laborales.
+            date: "2025-01-12T14:40:00",
+            start: "2025-01-12T13:55:00",
+            duration: 45,
+            notes: "El paciente asistió para control cardiovascular general, refiriendo estabilidad clínica pero episodios ocasionales de fatiga al final del día. Negó dolor torácico, palpitaciones sostenidas o síncope. En el examen físico no se encontraron hallazgos patológicos relevantes, salvo una presión arterial algo elevada en reposo. La auscultación cardíaca fue normal. Se revisaron estudios previos que mostraron perfil lipídico alto y ECG sin alteraciones. Se recomendaron medidas higiénico-dietéticas, control ambulatorio y estudios complementarios para ajuste terapéutico.",
+            integranteId: 1,
+            prestadorId: 7,
+            centroId: 4
+        },
 
-Durante el examen físico se constató un estado general bueno, con buena coloración y sin signos visibles de fatiga. La presión arterial se registró dentro de parámetros aceptables para su rango etario, aunque se observó una ligera tendencia a valores altos, motivo por el cual se recomendó continuar el monitoreo domiciliario. La auscultación cardíaca reveló tonos rítmicos, sin soplos, extratonos ni arritmias evidentes. No se identificaron edemas en miembros inferiores ni signos compatibles con falla cardíaca descompensada. La auscultación pulmonar no mostró ruidos agregados y el pulso periférico se palpó con buena intensidad y simetría.
-
-Se revisaron estudios previos, incluyendo un electrocardiograma de control que muestra un ritmo sinusal normal sin alteraciones de la conducción ni signos de isquemia recientes. También se evaluaron resultados de laboratorio anteriores, observándose perfiles lipídicos ligeramente elevados, por lo que se reforzaron las recomendaciones sobre alimentación, reducción de grasas saturadas y mantenimiento de una rutina regular de ejercicio aeróbico. En vista de los hallazgos actuales y considerando el antecedente de factores de riesgo cardiovasculares moderados, se indicó solicitar un laboratorio actualizado que incluya perfil lipídico completo, función renal, glucemia y hemoglobina glicosilada. Asimismo, se programó un ecocardiograma Doppler para evaluar estructura y función cardíaca con mayor detalle, especialmente parámetros como fracción de eyección, tamaño de cavidades y funcionamiento valvular.
-
-Se conversó con el paciente sobre la importancia del control periódico, la adherencia a las medidas terapéuticas no farmacológicas y el seguimiento continuo de síntomas. Se acordó una nueva consulta una vez obtenidos los resultados solicitados o antes en caso de presentar dolor precordial, disnea, palpitaciones persistentes o cualquier síntoma nuevo que genere preocupación.`,
-        integranteId: 6,
-        prestadorId: 1,
-        centroId: 5
-    },
-    {
-        date: new Date("2025-02-10T15:30:00"),
-        start: new Date("2025-02-10T15:30:00"),
-        duration: 30,
-        notes: `En esta consulta de clínica médica general, el paciente acudió con el objetivo de realizar un control integral del estado de salud, evaluar síntomas recientes y actualizar estudios complementarios de rutina. Durante la entrevista clínica refirió haber experimentado en las últimas semanas episodios aislados de malestar general y cansancio, aunque aclaró que estos no interfieren significativamente en su vida cotidiana. Negó presencia de fiebre, tos persistente, dificultad respiratoria, molestias digestivas relevantes o cambios bruscos en el apetito o el peso corporal. También comentó que ha intentado mantener hábitos saludables, aunque reconoció que su nivel de actividad física disminuyó en el último mes debido a mayor carga laboral.
-
-El examen físico reveló un paciente en buen estado general, colaborador y orientado en tiempo y espacio. Se constató una presión arterial dentro de rangos normales, frecuencia cardíaca regular y temperatura afebril. La auscultación cardiopulmonar no mostró alteraciones significativas: los ruidos cardíacos fueron claros y rítmicos, sin soplos evidentes, y los campos pulmonares presentaron buena ventilación, sin ruidos agregados. El abdomen se palpó blando, depresible y sin signos de dolor a la presión. No se identificaron masas ni organomegalias. Las extremidades no mostraron edemas y la movilidad general fue adecuada.
-
-A nivel metabólico, se revisaron estudios previos que indicaron valores limítrofes en glucemia y colesterol total. Por ello se recomendó reforzar cuidados dietarios, disminuir consumo de azúcares simples e incorporar más fibras vegetales. También se sugirió retomar una rutina regular de ejercicio, al menos 30 minutos cinco veces por semana. Dado que los valores anteriores fueron tomados hace varios meses, se solicitó un nuevo laboratorio que incluya hemograma completo, función hepática, función renal, glucemia en ayunas, perfil lipídico y control tiroideo, con el fin de descartar alteraciones subyacentes que pudieran relacionarse con el cansancio referido.
-
-Además, se conversó con el paciente sobre la importancia del descanso adecuado y el manejo del estrés, ya que ambos factores suelen influir notablemente en la sensación de fatiga. Se recomendó mantener correcta hidratación y vigilar aparición de cualquier síntoma persistente o progresivo. Finalmente, se coordinó un nuevo control clínico para la revisión de los estudios solicitados, dejando la puerta abierta para consulta anticipada si presentara fiebre, malestar general sostenido, dolor abdominal importante o cualquier síntoma que genere preocupación.`,
-        integranteId: 6,
-        prestadorId: 2,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-07-21T14:00:00"),
-        start: new Date("2025-07-21T14:00:00"),
-        duration: 60,
-        notes: `Durante la consulta traumatológica, el paciente acudió para una evaluación integral orientada a valorar su estado musculoesquelético, particularmente a raíz de molestias intermitentes que había mencionado en controles previos. Al iniciar la entrevista, refirió episodios aislados de rigidez matutina leve y sensación de tensión en la región lumbar después de periodos prolongados sentado, sin irradiación hacia miembros inferiores ni acompañamiento de hormigueo o pérdida de fuerza. Negó traumatismos recientes, caídas, torceduras, inflamación significativa o dolor agudo incapacitante.
-
-En el examen físico se evaluó la postura, movilidad general y presencia de puntos dolorosos. Se observó una marcha estable, sin claudicación. La columna vertebral mostró alineación adecuada, aunque con ligera contractura paravertebral lumbar bilateral a la palpación. Los rangos de movimiento fueron completos, aunque la flexión lumbar presentó leve molestia al final del recorrido. Las extremidades inferiores exhibieron fuerza conservada, reflejos osteotendinosos simétricos y sin alteraciones de sensibilidad. No se detectaron signos clínicos sugestivos de radiculopatía ni compromiso neurológico agudo.`,
-        integranteId: 6,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-11-03T11:15:00"),
-        start: new Date("2025-10-03T11:15:00"),
-        duration: 30,
-        notes: `Durante esta revisión cardiológica, el paciente indicó sensación ocasional de fatiga. Se revisaron estudios previos, incluyendo un electrocardiograma de control que muestra un ritmo sinusal normal sin alteraciones de la conducción ni signos de isquemia recientes. También se evaluaron resultados de laboratorio anteriores, observándose perfiles lipídicos ligeramente elevados, por lo que se reforzaron las recomendaciones sobre alimentación, reducción de grasas saturadas y mantenimiento de una rutina regular de ejercicio aeróbico. En vista de los hallazgos actuales y considerando el antecedente de factores de riesgo cardiovasculares moderados, se indicó solicitar un laboratorio actualizado que incluya perfil lipídico completo, función renal, glucemia y hemoglobina glicosilada. Asimismo, se programó un ecocardiograma Doppler para evaluar estructura y función cardíaca con mayor detalle, especialmente parámetros como fracción de eyección, tamaño de cavidades y funcionamiento valvular.)`,
-        integranteId: 6,
-        prestadorId: 1
-    },
-    {
-        date: new Date("2025-12-02T08:30:00"),
-        start: new Date("2025-11-03T08:30:00"),
-        duration: 45,
-        notes: `En esta consulta de clínica médica general, el paciente acudió con el objetivo de realizar un control integral del estado de salud, evaluar síntomas recientes y actualizar estudios complementarios de rutina. Durante la entrevista clínica refirió haber experimentado en las últimas semanas episodios aislados de malestar general y cansancio, aunque aclaró que estos no interfieren significativamente en su vida cotidiana. Negó presencia de fiebre, tos persistente, dificultad respiratoria, molestias digestivas relevantes o cambios bruscos en el apetito o el peso corporal. También comentó que ha intentado mantener hábitos saludables, aunque reconoció que su nivel de actividad física disminuyó en el último mes debido a mayor carga laboral.
-
-El examen físico reveló un paciente en buen estado general, colaborador y orientado en tiempo y espacio. Se constató una presión arterial dentro de rangos normales, frecuencia cardíaca regular y temperatura afebril. La auscultación cardiopulmonar no mostró alteraciones significativas: los ruidos cardíacos fueron claros y rítmicos, sin soplos evidentes, y los campos pulmonares presentaron buena ventilación, sin ruidos agregados. El abdomen se palpó blando, depresible y sin signos de dolor a la presión. No se identificaron masas ni organomegalias. Las extremidades no mostraron edemas y la movilidad general fue adecuada.
-
-A nivel metabólico, se revisaron estudios previos que indicaron valores limítrofes en glucemia y colesterol total. Por ello se recomendó reforzar cuidados dietarios, disminuir consumo de azúcares simples e incorporar más fibras vegetales. También se sugirió retomar una rutina regular de ejercicio, al menos 30 minutos cinco veces por semana. Dado que los valores anteriores fueron tomados hace varios meses, se solicitó un nuevo laboratorio que incluya hemograma completo, función hepática, función renal, glucemia en ayunas, perfil lipídico y control tiroideo, con el fin de descartar alteraciones subyacentes que pudieran relacionarse con el cansancio referido.
-
-Además, se conversó con el paciente sobre la importancia del descanso adecuado y el manejo del estrés, ya que ambos factores suelen influir notablemente en la sensación de fatiga. Se recomendó mantener correcta hidratación y vigilar aparición de cualquier síntoma persistente o progresivo. Finalmente, se coordinó un nuevo control clínico para la revisión de los estudios solicitados, dejando la puerta abierta para consulta anticipada si presentara fiebre, malestar general sostenido, dolor abdominal importante o cualquier síntoma que genere preocupación.`,
-        integranteId: 6,
-        prestadorId: 2,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-12-11T13:00:00"),
-        start: new Date("2025-12-11T13:00:00"),
-        duration: 30,
-        notes: null,
-        integranteId: 6,
-        prestadorId: 1,
-        centroId: 5
-    },
-    {
-        date: new Date("2026-01-02T09:45:00"),
-        start: new Date("2026-01-02T09:45:00"),
-        duration: 45,
-        notes: null,
-        integranteId: 6,
-        prestadorId: 1,
-        centroId: 5
-    },
-    // Turnos Integrante Id: 7
-    {
-        date: new Date("2025-11-04T18:30:00"),
-        start: new Date("2025-10-04T18:30:00"),
-        duration: 60,
-        notes: `El paciente llega a la consulta para seguimiento de su condición cardiovascular. Refiere que en las últimas semanas presentó episodios de presión en el pecho durante esfuerzos intensos, los cuales cedieron al descansar. No se acompañaron de sudoración fría ni náuseas. Tampoco manifiesta palpitaciones ni pérdida de conocimiento. Refiere que ha descuidado un poco la actividad física regular y la dieta recomendada.
-
-Durante el examen físico, los signos vitales se encuentran dentro de valores esperados. La auscultación cardíaca no revela soplos ni alteraciones de los ruidos cardíacos. La evaluación vascular periférica muestra buena perfusión, sin edemas. La exploración respiratoria es normal. Se revisa el electrocardiograma previo, que mostraba un ritmo sinusal sin cambios significativos, aunque el paciente no trae estudios recientes.
-
-Ante la descripción de molestias torácicas relacionadas con el esfuerzo, se indica realizar una ergometría y un ecocardiograma para evaluar la función ventricular y descartar isquemia. Asimismo, se solicita laboratorio completo, incluyendo perfil lipídico, función hepática y renal, y marcadores metabólicos.
-
-Se conversa con el paciente sobre la importancia de retomar hábitos saludables, mantener un plan de ejercicio progresivo y controlar adecuadamente los factores de riesgo. Se fija una nueva consulta una vez obtenidos los resultados.`,
-        integranteId: 7,
-        prestadorId: 1,
-        centroId: 5
-    },
-    {
-        date: new Date("2025-03-19T10:00:00"),
-        start: new Date("2025-03-19T10:00:00"),
-        duration: 45,
-        notes:`El paciente acude a la consulta programada de clínica médica con el objetivo de realizar un control integral de salud y evaluar algunos síntomas inespecíficos que ha venido experimentando en los últimos meses. Al inicio de la entrevista, refiere que ha tenido episodios intermitentes de fatiga, especialmente durante la tarde, sensación que describe como "un cansancio raro" que no logra asociar claramente a esfuerzo físico excesivo ni a situaciones puntuales de estrés. Comenta también que ha tenido cierta dificultad para mantener la concentración en tareas prolongadas y que en algunas ocasiones experimenta leve cefalea tensional hacia el final del día, aunque estas molestias no han sido incapacitantes.
-
-Durante la revisión de antecedentes personales, señala que no ha sufrido enfermedades agudas recientes, no ha tenido fiebre ni procesos infecciosos conocidos, y ha mantenido su medicación habitual sin cambios. En cuanto a los hábitos de vida, reconoce que ha reducido la actividad física en las últimas semanas debido a una mayor carga laboral y que su alimentación ha sido irregular, con frecuentes saltos de comidas y mayor consumo de alimentos procesados por motivos de tiempo. También refiere que ha estado durmiendo menos horas de lo habitual, rondando entre cinco y seis horas por noche, lo cual podría estar contribuyendo a sus síntomas.`,
-        integranteId: 7,
-        prestadorId: 2,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-06-11T16:30:00"),
-        start: new Date("2025-06-11T15:30:00"),
-        duration: 45,
-        notes: `Consulta de traumatología debido a dolor persistente en la zona lumbar. El paciente relata que desde hace aproximadamente ocho semanas siente una molestia constante al permanecer mucho tiempo sentado o de pie, y que durante los últimos diez días la incomodidad se ha intensificado al agacharse o al levantar objetos de tamaño moderado. Durante la entrevista clínica refiere que no recuerda un episodio traumático específico, pero admite que pasa varias horas frente a la computadora, muchas veces sin realizar pausas activas ni mantener una postura adecuada.`,
-        integranteId: 7,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-01-29T10:15:00"),
-        start: new Date("2025-01-29T09:15:00"),
-        duration: 30,
-        notes: `El paciente concurre a la consulta cardiológica programada para seguimiento de factores de riesgo cardiovascular y evaluación del síntoma inespecífico de fatiga que venía refiriendo desde hace algunas semanas. Al iniciar la entrevista, describe que la sensación de cansancio aparece principalmente al realizar caminatas prolongadas o al subir pendientes moderadas, aunque aclara que no ha llegado a presentar dolor torácico típico ni disnea severa. Expresa preocupación debido a que hace aproximadamente un mes tuvo un episodio breve de palpitaciones durante la noche, el cual no se repitió pero motivó su inquietud actual. Niega mareos, síncope, edema en extremidades o antecedentes recientes de infecciones respiratorias.
-
-Se revisan sus antecedentes personales y se constata hipertensión arterial diagnosticada hace tres años, tratada en forma irregular según admite el propio paciente. También refiere antecedentes familiares de enfermedad coronaria en su padre, quien padeció un infarto agudo de miocardio en la sexta década de vida. No fuma desde hace más de una década, pero reconoce que su alimentación ha sido últimamente desordenada, con ingesta frecuente de comidas ricas en sodio y grasas. Su nivel de actividad física también ha disminuido desde el inicio del invierno, lo que puede haber colaborado a la aparición de ciertos síntomas.`,
-        integranteId: 7,
-        prestadorId: 1,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-12-04T13:45:00"),
-        start: new Date("2025-12-04T11:45:00"),
-        duration: 30,
-        notes: null,
-        integranteId: 7,
-        prestadorId: 1,
-        centroId: 5
-    },
-    {
-        date: new Date("2025-12-18T10:30:00"),
-        start: new Date("2025-12-18T08:30:00"),
-        duration: 45,
-        notes: null,
-        integranteId: 7,
-        prestadorId: 1
-    },
-    {
-        date: new Date("2025-09-08T20:00:00"),
-        start: new Date("2025-09-08T14:00:00"),
-        duration: 60,
-        notes:`En el examen físico, se observa alineación conservada de miembros inferiores, sin deformidades visibles. A la inspección, no se aprecia aumento significativo de volumen, aunque se percibe leve derrame articular en la maniobra de onda patelar. La palpación revela sensibilidad dolorosa en el borde medial de la articulación y sobre el tendón rotuliano. La movilidad activa y pasiva se encuentra completa, aunque genera molestias en el rango final de flexión. Las pruebas específicas para meniscos muestran dolor en la maniobra de McMurray medial, sin chasquidos claros. No se evidencian laxitudes en los ligamentos colateral medial, lateral ni cruzados.
-
-Se explica al paciente que los hallazgos son compatibles con un síndrome femoropatelar asociado a sobrecarga mecánica y posible irritación meniscal leve, cuadro frecuente en personas que realizan actividades repetitivas o mantienen posturas sostenidas durante mucho tiempo. Dado que el dolor ha persistido y afecta sus actividades diarias, se indica un plan terapéutico que incluye reposo relativo, aplicación de frío local, y un esquema de antiinflamatorios no esteroides por corto plazo. Se recomienda iniciar fisioterapia con enfoque en fortalecimiento del cuádriceps, estiramiento de la musculatura posterior del muslo y reentrenamiento de la mecánica de marcha. Para evaluar mejor la estructura interna de la rodilla y descartar lesiones meniscales o condropatías más avanzadas, se solicita una resonancia magnética. Se programa un nuevo control una vez obtenidos los estudios o antes si los síntomas empeoran.`,
-        integranteId: 7,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-04-23T15:00:00"),
-        start: new Date("2025-03-23T17:00:00"),
-        duration: 45,
-        notes: `El paciente se presenta a la consulta de clínica médica refiriendo episodios intermitentes de mareos leves, sensación de agotamiento general y disminución del apetito en los últimos veinte días. Explica que los síntomas aparecen con mayor recurrencia en horarios matutinos, especialmente después de noches con descanso insuficiente. Aclara que su ritmo laboral se ha visto intensificado en el último mes, con jornadas prolongadas y pocas pausas. Reconoce además que su adherencia a la hidratación ha sido inconstante y que la ingesta de alimentos ha sido irregular.`,
-        integranteId: 7,
-        prestadorId: 2,
-        centroId: 5
-    },
-
-    //Turnos Integrante Id: 8
-    {
-        date: new Date("2025-12-03T13:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes: `Durante la consulta cardiológica, el paciente asistió para un control integral orientado a evaluar su estado cardiovascular general, la presencia de síntomas relacionados y la evolución de factores de riesgo previamente identificados. Al iniciar la entrevista, refirió sentirse en términos generales estable, aunque mencionó episodios ocasionales de cansancio leve al realizar esfuerzos prolongados, sin que estos se acompañen de disnea significativa, dolor torácico típico, palpitaciones sostenidas o mareos incapacitantes. El paciente relató que en las últimas semanas mantuvo una rutina de actividad física moderada, aunque aclaró que sus niveles de energía han variado según el descanso y las demandas laborales.
-
-Durante el examen físico se constató un estado general bueno, con buena coloración y sin signos visibles de fatiga. La presión arterial se registró dentro de parámetros aceptables para su rango etario, aunque se observó una ligera tendencia a valores altos, motivo por el cual se recomendó continuar el monitoreo domiciliario. La auscultación cardíaca reveló tonos rítmicos, sin soplos, extratonos ni arritmias evidentes. No se identificaron edemas en miembros inferiores ni signos compatibles con falla cardíaca descompensada. La auscultación pulmonar no mostró ruidos agregados y el pulso periférico se palpó con buena intensidad y simetría.
-
-Se revisaron estudios previos, incluyendo un electrocardiograma de control que muestra un ritmo sinusal normal sin alteraciones de la conducción ni signos de isquemia recientes. También se evaluaron resultados de laboratorio anteriores, observándose perfiles lipídicos ligeramente elevados, por lo que se reforzaron las recomendaciones sobre alimentación, reducción de grasas saturadas y mantenimiento de una rutina regular de ejercicio aeróbico. En vista de los hallazgos actuales y considerando el antecedente de factores de riesgo cardiovasculares moderados, se indicó solicitar un laboratorio actualizado que incluya perfil lipídico completo, función renal, glucemia y hemoglobina glicosilada. Asimismo, se programó un ecocardiograma Doppler para evaluar estructura y función cardíaca con mayor detalle, especialmente parámetros como fracción de eyección, tamaño de cavidades y funcionamiento valvular.
-
-Se conversó con el paciente sobre la importancia del control periódico, la adherencia a las medidas terapéuticas no farmacológicas y el seguimiento continuo de síntomas. Se acordó una nueva consulta una vez obtenidos los resultados solicitados o antes en caso de presentar dolor precordial, disnea, palpitaciones persistentes o cualquier síntoma nuevo que genere preocupación.`,
-        integranteId: 8,
-        prestadorId: 1,
-        centroId: 5
-    },
-    {
-        date: new Date("2025-02-10T19:30:00"),
-        start: new Date("2025-02-10T15:30:00"),
-        duration: 30,
-        notes: `En esta consulta de clínica médica general, el paciente acudió con el objetivo de realizar un control integral del estado de salud, evaluar síntomas recientes y actualizar estudios complementarios de rutina. Durante la entrevista clínica refirió haber experimentado en las últimas semanas episodios aislados de malestar general y cansancio, aunque aclaró que estos no interfieren significativamente en su vida cotidiana. Negó presencia de fiebre, tos persistente, dificultad respiratoria, molestias digestivas relevantes o cambios bruscos en el apetito o el peso corporal. También comentó que ha intentado mantener hábitos saludables, aunque reconoció que su nivel de actividad física disminuyó en el último mes debido a mayor carga laboral.
-
-El examen físico reveló un paciente en buen estado general, colaborador y orientado en tiempo y espacio. Se constató una presión arterial dentro de rangos normales, frecuencia cardíaca regular y temperatura afebril. La auscultación cardiopulmonar no mostró alteraciones significativas: los ruidos cardíacos fueron claros y rítmicos, sin soplos evidentes, y los campos pulmonares presentaron buena ventilación, sin ruidos agregados. El abdomen se palpó blando, depresible y sin signos de dolor a la presión. No se identificaron masas ni organomegalias. Las extremidades no mostraron edemas y la movilidad general fue adecuada.
-
-A nivel metabólico, se revisaron estudios previos que indicaron valores limítrofes en glucemia y colesterol total. Por ello se recomendó reforzar cuidados dietarios, disminuir consumo de azúcares simples e incorporar más fibras vegetales. También se sugirió retomar una rutina regular de ejercicio, al menos 30 minutos cinco veces por semana. Dado que los valores anteriores fueron tomados hace varios meses, se solicitó un nuevo laboratorio que incluya hemograma completo, función hepática, función renal, glucemia en ayunas, perfil lipídico y control tiroideo, con el fin de descartar alteraciones subyacentes que pudieran relacionarse con el cansancio referido.
-
-Además, se conversó con el paciente sobre la importancia del descanso adecuado y el manejo del estrés, ya que ambos factores suelen influir notablemente en la sensación de fatiga. Se recomendó mantener correcta hidratación y vigilar aparición de cualquier síntoma persistente o progresivo. Finalmente, se coordinó un nuevo control clínico para la revisión de los estudios solicitados, dejando la puerta abierta para consulta anticipada si presentara fiebre, malestar general sostenido, dolor abdominal importante o cualquier síntoma que genere preocupación.`,
-        integranteId: 8,
-        prestadorId: 2,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-07-21T16:00:00"),
-        start: new Date("2025-07-21T14:00:00"),
-        duration: 60,
-        notes: `Durante la consulta traumatológica, el paciente acudió para una evaluación integral orientada a valorar su estado musculoesquelético, particularmente a raíz de molestias intermitentes que había mencionado en controles previos. Al iniciar la entrevista, refirió episodios aislados de rigidez matutina leve y sensación de tensión en la región lumbar después de periodos prolongados sentado, sin irradiación hacia miembros inferiores ni acompañamiento de hormigueo o pérdida de fuerza. Negó traumatismos recientes, caídas, torceduras, inflamación significativa o dolor agudo incapacitante.
-
-En el examen físico se evaluó la postura, movilidad general y presencia de puntos dolorosos. Se observó una marcha estable, sin claudicación. La columna vertebral mostró alineación adecuada, aunque con ligera contractura paravertebral lumbar bilateral a la palpación. Los rangos de movimiento fueron completos, aunque la flexión lumbar presentó leve molestia al final del recorrido. Las extremidades inferiores exhibieron fuerza conservada, reflejos osteotendinosos simétricos y sin alteraciones de sensibilidad. No se detectaron signos clínicos sugestivos de radiculopatía ni compromiso neurológico agudo.`,
-        integranteId: 8,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-11-03T14:15:00"),
-        start: new Date("2025-10-03T11:15:00"),
-        duration: 30,
-        notes: `Durante esta revisión cardiológica, el paciente indicó sensación ocasional de fatiga. Se revisaron estudios previos, incluyendo un electrocardiograma de control que muestra un ritmo sinusal normal sin alteraciones de la conducción ni signos de isquemia recientes. También se evaluaron resultados de laboratorio anteriores, observándose perfiles lipídicos ligeramente elevados, por lo que se reforzaron las recomendaciones sobre alimentación, reducción de grasas saturadas y mantenimiento de una rutina regular de ejercicio aeróbico. En vista de los hallazgos actuales y considerando el antecedente de factores de riesgo cardiovasculares moderados, se indicó solicitar un laboratorio actualizado que incluya perfil lipídico completo, función renal, glucemia y hemoglobina glicosilada. Asimismo, se programó un ecocardiograma Doppler para evaluar estructura y función cardíaca con mayor detalle, especialmente parámetros como fracción de eyección, tamaño de cavidades y funcionamiento valvular.)`,
-        integranteId: 8,
-        prestadorId: 1
-    },
-    {
-        date: new Date("2025-12-02T14:30:00"),
-        start: new Date("2025-11-03T08:30:00"),
-        duration: 45,
-        notes: `En esta consulta de clínica médica general, el paciente acudió con el objetivo de realizar un control integral del estado de salud, evaluar síntomas recientes y actualizar estudios complementarios de rutina. Durante la entrevista clínica refirió haber experimentado en las últimas semanas episodios aislados de malestar general y cansancio, aunque aclaró que estos no interfieren significativamente en su vida cotidiana. Negó presencia de fiebre, tos persistente, dificultad respiratoria, molestias digestivas relevantes o cambios bruscos en el apetito o el peso corporal. También comentó que ha intentado mantener hábitos saludables, aunque reconoció que su nivel de actividad física disminuyó en el último mes debido a mayor carga laboral.
-
-El examen físico reveló un paciente en buen estado general, colaborador y orientado en tiempo y espacio. Se constató una presión arterial dentro de rangos normales, frecuencia cardíaca regular y temperatura afebril. La auscultación cardiopulmonar no mostró alteraciones significativas: los ruidos cardíacos fueron claros y rítmicos, sin soplos evidentes, y los campos pulmonares presentaron buena ventilación, sin ruidos agregados. El abdomen se palpó blando, depresible y sin signos de dolor a la presión. No se identificaron masas ni organomegalias. Las extremidades no mostraron edemas y la movilidad general fue adecuada.
-
-A nivel metabólico, se revisaron estudios previos que indicaron valores limítrofes en glucemia y colesterol total. Por ello se recomendó reforzar cuidados dietarios, disminuir consumo de azúcares simples e incorporar más fibras vegetales. También se sugirió retomar una rutina regular de ejercicio, al menos 30 minutos cinco veces por semana. Dado que los valores anteriores fueron tomados hace varios meses, se solicitó un nuevo laboratorio que incluya hemograma completo, función hepática, función renal, glucemia en ayunas, perfil lipídico y control tiroideo, con el fin de descartar alteraciones subyacentes que pudieran relacionarse con el cansancio referido.
-
-Además, se conversó con el paciente sobre la importancia del descanso adecuado y el manejo del estrés, ya que ambos factores suelen influir notablemente en la sensación de fatiga. Se recomendó mantener correcta hidratación y vigilar aparición de cualquier síntoma persistente o progresivo. Finalmente, se coordinó un nuevo control clínico para la revisión de los estudios solicitados, dejando la puerta abierta para consulta anticipada si presentara fiebre, malestar general sostenido, dolor abdominal importante o cualquier síntoma que genere preocupación.`,
-        integranteId: 8,
-        prestadorId: 2,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-12-11T16:30:00"),
-        start: new Date("2025-12-11T13:00:00"),
-        duration: 30,
-        notes: null,
-        integranteId: 8,
-        prestadorId: 1,
-        centroId: 5
-    },
-    {
-        date: new Date("2026-01-02T16:45:00"),
-        start: new Date("2026-01-02T09:45:00"),
-        duration: 45,
-        notes: null,
-        integranteId: 8,
-        prestadorId: 1,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-11-04T19:30:00"),
-        start: new Date("2025-10-04T18:30:00"),
-        duration: 60,
-        notes: `El paciente llega a la consulta para seguimiento de su condición cardiovascular. Refiere que en las últimas semanas presentó episodios de presión en el pecho durante esfuerzos intensos, los cuales cedieron al descansar. No se acompañaron de sudoración fría ni náuseas. Tampoco manifiesta palpitaciones ni pérdida de conocimiento. Refiere que ha descuidado un poco la actividad física regular y la dieta recomendada.
-
-Durante el examen físico, los signos vitales se encuentran dentro de valores esperados. La auscultación cardíaca no revela soplos ni alteraciones de los ruidos cardíacos. La evaluación vascular periférica muestra buena perfusión, sin edemas. La exploración respiratoria es normal. Se revisa el electrocardiograma previo, que mostraba un ritmo sinusal sin cambios significativos, aunque el paciente no trae estudios recientes.
-
-Ante la descripción de molestias torácicas relacionadas con el esfuerzo, se indica realizar una ergometría y un ecocardiograma para evaluar la función ventricular y descartar isquemia. Asimismo, se solicita laboratorio completo, incluyendo perfil lipídico, función hepática y renal, y marcadores metabólicos.
-
-Se conversa con el paciente sobre la importancia de retomar hábitos saludables, mantener un plan de ejercicio progresivo y controlar adecuadamente los factores de riesgo. Se fija una nueva consulta una vez obtenidos los resultados.`,
-        integranteId: 8,
-        prestadorId: 1,
-        centroId: 5
-    },
-    // Turnos Integrante Id: 9
-     {
-        date: new Date("2025-11-04T20:30:00"),
-        start: new Date("2025-10-04T18:30:00"),
-        duration: 60,
-        notes: `El paciente llega a la consulta para seguimiento de su condición cardiovascular. Refiere que en las últimas semanas presentó episodios de presión en el pecho durante esfuerzos intensos, los cuales cedieron al descansar. No se acompañaron de sudoración fría ni náuseas. Tampoco manifiesta palpitaciones ni pérdida de conocimiento. Refiere que ha descuidado un poco la actividad física regular y la dieta recomendada.
-
-Durante el examen físico, los signos vitales se encuentran dentro de valores esperados. La auscultación cardíaca no revela soplos ni alteraciones de los ruidos cardíacos. La evaluación vascular periférica muestra buena perfusión, sin edemas. La exploración respiratoria es normal. Se revisa el electrocardiograma previo, que mostraba un ritmo sinusal sin cambios significativos, aunque el paciente no trae estudios recientes.
-
-Ante la descripción de molestias torácicas relacionadas con el esfuerzo, se indica realizar una ergometría y un ecocardiograma para evaluar la función ventricular y descartar isquemia. Asimismo, se solicita laboratorio completo, incluyendo perfil lipídico, función hepática y renal, y marcadores metabólicos.
-
-Se conversa con el paciente sobre la importancia de retomar hábitos saludables, mantener un plan de ejercicio progresivo y controlar adecuadamente los factores de riesgo. Se fija una nueva consulta una vez obtenidos los resultados.`,
-        integranteId: 9,
-        prestadorId: 1,
-        centroId: 5
-    },
-    {
-        date: new Date("2025-03-19T17:00:00"),
-        start: new Date("2025-03-19T10:00:00"),
-        duration: 45,
-        notes:`El paciente acude a la consulta programada de clínica médica con el objetivo de realizar un control integral de salud y evaluar algunos síntomas inespecíficos que ha venido experimentando en los últimos meses. Al inicio de la entrevista, refiere que ha tenido episodios intermitentes de fatiga, especialmente durante la tarde, sensación que describe como "un cansancio raro" que no logra asociar claramente a esfuerzo físico excesivo ni a situaciones puntuales de estrés. Comenta también que ha tenido cierta dificultad para mantener la concentración en tareas prolongadas y que en algunas ocasiones experimenta leve cefalea tensional hacia el final del día, aunque estas molestias no han sido incapacitantes.
-
-Durante la revisión de antecedentes personales, señala que no ha sufrido enfermedades agudas recientes, no ha tenido fiebre ni procesos infecciosos conocidos, y ha mantenido su medicación habitual sin cambios. En cuanto a los hábitos de vida, reconoce que ha reducido la actividad física en las últimas semanas debido a una mayor carga laboral y que su alimentación ha sido irregular, con frecuentes saltos de comidas y mayor consumo de alimentos procesados por motivos de tiempo. También refiere que ha estado durmiendo menos horas de lo habitual, rondando entre cinco y seis horas por noche, lo cual podría estar contribuyendo a sus síntomas.`,
-        integranteId: 9,
-        prestadorId: 2,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-06-11T17:30:00"),
-        start: new Date("2025-06-11T15:30:00"),
-        duration: 45,
-        notes: `Consulta de traumatología debido a dolor persistente en la zona lumbar. El paciente relata que desde hace aproximadamente ocho semanas siente una molestia constante al permanecer mucho tiempo sentado o de pie, y que durante los últimos diez días la incomodidad se ha intensificado al agacharse o al levantar objetos de tamaño moderado. Durante la entrevista clínica refiere que no recuerda un episodio traumático específico, pero admite que pasa varias horas frente a la computadora, muchas veces sin realizar pausas activas ni mantener una postura adecuada.`,
-        integranteId: 9,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-01-29T17:15:00"),
-        start: new Date("2025-01-29T09:15:00"),
-        duration: 30,
-        notes: `El paciente concurre a la consulta cardiológica programada para seguimiento de factores de riesgo cardiovascular y evaluación del síntoma inespecífico de fatiga que venía refiriendo desde hace algunas semanas. Al iniciar la entrevista, describe que la sensación de cansancio aparece principalmente al realizar caminatas prolongadas o al subir pendientes moderadas, aunque aclara que no ha llegado a presentar dolor torácico típico ni disnea severa. Expresa preocupación debido a que hace aproximadamente un mes tuvo un episodio breve de palpitaciones durante la noche, el cual no se repitió pero motivó su inquietud actual. Niega mareos, síncope, edema en extremidades o antecedentes recientes de infecciones respiratorias.
-
-Se revisan sus antecedentes personales y se constata hipertensión arterial diagnosticada hace tres años, tratada en forma irregular según admite el propio paciente. También refiere antecedentes familiares de enfermedad coronaria en su padre, quien padeció un infarto agudo de miocardio en la sexta década de vida. No fuma desde hace más de una década, pero reconoce que su alimentación ha sido últimamente desordenada, con ingesta frecuente de comidas ricas en sodio y grasas. Su nivel de actividad física también ha disminuido desde el inicio del invierno, lo que puede haber colaborado a la aparición de ciertos síntomas.`,
-        integranteId: 9,
-        prestadorId: 1,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-12-04T18:45:00"),
-        start: new Date("2025-12-04T11:45:00"),
-        duration: 30,
-        notes: null,
-        integranteId: 9,
-        prestadorId: 1,
-        centroId: 5
-    },
-    {
-        date: new Date("2025-12-18T18:30:00"),
-        start: new Date("2025-12-18T08:30:00"),
-        duration: 45,
-        notes: null,
-        integranteId: 9,
-        prestadorId: 1
-    },
-    {
-        date: new Date("2025-09-08T19:00:00"),
-        start: new Date("2025-09-08T14:00:00"),
-        duration: 60,
-        notes:`En el examen físico, se observa alineación conservada de miembros inferiores, sin deformidades visibles. A la inspección, no se aprecia aumento significativo de volumen, aunque se percibe leve derrame articular en la maniobra de onda patelar. La palpación revela sensibilidad dolorosa en el borde medial de la articulación y sobre el tendón rotuliano. La movilidad activa y pasiva se encuentra completa, aunque genera molestias en el rango final de flexión. Las pruebas específicas para meniscos muestran dolor en la maniobra de McMurray medial, sin chasquidos claros. No se evidencian laxitudes en los ligamentos colateral medial, lateral ni cruzados.
-
-Se explica al paciente que los hallazgos son compatibles con un síndrome femoropatelar asociado a sobrecarga mecánica y posible irritación meniscal leve, cuadro frecuente en personas que realizan actividades repetitivas o mantienen posturas sostenidas durante mucho tiempo. Dado que el dolor ha persistido y afecta sus actividades diarias, se indica un plan terapéutico que incluye reposo relativo, aplicación de frío local, y un esquema de antiinflamatorios no esteroides por corto plazo. Se recomienda iniciar fisioterapia con enfoque en fortalecimiento del cuádriceps, estiramiento de la musculatura posterior del muslo y reentrenamiento de la mecánica de marcha. Para evaluar mejor la estructura interna de la rodilla y descartar lesiones meniscales o condropatías más avanzadas, se solicita una resonancia magnética. Se programa un nuevo control una vez obtenidos los estudios o antes si los síntomas empeoran.`,
-        integranteId: 9,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-04-23T17:00:00"),
-        start: new Date("2025-03-23T17:00:00"),
-        duration: 45,
-        notes: `El paciente se presenta a la consulta de clínica médica refiriendo episodios intermitentes de mareos leves, sensación de agotamiento general y disminución del apetito en los últimos veinte días. Explica que los síntomas aparecen con mayor recurrencia en horarios matutinos, especialmente después de noches con descanso insuficiente. Aclara que su ritmo laboral se ha visto intensificado en el último mes, con jornadas prolongadas y pocas pausas. Reconoce además que su adherencia a la hidratación ha sido inconstante y que la ingesta de alimentos ha sido irregular.`,
-        integranteId: 9,
-        prestadorId: 2,
-        centroId: 5
-    },
-    // Turnos Integrante Id: 10
-     {
-        date: new Date("2025-11-04T19:30:00"),
-        start: new Date("2025-10-04T18:30:00"),
-        duration: 60,
-        notes: `El paciente llega a la consulta para seguimiento de su condición cardiovascular. Refiere que en las últimas semanas presentó episodios de presión en el pecho durante esfuerzos intensos, los cuales cedieron al descansar. No se acompañaron de sudoración fría ni náuseas. Tampoco manifiesta palpitaciones ni pérdida de conocimiento. Refiere que ha descuidado un poco la actividad física regular y la dieta recomendada.
-
-Durante el examen físico, los signos vitales se encuentran dentro de valores esperados. La auscultación cardíaca no revela soplos ni alteraciones de los ruidos cardíacos. La evaluación vascular periférica muestra buena perfusión, sin edemas. La exploración respiratoria es normal. Se revisa el electrocardiograma previo, que mostraba un ritmo sinusal sin cambios significativos, aunque el paciente no trae estudios recientes.
-
-Ante la descripción de molestias torácicas relacionadas con el esfuerzo, se indica realizar una ergometría y un ecocardiograma para evaluar la función ventricular y descartar isquemia. Asimismo, se solicita laboratorio completo, incluyendo perfil lipídico, función hepática y renal, y marcadores metabólicos.
-
-Se conversa con el paciente sobre la importancia de retomar hábitos saludables, mantener un plan de ejercicio progresivo y controlar adecuadamente los factores de riesgo. Se fija una nueva consulta una vez obtenidos los resultados.`,
-        integranteId: 10,
-        prestadorId: 1,
-        centroId: 5
-    },
-    {
-        date: new Date("2025-03-19T15:00:00"),
-        start: new Date("2025-03-19T10:00:00"),
-        duration: 45,
-        notes:`El paciente acude a la consulta programada de clínica médica con el objetivo de realizar un control integral de salud y evaluar algunos síntomas inespecíficos que ha venido experimentando en los últimos meses. Al inicio de la entrevista, refiere que ha tenido episodios intermitentes de fatiga, especialmente durante la tarde, sensación que describe como "un cansancio raro" que no logra asociar claramente a esfuerzo físico excesivo ni a situaciones puntuales de estrés. Comenta también que ha tenido cierta dificultad para mantener la concentración en tareas prolongadas y que en algunas ocasiones experimenta leve cefalea tensional hacia el final del día, aunque estas molestias no han sido incapacitantes.
-
-Durante la revisión de antecedentes personales, señala que no ha sufrido enfermedades agudas recientes, no ha tenido fiebre ni procesos infecciosos conocidos, y ha mantenido su medicación habitual sin cambios. En cuanto a los hábitos de vida, reconoce que ha reducido la actividad física en las últimas semanas debido a una mayor carga laboral y que su alimentación ha sido irregular, con frecuentes saltos de comidas y mayor consumo de alimentos procesados por motivos de tiempo. También refiere que ha estado durmiendo menos horas de lo habitual, rondando entre cinco y seis horas por noche, lo cual podría estar contribuyendo a sus síntomas.`,
-        integranteId: 10,
-        prestadorId: 2,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-06-11T19:30:00"),
-        start: new Date("2025-06-11T15:30:00"),
-        duration: 45,
-        notes: `Consulta de traumatología debido a dolor persistente en la zona lumbar. El paciente relata que desde hace aproximadamente ocho semanas siente una molestia constante al permanecer mucho tiempo sentado o de pie, y que durante los últimos diez días la incomodidad se ha intensificado al agacharse o al levantar objetos de tamaño moderado. Durante la entrevista clínica refiere que no recuerda un episodio traumático específico, pero admite que pasa varias horas frente a la computadora, muchas veces sin realizar pausas activas ni mantener una postura adecuada.`,
-        integranteId: 10,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-01-29T20:15:00"),
-        start: new Date("2025-01-29T09:15:00"),
-        duration: 30,
-        notes: `El paciente concurre a la consulta cardiológica programada para seguimiento de factores de riesgo cardiovascular y evaluación del síntoma inespecífico de fatiga que venía refiriendo desde hace algunas semanas. Al iniciar la entrevista, describe que la sensación de cansancio aparece principalmente al realizar caminatas prolongadas o al subir pendientes moderadas, aunque aclara que no ha llegado a presentar dolor torácico típico ni disnea severa. Expresa preocupación debido a que hace aproximadamente un mes tuvo un episodio breve de palpitaciones durante la noche, el cual no se repitió pero motivó su inquietud actual. Niega mareos, síncope, edema en extremidades o antecedentes recientes de infecciones respiratorias.
-
-Se revisan sus antecedentes personales y se constata hipertensión arterial diagnosticada hace tres años, tratada en forma irregular según admite el propio paciente. También refiere antecedentes familiares de enfermedad coronaria en su padre, quien padeció un infarto agudo de miocardio en la sexta década de vida. No fuma desde hace más de una década, pero reconoce que su alimentación ha sido últimamente desordenada, con ingesta frecuente de comidas ricas en sodio y grasas. Su nivel de actividad física también ha disminuido desde el inicio del invierno, lo que puede haber colaborado a la aparición de ciertos síntomas.`,
-        integranteId: 10,
-        prestadorId: 1,
-        centroId: 5
-    },
-
-    {
-        date: new Date("2025-12-04T07:45:00"),
-        start: new Date("2025-12-04T11:45:00"),
-        duration: 30,
-        notes: null,
-        integranteId: 10,
-        prestadorId: 1,
-        centroId: 5
-    },
-    {
-        date: new Date("2025-12-18T21:00:00"),
-        start: new Date("2025-12-18T08:30:00"),
-        duration: 5,
-        notes: null,
-        integranteId: 10,
-        prestadorId: 1
-    },
-    {
-        date: new Date("2025-09-08T20:00:00"),
-        start: new Date("2025-09-08T14:00:00"),
-        duration: 60,
-        notes:`En el examen físico, se observa alineación conservada de miembros inferiores, sin deformidades visibles. A la inspección, no se aprecia aumento significativo de volumen, aunque se percibe leve derrame articular en la maniobra de onda patelar. La palpación revela sensibilidad dolorosa en el borde medial de la articulación y sobre el tendón rotuliano. La movilidad activa y pasiva se encuentra completa, aunque genera molestias en el rango final de flexión. Las pruebas específicas para meniscos muestran dolor en la maniobra de McMurray medial, sin chasquidos claros. No se evidencian laxitudes en los ligamentos colateral medial, lateral ni cruzados.
-
-Se explica al paciente que los hallazgos son compatibles con un síndrome femoropatelar asociado a sobrecarga mecánica y posible irritación meniscal leve, cuadro frecuente en personas que realizan actividades repetitivas o mantienen posturas sostenidas durante mucho tiempo. Dado que el dolor ha persistido y afecta sus actividades diarias, se indica un plan terapéutico que incluye reposo relativo, aplicación de frío local, y un esquema de antiinflamatorios no esteroides por corto plazo. Se recomienda iniciar fisioterapia con enfoque en fortalecimiento del cuádriceps, estiramiento de la musculatura posterior del muslo y reentrenamiento de la mecánica de marcha. Para evaluar mejor la estructura interna de la rodilla y descartar lesiones meniscales o condropatías más avanzadas, se solicita una resonancia magnética. Se programa un nuevo control una vez obtenidos los estudios o antes si los síntomas empeoran.`,
-        integranteId: 10,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-04-23T19:00:00"),
-        start: new Date("2025-03-23T17:00:00"),
-        duration: 45,
-        notes: `El paciente se presenta a la consulta de clínica médica refiriendo episodios intermitentes de mareos leves, sensación de agotamiento general y disminución del apetito en los últimos veinte días. Explica que los síntomas aparecen con mayor recurrencia en horarios matutinos, especialmente después de noches con descanso insuficiente. Aclara que su ritmo laboral se ha visto intensificado en el último mes, con jornadas prolongadas y pocas pausas. Reconoce además que su adherencia a la hidratación ha sido inconstante y que la ingesta de alimentos ha sido irregular.`,
-        integranteId: 10,
-        prestadorId: 2,
-        centroId: 5
-    },
         {
-        date: new Date("2025-12-18T07:30:00"),
-        start: new Date("2025-12-18T08:30:00"),
-        duration: 15,
-        notes: null,
-        integranteId: 1,
-        prestadorId: 1,
-        centroId:5
-    },
+            date: "2025-02-03T11:20:00",
+            start: "2025-02-03T10:35:00",
+            duration: 45,
+            notes: "El paciente acudió para control de rutina manifestando sensación de agotamiento variable según la carga laboral. Descartó dolor torácico, palpitaciones severas o mareos importantes. En la exploración física se evidenció estabilidad hemodinámica, auscultación cardíaca normal y ausencia de edemas. Estudios previos mostraron colesterol total elevado. Se indicó reevaluación con análisis de laboratorio, seguimiento periódico y mantenimiento de actividad aeróbica moderada.",
+            afiliadoId: 2,
+            prestadorId: 12,
+            centroId: 5
+        },
         {
-        date: new Date("2025-12-18T11:30:00"),
-        start: new Date("2025-12-18T08:30:00"),
-        duration: 45,
-        notes: null,
-        integranteId: 2,
-        prestadorId: 1,
-        centroId:5
-    },
+            date: "2025-02-14T16:05:00",
+            start: "2025-02-14T15:20:00",
+            duration: 45,
+            notes: "Durante la consulta, el paciente refirió estabilidad general pero cierta pesadez al caminar distancias largas. Negó disnea en reposo, dolor precordial o arritmias percibidas. El examen físico reveló presión arterial algo elevada, sin signos de insuficiencia cardíaca. La auscultación pulmonar fue normal. Estudios previos mostraron valores lipídicos altos y ECG normal. Se recomendó control periódico, dieta baja en grasas y nuevos estudios complementarios.",
+            integranteId: 2,
+            prestadorId: 18,
+            centroId: 3
+        },
+
         {
-        date: new Date("2025-12-18T12:30:00"),
-        start: new Date("2025-12-18T08:30:00"),
-        duration: 45,
-        notes: null,
-        integranteId: 3,
-        prestadorId: 1,
-        centroId:5
-    },
+            date: "2025-03-02T08:50:00",
+            start: "2025-03-02T08:05:00",
+            duration: 45,
+            notes: "El paciente asistió para reevaluación de síntomas inespecíficos de cansancio, sin signos claros de patología aguda. No presentó dolor torácico ni disnea limitante. En la exploración física se observaron signos vitales estables y examen cardiovascular normal. El ECG previo mostró ritmo sinusal sin alteraciones. Se indicó laboratorio completo, ecocardiograma y refuerzo de medidas no farmacológicas con seguimiento cercano.",
+            afiliadoId: 3,
+            prestadorId: 26,
+            centroId: 4
+        },
         {
-        date: new Date("2025-12-18T14:30:00"),
-        start: new Date("2025-12-18T08:30:00"),
-        duration: 15,
-        notes: null,
-        integranteId: 4,
-        prestadorId: 1,
-        centroId:5
-    },
+            date: "2025-03-18T10:10:00",
+            start: "2025-03-18T09:25:00",
+            duration: 45,
+            notes: "Acudió para control mencionando fluctuaciones en su nivel de energía, especialmente tras días laboralmente exigentes. Sin síntomas anginosos ni palpitaciones persistentes. Examen físico dentro de parámetros, salvo presión arterial en rango alto normal. ECG previo sin alteraciones. Se solicitaron estudios adicionales y se reforzaron recomendaciones dietéticas y de actividad aeróbica regular.",
+            integranteId: 3,
+            prestadorId: 30,
+            centroId: 5
+        },
+
         {
-        date: new Date("2025-12-18T13:30:00"),
-        start: new Date("2025-12-18T08:30:00"),
-        duration: 30,
-        notes: null,
-        integranteId: 5,
-        prestadorId: 1,
-        centroId:5
-    },
+            date: "2025-04-05T12:45:00",
+            start: "2025-04-05T12:00:00",
+            duration: 45,
+            notes: "El paciente relató episodios breves de cansancio sin relación clara con el esfuerzo y sin otros síntomas cardiovasculares asociados. El examen físico fue normal, con buena perfusión periférica y auscultación cardíaca sin soplos. Se revisaron estudios previos que mostraron lípidos elevados y ECG normal. Se aconsejó control domiciliario de presión arterial y estudios complementarios.",
+            afiliadoId: 4,
+            prestadorId: 6,
+            centroId: 3
+        },
         {
-        date: new Date("2025-12-18T16:30:00"),
-        start: new Date("2025-12-18T08:30:00"),
-        duration: 30,
-        notes: null,
-        integranteId: 6,
-        prestadorId: 1,
-        centroId:5
-    },
+            date: "2025-04-19T09:00:00",
+            start: "2025-04-19T08:15:00",
+            duration: 45,
+            notes: "En el control, el paciente manifestó sentirse estable pero con menor resistencia física que meses atrás. No refirió disnea, dolor torácico ni síncope. Examen físico sin hallazgos patológicos, presión arterial en límite alto. ECG previo normal. Se planificaron estudios adicionales y se reforzó la importancia de hábitos saludables y seguimiento periódico.",
+            integranteId: 4,
+            prestadorId: 11,
+            centroId: 4
+        },
+
         {
-        date: new Date("2025-12-18T17:30:00"),
-        start: new Date("2025-12-18T08:30:00"),
-        duration: 45,
-        notes: null,
-        integranteId: 7,
-        prestadorId: 1,
-        centroId:5
-    },
+            date: "2025-05-01T17:20:00",
+            start: "2025-05-01T16:35:00",
+            duration: 45,
+            notes: "El paciente acudió para control integral, refiriendo cansancio leve ocasional, especialmente al final del día. Negó dolor torácico o arritmias. El examen cardiovascular resultó normal, con ligera tendencia a hipertensión. ECG previo sin alteraciones. Se solicitaron estudios complementarios y se reforzaron medidas de estilo de vida.",
+            afiliadoId: 5,
+            prestadorId: 22,
+            centroId: 5
+        },
         {
-        date: new Date("2025-12-18T19:30:00"),
-        start: new Date("2025-12-18T08:30:00"),
-        duration: 45,
-        notes: null,
-        integranteId: 8,
-        prestadorId: 1,
-        centroId:5
-    },
+            date: "2025-05-14T15:10:00",
+            start: "2025-05-14T14:25:00",
+            duration: 45,
+            notes: "Consulta de control en la que el paciente reportó estabilidad general, aunque con baja tolerancia a esfuerzos intensos. No hay dolor torácico, disnea ni palpitaciones persistentes. Examen físico normal. ECG previo en ritmo sinusal. Se solicitó laboratorio completo y ecocardiograma, además de recomendar dieta equilibrada y ejercicio moderado.",
+            prestadorId: 19,
+            centroId: 3
+        },
+
         {
-        date: new Date("2025-12-18T20:30:00"),
-        start: new Date("2025-12-18T08:30:00"),
-        duration: 15,
-        notes: null,
-        integranteId: 9,
-        prestadorId: 1,
-        centroId:5
-    },
+            date: "2025-06-03T10:30:00",
+            start: "2025-06-03T09:45:00",
+            duration: 45,
+            notes: "El paciente asistió para seguimiento, comentando fatiga ocasional relacionada con estrés laboral. Ausencia de síntomas anginosos o arritmias. Examen físico normal. ECG previo sin particularidades. Se indicó completar estudios y reforzar higiene del sueño, ejercicio y alimentación saludable.",
+            afiliadoId: 6,
+            prestadorId: 8,
+            centroId: 4
+        },
         {
-        date: new Date("2025-12-18T20:45:00"),
-        start: new Date("2025-12-18T08:30:00"),
-        duration: 15,
-        notes: null,
-        integranteId: 10,
-        prestadorId: 1,
-        centroId:5
-    },
-     {
-        date: new Date("2025-08-01T10:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes: `Durante la consulta cardiológica, el paciente asistió para un control integral orientado a evaluar su estado cardiovascular general, la presencia de síntomas relacionados y la evolución de factores de riesgo previamente identificados. Al iniciar la entrevista, refirió sentirse en términos generales estable, aunque mencionó episodios ocasionales de cansancio leve al realizar esfuerzos prolongados, sin que estos se acompañen de disnea significativa, dolor torácico típico, palpitaciones sostenidas o mareos incapacitantes. El paciente relató que en las últimas semanas mantuvo una rutina de actividad física moderada, aunque aclaró que sus niveles de energía han variado según el descanso y las demandas laborales.
+            date: "2025-06-18T11:50:00",
+            start: "2025-06-18T11:05:00",
+            duration: 45,
+            notes: "Control cardiovascular con paciente que refiere cansancio intermitente sin otros síntomas relevantes. Examen físico sin hallazgos patológicos. ECG previo normal. Se solicitaron estudios para reevaluación metabólica y se recomendó control periódico.",
+            integranteId: 6,
+            prestadorId: 15,
+            centroId: 5
+        },
 
-Durante el examen físico se constató un estado general bueno, con buena coloración y sin signos visibles de fatiga. La presión arterial se registró dentro de parámetros aceptables para su rango etario, aunque se observó una ligera tendencia a valores altos, motivo por el cual se recomendó continuar el monitoreo domiciliario. La auscultación cardíaca reveló tonos rítmicos, sin soplos, extratonos ni arritmias evidentes. No se identificaron edemas en miembros inferiores ni signos compatibles con falla cardíaca descompensada. La auscultación pulmonar no mostró ruidos agregados y el pulso periférico se palpó con buena intensidad y simetría.
-
-Se revisaron estudios previos, incluyendo un electrocardiograma de control que muestra un ritmo sinusal normal sin alteraciones de la conducción ni signos de isquemia recientes. También se evaluaron resultados de laboratorio anteriores, observándose perfiles lipídicos ligeramente elevados, por lo que se reforzaron las recomendaciones sobre alimentación, reducción de grasas saturadas y mantenimiento de una rutina regular de ejercicio aeróbico. En vista de los hallazgos actuales y considerando el antecedente de factores de riesgo cardiovasculares moderados, se indicó solicitar un laboratorio actualizado que incluya perfil lipídico completo, función renal, glucemia y hemoglobina glicosilada. Asimismo, se programó un ecocardiograma Doppler para evaluar estructura y función cardíaca con mayor detalle, especialmente parámetros como fracción de eyección, tamaño de cavidades y funcionamiento valvular.
-
-Se conversó con el paciente sobre la importancia del control periódico, la adherencia a las medidas terapéuticas no farmacológicas y el seguimiento continuo de síntomas. Se acordó una nueva consulta una vez obtenidos los resultados solicitados o antes en caso de presentar dolor precordial, disnea, palpitaciones persistentes o cualquier síntoma nuevo que genere preocupación.`,
-        integranteId: 1,
-        prestadorId: 1,
-        centroId: 5
-    },
-     {
-        date: new Date("2025-12-03T10:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes:`El paciente acude a la consulta programada de clínica médica con el objetivo de realizar un control integral de salud y evaluar algunos síntomas inespecíficos que ha venido experimentando en los últimos meses. Al inicio de la entrevista, refiere que ha tenido episodios intermitentes de fatiga, especialmente durante la tarde, sensación que describe como "un cansancio raro" que no logra asociar claramente a esfuerzo físico excesivo ni a situaciones puntuales de estrés. Comenta también que ha tenido cierta dificultad para mantener la concentración en tareas prolongadas y que en algunas ocasiones experimenta leve cefalea tensional hacia el final del día, aunque estas molestias no han sido incapacitantes.
-
-Durante la revisión de antecedentes personales, señala que no ha sufrido enfermedades agudas recientes, no ha tenido fiebre ni procesos infecciosos conocidos, y ha mantenido su medicación habitual sin cambios. En cuanto a los hábitos de vida, reconoce que ha reducido la actividad física en las últimas semanas debido a una mayor carga laboral y que su alimentación ha sido irregular, con frecuentes saltos de comidas y mayor consumo de alimentos procesados por motivos de tiempo. También refiere que ha estado durmiendo menos horas de lo habitual, rondando entre cinco y seis horas por noche, lo cual podría estar contribuyendo a sus síntomas.`,
-        integranteId: 1,
-        prestadorId: 2,
-        centroId: 5
-    },
-      {
-        date: new Date("2025-09-03T10:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes: `En el examen físico, se observa alineación conservada de miembros inferiores, sin deformidades visibles. A la inspección, no se aprecia aumento significativo de volumen, aunque se percibe leve derrame articular en la maniobra de onda patelar. La palpación revela sensibilidad dolorosa en el borde medial de la articulación y sobre el tendón rotuliano. La movilidad activa y pasiva se encuentra completa, aunque genera molestias en el rango final de flexión. Las pruebas específicas para meniscos muestran dolor en la maniobra de McMurray medial, sin chasquidos claros. No se evidencian laxitudes en los ligamentos colateral medial, lateral ni cruzados.
-
-Se explica al paciente que los hallazgos son compatibles con un síndrome femoropatelar asociado a sobrecarga mecánica y posible irritación meniscal leve, cuadro frecuente en personas que realizan actividades repetitivas o mantienen posturas sostenidas durante mucho tiempo. Dado que el dolor ha persistido y afecta sus actividades diarias, se indica un plan terapéutico que incluye reposo relativo, aplicación de frío local, y un esquema de antiinflamatorios no esteroides por corto plazo. Se recomienda iniciar fisioterapia con enfoque en fortalecimiento del cuádriceps, estiramiento de la musculatura posterior del muslo y reentrenamiento de la mecánica de marcha. Para evaluar mejor la estructura interna de la rodilla y descartar lesiones meniscales o condropatías más avanzadas, se solicita una resonancia magnética. Se programa un nuevo control una vez obtenidos los estudios o antes si los síntomas empeoran.`,
-        integranteId: 1,
-        prestadorId: 4
-    },
-     {
-        date: new Date("2025-01-03T10:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes: `El paciente se presenta a la consulta traumatológica refiriendo dolor persistente en la rodilla izquierda, el cual ha evolucionado de manera progresiva durante los últimos dos meses. Describe el dolor como una molestia profunda, localizada principalmente en la región anterior y medial de la articulación, que se intensifica al caminar largas distancias, durante la subida o bajada de escaleras y al mantenerse de pie por períodos prolongados. Refiere además sensación ocasional de rigidez matutina que dura algunos minutos y que mejora con el movimiento. No reporta episodios de bloqueo articular ni inestabilidad franca, aunque menciona que en ocasiones siente “como si la rodilla no acompañara bien el movimiento”.
-
-Durante la anamnesis, el paciente indica que no recuerda un traumatismo específico que haya desencadenado el malestar, pero reconoce que su trabajo implica estar muchas horas de pie y que, fuera del ámbito laboral, ha realizado actividades de impacto moderado como caminatas rápidas y trotes esporádicos sin una preparación adecuada. Niega fiebre, pérdida de peso o síntomas sistémicos.`,
-        integranteId: 1,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-05-01T10:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes: `Durante la consulta cardiológica, el paciente asistió para un control integral orientado a evaluar su estado cardiovascular general, la presencia de síntomas relacionados y la evolución de factores de riesgo previamente identificados. Al iniciar la entrevista, refirió sentirse en términos generales estable, aunque mencionó episodios ocasionales de cansancio leve al realizar esfuerzos prolongados, sin que estos se acompañen de disnea significativa, dolor torácico típico, palpitaciones sostenidas o mareos incapacitantes. El paciente relató que en las últimas semanas mantuvo una rutina de actividad física moderada, aunque aclaró que sus niveles de energía han variado según el descanso y las demandas laborales.
-
-Durante el examen físico se constató un estado general bueno, con buena coloración y sin signos visibles de fatiga. La presión arterial se registró dentro de parámetros aceptables para su rango etario, aunque se observó una ligera tendencia a valores altos, motivo por el cual se recomendó continuar el monitoreo domiciliario. La auscultación cardíaca reveló tonos rítmicos, sin soplos, extratonos ni arritmias evidentes. No se identificaron edemas en miembros inferiores ni signos compatibles con falla cardíaca descompensada. La auscultación pulmonar no mostró ruidos agregados y el pulso periférico se palpó con buena intensidad y simetría.
-
-Se revisaron estudios previos, incluyendo un electrocardiograma de control que muestra un ritmo sinusal normal sin alteraciones de la conducción ni signos de isquemia recientes. También se evaluaron resultados de laboratorio anteriores, observándose perfiles lipídicos ligeramente elevados, por lo que se reforzaron las recomendaciones sobre alimentación, reducción de grasas saturadas y mantenimiento de una rutina regular de ejercicio aeróbico. En vista de los hallazgos actuales y considerando el antecedente de factores de riesgo cardiovasculares moderados, se indicó solicitar un laboratorio actualizado que incluya perfil lipídico completo, función renal, glucemia y hemoglobina glicosilada. Asimismo, se programó un ecocardiograma Doppler para evaluar estructura y función cardíaca con mayor detalle, especialmente parámetros como fracción de eyección, tamaño de cavidades y funcionamiento valvular.
-
-Se conversó con el paciente sobre la importancia del control periódico, la adherencia a las medidas terapéuticas no farmacológicas y el seguimiento continuo de síntomas. Se acordó una nueva consulta una vez obtenidos los resultados solicitados o antes en caso de presentar dolor precordial, disnea, palpitaciones persistentes o cualquier síntoma nuevo que genere preocupación.`,
-        integranteId: 1,
-        prestadorId: 1
-    },
-    {
-        date: new Date("2025-03-01T10:00:00"),
-        start: new Date("2024-11-18T10:00:00"),
-        duration: 45,
-        notes: `Durante la consulta de control clínico general, el paciente refiere un período de tres meses con aumento del cansancio relacionado principalmente con falta de regularidad en hábitos de descanso y modificaciones significativas en su rutina alimentaria. Describe que, debido a mayores exigencias laborales, ha reducido la cantidad de comidas caseras y ha incrementado la ingesta de alimentos procesados. Refiere episodios leves de distensión abdominal, especialmente por la noche.`,
-        integranteId: 1,
-        prestadorId: 2
-    },
-       {
-        date: new Date("2025-04-01T10:00:00"),
-        start: new Date("2024-11-18T10:00:00"),
-        duration: 45,
-        notes: `El paciente acude al servicio de traumatología por molestias persistentes en la región lumbar baja, las cuales describe como una sensación de tensión acompañada de dolor opresivo tras períodos prolongados sentado. Explica que estos síntomas comenzaron de manera progresiva hace aproximadamente dos meses, sin antecedente traumático definido. Comenta que trabaja muchas horas frente a una computadora y que ha descuidado la ergonomía en su puesto de trabajo.`,
-        integranteId: 1,
-        prestadorId: 4
-    },
-    //////////
-    {
-        date: new Date("2025-06-03T10:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes:`El paciente acude a la consulta programada de clínica médica con el objetivo de realizar un control integral de salud y evaluar algunos síntomas inespecíficos que ha venido experimentando en los últimos meses. Al inicio de la entrevista, refiere que ha tenido episodios intermitentes de fatiga, especialmente durante la tarde, sensación que describe como "un cansancio raro" que no logra asociar claramente a esfuerzo físico excesivo ni a situaciones puntuales de estrés. Comenta también que ha tenido cierta dificultad para mantener la concentración en tareas prolongadas y que en algunas ocasiones experimenta leve cefalea tensional hacia el final del día, aunque estas molestias no han sido incapacitantes.
-
-Durante la revisión de antecedentes personales, señala que no ha sufrido enfermedades agudas recientes, no ha tenido fiebre ni procesos infecciosos conocidos, y ha mantenido su medicación habitual sin cambios. En cuanto a los hábitos de vida, reconoce que ha reducido la actividad física en las últimas semanas debido a una mayor carga laboral y que su alimentación ha sido irregular, con frecuentes saltos de comidas y mayor consumo de alimentos procesados por motivos de tiempo. También refiere que ha estado durmiendo menos horas de lo habitual, rondando entre cinco y seis horas por noche, lo cual podría estar contribuyendo a sus síntomas.`,
-        integranteId: 1,
-        prestadorId: 2,
-        centroId: 5
-    },
-      {
-        date: new Date("2025-02-06T10:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes: `En el examen físico, se observa alineación conservada de miembros inferiores, sin deformidades visibles. A la inspección, no se aprecia aumento significativo de volumen, aunque se percibe leve derrame articular en la maniobra de onda patelar. La palpación revela sensibilidad dolorosa en el borde medial de la articulación y sobre el tendón rotuliano. La movilidad activa y pasiva se encuentra completa, aunque genera molestias en el rango final de flexión. Las pruebas específicas para meniscos muestran dolor en la maniobra de McMurray medial, sin chasquidos claros. No se evidencian laxitudes en los ligamentos colateral medial, lateral ni cruzados.
-
-Se explica al paciente que los hallazgos son compatibles con un síndrome femoropatelar asociado a sobrecarga mecánica y posible irritación meniscal leve, cuadro frecuente en personas que realizan actividades repetitivas o mantienen posturas sostenidas durante mucho tiempo. Dado que el dolor ha persistido y afecta sus actividades diarias, se indica un plan terapéutico que incluye reposo relativo, aplicación de frío local, y un esquema de antiinflamatorios no esteroides por corto plazo. Se recomienda iniciar fisioterapia con enfoque en fortalecimiento del cuádriceps, estiramiento de la musculatura posterior del muslo y reentrenamiento de la mecánica de marcha. Para evaluar mejor la estructura interna de la rodilla y descartar lesiones meniscales o condropatías más avanzadas, se solicita una resonancia magnética. Se programa un nuevo control una vez obtenidos los estudios o antes si los síntomas empeoran.`,
-        integranteId: 1,
-        prestadorId: 4
-    },
-     {
-        date: new Date("2025-05-14T10:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes: `El paciente se presenta a la consulta traumatológica refiriendo dolor persistente en la rodilla izquierda, el cual ha evolucionado de manera progresiva durante los últimos dos meses. Describe el dolor como una molestia profunda, localizada principalmente en la región anterior y medial de la articulación, que se intensifica al caminar largas distancias, durante la subida o bajada de escaleras y al mantenerse de pie por períodos prolongados. Refiere además sensación ocasional de rigidez matutina que dura algunos minutos y que mejora con el movimiento. No reporta episodios de bloqueo articular ni inestabilidad franca, aunque menciona que en ocasiones siente “como si la rodilla no acompañara bien el movimiento”.
-
-Durante la anamnesis, el paciente indica que no recuerda un traumatismo específico que haya desencadenado el malestar, pero reconoce que su trabajo implica estar muchas horas de pie y que, fuera del ámbito laboral, ha realizado actividades de impacto moderado como caminatas rápidas y trotes esporádicos sin una preparación adecuada. Niega fiebre, pérdida de peso o síntomas sistémicos.`,
-        integranteId: 1,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-01-28T10:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes: `Durante la consulta cardiológica, el paciente asistió para un control integral orientado a evaluar su estado cardiovascular general, la presencia de síntomas relacionados y la evolución de factores de riesgo previamente identificados. Al iniciar la entrevista, refirió sentirse en términos generales estable, aunque mencionó episodios ocasionales de cansancio leve al realizar esfuerzos prolongados, sin que estos se acompañen de disnea significativa, dolor torácico típico, palpitaciones sostenidas o mareos incapacitantes. El paciente relató que en las últimas semanas mantuvo una rutina de actividad física moderada, aunque aclaró que sus niveles de energía han variado según el descanso y las demandas laborales.
-
-Durante el examen físico se constató un estado general bueno, con buena coloración y sin signos visibles de fatiga. La presión arterial se registró dentro de parámetros aceptables para su rango etario, aunque se observó una ligera tendencia a valores altos, motivo por el cual se recomendó continuar el monitoreo domiciliario. La auscultación cardíaca reveló tonos rítmicos, sin soplos, extratonos ni arritmias evidentes. No se identificaron edemas en miembros inferiores ni signos compatibles con falla cardíaca descompensada. La auscultación pulmonar no mostró ruidos agregados y el pulso periférico se palpó con buena intensidad y simetría.
-
-Se revisaron estudios previos, incluyendo un electrocardiograma de control que muestra un ritmo sinusal normal sin alteraciones de la conducción ni signos de isquemia recientes. También se evaluaron resultados de laboratorio anteriores, observándose perfiles lipídicos ligeramente elevados, por lo que se reforzaron las recomendaciones sobre alimentación, reducción de grasas saturadas y mantenimiento de una rutina regular de ejercicio aeróbico. En vista de los hallazgos actuales y considerando el antecedente de factores de riesgo cardiovasculares moderados, se indicó solicitar un laboratorio actualizado que incluya perfil lipídico completo, función renal, glucemia y hemoglobina glicosilada. Asimismo, se programó un ecocardiograma Doppler para evaluar estructura y función cardíaca con mayor detalle, especialmente parámetros como fracción de eyección, tamaño de cavidades y funcionamiento valvular.
-
-Se conversó con el paciente sobre la importancia del control periódico, la adherencia a las medidas terapéuticas no farmacológicas y el seguimiento continuo de síntomas. Se acordó una nueva consulta una vez obtenidos los resultados solicitados o antes en caso de presentar dolor precordial, disnea, palpitaciones persistentes o cualquier síntoma nuevo que genere preocupación.`,
-        integranteId: 1,
-        prestadorId: 1
-    },
-    {
-        date: new Date("2025-03-18T10:00:00"),
-        start: new Date("2024-11-18T10:00:00"),
-        duration: 45,
-        notes: `Durante la consulta de control clínico general, el paciente refiere un período de tres meses con aumento del cansancio relacionado principalmente con falta de regularidad en hábitos de descanso y modificaciones significativas en su rutina alimentaria. Describe que, debido a mayores exigencias laborales, ha reducido la cantidad de comidas caseras y ha incrementado la ingesta de alimentos procesados. Refiere episodios leves de distensión abdominal, especialmente por la noche.`,
-        integranteId: 1,
-        prestadorId: 2
-    },
-       {
-        date: new Date("2025-11-19T10:00:00"),
-        start: new Date("2024-11-18T10:00:00"),
-        duration: 45,
-        notes: `El paciente acude al servicio de traumatología por molestias persistentes en la región lumbar baja, las cuales describe como una sensación de tensión acompañada de dolor opresivo tras períodos prolongados sentado. Explica que estos síntomas comenzaron de manera progresiva hace aproximadamente dos meses, sin antecedente traumático definido. Comenta que trabaja muchas horas frente a una computadora y que ha descuidado la ergonomía en su puesto de trabajo.`,
-        integranteId: 1,
-        prestadorId: 4
-    },
-    ////////////
         {
-        date: new Date("2025-08-03T10:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes:`El paciente acude a la consulta programada de clínica médica con el objetivo de realizar un control integral de salud y evaluar algunos síntomas inespecíficos que ha venido experimentando en los últimos meses. Al inicio de la entrevista, refiere que ha tenido episodios intermitentes de fatiga, especialmente durante la tarde, sensación que describe como "un cansancio raro" que no logra asociar claramente a esfuerzo físico excesivo ni a situaciones puntuales de estrés. Comenta también que ha tenido cierta dificultad para mantener la concentración en tareas prolongadas y que en algunas ocasiones experimenta leve cefalea tensional hacia el final del día, aunque estas molestias no han sido incapacitantes.
+            date: "2025-07-06T13:15:00",
+            start: "2025-07-06T12:30:00",
+            duration: 45,
+            notes: "Paciente refiere estabilidad clínica, aunque con sensación de pesadez tras actividades prolongadas. Examen físico normal salvo presión limítrofe. ECG previo sin alteraciones. Indicación de estudios complementarios y educación sobre factores de riesgo.",
+            afiliadoId: 7,
+            prestadorId: 21,
+            centroId: 3
+        },
+        {
+            date: "2025-07-22T08:35:00",
+            start: "2025-07-22T07:50:00",
+            duration: 45,
+            notes: "Durante la consulta, el paciente mencionó fluctuaciones leves en su energía diaria. Negó síntomas cardiovasculares agudos. Examen físico normal. ECG previo estable. Solicitud de laboratorio y ecocardiograma con recomendaciones de estilo de vida.",
+            integranteId: 7,
+            prestadorId: 9,
+            centroId: 4
+        },
 
-Durante la revisión de antecedentes personales, señala que no ha sufrido enfermedades agudas recientes, no ha tenido fiebre ni procesos infecciosos conocidos, y ha mantenido su medicación habitual sin cambios. En cuanto a los hábitos de vida, reconoce que ha reducido la actividad física en las últimas semanas debido a una mayor carga laboral y que su alimentación ha sido irregular, con frecuentes saltos de comidas y mayor consumo de alimentos procesados por motivos de tiempo. También refiere que ha estado durmiendo menos horas de lo habitual, rondando entre cinco y seis horas por noche, lo cual podría estar contribuyendo a sus síntomas.`,
-        integranteId: 1,
-        prestadorId: 2,
-        centroId: 5
-    },
-      {
-        date: new Date("2025-07-06T10:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes: `En el examen físico, se observa alineación conservada de miembros inferiores, sin deformidades visibles. A la inspección, no se aprecia aumento significativo de volumen, aunque se percibe leve derrame articular en la maniobra de onda patelar. La palpación revela sensibilidad dolorosa en el borde medial de la articulación y sobre el tendón rotuliano. La movilidad activa y pasiva se encuentra completa, aunque genera molestias en el rango final de flexión. Las pruebas específicas para meniscos muestran dolor en la maniobra de McMurray medial, sin chasquidos claros. No se evidencian laxitudes en los ligamentos colateral medial, lateral ni cruzados.
+        {
+            date: "2025-08-03T14:55:00",
+            start: "2025-08-03T14:10:00",
+            duration: 45,
+            notes: "Paciente estable, con cansancio leve no progresivo. Examen físico dentro de parámetros normales. ECG previo normal. Se indicó control metabólico y seguimiento clínico.",
+            afiliadoId: 8,
+            prestadorId: 16,
+            centroId: 5
+        },
+        {
+            date: "2025-08-20T17:40:00",
+            start: "2025-08-20T16:55:00",
+            duration: 45,
+            notes: "El paciente asistió refiriendo buena evolución, salvo fatiga en días de mayor demanda física. Examen normal. ECG previo sin alteraciones. Se solicitaron estudios y se reforzó actividad aeróbica.",
+            integranteId: 8,
+            prestadorId: 6,
+            centroId: 3
+        },
 
-Se explica al paciente que los hallazgos son compatibles con un síndrome femoropatelar asociado a sobrecarga mecánica y posible irritación meniscal leve, cuadro frecuente en personas que realizan actividades repetitivas o mantienen posturas sostenidas durante mucho tiempo. Dado que el dolor ha persistido y afecta sus actividades diarias, se indica un plan terapéutico que incluye reposo relativo, aplicación de frío local, y un esquema de antiinflamatorios no esteroides por corto plazo. Se recomienda iniciar fisioterapia con enfoque en fortalecimiento del cuádriceps, estiramiento de la musculatura posterior del muslo y reentrenamiento de la mecánica de marcha. Para evaluar mejor la estructura interna de la rodilla y descartar lesiones meniscales o condropatías más avanzadas, se solicita una resonancia magnética. Se programa un nuevo control una vez obtenidos los estudios o antes si los síntomas empeoran.`,
-        integranteId: 1,
-        prestadorId: 4
-    },
-     {
-        date: new Date("2025-06-14T10:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes: `El paciente se presenta a la consulta traumatológica refiriendo dolor persistente en la rodilla izquierda, el cual ha evolucionado de manera progresiva durante los últimos dos meses. Describe el dolor como una molestia profunda, localizada principalmente en la región anterior y medial de la articulación, que se intensifica al caminar largas distancias, durante la subida o bajada de escaleras y al mantenerse de pie por períodos prolongados. Refiere además sensación ocasional de rigidez matutina que dura algunos minutos y que mejora con el movimiento. No reporta episodios de bloqueo articular ni inestabilidad franca, aunque menciona que en ocasiones siente “como si la rodilla no acompañara bien el movimiento”.
+        {
+            date: "2025-09-01T09:05:00",
+            start: "2025-09-01T08:20:00",
+            duration: 45,
+            notes: "Control general con síntomas mínimos y no específicos. Examen físico normal. ECG previo sin cambios. Se recomendó laboratorio completo y eco Doppler.",
+            afiliadoId: 9,
+            prestadorId: 13,
+            centroId: 4
+        },
+        {
+            date: "2025-09-16T10:25:00",
+            start: "2025-09-16T09:40:00",
+            duration: 45,
+            notes: "Paciente estable, con presión arterial en límite alto. Examen físico normal. ECG previo sin alteraciones. Se solicitó reevaluación metabólica y se reforzaron medidas no farmacológicas.",
+            integranteId: 9,
+            prestadorId: 28,
+            centroId: 5
+        },
 
-Durante la anamnesis, el paciente indica que no recuerda un traumatismo específico que haya desencadenado el malestar, pero reconoce que su trabajo implica estar muchas horas de pie y que, fuera del ámbito laboral, ha realizado actividades de impacto moderado como caminatas rápidas y trotes esporádicos sin una preparación adecuada. Niega fiebre, pérdida de peso o síntomas sistémicos.`,
-        integranteId: 1,
-        prestadorId: 4
-    },
-    {
-        date: new Date("2025-05-28T10:00:00"),
-        start: new Date("2025-11-18T10:00:00"),
-        duration: 45,
-        notes: `Durante la consulta cardiológica, el paciente asistió para un control integral orientado a evaluar su estado cardiovascular general, la presencia de síntomas relacionados y la evolución de factores de riesgo previamente identificados. Al iniciar la entrevista, refirió sentirse en términos generales estable, aunque mencionó episodios ocasionales de cansancio leve al realizar esfuerzos prolongados, sin que estos se acompañen de disnea significativa, dolor torácico típico, palpitaciones sostenidas o mareos incapacitantes. El paciente relató que en las últimas semanas mantuvo una rutina de actividad física moderada, aunque aclaró que sus niveles de energía han variado según el descanso y las demandas laborales.
+        {
+            date: "2025-10-07T15:30:00",
+            start: "2025-10-07T14:45:00",
+            duration: 45,
+            notes: "Consulta de rutina donde el paciente refirió cansancio ocasional sin factores desencadenantes claros. Examen normal. ECG sin alteraciones. Se solicitaron estudios y seguimiento.",
+            afiliadoId: 10,
+            prestadorId: 2,
+            centroId: 3
+        },
+        {
+            date: "2025-10-21T16:55:00",
+            start: "2025-10-21T16:10:00",
+            duration: 45,
+            notes: "El paciente comentó reducción leve en la tolerancia al esfuerzo. No hay síntomas anginosos. Examen físico normal. ECG sin cambios. Solicitud de laboratorio y eco.",
+            integranteId: 10,
+            prestadorId: 27,
+            centroId: 4
+        },
 
-Durante el examen físico se constató un estado general bueno, con buena coloración y sin signos visibles de fatiga. La presión arterial se registró dentro de parámetros aceptables para su rango etario, aunque se observó una ligera tendencia a valores altos, motivo por el cual se recomendó continuar el monitoreo domiciliario. La auscultación cardíaca reveló tonos rítmicos, sin soplos, extratonos ni arritmias evidentes. No se identificaron edemas en miembros inferiores ni signos compatibles con falla cardíaca descompensada. La auscultación pulmonar no mostró ruidos agregados y el pulso periférico se palpó con buena intensidad y simetría.
+        {
+            date: "2025-11-03T11:40:00",
+            start: "2025-11-03T10:55:00",
+            duration: 45,
+            notes: "Paciente sin síntomas relevantes, salvo episodios de fatiga aislada. Examen normal. ECG previo normal. Se indicó seguimiento y medidas preventivas.",
+            afiliadoId: 1,
+            prestadorId: 25,
+            centroId: 5
+        },
+        {
+            date: "2025-11-18T12:15:00",
+            start: "2025-11-18T11:30:00",
+            duration: 45,
+            notes: "Control con paciente que refiere estabilidad general. Examen físico sin alteraciones. ECG normal. Solicitud de estudios complementarios.",
+            integranteId: 11,
+            prestadorId: 14,
+            centroId: 3
+        },
 
-Se revisaron estudios previos, incluyendo un electrocardiograma de control que muestra un ritmo sinusal normal sin alteraciones de la conducción ni signos de isquemia recientes. También se evaluaron resultados de laboratorio anteriores, observándose perfiles lipídicos ligeramente elevados, por lo que se reforzaron las recomendaciones sobre alimentación, reducción de grasas saturadas y mantenimiento de una rutina regular de ejercicio aeróbico. En vista de los hallazgos actuales y considerando el antecedente de factores de riesgo cardiovasculares moderados, se indicó solicitar un laboratorio actualizado que incluya perfil lipídico completo, función renal, glucemia y hemoglobina glicosilada. Asimismo, se programó un ecocardiograma Doppler para evaluar estructura y función cardíaca con mayor detalle, especialmente parámetros como fracción de eyección, tamaño de cavidades y funcionamiento valvular.
+        {
+            date: "2025-12-02T08:45:00",
+            start: "2025-12-02T08:00:00",
+            duration: 45,
+            notes: "Paciente con cansancio leve crónico no progresivo. Examen normal. ECG sin alteraciones. Se refuerzan medidas higiénico-dietéticas y estudios.",
+            afiliadoId: 2,
+            prestadorId: 17,
+            centroId: 4
+        },
+        {
+            date: "2025-12-12T10:55:00",
+            start: "2025-12-12T10:10:00",
+            duration: 45,
+            notes: "Consulta de control sin síntomas críticos. Examen normal. ECG previo sin alteraciones. Se solicita reevaluación metabólica.",
+            integranteId: 12,
+            prestadorId: 23,
+            centroId: 5
+        },
 
-Se conversó con el paciente sobre la importancia del control periódico, la adherencia a las medidas terapéuticas no farmacológicas y el seguimiento continuo de síntomas. Se acordó una nueva consulta una vez obtenidos los resultados solicitados o antes en caso de presentar dolor precordial, disnea, palpitaciones persistentes o cualquier síntoma nuevo que genere preocupación.`,
-        integranteId: 1,
-        prestadorId: 1
-    },
-    {
-        date: new Date("2025-04-18T10:00:00"),
-        start: new Date("2024-11-18T10:00:00"),
-        duration: 45,
-        notes: `Durante la consulta de control clínico general, el paciente refiere un período de tres meses con aumento del cansancio relacionado principalmente con falta de regularidad en hábitos de descanso y modificaciones significativas en su rutina alimentaria. Describe que, debido a mayores exigencias laborales, ha reducido la cantidad de comidas caseras y ha incrementado la ingesta de alimentos procesados. Refiere episodios leves de distensión abdominal, especialmente por la noche.`,
-        integranteId: 1,
-        prestadorId: 2
-    },
-       {
-        date: new Date("2025-01-19T10:00:00"),
-        start: new Date("2024-11-18T10:00:00"),
-        duration: 45,
-        notes: `El paciente acude al servicio de traumatología por molestias persistentes en la región lumbar baja, las cuales describe como una sensación de tensión acompañada de dolor opresivo tras períodos prolongados sentado. Explica que estos síntomas comenzaron de manera progresiva hace aproximadamente dos meses, sin antecedente traumático definido. Comenta que trabaja muchas horas frente a una computadora y que ha descuidado la ergonomía en su puesto de trabajo.`,
-        integranteId: 1,
-        prestadorId: 4
-    }
-    ])
+        {
+            date: "2025-01-22T12:30:00",
+            start: "2025-01-22T11:45:00",
+            duration: 45,
+            notes: "Paciente estable, con actividad física moderada bien tolerada salvo días de fatiga. Examen normal. ECG normal. Se planifican estudios.",
+            afiliadoId: 3,
+            prestadorId: 29,
+            centroId: 3
+        },
+        {
+            date: "2025-02-09T15:25:00",
+            start: "2025-02-09T14:40:00",
+            duration: 45,
+            notes: "Control donde el paciente refirió cansancio variable. Examen físico normal. ECG previo normal. Se solicitaron estudios adicionales.",
+            integranteId: 13,
+            prestadorId: 20,
+            centroId: 4
+        },
+
+        {
+            date: "2025-03-11T09:50:00",
+            start: "2025-03-11T09:05:00",
+            duration: 45,
+            notes: "Paciente con estabilidad clínica general. Examen normal. ECG sin alteraciones. Se indicaron medidas de prevención y seguimiento.",
+            afiliadoId: 4,
+            prestadorId: 10,
+            centroId: 5
+        },
+        {
+            date: "2025-03-29T17:15:00",
+            start: "2025-03-29T16:30:00",
+            duration: 45,
+            notes: "Consulta sin síntomas relevantes. Examen físico normal. ECG previo estable. Solicitud de laboratorio y ecocardiograma.",
+            integranteId: 14,
+            prestadorId: 24,
+            centroId: 3
+        },
+
+        {
+            date: "2025-04-10T14:30:00",
+            start: "2025-04-10T13:45:00",
+            duration: 45,
+            notes: "Paciente refirió disminución leve en la energía diaria. Examen cardiovascular normal. ECG sin alteraciones. Se reforzaron recomendaciones y se solicitaron estudios.",
+            afiliadoId: 5,
+            prestadorId: 6,
+            centroId: 4
+        },
+        {
+            date: "2025-04-28T13:05:00",
+            start: "2025-04-28T12:20:00",
+            duration: 45,
+            notes: "Control general con síntomas mínimos. Examen normal. ECG previo normal. Indicación de estudios complementarios.",
+            integranteId: 15,
+            prestadorId: 30,
+            centroId: 5
+        },
+
+        {
+            date: "2025-05-06T10:40:00",
+            start: "2025-05-06T09:55:00",
+            duration: 45,
+            notes: "Paciente estable sin síntomas anginosos. Examen normal salvo tensión límite. ECG normal. Se recomendó seguimiento.",
+            afiliadoId: 6,
+            prestadorId: 18,
+            centroId: 3
+        },
+        {
+            date: "2025-05-30T16:50:00",
+            start: "2025-05-30T16:05:00",
+            duration: 45,
+            notes: "Consulta de control con fatiga leve ocasional. Examen físico dentro de la normalidad. ECG sin cambios. Estudios solicitados.",
+            integranteId: 16,
+            prestadorId: 11,
+            centroId: 4
+        },
+
+        {
+            date: "2025-06-15T09:35:00",
+            start: "2025-06-15T08:50:00",
+            duration: 45,
+            notes: "Paciente sin síntomas significativos. Examen cardiovascular normal. ECG previo normal. Se indicaron medidas preventivas.",
+            afiliadoId: 7,
+            prestadorId: 13,
+            centroId: 5
+        },
+        {
+            date: "2025-06-29T12:50:00",
+            start: "2025-06-29T12:05:00",
+            duration: 45,
+            notes: "Control de rutina con estabilidad clínica. Examen normal. ECG sin alteraciones. Solicitud de laboratorio.",
+            integranteId: 17,
+            prestadorId: 16,
+            centroId: 3
+        },
+
+        {
+            date: "2025-07-09T11:05:00",
+            start: "2025-07-09T10:20:00",
+            duration: 45,
+            notes: "Paciente refiere cansancio ocasional tras esfuerzo. Examen físico normal. ECG previo sin cambios. Se refuerzan hábitos saludables.",
+            afiliadoId: 8,
+            prestadorId: 7,
+            centroId: 4
+        },
+        {
+            date: "2025-07-26T15:40:00",
+            start: "2025-07-26T14:55:00",
+            duration: 45,
+            notes: "Consulta sin hallazgos relevantes. Examen normal. ECG normal. Se solicitaron estudios.",
+            integranteId: 18,
+            prestadorId: 22,
+            centroId: 5
+        },
+
+        {
+            date: "2025-08-14T08:55:00",
+            start: "2025-08-14T08:10:00",
+            duration: 45,
+            notes: "Paciente en buen estado general con fatiga leve esporádica. Examen normal. ECG previo sin alteraciones. Recomendación de seguimiento.",
+            afiliadoId: 9,
+            prestadorId: 21,
+            centroId: 3
+        },
+        {
+            date: "2025-08-31T10:45:00",
+            start: "2025-08-31T10:00:00",
+            duration: 45,
+            notes: "Control con estabilidad clínica. Examen cardiovascular normal. ECG sin cambios. Solicitud de laboratorio completo.",
+            integranteId: 19,
+            prestadorId: 12,
+            centroId: 4
+        },
+
+        {
+            date: "2025-09-11T13:15:00",
+            start: "2025-09-11T12:30:00",
+            duration: 45,
+            notes: "Paciente sin síntomas nuevos. Examen físico normal. ECG previo normal. Estudios solicitados.",
+            afiliadoId: 10,
+            prestadorId: 30,
+            centroId: 5
+        },
+        {
+            date: "2025-09-27T15:30:00",
+            start: "2025-09-27T14:45:00",
+            duration: 45,
+            notes: "Consulta de rutina con buena evolución clínica. Examen normal. ECG sin alteraciones. Se pidió reevaluación.",
+            integranteId: 20,
+            prestadorId: 10,
+            centroId: 3
+        },
+        {
+            "date": "2025-12-02T10:30:00",
+            "start": "2025-12-02T09:45:00",
+            "duration": 45,
+            "notes": "Consulta sin hallazgos relevantes. Evolución favorable.",
+            "integranteId": 12,
+            "prestadorId": 7,
+            "centroId": 4
+        },
+        {
+            "date": "2025-12-02T11:20:00",
+            "start": "2025-12-02T10:35:00",
+            "duration": 45,
+            "notes": "Control general, signos vitales normales.",
+            "afiliadoId": 3,
+            "prestadorId": 1,
+            "centroId": 3
+        },
+        {
+            "date": "2025-12-03T14:10:00",
+            "start": "2025-12-03T13:25:00",
+            "duration": 45,
+            "notes": "Paciente sin síntomas agudos. Refiere buena evolución.",
+            "integranteId": 44,
+            "prestadorId": 12,
+            "centroId": 5
+        },
+        {
+            "date": "2025-12-03T15:40:00",
+            "start": "2025-12-03T14:55:00",
+            "duration": 45,
+            "notes": "Se ajusta medicación. Próximo control en 1 mes.",
+            "afiliadoId": 7,
+            "prestadorId": 2,
+            "centroId": 4
+        },
+        {
+            "date": "2025-12-04T09:00:00",
+            "start": "2025-12-04T08:15:00",
+            "duration": 45,
+            "notes": "Consulta por dolor leve. No se observan complicaciones.",
+            "integranteId": 25,
+            "prestadorId": 15,
+            "centroId": 3
+        },
+        {
+            "date": "2025-12-04T10:30:00",
+            "start": "2025-12-04T09:45:00",
+            "duration": 45,
+            "notes": "Examen físico normal. Se recomienda hidratación.",
+            "afiliadoId": 1,
+            "prestadorId": 28,
+            "centroId": 5
+        },
+        {
+            "date": "2025-12-04T12:15:00",
+            "start": "2025-12-04T11:30:00",
+            "duration": 45,
+            "notes": "Control periódico. Sin hallazgos patológicos.",
+            "integranteId": 8,
+            "prestadorId": 30,
+            "centroId": 4
+        },
+        {
+            "date": "2025-12-05T08:50:00",
+            "start": "2025-12-05T08:05:00",
+            "duration": 45,
+            "notes": "Se indican estudios complementarios.",
+            "afiliadoId": 4,
+            "prestadorId": 1,
+            "centroId": 3
+        },
+        {
+            "date": "2025-12-05T11:10:00",
+            "start": "2025-12-05T10:25:00",
+            "duration": 45,
+            "notes": "Paciente refiere mejoría parcial. Se mantiene control.",
+            "integranteId": 37,
+            "prestadorId": 14,
+            "centroId": 5
+        },
+        {
+            "date": "2025-12-05T15:40:00",
+            "start": "2025-12-05T14:55:00",
+            "duration": 45,
+            "notes": "Consulta rutinaria. Sin novedades clínicas.",
+            "afiliadoId": 9,
+            "prestadorId": 9,
+            "centroId": 4
+        },
+
+        {
+            "date": "2025-12-06T09:30:00",
+            "start": "2025-12-06T08:45:00",
+            "duration": 45,
+            "notes": "Control general. Se programan estudios.",
+            "integranteId": 4,
+            "prestadorId": 19,
+            "centroId": 3
+        },
+        {
+            "date": "2025-12-06T10:50:00",
+            "start": "2025-12-06T10:05:00",
+            "duration": 45,
+            "notes": "Dolor leve en zona lumbar. Tratamiento sintomático.",
+            "afiliadoId": 2,
+            "prestadorId": 25,
+            "centroId": 5
+        },
+        {
+            "date": "2025-12-06T12:40:00",
+            "start": "2025-12-06T11:55:00",
+            "duration": 45,
+            "notes": "Se evalúa evolución favorable.",
+            "integranteId": 15,
+            "prestadorId": 18,
+            "centroId": 4
+        },
+        {
+            "date": "2025-12-07T08:30:00",
+            "start": "2025-12-07T07:45:00",
+            "duration": 45,
+            "notes": "Sin síntomas agudos. Se mantiene seguimiento.",
+            "afiliadoId": 6,
+            "prestadorId": 7,
+            "centroId": 5
+        },
+        {
+            "date": "2025-12-07T11:50:00",
+            "start": "2025-12-07T11:05:00",
+            "duration": 45,
+            "notes": "Examen clínico normal.",
+            "integranteId": 50,
+            "prestadorId": 11,
+            "centroId": 3
+        },
+
+        {
+            "date": "2025-12-08T14:30:00",
+            "start": "2025-12-08T13:45:00",
+            "duration": 45,
+            "notes": "Consulta por malestar leve. No se observan complicaciones.",
+            "afiliadoId": 10,
+            "prestadorId": 6,
+            "centroId": 4
+        },
+        {
+            "date": "2025-12-08T16:00:00",
+            "start": "2025-12-08T15:15:00",
+            "duration": 45,
+            "notes": "Paciente refiere cefalea ocasional.",
+            "integranteId": 9,
+            "prestadorId": 26,
+            "centroId": 5
+        },
+        {
+            "date": "2025-12-09T09:10:00",
+            "start": "2025-12-09T08:25:00",
+            "duration": 45,
+            "notes": "Control sin observaciones relevantes.",
+            "afiliadoId": 1,
+            "prestadorId": 2,
+            "centroId": 3
+        },
+        {
+            "date": "2025-12-09T12:45:00",
+            "start": "2025-12-09T12:00:00",
+            "duration": 45,
+            "notes": "Se ajustan indicaciones médicas.",
+            "integranteId": 2,
+            "prestadorId": 28,
+            "centroId": 4
+        },
+        {
+            "date": "2025-12-09T15:50:00",
+            "start": "2025-12-09T15:05:00",
+            "duration": 45,
+            "notes": "Buena evolución del cuadro previo.",
+            "afiliadoId": 8,
+            "prestadorId": 6,
+            "centroId": 5
+        },
+
+        {
+            "date": "2025-12-10T08:40:00",
+            "start": "2025-12-10T07:55:00",
+            "duration": 45,
+            "notes": "No se registran síntomas nuevos.",
+            "integranteId": 23,
+            "prestadorId": 10,
+            "centroId": 3
+        },
+        {
+            "date": "2025-12-10T10:20:00",
+            "start": "2025-12-10T09:35:00",
+            "duration": 45,
+            "notes": "Consulta general. Signos normales.",
+            "afiliadoId": 5,
+            "prestadorId": 13,
+            "centroId": 4
+        },
+        {
+            "date": "2025-12-10T13:10:00",
+            "start": "2025-12-10T12:25:00",
+            "duration": 45,
+            "notes": "Derivación a especialista.",
+            "integranteId": 47,
+            "prestadorId": 17,
+            "centroId": 5
+        },
+        {
+            "date": "2025-12-11T11:45:00",
+            "start": "2025-12-11T11:00:00",
+            "duration": 45,
+            "notes": "Consulta por dolor leve. Se indica reposo.",
+            "afiliadoId": 2,
+            "prestadorId": 21,
+            "centroId": 3
+        },
+        {
+            "date": "2025-12-11T14:55:00",
+            "start": "2025-12-11T14:10:00",
+            "duration": 45,
+            "notes": "Se solicita laboratorio de control.",
+            "integranteId": 39,
+            "prestadorId": 8,
+            "centroId": 4
+        },
+
+        {
+            "date": "2025-12-12T09:25:00",
+            "start": "2025-12-12T08:40:00",
+            "duration": 45,
+            "notes": "Examen físico sin hallazgos.",
+            "afiliadoId": 7,
+            "prestadorId": 29,
+            "centroId": 5
+        },
+        {
+            "date": "2025-12-12T12:50:00",
+            "start": "2025-12-12T12:05:00",
+            "duration": 45,
+            "notes": "Paciente con buena evolución clínica.",
+            "integranteId": 18,
+            "prestadorId": 20,
+            "centroId": 3
+        },
+        {
+            "date": "2025-12-12T15:00:00",
+            "start": "2025-12-12T14:15:00",
+            "duration": 45,
+            "notes": "Control preventivo. Valores normales.",
+            "afiliadoId": 10,
+            "prestadorId": 24,
+            "centroId": 4
+        },
+
+        {
+            "date": "2025-12-13T08:50:00",
+            "start": "2025-12-13T08:05:00",
+            "duration": 45,
+            "notes": "Molestias digestivas leves. Se indica dieta.",
+            "integranteId": 33,
+            "prestadorId": 6,
+            "centroId": 5
+        },
+        {
+            "date": "2025-12-13T10:30:00",
+            "start": "2025-12-13T09:45:00",
+            "duration": 45,
+            "notes": "Consulta sin signos de alarma.",
+            "afiliadoId": 4,
+            "prestadorId": 22,
+            "centroId": 3
+        },
+        {
+            "date": "2025-12-13T12:15:00",
+            "start": "2025-12-13T11:30:00",
+            "duration": 45,
+            "notes": "Se planifica control en dos semanas.",
+            "integranteId": 10,
+            "prestadorId": 16,
+            "centroId": 4
+        },
+
+        {
+            "date": "2025-12-14T14:30:00",
+            "start": "2025-12-14T13:45:00",
+            "duration": 45,
+            "notes": "Consulta por cefalea intermitente.",
+            "afiliadoId": 3,
+            "prestadorId": 11,
+            "centroId": 5
+        },
+        {
+            "date": "2025-12-14T15:50:00",
+            "start": "2025-12-14T15:05:00",
+            "duration": 45,
+            "notes": "Sin novedades relevantes.",
+            "integranteId": 49,
+            "prestadorId": 12,
+            "centroId": 3
+        },
+
+        {
+            "date": "2025-12-15T09:40:00",
+            "start": "2025-12-15T08:55:00",
+            "duration": 45,
+            "notes": "Dolor muscular leve. Indicaciones generales.",
+            "afiliadoId": 6,
+            "prestadorId": 30,
+            "centroId": 4
+        },
+        {
+            "date": "2025-12-15T11:15:00",
+            "start": "2025-12-15T10:30:00",
+            "duration": 45,
+            "notes": "Control clínico normal.",
+            "integranteId": 20,
+            "prestadorId": 7,
+            "centroId": 5
+        },
+        {
+            "date": "2025-12-15T12:55:00",
+            "start": "2025-12-15T12:10:00",
+            "duration": 45,
+            "notes": "Se solicitan estudios de rutina.",
+            "afiliadoId": 9,
+            "prestadorId": 18,
+            "centroId": 3
+        },
+
+        {
+            "date": "2025-12-16T13:20:00",
+            "start": "2025-12-16T12:35:00",
+            "duration": 45,
+            "notes": "Buena evolución. Continúa tratamiento.",
+            "integranteId": 41,
+            "prestadorId": 17,
+            "centroId": 4
+        },
+        {
+            "date": "2025-12-16T15:30:00",
+            "start": "2025-12-16T14:45:00",
+            "duration": 45,
+            "notes": "Consulta general sin hallazgos.",
+            "afiliadoId": 1,
+            "prestadorId": 29,
+            "centroId": 5
+        },
+
+        {
+            "date": "2025-12-17T10:50:00",
+            "start": "2025-12-17T10:05:00",
+            "duration": 45,
+            "notes": "Se evalúa cuadro leve. No requiere intervención.",
+            "integranteId": 7,
+            "prestadorId": 13,
+            "centroId": 3
+        },
+        {
+            "date": "2025-12-17T12:20:00",
+            "start": "2025-12-17T11:35:00",
+            "duration": 45,
+            "notes": "Control ambulatorio. Se agenda seguimiento.",
+            "afiliadoId": 5,
+            "prestadorId": 27,
+            "centroId": 4
+        },
+        {
+            "date": "2025-12-17T14:40:00",
+            "start": "2025-12-17T13:55:00",
+            "duration": 45,
+            "notes": "Sin cambios clínicos respecto a consulta previa.",
+            "integranteId": 14,
+            "prestadorId": 6,
+            "centroId": 5
+        },
+
+        {
+            "date": "2025-12-18T09:35:00",
+            "start": "2025-12-18T08:50:00",
+            "duration": 45,
+            "notes": "Paciente estable. Indicaciones habituales.",
+            "afiliadoId": 8,
+            "prestadorId": 20,
+            "centroId": 3
+        },
+        {
+            "date": "2025-12-18T11:10:00",
+            "start": "2025-12-18T10:25:00",
+            "duration": 45,
+            "notes": "Consulta con evolución favorable.",
+            "integranteId": 27,
+            "prestadorId": 10,
+            "centroId": 4
+        },
+        {
+            "date": "2025-12-18T13:55:00",
+            "start": "2025-12-18T13:10:00",
+            "duration": 45,
+            "notes": "Control general. Próximo turno en un mes.",
+            "afiliadoId": 2,
+            "prestadorId": 22,
+            "centroId": 5
+        },
+
+        {
+            "date": "2025-12-19T08:45:00",
+            "start": "2025-12-19T08:00:00",
+            "duration": 45,
+            "notes": "Cuadro estable sin complicaciones.",
+            "integranteId": 35,
+            "prestadorId": 16,
+            "centroId": 3
+        },
+        {
+            "date": "2025-12-19T10:55:00",
+            "start": "2025-12-19T10:10:00",
+            "duration": 45,
+            "notes": "Chequeo preventivo sin particularidades.",
+            "afiliadoId": 10,
+            "prestadorId": 30,
+            "centroId": 5
+        },
+        {
+            "date": "2025-12-19T13:25:00",
+            "start": "2025-12-19T12:40:00",
+            "duration": 45,
+            "notes": "Buena adherencia al tratamiento.",
+            "integranteId": 19,
+            "prestadorId": 14,
+            "centroId": 4
+        }
+]);
 }
 
 module.exports = {crearTurnos};

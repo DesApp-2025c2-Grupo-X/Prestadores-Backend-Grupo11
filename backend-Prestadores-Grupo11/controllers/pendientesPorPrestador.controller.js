@@ -40,8 +40,6 @@ const getPendientesPorPrestador = async (req, res) => {
     ]);
 
   res.status(200).json({ autorizaciones, recetas, reintegros });
-
-  res.status(200).json({ autorizaciones, recetas, reintegros });
 };
 
 module.exports = { getPendientesPorPrestador };
