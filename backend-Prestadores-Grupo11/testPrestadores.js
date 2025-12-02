@@ -1,4 +1,4 @@
-const {Prestador} = require('./db/models');
+const { Prestador } = require('./db/models');
 const { notify } = require('./routes/auth.route');
 
 
@@ -6,9 +6,9 @@ async function crearPrestadores() {
     await Prestador.bulkCreate([
         { username: "dr alejandro ruiz", password: "12345", role: "medico", especialidades: ["cardiologia"], centroId: 5 },
         { username: "dr cecilia lopez", password: "6789", role: "medico", especialidades: ["clinica"], centroId: 5 },
-        { username: "Centro Médico Los Robles", password: "2222", role: "centro_medico" ,especialidades: ["pediatria"] , centroId: null },
-        { username: "Clínica Nuestra Señora del Pilar", password: "3333", role: "centro_medico" ,especialidades: ["traumatologia"] , centroId: null },
-        { username: "clinica santa maria", password: "5555", role: "centro_medico", especialidades: ["cardiologia", "clinica"], centroId: null },
+        { username: "Centro Médico Los Robles", password: "2222", role: "centro_medico", especialidades: [], centroId: null },
+        { username: "Clínica Nuestra Señora del Pilar", password: "3333", role: "centro_medico", especialidades: [], centroId: null },
+        { username: "clinica santa maria", password: "5555", role: "centro_medico", especialidades: [], centroId: null },
         { username: "dr marcelo aguirre", password: "1111", role: "medico", especialidades: ["clinica"], centroId: 3 },
         { username: "dra veronica salinas", password: "1112", role: "medico", especialidades: ["pediatria"], centroId: 3 },
         { username: "dr julio romero", password: "1113", role: "medico", especialidades: ["traumatologia"], centroId: 3 },
@@ -38,7 +38,23 @@ async function crearPrestadores() {
         { username: "dr leandro bustos", password: "1319", role: "medico", especialidades: ["traumatologia"], centroId: 5 },
         { username: "dra florencia diaz", password: "1320", role: "medico", especialidades: ["cardiologia"], centroId: 5 },
 
-        ]);
+    ]);
+
+    const centros = await Prestador.findAll({ where: { role: "centro_medico" } });
+    //Para cada centro, juntar especialidades de sus médicos
+    for (const centro of centros) {
+        const medicos = await Prestador.findAll({
+            where: { centroId: centro.id }
+        });
+
+        const especialidadesCentro = [
+            ...new Set(
+                medicos.flatMap(m => m.especialidades || [])
+            )
+        ];
+
+        await centro.update({ especialidades: especialidadesCentro });
+    }
 }
 
-module.exports = {crearPrestadores};
+module.exports = { crearPrestadores };
