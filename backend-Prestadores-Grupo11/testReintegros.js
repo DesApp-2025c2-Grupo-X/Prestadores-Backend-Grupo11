@@ -373,7 +373,7 @@ const crearReintegros = async () => {
             estado: 'en analisis',
             motivo: null,
             fecha_finalizacion: null,
-            usuarioUltimoCambio: 3
+            usuarioUltimoCambio: 1
         },
         {
             fecha_prestacion: '2025-09-22',
@@ -649,7 +649,8 @@ const crearReintegros = async () => {
             factura_valor: 54000.00,
             factura_persona: 'Laura Medina',
             forma_pago: 'efectivo',
-            estado: 'en analisis'
+            estado: 'en analisis',
+            usuarioUltimoCambio: 1
         },
         {
             fecha_prestacion: '2025-08-03',
@@ -677,7 +678,8 @@ const crearReintegros = async () => {
             factura_valor: 87000.00,
             factura_persona: 'Martina Ruiz',
             forma_pago: 'cheque',
-            estado: 'en analisis'
+            estado: 'en analisis',
+            usuarioUltimoCambio: 1
         },
         {
             fecha_prestacion: '2025-07-18',
@@ -704,7 +706,8 @@ const crearReintegros = async () => {
             factura_persona: 'Daniel Cabrera',
             forma_pago: 'transferencia',
             cbu: '0000003100044445555666',
-            estado: 'en analisis'
+            estado: 'en analisis',
+            usuarioUltimoCambio: 1
         },
         {
             fecha_prestacion: '2025-05-05',
@@ -731,7 +734,8 @@ const crearReintegros = async () => {
             factura_valor: 59000.00,
             factura_persona: 'Luis Gutiérrez',
             forma_pago: 'cheque',
-            estado: 'en analisis'
+            estado: 'en analisis',
+            usuarioUltimoCambio: 1
         },
         {
             fecha_prestacion: '2025-03-20',
@@ -759,7 +763,8 @@ const crearReintegros = async () => {
             factura_persona: 'Mario Fernández',
             forma_pago: 'efectivo',
             observaciones: 'Consulta + laboratorio cardio',
-            estado: 'en analisis'
+            estado: 'en analisis',
+            usuarioUltimoCambio: 1
         }
 
 
