@@ -36,7 +36,7 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-10-25',
             integranteId: 3,
-            medico: 'clinica santa maria',
+            medico: 'dr alejandro ruiz',
             especialidad: 'Gastroenterología',
             lugar: 'Hospital Central',
             factura_fecha: '2025-10-26',
@@ -84,7 +84,7 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-10-22',
             integranteId: 4,
-            medico: 'clinica santa maria',
+            medico: 'dr alejandro ruiz',
             especialidad: 'Traumatología',
             lugar: 'Hospital Central',
             factura_fecha: '2025-10-23',
@@ -97,12 +97,12 @@ const crearReintegros = async () => {
             estado: 'observado',
             fecha_finalizacion: '2025-11-05', //Fecha de cuando se cambio el estado
             motivo: 'Falta radiografía',
-            usuarioUltimoCambio: 2
+            usuarioUltimoCambio: 5
         },
         {
             fecha_prestacion: '2025-10-24',
             integranteId: 5,
-            medico: 'clinica santa maria',
+            medico: 'dr cecilia lopez',
             especialidad: 'Traumatología',
             lugar: 'Clínica Santa María',
             factura_fecha: '2025-10-25',
@@ -115,12 +115,12 @@ const crearReintegros = async () => {
             estado: 'observado',
             fecha_finalizacion: '2025-10-26', //Fecha de cuando se cambio el estado
             motivo: 'Falta firma del profesional',
-            usuarioUltimoCambio: 3
+            usuarioUltimoCambio: 2
         },
         {
             fecha_prestacion: '2025-10-26',
             integranteId: 6,
-            medico: 'dr cecilia lopez ',
+            medico: 'dr cecilia lopez',
             especialidad: 'Medica Clinica',
             lugar: 'Hospital Central',
             factura_fecha: '2025-10-27',
@@ -133,7 +133,7 @@ const crearReintegros = async () => {
             estado: 'observado',
             fecha_finalizacion: '2025-10-31', //Fecha de cuando se cambio el estado
             motivo: 'Estudios adjuntos ilegibles',
-            usuarioUltimoCambio: 1
+            usuarioUltimoCambio: 2
         },
         {
             fecha_prestacion: '2025-10-28',
@@ -151,7 +151,7 @@ const crearReintegros = async () => {
             estado: 'rechazado',
             motivo: 'Factura vencida',
             fecha_finalizacion: new Date(),
-            usuarioUltimoCambio: 2
+            usuarioUltimoCambio: 1
         },
         {
             fecha_prestacion: '2025-10-30',
@@ -169,7 +169,7 @@ const crearReintegros = async () => {
             estado: 'rechazado',
             motivo: 'Falta autorización previa',
             fecha_finalizacion: new Date(),
-            usuarioUltimoCambio: 3
+            usuarioUltimoCambio: 2
         },
 
         {
@@ -220,7 +220,7 @@ const crearReintegros = async () => {
         {
             fecha_prestacion: '2025-11-06',
             integranteId: 4,
-            medico: 'clinica santa maria',
+            medico: 'dr cecilia lopez',
             especialidad: 'Neurología',
             lugar: 'clinica santa maria',
             factura_fecha: '2025-11-07',
@@ -249,7 +249,7 @@ const crearReintegros = async () => {
             observaciones: 'Control post angioplastia con buena evolución',
             estado: 'aprobado',
             fecha_finalizacion: new Date(),
-            usuarioUltimoCambio: 3
+            usuarioUltimoCambio: 1
         },
         {
             fecha_prestacion: '2025-11-02',
@@ -265,9 +265,8 @@ const crearReintegros = async () => {
             cbu: '0000003100098765432101',
             observaciones: 'Eco Doppler cardíaco + control',
             estado: 'aprobado',
-            motivo: 'Prestación validada y dentro del nomenclador',
             fecha_finalizacion: new Date(),
-            usuarioUltimoCambio: 2
+            usuarioUltimoCambio: 1
         },
         {
             fecha_prestacion: '2025-10-28',
@@ -321,7 +320,7 @@ const crearReintegros = async () => {
             estado: 'observado',
             motivo: 'Falta comprobante de pago',
             fecha_finalizacion: new Date(),
-            usuarioUltimoCambio: 1
+            usuarioUltimoCambio: 2
         },
         {
             fecha_prestacion: '2025-11-20',
@@ -337,9 +336,8 @@ const crearReintegros = async () => {
             cbu: null,
             observaciones: 'Control post angioplastia',
             estado: 'aprobado',
-            motivo: 'Documentación completa',
             fecha_finalizacion: new Date(),
-            usuarioUltimoCambio: 2
+            usuarioUltimoCambio: 1
         },
         {
             fecha_prestacion: '2025-10-05',
@@ -357,7 +355,7 @@ const crearReintegros = async () => {
             estado: 'rechazado',
             motivo: 'Especialidad no coincide con la práctica facturada',
             fecha_finalizacion: new Date(),
-            usuarioUltimoCambio: 1
+            usuarioUltimoCambio: 2
         },
         {
             fecha_prestacion: '2025-11-08',
@@ -391,9 +389,8 @@ const crearReintegros = async () => {
             cbu: null,
             observaciones: 'Control clínico + medicación de soporte',
             estado: 'aprobado',
-            motivo: 'Prestación aprobada según cobertura',
             fecha_finalizacion: new Date(),
-            usuarioUltimoCambio: 4
+            usuarioUltimoCambio: 5
         },
         {
             fecha_prestacion: '2025-11-18',

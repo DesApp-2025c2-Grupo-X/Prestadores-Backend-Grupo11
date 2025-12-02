@@ -168,7 +168,6 @@ const { notify } = require('./routes/auth.route');
                 presentacion: 'comprimidos 400mg',
                 observaciones: 'Tomar después de las comidas',
                 estado: 'aprobado',
-                motivo: 'Indicada para dolor moderado y cuadro inflamatorio',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 1,
                 prestadorAnalisisId: 1
@@ -204,7 +203,6 @@ const { notify } = require('./routes/auth.route');
                 presentacion: 'capsulas 20mg',
                 observaciones: 'Tomar en ayunas',
                 estado: 'aprobado',
-                motivo: 'Reflujo gastroesofágico diagnosticado',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 2,
                 prestadorAnalisisId: 1
@@ -228,7 +226,6 @@ const { notify } = require('./routes/auth.route');
                 presentacion: 'comprimidos 850mg',
                 observaciones: '2 por día junto a comidas',
                 estado: 'aprobado',
-                motivo: 'Control glucémico indicado',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 3,
                 prestadorAnalisisId: 1
@@ -240,7 +237,6 @@ const { notify } = require('./routes/auth.route');
                 presentacion: 'inyecciones 75mg',
                 observaciones: 'Aplicación intramuscular por profesional',
                 estado: 'en analisis',
-                motivo: 'Tratamiento excesivo para dolor leve referido',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 1,
                 prestadorAnalisisId: 1
@@ -264,7 +260,6 @@ const { notify } = require('./routes/auth.route');
                 presentacion: 'comprimidos 10mg',
                 observaciones: 'Controlar presión cada 48hs',
                 estado: 'en analisis',
-                motivo: 'Hipertensión estable diagnosticada',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 2,
                 prestadorAnalisisId: 1
@@ -276,7 +271,6 @@ const { notify } = require('./routes/auth.route');
                 presentacion: 'comprimidos 5mg',
                 observaciones: 'Uso sólo en caso de ansiedad aguda',
                 estado: 'en analisis',
-                motivo: 'Requiere aclaración sobre duración del tratamiento',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 1,
                 prestadorAnalisisId: 1
@@ -288,7 +282,6 @@ const { notify } = require('./routes/auth.route');
                 presentacion: 'comprimidos 20mg',
                 observaciones: 'Tomar por la noche',
                 estado: 'aprobado',
-                motivo: 'Hipercolesterolemia documentada',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 2,
                 prestadorAnalisisId: 1
@@ -324,7 +317,6 @@ const { notify } = require('./routes/auth.route');
                 presentacion: 'comprimidos 40mg',
                 observaciones: 'Controlar peso y edemas diariamente',
                 estado: 'aprobado',
-                motivo: 'Tratamiento de retención hídrica',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 3,
                 prestadorAnalisisId: 1
@@ -372,7 +364,6 @@ const { notify } = require('./routes/auth.route');
                 presentacion: 'comprimidos 20mg',
                 observaciones: 'Seguir esquema descendente indicado',
                 estado: 'aprobado',
-                motivo: 'Indicada por proceso inflamatorio agudo',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 4,
                 prestadorAnalisisId: 1
@@ -396,7 +387,6 @@ const { notify } = require('./routes/auth.route');
                 presentacion: 'comprimidos 12.5mg',
                 observaciones: 'Tomar dos veces al día',
                 estado: 'aprobado',
-                motivo: 'Indicado para control de hipertensión y FC',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 2,
                 prestadorAnalisisId: 1
@@ -408,7 +398,6 @@ const { notify } = require('./routes/auth.route');
                 presentacion: 'comprimidos 5mg',
                 observaciones: 'Tomar por la mañana',
                 estado: 'aprobado',
-                motivo: 'Control de hipertensión con buen resultado previo',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 2,
                 prestadorAnalisisId: 1
@@ -432,7 +421,6 @@ const { notify } = require('./routes/auth.route');
                 presentacion: 'comprimidos 5mg',
                 observaciones: 'Tomar a la noche',
                 estado: 'aprobado',
-                motivo: 'Hipertensión confirmada en controles previos',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 3,
                 prestadorAnalisisId: 1
@@ -456,7 +444,6 @@ const { notify } = require('./routes/auth.route');
                 presentacion: 'comprimidos 10mg',
                 observaciones: 'Controlar presión semanal',
                 estado: 'aprobado',
-                motivo: 'Buen control tensional con este esquema',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 2,
                 prestadorAnalisisId: 1
@@ -480,7 +467,6 @@ const { notify } = require('./routes/auth.route');
                 presentacion: 'comprimidos 50mg',
                 observaciones: 'Tomar 1 cada 12 horas',
                 estado: 'aprobado',
-                motivo: 'Control de arritmia estable',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 4,
                 prestadorAnalisisId: 1
@@ -504,7 +490,6 @@ const { notify } = require('./routes/auth.route');
                 presentacion: 'comprimidos 25mg',
                 observaciones: 'Tomar por la mañana, control de potasio mensual',
                 estado: 'aprobado',
-                motivo: 'Tratamiento diurético justificado y efectivo',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 3,
                 prestadorAnalisisId: 1

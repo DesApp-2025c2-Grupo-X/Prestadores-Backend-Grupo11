@@ -12,7 +12,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 1,
             observaciones: 'Chequeo prequirúrgico',
             estado:'en analisis',
-            usuarioUltimoCambio: 3
+            usuarioUltimoCambio: 1
         },
         {
             fecha_prevista: new Date('2025-11-03'),
@@ -58,7 +58,7 @@ const crearAutorizaciones = async () => {
             observaciones: 'Infarto agudo de miocardio con necesidad de colocación de stent coronario izquierdo',
             estado: 'aprobado',    
             fecha_finalizacion: '2025-11-10',
-            usuarioUltimoCambio: 3           
+            usuarioUltimoCambio: 5           
         },
         {
             fecha_prevista: new Date('2025-11-07'),
@@ -121,7 +121,6 @@ const crearAutorizaciones = async () => {
             observaciones: 'Paciente ingresó por episodio de taquicardia paroxística con sensación de opresión torácica. Se realizaron estudios en guardia (ECG y enzimas cardíacas) con resultados dentro de parámetros, excepto frecuencia elevada sostenida.',
             estado: 'en analisis',
             fecha_finalizacion: '2025-11-12', //Fecha de cuando se cambio el estado
-            motivo: 'Tras administración de betabloqueante y observación durante 2 horas con estabilidad hemodinámica y ritmo sinusal recuperado, se considera que el paciente puede recibir el alta con seguimiento ambulatorio.',
             usuarioUltimoCambio: 1
         },
         {
@@ -166,9 +165,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Control general",
             estado: "recibido",
-            motivo: "Chequeo anual",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 1
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2025-12-12",
@@ -179,9 +176,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Dolor pélvico",
             estado: "recibido",
-            motivo: "Eco ginecológica",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 1
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2025-12-15",
@@ -192,9 +187,8 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Cefaleas recurrentes",
             estado: "en analisis",
-            motivo: "Resonancia cerebral",
             fecha_finalizacion: null,
-            usuarioUltimoCambio: 2
+            usuarioUltimoCambio: 13
         },
         {
             fecha_prevista: "2025-12-18",
@@ -205,9 +199,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: 2,
             observaciones: "Fractura de muñeca",
             estado: "recibido",
-            motivo: "Cirugía menor",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 3
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2025-12-20",
@@ -220,7 +212,7 @@ const crearAutorizaciones = async () => {
             estado: "observado",
             motivo: "Solicitud de RX columna",
             fecha_finalizacion: null,
-            usuarioUltimoCambio: 4
+            usuarioUltimoCambio: 8
         },
         {
             fecha_prevista: "2025-12-22",
@@ -231,9 +223,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Taquicardia",
             estado: "recibido",
-            motivo: "Holter 24h",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 1
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2025-12-27",
@@ -244,9 +234,8 @@ const crearAutorizaciones = async () => {
             dias_internacion: 1,
             observaciones: "Deshidratación",
             estado: "aprobado",
-            motivo: "Internación corta",
             fecha_finalizacion: "2025-12-29",
-            usuarioUltimoCambio: 2
+            usuarioUltimoCambio: 14
         },
         {
             fecha_prevista: "2025-12-28",
@@ -257,9 +246,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Controles respiratorios",
             estado: "recibido",
-            motivo: "Placa torácica",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 1
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2025-12-30",
@@ -270,9 +257,8 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Fiebre prolongada",
             estado: "en analisis",
-            motivo: "Laboratorio completo",
             fecha_finalizacion: null,
-            usuarioUltimoCambio: 5
+            usuarioUltimoCambio: 7
         },
         {
             fecha_prevista: "2026-01-03",
@@ -283,9 +269,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Brotes recurrentes",
             estado: "recibido",
-            motivo: "Biopsia de piel",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 2
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2025-12-11",
@@ -296,9 +280,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Control hipertensión",
             estado: "recibido",
-            motivo: "Ecocardiograma",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 3
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2025-12-13",
@@ -309,7 +291,6 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Migrañas persistentes",
             estado: "en analisis",
-            motivo: "TAC de cráneo",
             fecha_finalizacion: null,
             usuarioUltimoCambio: 4
         },
@@ -322,9 +303,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Fiebre sin foco",
             estado: "recibido",
-            motivo: "Laboratorio",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 2
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2025-12-16",
@@ -335,9 +314,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Control anual",
             estado: "recibido",
-            motivo: "Laboratorio general",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 1
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2025-12-19",
@@ -350,7 +327,7 @@ const crearAutorizaciones = async () => {
             estado: "observado",
             motivo: "Electromiografía",
             fecha_finalizacion: null,
-            usuarioUltimoCambio: 5
+            usuarioUltimoCambio: 21
         },
         {
             fecha_prevista: "2025-12-21",
@@ -361,9 +338,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Irritación persistente",
             estado: "recibido",
-            motivo: "Biopsia piel",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 6
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2025-12-23",
@@ -374,7 +349,6 @@ const crearAutorizaciones = async () => {
             dias_internacion: 1,
             observaciones: "Dolor rodilla",
             estado: "en analisis",
-            motivo: "Artroscopía diagnóstica",
             fecha_finalizacion: null,
             usuarioUltimoCambio: 3
         },
@@ -387,9 +361,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Dolores menstruales",
             estado: "recibido",
-            motivo: "Eco transvaginal",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 2
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2025-12-26",
@@ -400,9 +372,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Tos persistente",
             estado: "recibido",
-            motivo: "Radiografía",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 2
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2026-01-05",
@@ -413,9 +383,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Mareos",
             estado: "recibido",
-            motivo: "Análisis hormonas",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 4
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2026-01-07",
@@ -426,7 +394,6 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Dolor abdominal",
             estado: "en analisis",
-            motivo: "Eco abdominal",
             fecha_finalizacion: null,
             usuarioUltimoCambio: 3
         },
@@ -439,9 +406,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Lesiones en manos",
             estado: "recibido",
-            motivo: "Cultivo",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 1
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2026-01-10",
@@ -452,7 +417,6 @@ const crearAutorizaciones = async () => {
             dias_internacion: 1,
             observaciones: "Dolor precordial",
             estado: "aprobado",
-            motivo: "Internación observación",
             fecha_finalizacion: "2026-01-11",
             usuarioUltimoCambio: 6
         },
@@ -465,9 +429,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Hipotiroidismo",
             estado: "recibido",
-            motivo: "TSH + T4",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 2
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2026-01-12",
@@ -478,9 +440,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Control adolescente",
             estado: "recibido",
-            motivo: "Laboratorio anual",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 2
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2026-01-13",
@@ -491,9 +451,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Chequeo ginecológico",
             estado: "recibido",
-            motivo: "PAP + colpo",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 4
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2026-01-14",
@@ -504,7 +462,6 @@ const crearAutorizaciones = async () => {
             dias_internacion: 2,
             observaciones: "Golpe en cadera",
             estado: "en analisis",
-            motivo: "RMN de cadera",
             fecha_finalizacion: null,
             usuarioUltimoCambio: 5
         },
@@ -517,9 +474,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Alergia respiratoria",
             estado: "recibido",
-            motivo: "Espirometría",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 2
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2026-01-16",
@@ -530,9 +485,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Palpitaciones",
             estado: "recibido",
-            motivo: "Prueba de esfuerzo",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 3
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2026-01-17",
@@ -545,7 +498,7 @@ const crearAutorizaciones = async () => {
             estado: "observado",
             motivo: "RX columna cervical",
             fecha_finalizacion: null,
-            usuarioUltimoCambio: 1
+            usuarioUltimoCambio: 20
         },
         {
             fecha_prevista: "2026-01-18",
@@ -556,9 +509,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Arritmias",
             estado: "recibido",
-            motivo: "Holter 48h",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 4
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2026-01-19",
@@ -569,7 +520,6 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Fatiga crónica",
             estado: "en analisis",
-            motivo: "Perfil hepático",
             fecha_finalizacion: null,
             usuarioUltimoCambio: 3
         },
@@ -582,7 +532,6 @@ const crearAutorizaciones = async () => {
             dias_internacion: 1,
             observaciones: "Caída reciente",
             estado: "aprobado",
-            motivo: "Internación corta",
             fecha_finalizacion: "2026-01-21",
             usuarioUltimoCambio: 5
         },
@@ -595,9 +544,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Dolor torácico",
             estado: "recibido",
-            motivo: "Troponinas + ECG",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 6
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2026-01-22",
@@ -608,9 +555,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Controles de rutina",
             estado: "recibido",
-            motivo: "PAP",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 1
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2026-01-23",
@@ -621,7 +566,6 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Parestesias",
             estado: "en analisis",
-            motivo: "RMN columna cervical",
             fecha_finalizacion: null,
             usuarioUltimoCambio: 2
         },
@@ -634,9 +578,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Dermatitis atópica",
             estado: "recibido",
-            motivo: "Tratamiento tópico",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 3
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: "2026-01-25",
@@ -647,9 +589,7 @@ const crearAutorizaciones = async () => {
             dias_internacion: null,
             observaciones: "Control anual",
             estado: "recibido",
-            motivo: "Vacunas",
-            fecha_finalizacion: null,
-            usuarioUltimoCambio: 5
+            fecha_finalizacion: null
         },
         {
             fecha_prevista: new Date('2025-12-03'),
@@ -686,7 +626,6 @@ const crearAutorizaciones = async () => {
             dias_internacion: 1,
             observaciones: 'Control de arritmia y ajuste de medicación',
             estado: 'aprobado',
-            motivo: 'Estudios previos compatibles con evolución favorable',
             fecha_finalizacion: new Date(),
             usuarioUltimoCambio: 1
         },
@@ -701,7 +640,7 @@ const crearAutorizaciones = async () => {
             estado: 'rechazado',
             motivo: 'Faltan laboratorios actualizados',
             fecha_finalizacion: new Date(),
-            usuarioUltimoCambio: 1
+            usuarioUltimoCambio: 2
         },
         {
             fecha_prevista: new Date('2025-12-20'),
@@ -714,7 +653,7 @@ const crearAutorizaciones = async () => {
             estado: 'observado',
             motivo: 'Requiere agregar mediciones domiciliarias',
             fecha_finalizacion: new Date(),
-            usuarioUltimoCambio: 2
+            usuarioUltimoCambio: 1
         },
         {
             fecha_prevista: new Date('2025-12-08'),
@@ -725,7 +664,6 @@ const crearAutorizaciones = async () => {
             dias_internacion: 2,
             observaciones: 'Dolor abdominal agudo',
             estado: 'aprobado',
-            motivo: 'Guardia respalda necesidad de internación breve',
             fecha_finalizacion: new Date(),
             usuarioUltimoCambio: 3
         },
@@ -753,7 +691,7 @@ const crearAutorizaciones = async () => {
             estado: 'observado',
             motivo: 'Falta constancia de hidratación previa en ambulatorio',
             fecha_finalizacion: new Date(),
-            usuarioUltimoCambio: 1
+            usuarioUltimoCambio: 2
         },
         {
             fecha_prevista: new Date('2025-12-22'),
@@ -777,7 +715,6 @@ const crearAutorizaciones = async () => {
             dias_internacion: 1,
             observaciones: 'Cefalea intensa persistente',
             estado: 'aprobado',
-            motivo: 'Evaluación neurológica en guardia justifica manejo intrahospitalario',
             fecha_finalizacion: new Date(),
             usuarioUltimoCambio: 2
         }
