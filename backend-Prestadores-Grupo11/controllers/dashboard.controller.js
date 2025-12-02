@@ -3,13 +3,21 @@ const { Reintegro, Autorizacion, Receta, sequelize } = db;
 const { Op } = require("sequelize");
 
 const MESES = [
-  "Ene", "Feb", "Mar", "Abr", "May", "Jun",
-  "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
+  "Ene",
+  "Feb",
+  "Mar",
+  "Abr",
+  "May",
+  "Jun",
+  "Jul",
+  "Ago",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dic",
 ];
 
 module.exports = {
-
-
   // KPIs
 
   getKpis: async (req, res) => {
@@ -21,13 +29,11 @@ module.exports = {
       ]);
 
       res.json({ reintegros, recetas, autorizaciones });
-
     } catch (error) {
       console.error("ERROR getKpis:", error);
       res.status(500).json({ error: "Error obteniendo KPIs" });
     }
   },
-
 
   // SEMANAL
   getSemanal: async (req, res) => {
@@ -38,15 +44,15 @@ module.exports = {
 
       const buildQuery = (table) => ({
         where: {
-          createdAt: { [Op.between]: [hace7, hoy] }
+          createdAt: { [Op.between]: [hace7, hoy] },
         },
         attributes: [
           [sequelize.literal(`DATE("${table}"."createdAt")`), "dia"],
-          [sequelize.fn("COUNT", sequelize.col("id")), "total"]
+          [sequelize.fn("COUNT", sequelize.col("id")), "total"],
         ],
         group: [sequelize.literal(`DATE("${table}"."createdAt")`)],
         order: [sequelize.literal("dia ASC")],
-        raw: true
+        raw: true,
       });
 
       const datos = {
@@ -61,20 +67,23 @@ module.exports = {
         items.forEach((item) => {
           const key = item.dia;
           if (!dias[key])
-            dias[key] = { dia: key, reintegros: 0, recetas: 0, autorizaciones: 0 };
+            dias[key] = {
+              dia: key,
+              reintegros: 0,
+              recetas: 0,
+              autorizaciones: 0,
+            };
 
           dias[key][tipo] = parseInt(item.total);
         });
       });
 
       res.json(Object.values(dias));
-
     } catch (error) {
       console.error("ERROR getSemanal:", error);
       res.status(500).json({ error: "Error obteniendo datos semanales" });
     }
   },
-
 
   // MENSUAL
 
@@ -84,13 +93,18 @@ module.exports = {
 
       const buildQueryMensual = (table) => ({
         attributes: [
-          [sequelize.literal(`EXTRACT(MONTH FROM "${table}"."createdAt")`), "mes"],
-          [sequelize.fn("COUNT", sequelize.col("id")), "total"]
+          [
+            sequelize.literal(`EXTRACT(MONTH FROM "${table}"."createdAt")`),
+            "mes",
+          ],
+          [sequelize.fn("COUNT", sequelize.col("id")), "total"],
         ],
-        where: sequelize.literal(`EXTRACT(YEAR FROM "${table}"."createdAt") = ${añoActual}`),
+        where: sequelize.literal(
+          `EXTRACT(YEAR FROM "${table}"."createdAt") = ${añoActual}`
+        ),
         group: [sequelize.literal("mes")],
         order: [sequelize.literal("mes ASC")],
-        raw: true
+        raw: true,
       });
 
       const datos = await Promise.all([
@@ -111,13 +125,11 @@ module.exports = {
       }));
 
       res.json(result);
-
     } catch (error) {
       console.error("ERROR getMensual:", error);
       res.status(500).json({ error: "Error obteniendo datos mensuales" });
     }
   },
-
 
   // ANUAL
 
@@ -134,24 +146,37 @@ module.exports = {
         { categoria: "Recetas", total: rec },
         { categoria: "Autorizaciones", total: aut },
       ]);
-
     } catch (error) {
       console.error("ERROR getAnual:", error);
       res.status(500).json({ error: "Error obteniendo datos anuales" });
     }
   },
 
- 
   // REGISTROS RECIENTES
 
   getRegistros: async (req, res) => {
     try {
+      const prestadorId = req.user.id; 
       const limit = 50;
       const registros = [];
 
-      const reintegros = await Reintegro.findAll({ limit, order: [["createdAt", "DESC"]] });
-      const recetas = await Receta.findAll({ limit, order: [["createdAt", "DESC"]] });
-      const autorizaciones = await Autorizacion.findAll({ limit, order: [["createdAt", "DESC"]] });
+      const reintegros = await Reintegro.findAll({
+        where: { prestadorId },
+        limit,
+        order: [["createdAt", "DESC"]],
+      });
+
+      const recetas = await Receta.findAll({
+        where: { prestadorId },
+        limit,
+        order: [["createdAt", "DESC"]],
+      });
+
+      const autorizaciones = await Autorizacion.findAll({
+        where: { prestadorId },
+        limit,
+        order: [["createdAt", "DESC"]],
+      });
 
       reintegros.forEach((r) =>
         registros.push({
@@ -183,16 +208,14 @@ module.exports = {
       registros.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
 
       res.json(registros);
-
     } catch (error) {
       console.error("ERROR getRegistros:", error);
       res.status(500).json({ error: "Error obteniendo registros" });
     }
   },
 
- 
   // FILTRADO GLOBAL
-  
+
   getFiltrado: async (req, res) => {
     try {
       const { periodo = "semana" } = req.query;
@@ -215,7 +238,11 @@ module.exports = {
 
       switch (periodo) {
         case "hoy":
-          fechaInicio = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
+          fechaInicio = new Date(
+            hoy.getFullYear(),
+            hoy.getMonth(),
+            hoy.getDate()
+          );
           break;
         case "semana":
           fechaInicio.setDate(hoy.getDate() - 6);
@@ -234,20 +261,20 @@ module.exports = {
       const q = (Model) => ({
         where: { ...filtroFecha, ...filtroEstado },
         order: [["createdAt", "ASC"]],
-        raw: true
+        raw: true,
       });
 
       const [rein, rec, aut] = await Promise.all([
         Reintegro.findAll(q(Reintegro)),
         Receta.findAll(q(Receta)),
-        Autorizacion.findAll(q(Autorizacion))
+        Autorizacion.findAll(q(Autorizacion)),
       ]);
 
       // KPIs
       const kpis = {
         reintegros: rein.length,
         recetas: rec.length,
-        autorizaciones: aut.length
+        autorizaciones: aut.length,
       };
 
       // GRAFICO
@@ -260,7 +287,7 @@ module.exports = {
               fecha: f,
               reintegros: 0,
               recetas: 0,
-              autorizaciones: 0
+              autorizaciones: 0,
             };
           agruparPorFecha[f][key]++;
         });
@@ -276,30 +303,30 @@ module.exports = {
       const distribucion = [
         { estado: "Reintegros", total: rein.length },
         { estado: "Recetas", total: rec.length },
-        { estado: "Autorizaciones", total: aut.length }
+        { estado: "Autorizaciones", total: aut.length },
       ];
 
       // TABLA
       const registros = [
-        ...rein.map(r => ({
+        ...rein.map((r) => ({
           fecha: r.createdAt,
           tipo: "Reintegro",
           estado: r.estado || "",
-          descripcion: r.descripcion || ""
+          descripcion: r.descripcion || "",
         })),
-        ...rec.map(r => ({
+        ...rec.map((r) => ({
           fecha: r.createdAt,
           tipo: "Receta",
           estado: r.estado || "",
-          descripcion: r.medicamento || ""
+          descripcion: r.medicamento || "",
         })),
-        ...aut.map(a => ({
+        ...aut.map((a) => ({
           fecha: a.createdAt,
           tipo: "Autorización",
           estado: a.estado || "",
-          descripcion: a.especialidad || ""
+          descripcion: a.especialidad || "",
         })),
-      ].sort((a,b) => new Date(b.fecha) - new Date(a.fecha));
+      ].sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
 
       res.json({
         periodo,
@@ -307,13 +334,11 @@ module.exports = {
         kpis,
         grafico,
         distribucion,
-        registros
+        registros,
       });
-
     } catch (error) {
       console.error("ERROR getFiltrado:", error);
       res.status(500).json({ error: "Error obteniendo datos filtrados" });
     }
-  }
-
+  },
 };
