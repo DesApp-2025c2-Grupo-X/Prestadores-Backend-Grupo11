@@ -10,7 +10,7 @@ const getAllTurnosByPrestadorId = async (req, res) => {
   const { prestadorId } = req.params;
 
   const turnos = await Turno.findAll({
-    where: { centroId: prestadorId },
+    where: { prestadorId },
     include: [
       { model: Prestador, as: "prestador", attributes: { exclude: ["password"] } },
       {

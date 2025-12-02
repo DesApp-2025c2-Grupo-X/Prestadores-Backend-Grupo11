@@ -2,820 +2,197 @@ const {Turno} = require('./db/models');
 const { notify } = require('./routes/auth.route');
 
 const crearTurnos = async () => {
-    await Turno.bulkCreate([
-        {
-            date: "2025-01-07T09:15:00",
-            start: "2025-01-07T08:30:00",
-            duration: 45,
-            notes: "Durante la consulta cardiológica, el paciente acudió para un control dirigido a evaluar síntomas recientes y revisar la evolución de factores de riesgo. Refirió sensación intermitente de cansancio tras esfuerzos prolongados, sin dolor torácico típico ni disnea significativa. En el examen físico se observaron signos vitales dentro de parámetros aceptables, aunque con tendencia a hipertensión leve. La auscultación cardíaca mostró tonos rítmicos sin soplos ni arritmias. Se revisaron estudios previos con ECG en ritmo sinusal y se solicitaron nuevos análisis de laboratorio junto con un ecocardiograma Doppler para evaluación estructural y funcional. Se reforzaron medidas de estilo de vida y se pautó seguimiento.",
-            afiliadoId: 1,
-            prestadorId: 1,
-            centroId: 3
-        },
-        {
-            date: "2025-01-12T14:40:00",
-            start: "2025-01-12T13:55:00",
-            duration: 45,
-            notes: "El paciente asistió para control cardiovascular general, refiriendo estabilidad clínica pero episodios ocasionales de fatiga al final del día. Negó dolor torácico, palpitaciones sostenidas o síncope. En el examen físico no se encontraron hallazgos patológicos relevantes, salvo una presión arterial algo elevada en reposo. La auscultación cardíaca fue normal. Se revisaron estudios previos que mostraron perfil lipídico alto y ECG sin alteraciones. Se recomendaron medidas higiénico-dietéticas, control ambulatorio y estudios complementarios para ajuste terapéutico.",
-            integranteId: 1,
-            prestadorId: 7,
-            centroId: 4
-        },
-
-        {
-            date: "2025-02-03T11:20:00",
-            start: "2025-02-03T10:35:00",
-            duration: 45,
-            notes: "El paciente acudió para control de rutina manifestando sensación de agotamiento variable según la carga laboral. Descartó dolor torácico, palpitaciones severas o mareos importantes. En la exploración física se evidenció estabilidad hemodinámica, auscultación cardíaca normal y ausencia de edemas. Estudios previos mostraron colesterol total elevado. Se indicó reevaluación con análisis de laboratorio, seguimiento periódico y mantenimiento de actividad aeróbica moderada.",
-            afiliadoId: 2,
-            prestadorId: 12,
-            centroId: 5
-        },
-        {
-            date: "2025-02-14T16:05:00",
-            start: "2025-02-14T15:20:00",
-            duration: 45,
-            notes: "Durante la consulta, el paciente refirió estabilidad general pero cierta pesadez al caminar distancias largas. Negó disnea en reposo, dolor precordial o arritmias percibidas. El examen físico reveló presión arterial algo elevada, sin signos de insuficiencia cardíaca. La auscultación pulmonar fue normal. Estudios previos mostraron valores lipídicos altos y ECG normal. Se recomendó control periódico, dieta baja en grasas y nuevos estudios complementarios.",
-            integranteId: 2,
-            prestadorId: 18,
-            centroId: 3
-        },
-
-        {
-            date: "2025-03-02T08:50:00",
-            start: "2025-03-02T08:05:00",
-            duration: 45,
-            notes: "El paciente asistió para reevaluación de síntomas inespecíficos de cansancio, sin signos claros de patología aguda. No presentó dolor torácico ni disnea limitante. En la exploración física se observaron signos vitales estables y examen cardiovascular normal. El ECG previo mostró ritmo sinusal sin alteraciones. Se indicó laboratorio completo, ecocardiograma y refuerzo de medidas no farmacológicas con seguimiento cercano.",
-            afiliadoId: 3,
-            prestadorId: 26,
-            centroId: 4
-        },
-        {
-            date: "2025-03-18T10:10:00",
-            start: "2025-03-18T09:25:00",
-            duration: 45,
-            notes: "Acudió para control mencionando fluctuaciones en su nivel de energía, especialmente tras días laboralmente exigentes. Sin síntomas anginosos ni palpitaciones persistentes. Examen físico dentro de parámetros, salvo presión arterial en rango alto normal. ECG previo sin alteraciones. Se solicitaron estudios adicionales y se reforzaron recomendaciones dietéticas y de actividad aeróbica regular.",
-            integranteId: 3,
-            prestadorId: 30,
-            centroId: 5
-        },
-
-        {
-            date: "2025-04-05T12:45:00",
-            start: "2025-04-05T12:00:00",
-            duration: 45,
-            notes: "El paciente relató episodios breves de cansancio sin relación clara con el esfuerzo y sin otros síntomas cardiovasculares asociados. El examen físico fue normal, con buena perfusión periférica y auscultación cardíaca sin soplos. Se revisaron estudios previos que mostraron lípidos elevados y ECG normal. Se aconsejó control domiciliario de presión arterial y estudios complementarios.",
-            afiliadoId: 4,
-            prestadorId: 6,
-            centroId: 3
-        },
-        {
-            date: "2025-04-19T09:00:00",
-            start: "2025-04-19T08:15:00",
-            duration: 45,
-            notes: "En el control, el paciente manifestó sentirse estable pero con menor resistencia física que meses atrás. No refirió disnea, dolor torácico ni síncope. Examen físico sin hallazgos patológicos, presión arterial en límite alto. ECG previo normal. Se planificaron estudios adicionales y se reforzó la importancia de hábitos saludables y seguimiento periódico.",
-            integranteId: 4,
-            prestadorId: 11,
-            centroId: 4
-        },
-
-        {
-            date: "2025-05-01T17:20:00",
-            start: "2025-05-01T16:35:00",
-            duration: 45,
-            notes: "El paciente acudió para control integral, refiriendo cansancio leve ocasional, especialmente al final del día. Negó dolor torácico o arritmias. El examen cardiovascular resultó normal, con ligera tendencia a hipertensión. ECG previo sin alteraciones. Se solicitaron estudios complementarios y se reforzaron medidas de estilo de vida.",
-            afiliadoId: 5,
-            prestadorId: 22,
-            centroId: 5
-        },
-        {
-            date: "2025-05-14T15:10:00",
-            start: "2025-05-14T14:25:00",
-            duration: 45,
-            notes: "Consulta de control en la que el paciente reportó estabilidad general, aunque con baja tolerancia a esfuerzos intensos. No hay dolor torácico, disnea ni palpitaciones persistentes. Examen físico normal. ECG previo en ritmo sinusal. Se solicitó laboratorio completo y ecocardiograma, además de recomendar dieta equilibrada y ejercicio moderado.",
-            prestadorId: 19,
-            centroId: 3
-        },
-
-        {
-            date: "2025-06-03T10:30:00",
-            start: "2025-06-03T09:45:00",
-            duration: 45,
-            notes: "El paciente asistió para seguimiento, comentando fatiga ocasional relacionada con estrés laboral. Ausencia de síntomas anginosos o arritmias. Examen físico normal. ECG previo sin particularidades. Se indicó completar estudios y reforzar higiene del sueño, ejercicio y alimentación saludable.",
-            afiliadoId: 6,
-            prestadorId: 8,
-            centroId: 4
-        },
-        {
-            date: "2025-06-18T11:50:00",
-            start: "2025-06-18T11:05:00",
-            duration: 45,
-            notes: "Control cardiovascular con paciente que refiere cansancio intermitente sin otros síntomas relevantes. Examen físico sin hallazgos patológicos. ECG previo normal. Se solicitaron estudios para reevaluación metabólica y se recomendó control periódico.",
-            integranteId: 6,
-            prestadorId: 15,
-            centroId: 5
-        },
-
-        {
-            date: "2025-07-06T13:15:00",
-            start: "2025-07-06T12:30:00",
-            duration: 45,
-            notes: "Paciente refiere estabilidad clínica, aunque con sensación de pesadez tras actividades prolongadas. Examen físico normal salvo presión limítrofe. ECG previo sin alteraciones. Indicación de estudios complementarios y educación sobre factores de riesgo.",
-            afiliadoId: 7,
-            prestadorId: 21,
-            centroId: 3
-        },
-        {
-            date: "2025-07-22T08:35:00",
-            start: "2025-07-22T07:50:00",
-            duration: 45,
-            notes: "Durante la consulta, el paciente mencionó fluctuaciones leves en su energía diaria. Negó síntomas cardiovasculares agudos. Examen físico normal. ECG previo estable. Solicitud de laboratorio y ecocardiograma con recomendaciones de estilo de vida.",
-            integranteId: 7,
-            prestadorId: 9,
-            centroId: 4
-        },
-
-        {
-            date: "2025-08-03T14:55:00",
-            start: "2025-08-03T14:10:00",
-            duration: 45,
-            notes: "Paciente estable, con cansancio leve no progresivo. Examen físico dentro de parámetros normales. ECG previo normal. Se indicó control metabólico y seguimiento clínico.",
-            afiliadoId: 8,
-            prestadorId: 16,
-            centroId: 5
-        },
-        {
-            date: "2025-08-20T17:40:00",
-            start: "2025-08-20T16:55:00",
-            duration: 45,
-            notes: "El paciente asistió refiriendo buena evolución, salvo fatiga en días de mayor demanda física. Examen normal. ECG previo sin alteraciones. Se solicitaron estudios y se reforzó actividad aeróbica.",
-            integranteId: 8,
-            prestadorId: 6,
-            centroId: 3
-        },
-
-        {
-            date: "2025-09-01T09:05:00",
-            start: "2025-09-01T08:20:00",
-            duration: 45,
-            notes: "Control general con síntomas mínimos y no específicos. Examen físico normal. ECG previo sin cambios. Se recomendó laboratorio completo y eco Doppler.",
-            afiliadoId: 9,
-            prestadorId: 13,
-            centroId: 4
-        },
-        {
-            date: "2025-09-16T10:25:00",
-            start: "2025-09-16T09:40:00",
-            duration: 45,
-            notes: "Paciente estable, con presión arterial en límite alto. Examen físico normal. ECG previo sin alteraciones. Se solicitó reevaluación metabólica y se reforzaron medidas no farmacológicas.",
-            integranteId: 9,
-            prestadorId: 28,
-            centroId: 5
-        },
-
-        {
-            date: "2025-10-07T15:30:00",
-            start: "2025-10-07T14:45:00",
-            duration: 45,
-            notes: "Consulta de rutina donde el paciente refirió cansancio ocasional sin factores desencadenantes claros. Examen normal. ECG sin alteraciones. Se solicitaron estudios y seguimiento.",
-            afiliadoId: 10,
-            prestadorId: 2,
-            centroId: 3
-        },
-        {
-            date: "2025-10-21T16:55:00",
-            start: "2025-10-21T16:10:00",
-            duration: 45,
-            notes: "El paciente comentó reducción leve en la tolerancia al esfuerzo. No hay síntomas anginosos. Examen físico normal. ECG sin cambios. Solicitud de laboratorio y eco.",
-            integranteId: 10,
-            prestadorId: 27,
-            centroId: 4
-        },
-
-        {
-            date: "2025-11-03T11:40:00",
-            start: "2025-11-03T10:55:00",
-            duration: 45,
-            notes: "Paciente sin síntomas relevantes, salvo episodios de fatiga aislada. Examen normal. ECG previo normal. Se indicó seguimiento y medidas preventivas.",
-            afiliadoId: 1,
-            prestadorId: 25,
-            centroId: 5
-        },
-        {
-            date: "2025-11-18T12:15:00",
-            start: "2025-11-18T11:30:00",
-            duration: 45,
-            notes: "Control con paciente que refiere estabilidad general. Examen físico sin alteraciones. ECG normal. Solicitud de estudios complementarios.",
-            integranteId: 11,
-            prestadorId: 14,
-            centroId: 3
-        },
-
-        {
-            date: "2025-12-02T08:45:00",
-            start: "2025-12-02T08:00:00",
-            duration: 45,
-            notes: "Paciente con cansancio leve crónico no progresivo. Examen normal. ECG sin alteraciones. Se refuerzan medidas higiénico-dietéticas y estudios.",
-            afiliadoId: 2,
-            prestadorId: 17,
-            centroId: 4
-        },
-        {
-            date: "2025-12-12T10:55:00",
-            start: "2025-12-12T10:10:00",
-            duration: 45,
-            notes: "Consulta de control sin síntomas críticos. Examen normal. ECG previo sin alteraciones. Se solicita reevaluación metabólica.",
-            integranteId: 12,
-            prestadorId: 23,
-            centroId: 5
-        },
-
-        {
-            date: "2025-01-22T12:30:00",
-            start: "2025-01-22T11:45:00",
-            duration: 45,
-            notes: "Paciente estable, con actividad física moderada bien tolerada salvo días de fatiga. Examen normal. ECG normal. Se planifican estudios.",
-            afiliadoId: 3,
-            prestadorId: 29,
-            centroId: 3
-        },
-        {
-            date: "2025-02-09T15:25:00",
-            start: "2025-02-09T14:40:00",
-            duration: 45,
-            notes: "Control donde el paciente refirió cansancio variable. Examen físico normal. ECG previo normal. Se solicitaron estudios adicionales.",
-            integranteId: 13,
-            prestadorId: 20,
-            centroId: 4
-        },
-
-        {
-            date: "2025-03-11T09:50:00",
-            start: "2025-03-11T09:05:00",
-            duration: 45,
-            notes: "Paciente con estabilidad clínica general. Examen normal. ECG sin alteraciones. Se indicaron medidas de prevención y seguimiento.",
-            afiliadoId: 4,
-            prestadorId: 10,
-            centroId: 5
-        },
-        {
-            date: "2025-03-29T17:15:00",
-            start: "2025-03-29T16:30:00",
-            duration: 45,
-            notes: "Consulta sin síntomas relevantes. Examen físico normal. ECG previo estable. Solicitud de laboratorio y ecocardiograma.",
-            integranteId: 14,
-            prestadorId: 24,
-            centroId: 3
-        },
-
-        {
-            date: "2025-04-10T14:30:00",
-            start: "2025-04-10T13:45:00",
-            duration: 45,
-            notes: "Paciente refirió disminución leve en la energía diaria. Examen cardiovascular normal. ECG sin alteraciones. Se reforzaron recomendaciones y se solicitaron estudios.",
-            afiliadoId: 5,
-            prestadorId: 6,
-            centroId: 4
-        },
-        {
-            date: "2025-04-28T13:05:00",
-            start: "2025-04-28T12:20:00",
-            duration: 45,
-            notes: "Control general con síntomas mínimos. Examen normal. ECG previo normal. Indicación de estudios complementarios.",
-            integranteId: 15,
-            prestadorId: 30,
-            centroId: 5
-        },
-
-        {
-            date: "2025-05-06T10:40:00",
-            start: "2025-05-06T09:55:00",
-            duration: 45,
-            notes: "Paciente estable sin síntomas anginosos. Examen normal salvo tensión límite. ECG normal. Se recomendó seguimiento.",
-            afiliadoId: 6,
-            prestadorId: 18,
-            centroId: 3
-        },
-        {
-            date: "2025-05-30T16:50:00",
-            start: "2025-05-30T16:05:00",
-            duration: 45,
-            notes: "Consulta de control con fatiga leve ocasional. Examen físico dentro de la normalidad. ECG sin cambios. Estudios solicitados.",
-            integranteId: 16,
-            prestadorId: 11,
-            centroId: 4
-        },
-
-        {
-            date: "2025-06-15T09:35:00",
-            start: "2025-06-15T08:50:00",
-            duration: 45,
-            notes: "Paciente sin síntomas significativos. Examen cardiovascular normal. ECG previo normal. Se indicaron medidas preventivas.",
-            afiliadoId: 7,
-            prestadorId: 13,
-            centroId: 5
-        },
-        {
-            date: "2025-06-29T12:50:00",
-            start: "2025-06-29T12:05:00",
-            duration: 45,
-            notes: "Control de rutina con estabilidad clínica. Examen normal. ECG sin alteraciones. Solicitud de laboratorio.",
-            integranteId: 17,
-            prestadorId: 16,
-            centroId: 3
-        },
-
-        {
-            date: "2025-07-09T11:05:00",
-            start: "2025-07-09T10:20:00",
-            duration: 45,
-            notes: "Paciente refiere cansancio ocasional tras esfuerzo. Examen físico normal. ECG previo sin cambios. Se refuerzan hábitos saludables.",
-            afiliadoId: 8,
-            prestadorId: 7,
-            centroId: 4
-        },
-        {
-            date: "2025-07-26T15:40:00",
-            start: "2025-07-26T14:55:00",
-            duration: 45,
-            notes: "Consulta sin hallazgos relevantes. Examen normal. ECG normal. Se solicitaron estudios.",
-            integranteId: 18,
-            prestadorId: 22,
-            centroId: 5
-        },
-
-        {
-            date: "2025-08-14T08:55:00",
-            start: "2025-08-14T08:10:00",
-            duration: 45,
-            notes: "Paciente en buen estado general con fatiga leve esporádica. Examen normal. ECG previo sin alteraciones. Recomendación de seguimiento.",
-            afiliadoId: 9,
-            prestadorId: 21,
-            centroId: 3
-        },
-        {
-            date: "2025-08-31T10:45:00",
-            start: "2025-08-31T10:00:00",
-            duration: 45,
-            notes: "Control con estabilidad clínica. Examen cardiovascular normal. ECG sin cambios. Solicitud de laboratorio completo.",
-            integranteId: 19,
-            prestadorId: 12,
-            centroId: 4
-        },
-
-        {
-            date: "2025-09-11T13:15:00",
-            start: "2025-09-11T12:30:00",
-            duration: 45,
-            notes: "Paciente sin síntomas nuevos. Examen físico normal. ECG previo normal. Estudios solicitados.",
-            afiliadoId: 10,
-            prestadorId: 30,
-            centroId: 5
-        },
-        {
-            date: "2025-09-27T15:30:00",
-            start: "2025-09-27T14:45:00",
-            duration: 45,
-            notes: "Consulta de rutina con buena evolución clínica. Examen normal. ECG sin alteraciones. Se pidió reevaluación.",
-            integranteId: 20,
-            prestadorId: 10,
-            centroId: 3
-        },
-        {
-            "date": "2025-12-02T10:30:00",
-            "start": "2025-12-02T09:45:00",
-            "duration": 45,
-            "notes": "Consulta sin hallazgos relevantes. Evolución favorable.",
-            "integranteId": 12,
-            "prestadorId": 7,
-            "centroId": 4
-        },
-        {
-            "date": "2025-12-02T11:20:00",
-            "start": "2025-12-02T10:35:00",
-            "duration": 45,
-            "notes": "Control general, signos vitales normales.",
-            "afiliadoId": 3,
-            "prestadorId": 1,
-            "centroId": 3
-        },
-        {
-            "date": "2025-12-03T14:10:00",
-            "start": "2025-12-03T13:25:00",
-            "duration": 45,
-            "notes": "Paciente sin síntomas agudos. Refiere buena evolución.",
-            "integranteId": 44,
-            "prestadorId": 12,
-            "centroId": 5
-        },
-        {
-            "date": "2025-12-03T15:40:00",
-            "start": "2025-12-03T14:55:00",
-            "duration": 45,
-            "notes": "Se ajusta medicación. Próximo control en 1 mes.",
-            "afiliadoId": 7,
-            "prestadorId": 2,
-            "centroId": 4
-        },
-        {
-            "date": "2025-12-04T09:00:00",
-            "start": "2025-12-04T08:15:00",
-            "duration": 45,
-            "notes": "Consulta por dolor leve. No se observan complicaciones.",
-            "integranteId": 25,
-            "prestadorId": 15,
-            "centroId": 3
-        },
-        {
-            "date": "2025-12-04T10:30:00",
-            "start": "2025-12-04T09:45:00",
-            "duration": 45,
-            "notes": "Examen físico normal. Se recomienda hidratación.",
-            "afiliadoId": 1,
-            "prestadorId": 28,
-            "centroId": 5
-        },
-        {
-            "date": "2025-12-04T12:15:00",
-            "start": "2025-12-04T11:30:00",
-            "duration": 45,
-            "notes": "Control periódico. Sin hallazgos patológicos.",
-            "integranteId": 8,
-            "prestadorId": 30,
-            "centroId": 4
-        },
-        {
-            "date": "2025-12-05T08:50:00",
-            "start": "2025-12-05T08:05:00",
-            "duration": 45,
-            "notes": "Se indican estudios complementarios.",
-            "afiliadoId": 4,
-            "prestadorId": 1,
-            "centroId": 3
-        },
-        {
-            "date": "2025-12-05T11:10:00",
-            "start": "2025-12-05T10:25:00",
-            "duration": 45,
-            "notes": "Paciente refiere mejoría parcial. Se mantiene control.",
-            "integranteId": 37,
-            "prestadorId": 14,
-            "centroId": 5
-        },
-        {
-            "date": "2025-12-05T15:40:00",
-            "start": "2025-12-05T14:55:00",
-            "duration": 45,
-            "notes": "Consulta rutinaria. Sin novedades clínicas.",
-            "afiliadoId": 9,
-            "prestadorId": 9,
-            "centroId": 4
-        },
-
-        {
-            "date": "2025-12-06T09:30:00",
-            "start": "2025-12-06T08:45:00",
-            "duration": 45,
-            "notes": "Control general. Se programan estudios.",
-            "integranteId": 4,
-            "prestadorId": 19,
-            "centroId": 3
-        },
-        {
-            "date": "2025-12-06T10:50:00",
-            "start": "2025-12-06T10:05:00",
-            "duration": 45,
-            "notes": "Dolor leve en zona lumbar. Tratamiento sintomático.",
-            "afiliadoId": 2,
-            "prestadorId": 25,
-            "centroId": 5
-        },
-        {
-            "date": "2025-12-06T12:40:00",
-            "start": "2025-12-06T11:55:00",
-            "duration": 45,
-            "notes": "Se evalúa evolución favorable.",
-            "integranteId": 15,
-            "prestadorId": 18,
-            "centroId": 4
-        },
-        {
-            "date": "2025-12-07T08:30:00",
-            "start": "2025-12-07T07:45:00",
-            "duration": 45,
-            "notes": "Sin síntomas agudos. Se mantiene seguimiento.",
-            "afiliadoId": 6,
-            "prestadorId": 7,
-            "centroId": 5
-        },
-        {
-            "date": "2025-12-07T11:50:00",
-            "start": "2025-12-07T11:05:00",
-            "duration": 45,
-            "notes": "Examen clínico normal.",
-            "integranteId": 50,
-            "prestadorId": 11,
-            "centroId": 3
-        },
-
-        {
-            "date": "2025-12-08T14:30:00",
-            "start": "2025-12-08T13:45:00",
-            "duration": 45,
-            "notes": "Consulta por malestar leve. No se observan complicaciones.",
-            "afiliadoId": 10,
-            "prestadorId": 6,
-            "centroId": 4
-        },
-        {
-            "date": "2025-12-08T16:00:00",
-            "start": "2025-12-08T15:15:00",
-            "duration": 45,
-            "notes": "Paciente refiere cefalea ocasional.",
-            "integranteId": 9,
-            "prestadorId": 26,
-            "centroId": 5
-        },
-        {
-            "date": "2025-12-09T09:10:00",
-            "start": "2025-12-09T08:25:00",
-            "duration": 45,
-            "notes": "Control sin observaciones relevantes.",
-            "afiliadoId": 1,
-            "prestadorId": 2,
-            "centroId": 3
-        },
-        {
-            "date": "2025-12-09T12:45:00",
-            "start": "2025-12-09T12:00:00",
-            "duration": 45,
-            "notes": "Se ajustan indicaciones médicas.",
-            "integranteId": 2,
-            "prestadorId": 28,
-            "centroId": 4
-        },
-        {
-            "date": "2025-12-09T15:50:00",
-            "start": "2025-12-09T15:05:00",
-            "duration": 45,
-            "notes": "Buena evolución del cuadro previo.",
-            "afiliadoId": 8,
-            "prestadorId": 6,
-            "centroId": 5
-        },
-
-        {
-            "date": "2025-12-10T08:40:00",
-            "start": "2025-12-10T07:55:00",
-            "duration": 45,
-            "notes": "No se registran síntomas nuevos.",
-            "integranteId": 23,
-            "prestadorId": 10,
-            "centroId": 3
-        },
-        {
-            "date": "2025-12-10T10:20:00",
-            "start": "2025-12-10T09:35:00",
-            "duration": 45,
-            "notes": "Consulta general. Signos normales.",
-            "afiliadoId": 5,
-            "prestadorId": 13,
-            "centroId": 4
-        },
-        {
-            "date": "2025-12-10T13:10:00",
-            "start": "2025-12-10T12:25:00",
-            "duration": 45,
-            "notes": "Derivación a especialista.",
-            "integranteId": 47,
-            "prestadorId": 17,
-            "centroId": 5
-        },
-        {
-            "date": "2025-12-11T11:45:00",
-            "start": "2025-12-11T11:00:00",
-            "duration": 45,
-            "notes": "Consulta por dolor leve. Se indica reposo.",
-            "afiliadoId": 2,
-            "prestadorId": 21,
-            "centroId": 3
-        },
-        {
-            "date": "2025-12-11T14:55:00",
-            "start": "2025-12-11T14:10:00",
-            "duration": 45,
-            "notes": "Se solicita laboratorio de control.",
-            "integranteId": 39,
-            "prestadorId": 8,
-            "centroId": 4
-        },
-
-        {
-            "date": "2025-12-12T09:25:00",
-            "start": "2025-12-12T08:40:00",
-            "duration": 45,
-            "notes": "Examen físico sin hallazgos.",
-            "afiliadoId": 7,
-            "prestadorId": 29,
-            "centroId": 5
-        },
-        {
-            "date": "2025-12-12T12:50:00",
-            "start": "2025-12-12T12:05:00",
-            "duration": 45,
-            "notes": "Paciente con buena evolución clínica.",
-            "integranteId": 18,
-            "prestadorId": 20,
-            "centroId": 3
-        },
-        {
-            "date": "2025-12-12T15:00:00",
-            "start": "2025-12-12T14:15:00",
-            "duration": 45,
-            "notes": "Control preventivo. Valores normales.",
-            "afiliadoId": 10,
-            "prestadorId": 24,
-            "centroId": 4
-        },
-
-        {
-            "date": "2025-12-13T08:50:00",
-            "start": "2025-12-13T08:05:00",
-            "duration": 45,
-            "notes": "Molestias digestivas leves. Se indica dieta.",
-            "integranteId": 33,
-            "prestadorId": 6,
-            "centroId": 5
-        },
-        {
-            "date": "2025-12-13T10:30:00",
-            "start": "2025-12-13T09:45:00",
-            "duration": 45,
-            "notes": "Consulta sin signos de alarma.",
-            "afiliadoId": 4,
-            "prestadorId": 22,
-            "centroId": 3
-        },
-        {
-            "date": "2025-12-13T12:15:00",
-            "start": "2025-12-13T11:30:00",
-            "duration": 45,
-            "notes": "Se planifica control en dos semanas.",
-            "integranteId": 10,
-            "prestadorId": 16,
-            "centroId": 4
-        },
-
-        {
-            "date": "2025-12-14T14:30:00",
-            "start": "2025-12-14T13:45:00",
-            "duration": 45,
-            "notes": "Consulta por cefalea intermitente.",
-            "afiliadoId": 3,
-            "prestadorId": 11,
-            "centroId": 5
-        },
-        {
-            "date": "2025-12-14T15:50:00",
-            "start": "2025-12-14T15:05:00",
-            "duration": 45,
-            "notes": "Sin novedades relevantes.",
-            "integranteId": 49,
-            "prestadorId": 12,
-            "centroId": 3
-        },
-
-        {
-            "date": "2025-12-15T09:40:00",
-            "start": "2025-12-15T08:55:00",
-            "duration": 45,
-            "notes": "Dolor muscular leve. Indicaciones generales.",
-            "afiliadoId": 6,
-            "prestadorId": 30,
-            "centroId": 4
-        },
-        {
-            "date": "2025-12-15T11:15:00",
-            "start": "2025-12-15T10:30:00",
-            "duration": 45,
-            "notes": "Control clínico normal.",
-            "integranteId": 20,
-            "prestadorId": 7,
-            "centroId": 5
-        },
-        {
-            "date": "2025-12-15T12:55:00",
-            "start": "2025-12-15T12:10:00",
-            "duration": 45,
-            "notes": "Se solicitan estudios de rutina.",
-            "afiliadoId": 9,
-            "prestadorId": 18,
-            "centroId": 3
-        },
-
-        {
-            "date": "2025-12-16T13:20:00",
-            "start": "2025-12-16T12:35:00",
-            "duration": 45,
-            "notes": "Buena evolución. Continúa tratamiento.",
-            "integranteId": 41,
-            "prestadorId": 17,
-            "centroId": 4
-        },
-        {
-            "date": "2025-12-16T15:30:00",
-            "start": "2025-12-16T14:45:00",
-            "duration": 45,
-            "notes": "Consulta general sin hallazgos.",
-            "afiliadoId": 1,
-            "prestadorId": 29,
-            "centroId": 5
-        },
-
-        {
-            "date": "2025-12-17T10:50:00",
-            "start": "2025-12-17T10:05:00",
-            "duration": 45,
-            "notes": "Se evalúa cuadro leve. No requiere intervención.",
-            "integranteId": 7,
-            "prestadorId": 13,
-            "centroId": 3
-        },
-        {
-            "date": "2025-12-17T12:20:00",
-            "start": "2025-12-17T11:35:00",
-            "duration": 45,
-            "notes": "Control ambulatorio. Se agenda seguimiento.",
-            "afiliadoId": 5,
-            "prestadorId": 27,
-            "centroId": 4
-        },
-        {
-            "date": "2025-12-17T14:40:00",
-            "start": "2025-12-17T13:55:00",
-            "duration": 45,
-            "notes": "Sin cambios clínicos respecto a consulta previa.",
-            "integranteId": 14,
-            "prestadorId": 6,
-            "centroId": 5
-        },
-
-        {
-            "date": "2025-12-18T09:35:00",
-            "start": "2025-12-18T08:50:00",
-            "duration": 45,
-            "notes": "Paciente estable. Indicaciones habituales.",
-            "afiliadoId": 8,
-            "prestadorId": 20,
-            "centroId": 3
-        },
-        {
-            "date": "2025-12-18T11:10:00",
-            "start": "2025-12-18T10:25:00",
-            "duration": 45,
-            "notes": "Consulta con evolución favorable.",
-            "integranteId": 27,
-            "prestadorId": 10,
-            "centroId": 4
-        },
-        {
-            "date": "2025-12-18T13:55:00",
-            "start": "2025-12-18T13:10:00",
-            "duration": 45,
-            "notes": "Control general. Próximo turno en un mes.",
-            "afiliadoId": 2,
-            "prestadorId": 22,
-            "centroId": 5
-        },
-
-        {
-            "date": "2025-12-19T08:45:00",
-            "start": "2025-12-19T08:00:00",
-            "duration": 45,
-            "notes": "Cuadro estable sin complicaciones.",
-            "integranteId": 35,
-            "prestadorId": 16,
-            "centroId": 3
-        },
-        {
-            "date": "2025-12-19T10:55:00",
-            "start": "2025-12-19T10:10:00",
-            "duration": 45,
-            "notes": "Chequeo preventivo sin particularidades.",
-            "afiliadoId": 10,
-            "prestadorId": 30,
-            "centroId": 5
-        },
-        {
-            "date": "2025-12-19T13:25:00",
-            "start": "2025-12-19T12:40:00",
-            "duration": 45,
-            "notes": "Buena adherencia al tratamiento.",
-            "integranteId": 19,
-            "prestadorId": 14,
-            "centroId": 4
-        }
-]);
+    Turno.bulkCreate([
+    {
+        date: "2025-01-15T10:00:00",
+        start: "2025-01-15T09:30:00",
+        duration: 45,
+        notes: "Durante la consulta cardiológica, el paciente acudió para una evaluación rutinaria de su condición cardíaca, reportando episodios ocasionales de palpitaciones y fatiga tras actividades físicas moderadas. En el examen físico, se observó una presión arterial ligeramente elevada (140/90 mmHg), con frecuencia cardíaca en reposo de 78 lpm. La auscultación reveló tonos cardíacos rítmicos sin soplos ni arritmias evidentes. Se realizó un electrocardiograma que mostró ritmo sinusal con ondas T invertidas en derivaciones precordiales, sugiriendo posible isquemia subclínica. Se solicitaron pruebas adicionales como ecocardiograma Doppler, prueba de esfuerzo y análisis de biomarcadores cardíacos (troponina, BNP). Se prescribió tratamiento con betabloqueantes y antiagregantes plaquetarios, además de recomendaciones dietéticas bajas en sodio y ejercicio aeróbico controlado. Se programó seguimiento en tres meses para monitorear la respuesta terapéutica y ajustar el plan según evolución. Además, se discutieron factores de riesgo modificables como el tabaquismo y el sedentarismo, enfatizando la importancia de un estilo de vida saludable para prevenir complicaciones futuras. El paciente recibió educación sobre síntomas de alerta cardíaca y se le proporcionó material informativo sobre rehabilitación cardíaca.",
+        afiliadoId: 5,
+        prestadorId: 1,
+        centroId: 5
+    },
+    {
+        date: "2025-02-20T14:30:00",
+        start: "2025-02-20T14:00:00",
+        duration: 30,
+        notes: "En la consulta de medicina clínica, el paciente se presentó con síntomas de malestar general, incluyendo cefalea persistente, náuseas y pérdida de apetito. El interrogatorio reveló antecedentes de estrés laboral y falta de sueño. En el examen físico, se encontraron signos vitales estables, con temperatura corporal normal y sin adenopatías palpables. Se realizó un hemograma completo que mostró anemia leve (hemoglobina 11.5 g/dL), y se solicitaron estudios adicionales como perfil bioquímico, ecografía abdominal y serologías para descartar infecciones crónicas. Se diagnosticó probable anemia ferropénica secundaria a dieta inadecuada, prescribiendo suplementos de hierro y vitamina B12. Se recomendó cambios en el estilo de vida, incluyendo higiene del sueño y técnicas de manejo del estrés. Seguimiento programado en cuatro semanas para evaluar mejoría sintomática y resultados de laboratorio. Además, se exploraron posibles causas subyacentes como trastornos gastrointestinales, y se derivó a gastroenterología para endoscopía si los síntomas persisten. El paciente fue instruido sobre la importancia de una alimentación balanceada rica en hierro y se le entregó un diario alimentario para seguimiento.",
+        afiliadoId: 10,
+        prestadorId: 2,
+        centroId: 5
+    },
+    {
+        date: "2025-03-10T11:15:00",
+        start: "2025-03-10T10:45:00",
+        duration: 45,
+        notes: "Durante la consulta pediátrica, la madre acudió con su hijo de 5 años refiriendo fiebre recurrente y tos productiva de una semana de evolución. El niño presentaba buen estado general, con temperatura axilar de 38.2°C y auscultación pulmonar con crepitantes en base derecha. Se realizó radiografía de tórax que evidenció infiltrado alveolar compatible con neumonía bacteriana. Se inició tratamiento antibiótico con amoxicilina oral, junto con medidas de soporte como hidratación y reposo. Se educó a la familia sobre signos de alarma y vacunación pendiente. Control en 48 horas para reevaluación clínica y ajuste terapéutico si es necesario. Además, se discutieron medidas preventivas como lavado de manos frecuente y evitar exposición a humo de tabaco, y se recomendó completar el calendario de inmunizaciones incluyendo la vacuna antineumocócica. Se evaluó el estado nutricional del niño y se dieron consejos sobre alimentación saludable para fortalecer el sistema inmune.",
+        afiliadoId: 8,
+        integranteId: 6,
+        prestadorId: 4,
+        centroId: 3
+    },
+    {
+        date: "2025-04-05T16:00:00",
+        start: "2025-04-05T15:30:00",
+        duration: 60,
+        notes: "En la consulta traumatológica, el paciente reportó dolor agudo en el tobillo derecho tras una torcedura durante una actividad deportiva. El examen físico mostró edema, equimosis y limitación funcional, con prueba de estabilidad articular positiva para esguince de grado II. Se realizó radiografía que descartó fractura ósea. Se indicó tratamiento conservador con inmovilización con vendaje funcional, crioterapia y elevación. Se prescribieron analgésicos no esteroideos y fisioterapia ambulatoria. Se recomendó evitar carga ponderal por dos semanas y seguimiento en una semana para monitorear evolución y considerar rehabilitación. Además, se evaluaron posibles lesiones ligamentarias mediante resonancia magnética si no hay mejoría, y se educó sobre técnicas de prevención de lesiones deportivas, incluyendo calentamiento adecuado y uso de calzado apropiado. Se derivó a fisioterapia para un plan personalizado de fortalecimiento muscular.",
+        afiliadoId: 10,
+        prestadorId: 7,
+        centroId: 3
+    },
+    {
+        date: "2025-11-20T09:45:00",
+        start: "2025-11-20T09:15:00",
+        duration: 45,
+        notes: "Durante la consulta cardiológica, el paciente acudió para control post-infarto, refiriendo disnea de esfuerzo leve y angina ocasional. En el examen, presión arterial 135/85 mmHg, frecuencia cardíaca 72 lpm, con cicatriz de esternotomía visible. La auscultación mostró tonos rítmicos con soplo sistólico leve. Se revisaron estudios previos: angiografía coronaria con stents permeables. Se solicitaron ecocardiograma y Holter de 24 horas. Se ajustó medicación con estatinas, IECA y antiplaquetarios. Se enfatizó en rehabilitación cardíaca y dieta cardioprotectora. Seguimiento mensual programado. Además, se discutieron estrategias para manejar el estrés post-evento, incluyendo terapia psicológica si es necesario, y se evaluó la adherencia al tratamiento mediante cuestionarios. El paciente recibió información detallada sobre signos de re-infarto y se le recomendó un programa de ejercicio supervisado.",
+        afiliadoId: 7,
+        prestadorId: 1,
+        centroId: 5
+    },
+    {
+        date: "2025-11-12T13:00:00",
+        start: "2025-11-12T12:30:00",
+        duration: 30,
+        notes: "En la consulta de medicina clínica, la paciente se presentó con síntomas de fatiga crónica y dolor articular difuso. Antecedentes de hipotiroidismo tratado. Examen físico sin hallazgos patológicos específicos, signos vitales normales. Se realizaron análisis de laboratorio incluyendo TSH, anticuerpos y factor reumatoide, que mostraron hipotiroidismo compensado y positividad para anticuerpos reumatoides. Se diagnosticó probable artritis reumatoide incipiente, iniciando tratamiento con metotrexato y AINE. Se derivó a reumatología para manejo especializado. Control en seis semanas. Además, se exploraron comorbilidades como depresión asociada, y se prescribieron suplementos vitamínicos para apoyar la función inmune. La paciente fue educada sobre el monitoreo de síntomas y la importancia de un seguimiento multidisciplinario, incluyendo fisioterapia para preservar la movilidad articular.",
+        afiliadoId: 7,
+        prestadorId: 1,
+        centroId: 5
+    },
+    {
+        date: "2025-11-09T10:30:00",
+        start: "2025-11-09T10:00:00",
+        duration: 45,
+        notes: "Durante la consulta dermatológica, el paciente refirió erupción pruriginosa en tronco y extremidades de dos semanas. Examen dermatológico mostró placas eritematosas descamativas compatibles con psoriasis. Se realizó biopsia cutánea para confirmación histológica. Se prescribió tratamiento tópico con corticoides y calcipotriol, además de fototerapia UVB. Se educó sobre factores desencadenantes y cuidado de la piel. Seguimiento en cuatro semanas para evaluar respuesta. Además, se discutieron opciones de tratamiento sistémico si la psoriasis progresa, y se evaluó el impacto psicológico de la enfermedad, derivando a psicología si es necesario. El paciente recibió consejos sobre hidratación cutánea y evitación de irritantes, con un plan de cuidado diario personalizado.",
+        afiliadoId: 4,
+        prestadorId: 1,
+        centroId: 5
+    },
+    {
+        date: "2025-11-20T15:45:00",
+        start: "2025-11-20T15:15:00",
+        duration: 45,
+        notes: "En la consulta ginecológica, la paciente acudió para control anual, reportando ciclos menstruales irregulares y dolor pélvico. Examen ginecológico mostró útero en anteversión, sin masas palpables. Se realizó ecografía transvaginal que evidenció quistes ováricos funcionales. Se solicitaron marcadores tumorales (CA-125) y mamografía. Se prescribió anticonceptivos orales para regularizar ciclos. Se discutieron opciones de fertilidad futura. Control en tres meses. Además, se evaluó el riesgo de endometriosis mediante laparoscopía si los síntomas persisten, y se educó sobre salud reproductiva, incluyendo screening de cáncer cervical y mamario. La paciente recibió información sobre anticoncepción de emergencia y se le recomendó un estilo de vida saludable para optimizar la función ovárica.",
+        afiliadoId: 9,
+        prestadorId: 1,
+        centroId: 5
+    },
+    {
+        date: "2025-11-11T11:00:00",
+        start: "2025-11-11T10:30:00",
+        duration: 60,
+        notes: "Durante la consulta neurológica, el paciente se presentó con cefalea intensa y recurrente, acompañada de fotofobia y náuseas. Antecedentes de migraña. Examen neurológico normal, sin déficits focales. Se realizó tomografía computarizada cerebral que descartó lesiones estructurales. Se diagnosticó migraña con aura, prescribiendo triptanes y profilaxis con betabloqueantes. Se recomendó diario de cefaleas y técnicas de relajación. Seguimiento en un mes. Además, se exploraron triggers como alimentos específicos y estrés, y se derivó a nutrición para una dieta anti-migraña. El paciente fue instruido sobre el uso de medicación preventiva y se evaluó la necesidad de terapias alternativas como acupuntura.",
+        afiliadoId: 6,
+        prestadorId: 1,
+        centroId: 5
+    },
+    {
+        date: "2025-11-22T14:20:00",
+        start: "2025-11-22T13:50:00",
+        duration: 45,
+        notes: "En la consulta de medicina clínica, el paciente refirió hipertensión arterial de reciente diagnóstico. Examen físico con presión 150/95 mmHg. Se realizaron electrocardiograma y ecocardiograma, mostrando hipertrofia ventricular izquierda leve. Se inició tratamiento con ARA-II y diuréticos. Se educó sobre monitoreo domiciliario y dieta DASH. Control semanal para ajuste de dosis. Además, se evaluaron factores de riesgo como obesidad y sedentarismo, prescribiendo un plan de pérdida de peso gradual. El paciente recibió educación sobre complicaciones de la hipertensión no controlada y se le recomendó actividad física regular, con seguimiento cardiológico si es necesario.",
+        afiliadoId: 8,
+        prestadorId: 1,
+        centroId: 5
+    },
+    {
+        date: "2025-11-17T09:00:00",
+        start: "2025-11-17T08:30:00",
+        duration: 45,
+        notes: "Durante la consulta pediátrica, la niña de 8 años presentó erupción cutánea generalizada y fiebre. Examen mostró exantema maculopapular compatible con rubéola. Se realizó serología confirmatoria. Se indicó aislamiento domiciliario y tratamiento sintomático. Se verificó estado vacunal y se completó esquema. Control en 10 días. Además, se educó a la familia sobre la contagiosidad de la enfermedad y medidas de higiene, y se evaluó el riesgo de complicaciones en inmunodeprimidos cercanos. La niña recibió consejos sobre reposo y hidratación, con seguimiento para asegurar la resolución completa de síntomas.",
+        afiliadoId: 1,
+        integranteId: 7,
+        prestadorId: 1,
+        centroId: 5
+    },
+    {
+        date: "2025-11-01T16:30:00",
+        start: "2025-11-01T16:00:00",
+        duration: 30,
+        notes: "En la consulta pediátrica, el lactante de 6 meses refirió llanto inconsolable y regurgitación frecuente. Examen mostró distensión abdominal. Se sospechó reflujo gastroesofágico, realizando pH-metría esofágica. Se prescribió inhibidores de bomba de protones y cambios posturales. Se educó a padres sobre alimentación. Seguimiento en dos semanas. Además, se exploraron alergias alimentarias mediante pruebas cutáneas, y se recomendó espesantes para la fórmula láctea. Los padres fueron instruidos sobre técnicas de posicionamiento y se derivó a gastroenterología pediátrica para evaluación endoscópica si persiste.",
+        afiliadoId: 5,
+        integranteId: 2,
+        prestadorId: 1,
+        centroId: 5
+    },
+    {
+        date: "2025-11-02T10:00:00",
+        start: "2025-11-02T09:30:00",
+        duration: 45,
+        notes: "Durante la consulta cardiológica, evalué a un paciente con estenosis aórtica severa, refiriendo disnea y angina. Examen físico con soplo sistólico, presión arterial 140/80 mmHg. Ecocardiograma confirmó gradiente transvalvular alto. Derivé a cirugía para reemplazo valvular. Prescribí betabloqueantes. Educé sobre síntomas de descompensación. Control prequirúrgico. En mi práctica, la estenosis aórtica requiere intervención oportuna.",
+        afiliadoId: 9,
+        prestadorId: 1,
+        centroId: 5
+    },
+    {
+        date: "2025-11-02T11:00:00",
+        start: "2025-11-02T10:30:00",
+        duration: 45,
+        notes: "El paciente acudió a la consulta cardiológica para control de insuficiencia mitral, con disnea nocturna. Examen físico con soplo pansistólico, presión arterial 125/75 mmHg. Ecocardiograma mostró regurgitación severa. Indiqué reparación valvular. Ajusté diuréticos. Programé evaluación quirúrgica. Educé sobre anticoagulación postoperatoria. Como cardiólogo, manejo la insuficiencia valvular con enfoque multidisciplinario.",
+        afiliadoId: 4,
+        prestadorId: 1,
+        centroId: 5
+    },
+    {
+        date: "2025-11-02T12:00:00",
+        start: "2025-11-02T11:30:00",
+        duration: 45,
+        notes: "Durante la consulta cardiológica, la paciente refirió miocardiopatía hipertrófica, con síncope. Examen físico con soplo sistólico, presión arterial 130/85 mmHg. Ecocardiograma confirmó hipertrofia septal. Prescribí betabloqueantes y calcioantagonistas. Derivé a electrofisiología para ICD. Recomendé evitar deportes de alto riesgo. Control trimestral. En casos de miocardiopatía, la prevención de arritmias es prioritaria.",
+        afiliadoId: 5,
+        prestadorId: 1,
+        centroId: 5
+    },
+    {
+    date: "2025-11-15T10:00:00",
+    start: "2025-11-15T09:15:00",
+    duration: 45,
+    descripcion: "Consulta de control cardiológico con evaluación de arritmias.",
+    afiliadoId: 1,
+    prestadorId: 1,
+    centroId: 5,
+    notes: "Paciente acudió para evaluación integral de su condición cardíaca. Reporta palpitaciones irregulares nocturnas y ligera opresión en el pecho sin irradiación. Antecedentes: hipertensión arterial tratada con IECA y fibrilación auricular previa resuelta con anticoagulación. Examen físico: PA 135/85 mmHg, FC 72 lpm en ritmo sinusal, auscultación sin soplos. ECG: ondas P invertidas en derivaciones inferiores, posible bloqueo auriculoventricular de primer grado. Se indicó Holter 24 h, troponina, BNP y ecocardiograma. Recomendaciones: dieta hiposódica, ejercicio moderado, control de estrés y ajuste de medicación antiarrítmica. Seguimiento: 4 semanas."
+    },
+  {
+    date: "2025-02-20T14:30:00",
+    start: "2025-02-20T13:45:00",
+    duration: 45,
+    descripcion: "Consulta clínica por fatiga y pérdida de peso.",
+    afiliadoId: 2,
+    prestadorId: 6,
+    centroId: 3,
+    notes: "Paciente con fatiga crónica y pérdida de 5 kg en 2 meses, sin cambios en apetito. Antecedentes: diabetes tipo 2 controlada con metformina y antecedentes familiares de neoplasias GI. Examen físico: signos leves de deshidratación, PA 120/80 mmHg, abdomen blando sin dolor. Laboratorio: anemia normocítica, glucemia en ayunas elevada, PCR ligeramente aumentada. Estudios indicados: endoscopía digestiva alta y baja, ecografía abdominal, función tiroidea. Recomendaciones: suplementos vitamínicos, dieta rica en hierro y proteínas, seguimiento nutricional. Seguimiento: 3 semanas."
+  },
+  {
+    date: "2025-03-10T11:00:00",
+    start: "2025-03-10T10:15:00",
+    duration: 45,
+    descripcion: "Consulta pediátrica por control de asma.",
+    afiliadoId: 3,
+    integranteId: 1,
+    prestadorId: 7,
+    centroId: 3,
+    notes: "Niño de 8 años con asma bronquial recurrente. Antecedentes de atopía familiar y sensibilización a ácaros del polvo. Examen físico: frecuencia respiratoria elevada, sibilancias, SpO₂ 95%. Espirometría: FEV1 70% del predicho, obstrucción reversible. Tratamiento: corticoides inhalados, plan de acción escrito, nebulizaciones con salbutamol. Recomendaciones: control ambiental, educación sobre técnica de inhalación. Seguimiento: 1 mes."
+  },
+  {
+    date: "2025-04-05T16:00:00",
+    start: "2025-04-05T15:15:00",
+    duration: 45,
+    descripcion: "Consulta traumatológica por lesión de rodilla.",
+    afiliadoId: 4,
+    prestadorId: 8,
+    centroId: 3,
+    notes: "Adulto joven con dolor agudo en rodilla tras accidente deportivo. Sospecha de esguince de ligamento cruzado anterior. Examen físico: efusión articular, prueba de Lachman positiva, dolor a la palpación. Estudios: resonancia magnética de rodilla. Tratamiento inicial: reposo, hielo, elevación, AINEs. Recomendaciones: fisioterapia, ejercicios isométricos. Seguimiento: 2 semanas."
+  },
+  {
+    date: "2025-05-12T09:00:00",
+    start: "2025-05-12T08:15:00",
+    duration: 45,
+    descripcion: "Consulta cardiológica por insuficiencia cardíaca.",
+    afiliadoId: 5,
+    prestadorId: 9,
+    centroId: 3,
+    notes: "Paciente con disnea de esfuerzo progresiva y edema en miembros inferiores. Antecedentes: IAM hace 2 años, dislipidemia, tabaquismo pasivo. Examen físico: taquicardia, crepitantes basales, edema pretibial. Estudios: ECG con cicatrices de infarto, ecocardiograma con FEVI 35%, dilatación ventricular y regurgitación mitral moderada. Tratamiento: ajuste de betabloqueantes, IECA, diuréticos y antagonista de aldosterona. Rehabilitación cardíaca y educación sobre signos de alarma. Seguimiento: mensual."
+  }
+])
 }
 
 module.exports = {crearTurnos};
