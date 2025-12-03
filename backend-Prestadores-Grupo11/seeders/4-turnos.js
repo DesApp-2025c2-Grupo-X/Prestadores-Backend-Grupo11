@@ -1152,7 +1152,7 @@ module.exports = {
       
       const tieneEvolucion = turno.modifiedAt && faker.datatype.boolean(0.42);
       const ultimaModif = turno.modifiedAt
-        ? `${turno.modifiedAt.toLocaleDateString('es-AR')} ${turno.modifiedAt.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})} hs`
+        ? `${turno.modifiedAt.toLocaleDateString('es-AR')} ${turno.modifiedAt.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})}`
         : `${fechaStr} (creación)`;
 
       return `

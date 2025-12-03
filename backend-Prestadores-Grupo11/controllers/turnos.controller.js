@@ -18,7 +18,7 @@ const getAllTurnosByPrestadorId = async (req, res) => {
         as: "afiliado",
         include: [
           { model: Integrante, attributes: ["id", "nombre", "edad", "dni"], as: "integrantes" }
-        ]
+        ] 
       },
       {
         model: Integrante,

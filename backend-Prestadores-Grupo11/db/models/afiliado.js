@@ -29,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
   Afiliado.init({
     nombre: {type: DataTypes.STRING , allowNull: false},
     apellido: {type: DataTypes.STRING, allowNull: false},
+    sexo: {type: DataTypes.ENUM('masculino', 'femenino')},
     edad: {type: DataTypes.INTEGER, allowNull: false},
     dni: {type: DataTypes.STRING, allowNull: false},
     numero_afiliado: {type: DataTypes.STRING, allowNull: false, unique: true},
