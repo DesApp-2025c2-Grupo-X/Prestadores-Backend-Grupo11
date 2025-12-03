@@ -33,7 +33,7 @@ router.get(
 
 // RUTA PARA EL MÉDICO INDIVIDUAL
 router.get(
-  "/:prestadorId",
+  "/prestador/:prestadorId",
   genericMiddleware.existPrestadorByPrestadorId,
   turnosController.getAllTurnosByPrestadorId
 );
@@ -47,7 +47,7 @@ router.get(
 
 // ACTUALIZAR NOTAS DEL TURNO
 router.patch(
-  "/prestador/:prestadorId/turno/:id",
+  "/:prestadorId/turno/:id",
   genericMiddleware.existModelById(Turno),
   genericMiddleware.validateRolById("medico"),
   turnosController.updateNotesById
