@@ -9,6 +9,7 @@ const { notify } = require('./routes/auth.route');
                 cantidad: 20,
                 presentacion: 'capsulas',
                 observaciones: 'Tomar cada 8 horas después de las comidas',
+                createdAt: "2025-11-10"
             },
             {
                 integranteId: 2,
@@ -18,7 +19,8 @@ const { notify } = require('./routes/auth.route');
                 observaciones: 'Completar tratamiento por 7 días',
                 estado: 'en analisis',
                 usuarioUltimoCambio: 2,
-                prestadorAnalisisId: 2
+                prestadorAnalisisId: 2,
+                createdAt: "2025-10-10"
             },
             {
                 integranteId: 3,
@@ -30,7 +32,8 @@ const { notify } = require('./routes/auth.route');
                 motivo: 'Dosis no justificada por diagnóstico',
                 fecha_finalizacion: '2025-11-10',
                 usuarioUltimoCambio: 1,
-                prestadorAnalisisId: 1
+                prestadorAnalisisId: 1,
+                createdAt: "2025-06-22"
             },  
             {
                 integranteId: 4,
@@ -42,6 +45,7 @@ const { notify } = require('./routes/auth.route');
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 2,
                 prestadorAnalisisId: 2,
+                createdAt: "2025-11-01"
             },
             {
                 integranteId: 5,
@@ -53,7 +57,8 @@ const { notify } = require('./routes/auth.route');
                 fecha_finalizacion: '2025-09-11', //Fecha de cuando se cambio el estado
                 motivo: 'Falta de estudios complementarios',
                 usuarioUltimoCambio: 3,
-                prestadorAnalisisId: 3
+                prestadorAnalisisId: 3,
+                createdAt: "2025-07-20"
             },
             {
                 integranteId: 6,
@@ -63,7 +68,8 @@ const { notify } = require('./routes/auth.route');
                 observaciones: 'Tratamiento de hipertensión arterial',
                 estado: 'en analisis',
                 usuarioUltimoCambio: 2,
-                prestadorAnalisisId: 2
+                prestadorAnalisisId: 2,
+                createdAt: "2025-11-23"
             },
             {
                 integranteId: 7,
@@ -73,7 +79,8 @@ const { notify } = require('./routes/auth.route');
                 observaciones: 'Uso en caso de edema agudo de pulmón',
                 estado: 'en analisis',
                 usuarioUltimoCambio: 1,
-                prestadorAnalisisId: 1
+                prestadorAnalisisId: 1,
+                createdAt: "2025-09-16"
             },
             {
                 integranteId: 8,
@@ -85,7 +92,8 @@ const { notify } = require('./routes/auth.route');
                 fecha_finalizacion: '2025-02-21', //Fecha de cuando se cambio el estado
                 motivo: 'Falta de informe de laboratorio',
                 usuarioUltimoCambio: 2,
-                prestadorAnalisisId: 2
+                prestadorAnalisisId: 2,
+                createdAt: "2025-06-22"
             },
             {
                 integranteId: 9,
@@ -97,7 +105,8 @@ const { notify } = require('./routes/auth.route');
                 fecha_finalizacion: '2025-08-05', //Fecha de cuando se cambio el estado
                 motivo: 'Estudios complementarios no adjuntos',
                 usuarioUltimoCambio: 3,
-                prestadorAnalisisId: 3
+                prestadorAnalisisId: 3,
+                createdAt: "2025-12-03"
             },
             {
                 integranteId: 10,
@@ -109,7 +118,8 @@ const { notify } = require('./routes/auth.route');
                 motivo: 'Diagnóstico no justificado',
                 fecha_finalizacion: '2025-10-16',
                 usuarioUltimoCambio: 1,
-                prestadorAnalisisId: 1
+                prestadorAnalisisId: 1,
+                createdAt: "2025-10-22"
             },
             {
                 integranteId: 2,
@@ -121,7 +131,8 @@ const { notify } = require('./routes/auth.route');
                 motivo: 'Receta vencida',
                 fecha_finalizacion: new Date(),
                 usuarioUltimoCambio: 2,
-                prestadorAnalisisId: 2
+                prestadorAnalisisId: 2,
+                createdAt: "2025-10-18"
             },
             {
                 integranteId: 6,
@@ -129,7 +140,8 @@ const { notify } = require('./routes/auth.route');
                 cantidad: 30,
                 presentacion: 'pastillas',
                 observaciones: 'Control de presión arterial',
-                estado: 'recibido'
+                estado: 'recibido',
+                createdAt: "2025-09-23"
             },
             {
                 integranteId: 7,

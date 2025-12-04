@@ -237,7 +237,8 @@ Se revisan sus antecedentes personales y se constata hipertensión arterial diag
         duration: 45,
         notes: null,
         integranteId: 4,
-        prestadorId: 1
+        prestadorId: 2,
+        centroId: 5
     },
     {
         date: new Date("2025-09-08T14:00:00"),
@@ -305,7 +306,8 @@ Se revisan sus antecedentes personales y se constata hipertensión arterial diag
         duration: 45,
         notes: null,
         integranteId: 5,
-        prestadorId: 1
+        prestadorId: 33,
+        centroId: 5
     },
     {
         date: new Date("2025-09-08T14:00:00"),
@@ -457,7 +459,8 @@ Se revisan sus antecedentes personales y se constata hipertensión arterial diag
         duration: 45,
         notes: null,
         integranteId: 7,
-        prestadorId: 1
+        prestadorId: 31,
+        centroId: 5
     },
     {
         date: new Date("2025-09-08T20:00:00"),
@@ -623,7 +626,8 @@ Se revisan sus antecedentes personales y se constata hipertensión arterial diag
         duration: 45,
         notes: null,
         integranteId: 9,
-        prestadorId: 1
+        prestadorId: 33,
+        centroId: 5
     },
     {
         date: new Date("2025-09-08T19:00:00"),
@@ -727,7 +731,7 @@ Se explica al paciente que los hallazgos son compatibles con un síndrome femoro
         duration: 15,
         notes: null,
         integranteId: 1,
-        prestadorId: 1,
+        prestadorId: 28,
         centroId:5
     },
         {
@@ -736,7 +740,7 @@ Se explica al paciente que los hallazgos son compatibles con un síndrome femoro
         duration: 45,
         notes: null,
         integranteId: 2,
-        prestadorId: 1,
+        prestadorId: 28,
         centroId:5
     },
         {
@@ -781,7 +785,7 @@ Se explica al paciente que los hallazgos son compatibles con un síndrome femoro
         duration: 45,
         notes: null,
         integranteId: 7,
-        prestadorId: 1,
+        prestadorId: 2,
         centroId:5
     },
         {
