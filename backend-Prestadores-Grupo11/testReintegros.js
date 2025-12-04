@@ -47,7 +47,7 @@ const crearReintegros = async () => {
             observaciones: 'Evaluación postoperatoria',
             estado: 'rechazado',
             motivo: 'Factura incompleta',
-            fecha_finalizacion: new Date(),
+            fecha_finalizacion: '2025-11-25',
             usuarioUltimoCambio: 1
         },
         {   fecha_prestacion: '2025-10-18',

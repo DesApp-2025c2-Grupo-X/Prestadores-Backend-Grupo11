@@ -28,7 +28,7 @@ const { notify } = require('./routes/auth.route');
                 observaciones: 'Solo en caso de fiebre mayor a 38°C',
                 estado: 'rechazado',
                 motivo: 'Dosis no justificada por diagnóstico',
-                fecha_finalizacion: new Date(),
+                fecha_finalizacion: '2025-11-10',
                 usuarioUltimoCambio: 1,
                 prestadorAnalisisId: 1
             },  
@@ -107,7 +107,7 @@ const { notify } = require('./routes/auth.route');
                 observaciones: 'Tratamiento de insuficiencia cardíaca',
                 estado: 'rechazado',
                 motivo: 'Diagnóstico no justificado',
-                fecha_finalizacion: new Date(),
+                fecha_finalizacion: '2025-10-16',
                 usuarioUltimoCambio: 1,
                 prestadorAnalisisId: 1
             },
