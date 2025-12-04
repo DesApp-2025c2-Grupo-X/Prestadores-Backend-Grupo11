@@ -248,8 +248,7 @@ const darDeAltaSituacion = async (req, res) => {
     }
 
     // 2) MANEJO DE AFILIADO / INTEGRANTE
-    // Si viene integranteId → tratar de obtener afiliadoId automáticamente
-    if (!data.afiliadoId && data.integranteId) {
+    if (data.afiliadoId === undefined && data.integranteId) {
       const integrante = await Integrante.findByPk(data.integranteId);
       if (integrante) {
         data.afiliadoId = integrante.afiliadoId;
@@ -290,7 +289,7 @@ const darDeAltaSituacion = async (req, res) => {
       situacion: data.situacion.trim(),
       observaciones: data.observaciones || "",
       fecha_inicio: fecha,
-      fecha_final: data.fecha_final || fecha, // si no la mandan → igual que inicio
+      fecha_final: data.fecha_final ?? null, // si no la mandan → igual que inicio
       estado: data.estado || "alta",
     });
 
