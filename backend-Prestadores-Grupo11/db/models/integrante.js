@@ -36,8 +36,9 @@ module.exports = (sequelize, DataTypes) => {
     nombre: { type: DataTypes.STRING, allowNull: false },
     apellido: { type: DataTypes.STRING, allowNull: false },
     sexo: {type: DataTypes.ENUM('masculino', 'femenino')},
-    edad: { type: DataTypes.INTEGER, allowNull: false },
+    fecha_nacimiento: { type: DataTypes.DATE, allowNull: false },
     dni: { type: DataTypes.STRING, allowNull: false },
+    sufijo: {type: DataTypes.STRING, allowNull: false, unique: false},
     afiliadoId: { type: DataTypes.INTEGER, allowNull: false },
     parentesco: { type: DataTypes.ENUM("conyugue", "hijo", "familiar_a_cargo"), allowNull: false }
   }, {

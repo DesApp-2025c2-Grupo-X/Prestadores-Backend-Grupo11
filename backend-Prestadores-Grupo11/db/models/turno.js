@@ -39,9 +39,9 @@ module.exports = (sequelize, DataTypes) => {
     modifiedAt: {type: DataTypes.DATE, allowNull: true},
     notes: {type: DataTypes.TEXT},
     descripcion: {type: DataTypes.TEXT},
-    afiliadoId: {type: DataTypes.INTEGER},
+    afiliadoId: {type: DataTypes.INTEGER,allowNull:true},
     prestadorId: {type: DataTypes.INTEGER, allowNull: false},
-    integranteId: {type: DataTypes.INTEGER}
+    integranteId: {type: DataTypes.INTEGER,allowNull:true}
   }, {
     sequelize,
     modelName: 'Turno',
