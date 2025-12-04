@@ -24,7 +24,7 @@ const cambiarEstado = async (req, res) => {
     solicitud.motivo = motivo;
   }
 
-  if (['aprobado', 'rechazado'].includes(nuevoEstado)) {
+  if (['aprobado', 'rechazado', 'observado'].includes(nuevoEstado)) {
     solicitud.fecha_finalizacion = new Date();
   }
   await solicitud.save();
