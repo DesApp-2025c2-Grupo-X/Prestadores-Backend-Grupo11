@@ -11,7 +11,7 @@ const {crearReintegros} = require('./testReintegros.js');
 const {crearRecetas} = require('./testRecetas.js');
 
 const app = express();
-const PORT = process.env.PORT ?? 3001;
+const PORT = process.env.PORT || 3001;
 const {
     authRoute, 
     dashboardRoute, 
@@ -44,15 +44,26 @@ app.use('/prestador', prestadorRoute)
 
 
 app.listen(PORT, async () => {
-    await db.sequelize.sync({ force: true });
-    await crearPrestadores();
-    await crearAfiliados();
-    await crearIntegrantes();
-    await crearAutorizaciones();
-    await crearReintegros();
-    await crearRecetas();
-    await crearSituaciones();
-    await crearTurnos();
-    console.log(`La app arranco en el puerto ${PORT}.`);
-   
+    try {
+        await db.sequelize.authenticate();
+        await db.sequelize.sync();
+
+        const prestadores = await db.Prestador.count();
+
+        if (prestadores === 0) {
+            await crearPrestadores();
+            await crearAfiliados();
+            await crearIntegrantes();
+            await crearAutorizaciones();
+            await crearReintegros();
+            await crearRecetas();
+            await crearSituaciones();
+            await crearTurnos();
+        }
+
+        console.log(`La app arranco en el puerto ${PORT}.`);
+
+    } catch (error) {
+        console.error("Error conectando a la base:", error);
+    }
 });
