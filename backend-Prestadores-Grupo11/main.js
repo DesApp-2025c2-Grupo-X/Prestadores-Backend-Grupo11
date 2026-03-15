@@ -61,7 +61,15 @@ app.listen(PORT, async () => {
             await crearTurnos();
         }
 
+        // imprimir todos los prestadores con usuario y contraseña
+        const prestadoresTodos = await db.Prestador.findAll({ attributes: ['id', 'username', 'password'] });
+        console.log('Prestadores (usuario / contraseña):');
+        prestadoresTodos.forEach(p => {
+            console.log(`- id: ${p.id}, username: ${p.username}, password: ${p.password}`);
+        });
+
         console.log(`La app arranco en el puerto ${PORT}.`);
+
 
     } catch (error) {
         console.error("Error conectando a la base:", error);
